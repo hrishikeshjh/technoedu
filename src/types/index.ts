@@ -81,19 +81,3 @@ export interface LearningPlatformInfo {
   accessType: string;
   logoText: string;
 }
-
-export interface PracticeQuestion {
-  id: string;
-  examShortCode: string;
-  subject: string;
-  topic: string;
-  questionText: string;
-  options: {
-    id: string;
-    text: string;
-  }[];
-  correctOptionId: string;
-  explanation: string;
-  sourceReference: string;
-  sourceUrl?: string;
-}

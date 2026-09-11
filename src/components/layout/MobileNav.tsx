@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, BookOpen, Library, Globe2, Layers } from 'lucide-react';
+import { Home, BookOpen, Library, Globe2 } from 'lucide-react';
 
 export const MobileNav: React.FC = () => {
   const items = [
@@ -8,7 +8,6 @@ export const MobileNav: React.FC = () => {
     { label: 'Exams', path: '/exams', icon: BookOpen },
     { label: 'Library', path: '/library', icon: Library },
     { label: 'Platforms', path: '/platforms', icon: Globe2 },
-    { label: 'Practice', path: '/practice', icon: Layers },
   ];
 
   return (

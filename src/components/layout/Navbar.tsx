@@ -54,7 +54,6 @@ export const Navbar: React.FC = () => {
     { name: 'Exam Aggregator', path: '/exams' },
     { name: 'Open Library', path: '/library' },
     { name: 'Open Platforms', path: '/platforms' },
-    { name: 'Practice Archive', path: '/practice' },
     { name: 'About Initiative', path: '/about' }
   ];
 

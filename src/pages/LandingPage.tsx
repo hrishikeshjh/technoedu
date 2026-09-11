@@ -108,32 +108,6 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Self-Paced Practice Question Archive Spotlight */}
-      <section className="py-10 sm:py-16 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
-            <div className="space-y-3 max-w-2xl text-center md:text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-red-400">
-                Self-Assessment & PYQ Practice
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Free Self-Paced Practice Archive
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Evaluate your conceptual clarity with previous year questions from UPSC, SSC, Banking, and Law entrances with instant step-by-step verified explanations.
-              </p>
-            </div>
-
-            <Link
-              to="/practice"
-              className="w-full sm:w-auto px-6 py-3.5 bg-brand-red hover:bg-brand-darkred text-white text-xs font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-2 flex-shrink-0"
-            >
-              <span>Launch Practice Archive</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

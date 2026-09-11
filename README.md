@@ -52,11 +52,7 @@ Instead of locking knowledge behind commercial paywalls, Techno Wallah curates, 
 ### 5. 🌐 Global Open Platforms Showcase (`/platforms`)
 - Dedicated directory of world-class open learning systems with institutional details, license types, and covered disciplines.
 
-### 6. 📝 Interactive Practice & Self-Evaluation Hub (`/practice`)
-- Previous-year questions (PYQs) from UPSC, GRE, GMAT, and CLAT.
-- No high-stress timers — focuses on mastery with step-by-step explanations and real-time review stats.
-
-### 7. 📱 Mobile-First Responsive Architecture
+### 6. 📱 Mobile-First Responsive Architecture
 - **Thumb-Friendly App Dock (`MobileNav`)**: Fixed glassmorphism bottom navigation bar for seamless one-tap routing across phones.
 - **Mobile Drawer with Live Search**: Full search capabilities built directly into the mobile hamburger menu.
 - **Horizontal Scrollable Filter Chips**: Edge-to-edge category pill swiping on small screens.
@@ -111,7 +107,6 @@ technoedu/
 │   ├── context/                # Global contexts (NotificationContext)
 │   ├── data/                   # Structured static databases
 │   │   ├── examsData.ts        # Syllabus, exam tags, open platforms map
-│   │   ├── mockQuestionsData.ts# PYQ practice questions & answers
 │   │   ├── platformsData.ts    # Learning platforms directory data
 │   │   └── studyMaterialData.ts# Curated textbook & handbook records
 │   ├── pages/                  # Page-level route views
@@ -120,7 +115,6 @@ technoedu/
 │   │   ├── ExamExplorerPage.tsx
 │   │   ├── LandingPage.tsx
 │   │   ├── PlatformsDirectoryPage.tsx
-│   │   ├── PracticeHubPage.tsx
 │   │   └── StudyMaterialPage.tsx
 │   ├── types/                  # TypeScript interface definitions
 │   ├── App.tsx                 # Root layout & route configuration
@@ -181,7 +175,7 @@ This repository is pre-configured for one-click deployment on [Vercel](https://v
    - **Framework Preset**: `Vite`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-4. The included [`vercel.json`](./vercel.json) automatically ensures all single-page application (SPA) client routes (`/exams`, `/library`, `/practice`, etc.) resolve to `index.html` without 404 errors on page reload.
+4. The included [`vercel.json`](./vercel.json) automatically ensures all single-page application (SPA) client routes (`/exams`, `/library`, `/platforms`, etc.) resolve to `index.html` without 404 errors on page reload.
 5. Click **Deploy**.
 
 ---

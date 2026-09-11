@@ -8,7 +8,6 @@ import { ExamExplorerPage } from './pages/ExamExplorerPage';
 import { ExamDetailPage } from './pages/ExamDetailPage';
 import { StudyMaterialPage } from './pages/StudyMaterialPage';
 import { PlatformsDirectoryPage } from './pages/PlatformsDirectoryPage';
-import { PracticeHubPage } from './pages/PracticeHubPage';
 import { AboutPage } from './pages/AboutPage';
 
 // Scroll to top automatically upon route navigation
@@ -33,14 +32,14 @@ export const App: React.FC = () => {
           <Route path="/exams/:id" element={<ExamDetailPage />} />
           <Route path="/library" element={<StudyMaterialPage />} />
           <Route path="/platforms" element={<PlatformsDirectoryPage />} />
-          <Route path="/practice" element={<PracticeHubPage />} />
           <Route path="/about" element={<AboutPage />} />
 
           {/* Aliases & Fallbacks */}
+          <Route path="/practice" element={<Navigate to="/exams" replace />} />
           <Route path="/study-material" element={<Navigate to="/library" replace />} />
           <Route path="/courses" element={<Navigate to="/exams" replace />} />
           <Route path="/courses/:id" element={<Navigate to="/exams" replace />} />
-          <Route path="/test-series" element={<Navigate to="/practice" replace />} />
+          <Route path="/test-series" element={<Navigate to="/exams" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

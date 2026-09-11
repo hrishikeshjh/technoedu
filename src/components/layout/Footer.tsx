@@ -136,7 +136,6 @@ export const Footer: React.FC = () => {
               <li><Link to="/exams" className="hover:text-white transition-colors">Exam Directory</Link></li>
               <li><Link to="/library" className="hover:text-white transition-colors">Open Study Material Library</Link></li>
               <li><Link to="/platforms" className="hover:text-white transition-colors">Global Learning Platforms</Link></li>
-              <li><Link to="/practice" className="hover:text-white transition-colors">Self-Paced Practice Archive</Link></li>
               <li><Link to="/about" className="hover:text-white transition-colors">About Open Initiative</Link></li>
             </ul>
           </div>

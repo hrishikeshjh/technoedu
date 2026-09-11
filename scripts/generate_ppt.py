@@ -299,23 +299,23 @@ def create_presentation():
         p.font.color.rgb = TEXT_MAIN
         p.space_after = Pt(6)
 
-    # Right Card: Practice Hub Interactive Inputs
+    # Right Card: Platforms Directory Interactive Inputs
     c_in4 = add_card(s4, Inches(6.8), Inches(1.8), Inches(5.7), Inches(4.8))
     tf_in4 = c_in4.text_frame
     tf_in4.word_wrap = True
     p = tf_in4.paragraphs[0]
-    p.text = "INPUT SCREEN 4: Practice & Self-Evaluation Controls (`/practice`)"
+    p.text = "INPUT SCREEN 4: Platforms Directory Filter Controls (`/platforms`)"
     p.font.size = Pt(13)
     p.font.bold = True
     p.font.color.rgb = ACCENT_BLUE
     p.space_after = Pt(10)
 
     items_in4 = [
-        ("Examination Filter Selector:", "Switch practice sessions between UPSC CSE, GRE, GMAT, and CLAT question banks"),
-        ("Interactive Option Inputs (A/B/C/D):", "Touch-friendly option selection buttons capturing user choice instantaneously"),
-        ("State Management:", "React state tracks user answers per question ID without requiring page reloads"),
-        ("Reset Session Button:", "Circular reset action allowing students to clear evaluation states and restart review"),
-        ("Free-Form Question Search:", "Query input filtering questions by subject, concept, or historical exam year")
+        ("Institutional Search Bar:", "Keyword search query across platform names, organizations (IITs, MIT, NCERT), and subjects"),
+        ("Platform Category Selector:", "Dropdown selection for University Video Lectures, Global OCW, Open Textbooks, and Digital Archives"),
+        ("Domain Quick Filters:", "Interactive tag filters for Engineering, Humanities, Science, Law, and Public Administration"),
+        ("Live Filter Evaluation:", "Instant client-side re-indexing without server roundtrips or page reload delays"),
+        ("Platform URL Redirection:", "One-tap outbound direct link to verified institutional portals")
     ]
     for label, desc in items_in4:
         p = tf_in4.add_paragraph()
@@ -329,7 +329,7 @@ def create_presentation():
     # ==========================================
     s5 = prs.slides.add_slide(blank_slide_layout)
     set_slide_background(s5, PAGE_BG)
-    add_header(s5, "3. Output Screens & Reports (Part A)", "Syllabus Roadmaps, Verified PYQ Analytics & Real-Time Scorecards", "SECTION 3")
+    add_header(s5, "3. Output Screens & Reports (Part A)", "Syllabus Roadmaps & Institutional Learning Platform Profiles", "SECTION 3")
 
     # Left Card: Exam Detail & Syllabus Roadmap Report
     c_out1 = add_card(s5, Inches(0.8), Inches(1.8), Inches(5.6), Inches(4.8))
@@ -356,28 +356,30 @@ def create_presentation():
         p.font.color.rgb = TEXT_MAIN
         p.space_after = Pt(8)
 
-    # Right Card: Real-Time Practice Scorecard Report
+    # Right Card: Learning Platforms Dossier Report
     c_out2 = add_card(s5, Inches(6.8), Inches(1.8), Inches(5.7), Inches(4.8))
     tf_out2 = c_out2.text_frame
     tf_out2.word_wrap = True
     p = tf_out2.paragraphs[0]
-    p.text = "OUTPUT REPORT 2: Evaluation Scorecard & Solution Analysis (`/practice`)"
+    p.text = "OUTPUT REPORT 2: Learning Platforms Accreditation Directory (`/platforms`)"
     p.font.size = Pt(13)
     p.font.bold = True
     p.font.color.rgb = ACCENT_GREEN
     p.space_after = Pt(10)
 
     items_out2 = [
-        ("Real-Time KPI Metric Bar:", "Instant scoreboard showing 'Total Reviewed' and 'Total Correct' with accuracy analytics"),
-        ("Dynamic Visual Feedback:", "Selected options immediately highlight in Emerald Green (Correct) or Crimson Red (Incorrect)"),
-        ("Step-by-Step Solution Report:", "Instant reveal of comprehensive pedagogical explanations upon answering"),
-        ("Source Attribution:", "Direct citation of question origin (e.g., 'UPSC CSE Prelims Paper I' or 'GRE ETS Official')"),
-        ("Textbook Cross-Reference:", "Recommends exact open textbook chapters to revise if the student answers incorrectly")
+        ("Institutional Platform Profiles:", "Comprehensive dossiers on NPTEL, MIT OCW, NCERT, OpenStax, IGNOU, and NDLI"),
+        ("Accreditation & Governance Model:", "Verifies state-funded, university-backed, and non-profit public OER licensing"),
+        ("Discipline Coverage Tag Cloud:", "Categorized coverage across Engineering, Humanities, Pure Sciences, Law, and Public Administration"),
+        ("Direct Primary Portal Gateway:", "One-click external launch directly into the primary verified learning platform"),
+        ("Zero Subscription Guarantee:", "Explicit verification badge confirming 100% Free Open Educational Resource status")
     ]
     for label, desc in items_out2:
         p = tf_out2.add_paragraph()
         p.text = f"• {label} {desc}"
         p.font.size = Pt(10.5)
+        p.font.color.rgb = TEXT_MAIN
+        p.space_after = Pt(8)
         p.font.color.rgb = TEXT_MAIN
         p.space_after = Pt(8)
 
@@ -607,7 +609,7 @@ def create_presentation():
     p.space_after = Pt(10)
 
     mob_points = [
-        "Fixed Mobile Nav Dock: 1-tap thumb navigation between Home, Exams, Library, Platforms, and Practice.",
+        "Fixed Mobile Nav Dock: 1-tap thumb navigation between Home, Exams, Library, and Platforms.",
         "Edge-to-Edge Swipe Filters: Custom `category-scroll` class enabling swipeable horizontal pills on 360px+ phones.",
         "Hero Image Refinement: Rounded corners, soft shadow, ambient glow, and responsive aspect-ratio.",
         "Safe Area Insets: Supports iOS swipe indicator and Android navigation bars without covering content."
