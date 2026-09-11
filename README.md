@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎓 Techno Wallah (technoedu)
+# Techno Wallah (technoedu)
 ### Open-Source Examination Resource Hub & Academic OER Directory
 
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Ready-black?logo=vercel&style=for-the-badge)](https://vercel.com)
@@ -14,13 +14,13 @@
   <b>A unified, non-commercial public repository mapping world-class Open Educational Resources (OER), peer-reviewed textbooks, official government portals, and verified Previous Year Question (PYQ) banks to major competitive examination roadmaps.</b>
 </p>
 
-[Explore Examinations](#-key-features) • [Open Platforms](#-indexed-open-platforms) • [Getting Started](#-getting-started) • [Deployment](#-deployment-on-vercel)
+[Explore Examinations](#key-features) • [Open Platforms](#indexed-open-platforms) • [Getting Started](#getting-started) • [Deployment](#deployment-on-vercel)
 
 ---
 
 </div>
 
-## 📌 Overview
+## Overview
 
 **Techno Wallah** is an open-access digital learning ecosystem engineered to eliminate paywalls, expensive subscription barriers, and fragmented preparation pipelines for competitive exams. 
 
@@ -28,31 +28,31 @@ Instead of locking knowledge behind commercial paywalls, Techno Wallah curates, 
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 1. 🔍 Universal Live Search with Autocomplete
+### 1. Universal Live Search with Autocomplete
 - Global real-time search across exams, subjects, platforms, and syllabus topics.
 - Live autocomplete drawer with instant deep-linking to examination detail views and platform portals.
 
-### 2. 🏛️ Comprehensive Target Examination Directory (`/exams`)
+### 2. Comprehensive Target Examination Directory (`/exams`)
 - Systematically categorized by:
   - **Study Abroad**: GRE, GMAT, IELTS, TOEFL, Digital SAT.
   - **Government & Civil Services**: UPSC CSE, WBCS (West Bengal PSC), SSC CGL, Banking (IBPS/SBI), Railways (RRB), Defence (NDA/CDS).
   - **Law & Professional Entrances**: CLAT, CUET, CAT & Management.
 - Each exam includes official portal links, syllabus breakups, and mapped open repositories.
 
-### 3. 🗺️ Topic-Wise Syllabus Roadmaps (`/exams/:id`)
+### 3. Topic-Wise Syllabus Roadmaps (`/exams/:id`)
 - Granular breakdown of exam subjects with direct links to verified open-source video lecture series, textbook chapters, and reference materials.
 
-### 4. 📚 Curated Open Study Material Library (`/library`)
+### 4. Curated Open Study Material Library (`/library`)
 - 500+ curated peer-reviewed open textbooks, NCERT foundational series, university lecture compendiums, and formula sheets.
 - Multi-dimensional filtering by category, targeted examination, and search keywords.
 - Responsive document preview modal displaying license details, page counts, and instant source access.
 
-### 5. 🌐 Global Open Platforms Showcase (`/platforms`)
+### 5. Global Open Platforms Showcase (`/platforms`)
 - Dedicated directory of world-class open learning systems with institutional details, license types, and covered disciplines.
 
-### 6. 📱 Mobile-First Responsive Architecture
+### 6. Mobile-First Responsive Architecture
 - **Thumb-Friendly App Dock (`MobileNav`)**: Fixed glassmorphism bottom navigation bar for seamless one-tap routing across phones.
 - **Mobile Drawer with Live Search**: Full search capabilities built directly into the mobile hamburger menu.
 - **Horizontal Scrollable Filter Chips**: Edge-to-edge category pill swiping on small screens.
@@ -60,7 +60,7 @@ Instead of locking knowledge behind commercial paywalls, Techno Wallah curates, 
 
 ---
 
-## 🌐 Indexed Open Platforms
+## Indexed Open Platforms
 
 Techno Wallah integrates and points to verified public educational repositories:
 
@@ -78,7 +78,7 @@ Techno Wallah integrates and points to verified public educational repositories:
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technologies Used |
 | :--- | :--- |
@@ -92,7 +92,7 @@ Techno Wallah integrates and points to verified public educational repositories:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 technoedu/
@@ -128,7 +128,7 @@ technoedu/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (Version **18.x** or later recommended)
@@ -165,7 +165,7 @@ technoedu/
 
 ---
 
-## ☁️ Deployment on Vercel
+## Deployment on Vercel
 
 This repository is pre-configured for one-click deployment on [Vercel](https://vercel.com/):
 
@@ -180,7 +180,7 @@ This repository is pre-configured for one-click deployment on [Vercel](https://v
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions to expand exam mappings, verify question banks, or index new Open Educational Resources are welcome!
 
@@ -192,11 +192,11 @@ Contributions to expand exam mappings, verify question banks, or index new Open 
 
 ---
 
-## 📄 License & Attribution
+## License & Attribution
 
 - **Source Code**: Released under the [MIT License](LICENSE).
 - **Educational Content & Links**: All courseware, textbook links, and government question papers are the property of their respective originating open platforms (NPTEL, MIT OCW, NCERT, OpenStax, etc.) and are indexed under **Open Educational Resources (OER)** fair educational usage guidelines.
 
 <div align="center">
-  <sub>Built with ❤️ for students, lifelong learners, and competitive exam aspirants everywhere.</sub>
+  <sub>Built for students, lifelong learners, and competitive exam aspirants everywhere.</sub>
 </div>
