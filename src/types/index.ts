@@ -81,3 +81,28 @@ export interface LearningPlatformInfo {
   accessType: string;
   logoText: string;
 }
+
+// ── Complete Exam Directory (lightweight, comprehensive catalogue) ──────────
+
+export type DirectoryRegion = 'West Bengal' | 'All India' | 'International';
+
+export interface DirectoryStudyLink {
+  title: string;
+  url: string;
+}
+
+export interface DirectoryExam {
+  id: string;
+  name: string;
+  shortCode: string;
+  conductingBody: string;
+  region: DirectoryRegion;
+  category: string;
+  officialPortalUrl: string;
+  officialPortalName: string;
+  docsUrl: string;
+  docsLabel: string;
+  pyqUrl?: string;
+  pyqLabel?: string;
+  studyMaterials: DirectoryStudyLink[];
+}

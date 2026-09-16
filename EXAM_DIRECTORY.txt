@@ -1,0 +1,852 @@
+================================================================================
+ TECHNO WALLAH | COMPLETE EXAMINATION DIRECTORY
+ West Bengal  |  All India  |  International
+ Compiled: 16 September 2026  |  Part of the technoedu open repository
+================================================================================
+
+HOW TO USE THIS FILE
+--------------------
+Every examination entry lists:
+  [DOC]  official documentation gateway - notifications, eligibility criteria,
+         exam pattern, syllabus and roadmap (mostly the official portal; where a
+         separate dedicated syllabus/PYQ page exists, it is listed separately).
+  [PYQ]  official previous year question papers / sample papers.
+  [OER]  free & open-licensed study material (government, university or
+         non-profit repositories - no login, no paywall, no purchase).
+
+General Open Educational Repositories used across all sections
+  NCERT textbooks (Class 6-12)      : https://ncert.nic.in/textbook.php
+  e-Pathshala / DIKSHA              : https://epathshala.nic.in , https://diksha.gov.in
+  NPTEL (IIT courseware)            : https://nptel.ac.in
+  SWAYAM (Govt MOOCs)               : https://swayam.gov.in
+  MIT OpenCourseWare                : https://ocw.mit.edu
+  OpenStax (peer-reviewed books)    : https://openstax.org
+  Khan Academy                      : https://www.khanacademy.org
+  e-GyanKosh (IGNOU repository)     : https://egyankosh.ac.in
+  NDLI (National Digital Library)   : https://ndl.iitkgp.ac.in
+  e-PG Pathshala (UGC INFLIBNET)    : https://epgp.inflibnet.ac.in
+  Project Gutenberg                 : https://www.gutenberg.org
+  Internet Archive / Open Library   : https://openlibrary.org
+  LibreTexts                        : https://libretexts.org
+  Indian Kanoon (legal judgments)   : https://indiankanoon.org
+
+================================================================================
+SECTION A - WEST BENGAL EXAMINATIONS (State-level)
+================================================================================
+
+A01. WBCS - West Bengal Civil Services (Group A/B/C/D)
+  Body: West Bengal Public Service Commission (WBPSC)
+  [DOC] Official portal + notifications + eligibility + syllabus: https://psc.wb.gov.in
+  [PYQ] Previous question papers: https://psc.wb.gov.in (downloads section)
+  [OER] NCERT Polity/History/Geography: https://ncert.nic.in/textbook.php
+  [OER] IGNOU e-GyanKosh (Public Admin, History, Sociology): https://egyankosh.ac.in
+  [OER] Banglar Shiksha (WB Geography, History, Bengali): https://banglarshiksha.gov.in
+  [OER] PRS Legislative Research: https://prsindia.org
+
+A02. WBPSC Miscellaneous / Clerkship (Group C & D)
+  Body: West Bengal Public Service Commission
+  [DOC] Portal + eligibility + syllabus: https://psc.wb.gov.in
+  [PYQ] Papers: https://psc.wb.gov.in
+  [OER] NCERT Arithmetic/Reasoning/English: https://ncert.nic.in | https://www.khanacademy.org
+
+A03. WB Police Constable & SI
+  Body: West Bengal Police Recruitment Board
+  [DOC] Notifications + eligibility + syllabus: https://wbpolice.gov.in , https://wbpsb.gov.in
+  [OER] NCERT General Science & Math: https://ncert.nic.in/textbook.php
+  [OER] Khan Academy reasoning/quant: https://www.khanacademy.org
+
+A04. Kolkata Police Constable / SI
+  Body: Kolkata Police / West Bengal Police
+  [DOC] Notifications: https://wbpolice.gov.in , https://kolkataPolice.gov.in
+  [OER] NDLI competitive exam papers: https://ndl.iitkgp.ac.in
+
+A05. WBHRB Group C & D (Clerk, LDC, Office staff)
+  Body: West Bengal Staff Recruitment Commission (WBSRC/WBHRB)
+  [DOC] Portal + syllabus: https://wbhrb.in
+  [OER] NCERT English/Quant/Reasoning: https://ncert.nic.in | https://www.khanacademy.org
+
+A06. WBSSC - Assistant Teacher Recruitment (School Service Commission)
+  Body: West Bengal School Service Commission
+  [DOC] Portal + notifications: https://wbscc.wb.gov.in , https://www.wbsed.gov.in
+  [OER] NCERT Pedagogy + subject textbooks: https://ncert.nic.in/textbook.php
+  [OER] IGNOU B.Ed modules (Child Development): https://egyankosh.ac.in
+
+A07. WB TET (Primary & Upper Primary Teacher Eligibility Test)
+  Body: West Bengal Board of Primary Education (WBBPE)
+  [DOC] Portal + syllabus + eligibility: https://www.wbbpe.org
+  [PYQ] Model questions: https://www.wbbpe.org (downloads)
+  [OER] NCERT Child Development & Pedagogy: https://ncert.nic.in | https://egyankosh.ac.in
+
+A08. WB SET - State Eligibility Test (Assistant Professor)
+  Body: WB State Level Eligibility Test
+  [DOC] Portal + eligibility: http://www.wbsclet.net
+  [OER] UGC e-PG Pathshala subject modules: https://epgp.inflibnet.ac.in
+  [OER] IGNOU e-GyanKosh: https://egyankosh.ac.in
+
+A09. WBJEE - West Bengal Joint Entrance Examination (UG Engineering)
+  Body: West Bengal Joint Entrance Examinations Board (WBJEEB)
+  [DOC] Portal + eligibility + syllabus: https://wbjeeb.in
+  [PYQ] Previous papers: https://wbjeeb.in (downloads)
+  [OER] NCERT Physics/Chemistry/Math (Class 11-12): https://ncert.nic.in/textbook.php
+  [OER] NPTEL Engineering foundation: https://nptel.ac.in | https://ocw.mit.edu
+
+A10. JENPAS-UG / JENPAUH (Nursing, Paramedical & Allied UG)
+  Body: WBJEEB
+  [DOC] Portal + eligibility + syllabus: https://wbjeeb.in
+  [OER] NCERT Biology/Chemistry/Physics: https://ncert.nic.in/textbook.php
+  [OER] OpenStax Biology & Anatomy: https://openstax.org
+
+A11. WB Medical & Dental admission (through NEET-UG score)
+  Body: NTA + WB Medical Council
+  [DOC] NEET official: https://neet.nta.nic.in | WB counselling: https://wbmcc.nic.in
+  [OER] NCERT Biology (Class 11-12): https://ncert.nic.in/textbook.php
+  [OER] OpenStax Anatomy & Physiology: https://openstax.org
+
+A12. WBCRO - WB Central Recruitment Office (Group D misc posts)
+  Body: WBCRO / WBPSC
+  [DOC] Portal: https://psc.wb.gov.in
+  [OER] NCERT + NDLI: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+A13. WB Food & Supplies SI (Food Sub-Inspector)
+  Body: West Bengal Food & Supplies Department
+  [DOC] Notifications: https://wbfood.in , https://www.foodandsupplieswb.gov.in
+  [OER] NCERT GK/Arithmetic: https://ncert.nic.in | https://www.khanacademy.org
+
+A14. ICDS Supervisor (Anganwadi cadre)
+  Body: Dept of Women & Child Development, WB
+  [DOC] Notifications: https://www.wb.gov.in (departmental pages)
+  [OER] NCERT + NDLI: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+A15. WBSEDCL - various posts (Assistant Manager, AE, Line/Field)
+  Body: West Bengal State Electricity Distribution Company
+  [DOC] Careers portal: https://www.wbsedcl.in
+  [OER] NPTEL Electrical engineering: https://nptel.ac.in | https://ocw.mit.edu
+  [OER] OpenStax Physics: https://openstax.org
+
+A16. WBSEDC / Food Corporation posts
+  Body: West Bengal State Electricity Distribution Co. / State agencies
+  [DOC] Portal: https://www.wbsedc.in
+  [OER] NDLI + NCERT: https://ndl.iitkgp.ac.in | https://ncert.nic.in
+
+A17. WB Judicial Service (WBJS)
+  Body: Calcutta High Court / WBPSC
+  [DOC] Portal: https://www.calcuttahighcourt.gov.in , https://psc.wb.gov.in
+  [OER] Indian Kanoon (case law): https://indiankanoon.org
+  [OER] Constitution of India (official text): https://legislative.gov.in/constitution-of-india/
+  [OER] e-PG Pathshala Law: https://epgp.inflibnet.ac.in
+
+A18. WB Excise (Constable / Sub-Inspector)
+  Body: West Bengal Excise / WBPSC
+  [DOC] Notifications: https://psc.wb.gov.in , https://wbexcise.gov.in
+  [OER] NCERT GK/Reasoning: https://ncert.nic.in | https://www.khanacademy.org
+
+A19. WB Health Recruitment (Staff Nurse, Paramedical)
+  Body: West Bengal Medical & Health Recruitment Board
+  [DOC] Notifications: https://wbmhrb.in
+  [OER] OpenStax Nursing/Anatomy: https://openstax.org
+  [OER] NCERT Biology: https://ncert.nic.in/textbook.php
+
+A20. WB Forest Beat Officer (Forest dept)
+  Body: WBPSC / Forest Directorate
+  [DOC] Notifications: https://psc.wb.gov.in
+  [OER] NCERT Geography/Biology: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+A21. Madhyamik (Class 10) Board Examination
+  Body: West Bengal Board of Secondary Education (WBBSE)
+  [DOC] Portal + syllabus + sample papers: https://wbbse.wb.gov.in
+  [OER] WBBSE e-textbooks: https://banglar shiksha portal (https://banglarshiksha.gov.in)
+  [OER] NCERT reference: https://ncert.nic.in
+
+A22. Higher Secondary (Class 12) Board Examination
+  Body: West Bengal Council of Higher Secondary Education (WBCHSE)
+  [DOC] Portal + syllabus + model papers: https://wbchse.nic.in
+  [OER] Banglar Shiksha textbooks: https://banglarshiksha.gov.in
+  [OER] NCERT reference: https://ncert.nic.in
+
+A23. Jadavpur University Entrance (JUEE) & CU UG/PG entrance
+  Body: Jadavpur University / University of Calcutta
+  [DOC] JU: https://jaduniv.edu.in | CU: https://www.caluniv.ac.in
+  [OER] NPTEL + NCERT: https://nptel.ac.in | https://ncert.nic.in
+
+A24. State Polytechnic / ITI admission (JEXPO/Polytechnic)
+  Body: WBSCTE / WBJEEB
+  [DOC] JEXPO portal: https://wbjeeb.in (JEXPO)
+  [OER] NCERT Science/Math: https://ncert.nic.in/textbook.php
+
+A25. WB Prisons & other dept recruitments (misc)
+  Body: WB Home (Prisons) / WBPSC
+  [DOC] Notifications: https://wbprisons.gov.in , https://psc.wb.gov.in
+  [OER] NDLI + NCERT: https://ndl.iitkgp.ac.in | https://ncert.nic.in
+
+================================================================================
+SECTION B - ALL-INDIA EXAMINATIONS
+================================================================================
+
+-----------------------------------
+B1. CIVIL SERVICES & CENTRAL GOVT (UPSC)
+-----------------------------------
+
+B01. UPSC Civil Services (CSE)
+  Body: Union Public Service Commission
+  [DOC] Portal + notification + eligibility + syllabus: https://upsc.gov.in
+  [PYQ] Official previous papers: https://upsc.gov.in/examinations/previous-question-papers
+  [OER] NCERT Polity/History/Geography/Economy: https://ncert.nic.in/textbook.php
+  [OER] NPTEL (Polity/Economy/Environment): https://nptel.ac.in
+  [OER] e-GyanKosh (Public Admin/Sociology): https://egyankosh.ac.in
+  [OER] PRS Legislative Research: https://prsindia.org
+
+B02. UPSC CAPF (Assistant Commandant)
+  Body: UPSC
+  [DOC] Portal: https://upsc.gov.in
+  [PYQ] Papers: https://upsc.gov.in/examinations/previous-question-papers
+  [OER] NCERT + NPTEL: https://ncert.nic.in | https://nptel.ac.in
+
+B03. UPSC IES / ESE (Engineering Services)
+  Body: UPSC
+  [DOC] Portal: https://upsc.gov.in
+  [PYQ] Papers: https://upsc.gov.in/examinations/previous-question-papers
+  [OER] NPTEL Engineering courses: https://nptel.ac.in
+  [OER] MIT OCW Engineering: https://ocw.mit.edu
+  [OER] OpenStax Engineering Sciences: https://openstax.org
+
+B04. UPSC Combined Geo-Scientist & Geologist
+  Body: UPSC
+  [DOC] Portal: https://upsc.gov.in
+  [OER] NPTEL Geology/Earth Science: https://nptel.ac.in | https://ocw.mit.edu
+
+B05. SSC CGL (Staff Selection Commission - Graduate Level)
+  Body: SSC
+  [DOC] Portal + notification + syllabus: https://ssc.gov.in
+  [PYQ] Previous papers: https://ssc.gov.in (downloads)
+  [OER] NCERT Math/English/Science: https://ncert.nic.in/textbook.php
+  [OER] Khan Academy Quant/Reasoning: https://www.khanacademy.org
+  [OER] OpenStax Algebra/Statistics: https://openstax.org
+
+B06. SSC CHSL (10+2 Level)
+  Body: SSC
+  [DOC] Portal: https://ssc.gov.in
+  [PYQ] Papers: https://ssc.gov.in
+  [OER] NCERT + Khan Academy: https://ncert.nic.in | https://www.khanacademy.org
+
+B07. SSC MTS / GD Constable / JE / Stenographer / CPO
+  Body: SSC
+  [DOC] Portal: https://ssc.gov.in
+  [PYQ] Papers: https://ssc.gov.in
+  [OER] NCERT General Science/Math: https://ncert.nic.in | https://www.khanacademy.org
+
+B08. EPFO SSA (Social Security Assistant)
+  Body: Employees' Provident Fund Organisation
+  [DOC] Careers: https://www.epfindia.gov.in
+  [OER] NCERT English/Quant/Reasoning/GK: https://ncert.nic.in | https://www.khanacademy.org
+
+B09. ESIC Recruitment (UDC, MTS, Nursing, etc.)
+  Body: Employees' State Insurance Corporation
+  [DOC] Careers: https://www.esic.gov.in
+  [OER] NDLI + NCERT: https://ndl.iitkgp.ac.in | https://ncert.nic.in
+
+-----------------------------------
+B2. BANKING & FINANCE
+-----------------------------------
+
+B10. IBPS PO (Probationary Officer)
+  Body: Institute of Banking Personnel Selection
+  [DOC] Portal + eligibility + pattern: https://www.ibps.in
+  [PYQ] Sample papers: https://www.ibps.in
+  [OER] RBI Financial Education handbooks: https://rbi.org.in/financialeducation/
+  [OER] NCERT Class 12 Macro (Money & Banking): https://ncert.nic.in/textbook.php
+  [OER] OpenStax Business Statistics: https://openstax.org
+
+B11. IBPS Clerk
+  Body: IBPS
+  [DOC] Portal: https://www.ibps.in
+  [PYQ] Papers: https://www.ibps.in
+  [OER] NCERT + Khan Academy: https://ncert.nic.in | https://www.khanacademy.org
+
+B12. IBPS RRB (PO & Office Assistant)
+  Body: IBPS (Regional Rural Banks)
+  [DOC] Portal: https://www.ibps.in
+  [OER] RBI handbooks + NCERT: https://rbi.org.in/financialeducation/ | https://ncert.nic.in
+
+B13. SBI PO / Clerk / SO
+  Body: State Bank of India
+  [DOC] Careers: https://sbi.co.in/careers
+  [PYQ] Model papers: https://sbi.co.in/careers
+  [OER] RBI + OpenStax + NCERT: https://rbi.org.in/financialeducation/ | https://openstax.org | https://ncert.nic.in
+
+B14. RBI Grade B / RBI Assistant
+  Body: Reserve Bank of India
+  [DOC] Careers: https://opportunities.rbi.org.in
+  [PYQ] Phase 1/2 sample papers: https://opportunities.rbi.org.in
+  [OER] RBI Financial Education: https://rbi.org.in/financialeducation/
+  [OER] NPTEL Finance & Economics: https://nptel.ac.in
+  [OER] NCERT Macroeconomics: https://ncert.nic.in/textbook.php
+
+B15. NABARD Grade A/B
+  Body: National Bank for Agriculture and Rural Development
+  [DOC] Careers: https://www.nabard.org
+  [OER] NCERT Agriculture/Economy: https://ncert.nic.in
+  [OER] RBI + NPTEL: https://rbi.org.in/financialeducation/ | https://nptel.ac.in
+
+B16. SEBI Grade A
+  Body: Securities and Exchange Board of India
+  [DOC] Careers: https://www.sebi.gov.in
+  [OER] NPTEL Finance: https://nptel.ac.in | OpenStax: https://openstax.org
+
+B17. Insurance Exams (LIC AAO/ADO, NICL AO, UIIC, OICL)
+  Body: LIC / GIC re-insurance companies
+  [DOC] LIC careers: https://licindia.in | NICL: https://www.nic.co.in
+  [OER] RBI + NCERT + NPTEL: https://rbi.org.in/financialeducation/ | https://ncert.nic.in | https://nptel.ac.in
+
+-----------------------------------
+B3. RAILWAYS
+-----------------------------------
+
+B18. RRB NTPC (Non-Technical Popular Categories)
+  Body: Railway Recruitment Boards
+  [DOC] Central portal: https://rrbapply.gov.in
+  [PYQ] CEN sample papers: https://rrbapply.gov.in
+  [OER] NCERT Class 10 Science/Math: https://ncert.nic.in/textbook.php
+  [OER] Khan Academy Quant/Reasoning: https://www.khanacademy.org
+
+B19. RRB Group D (Level 1)
+  Body: RRB
+  [DOC] Portal: https://rrbapply.gov.in
+  [OER] NCERT Science + Arithmetic: https://ncert.nic.in | https://www.khanacademy.org
+
+B20. RRB ALP / Technician / JE
+  Body: RRB
+  [DOC] Portal: https://rrbapply.gov.in
+  [OER] NPTEL Engineering: https://nptel.ac.in | https://ocw.mit.edu
+  [OER] NCERT Physics: https://ncert.nic.in/textbook.php
+
+B21. RRB Ministerial & Isolated posts
+  Body: RRB
+  [DOC] Portal: https://rrbapply.gov.in
+  [OER] NCERT + NDLI: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+-----------------------------------
+B4. DEFENCE & PARAMILITARY
+-----------------------------------
+
+B22. NDA (National Defence Academy)
+  Body: UPSC
+  [DOC] Portal + syllabus: https://upsc.gov.in
+  [PYQ] Papers: https://upsc.gov.in/examinations/previous-question-papers
+  [OER] NCERT Class 11-12 Math: https://ncert.nic.in/textbook.php
+  [OER] NPTEL Math/Science: https://nptel.ac.in | https://ocw.mit.edu
+
+B23. CDS (Combined Defence Services)
+  Body: UPSC
+  [DOC] Portal: https://upsc.gov.in
+  [PYQ] Papers: https://upsc.gov.in/examinations/previous-question-papers
+  [OER] NCERT English/GK/Elementary Math: https://ncert.nic.in | https://www.khanacademy.org
+
+B24. AFCAT (Air Force Common Admission Test)
+  Body: Indian Air Force
+  [DOC] Portal: https://afcat.cdac.in
+  [PYQ] Model papers: https://afcat.cdac.in
+  [OER] NCERT + NDLI: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+B25. INET / Navy & Agniveer (Army/Navy/Air Force)
+  Body: Indian Navy / Army / Air Force
+  [DOC] Navy: https://www.joinindiannavy.gov.in | Army: https://joinindianarmy.nic.in | AF: https://afcat.cdac.in
+  [OER] NCERT Math/Science: https://ncert.nic.in | https://www.khanacademy.org
+
+B26. Coast Guard & Paramilitary (BSF, CRPF, CISF, ITBP, SSB)
+  Body: Various (under MHA / Coast Guard)
+  [DOC] Coast Guard: https://www.indiancoastguard.gov.in | CRPF: https://crpf.gov.in
+  [OER] NCERT GK/Reasoning/Science: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+-----------------------------------
+B5. TEACHING, RESEARCH & FELLOWSHIP
+-----------------------------------
+
+B27. CTET (Central Teacher Eligibility Test)
+  Body: CBSE
+  [DOC] Portal + syllabus + eligibility: https://ctet.nic.in
+  [PYQ] Papers: https://ctet.nic.in
+  [OER] NCERT Child Development & Pedagogy: https://ncert.nic.in
+  [OER] IGNOU B.Ed modules: https://egyankosh.ac.in
+
+B28. UGC NET (University Grants Commission NET)
+  Body: NTA
+  [DOC] Portal + subject list: https://ugcnet.nta.ac.in
+  [PYQ] Question papers: https://ugcnet.nta.ac.in
+  [OER] UGC e-PG Pathshala: https://epgp.inflibnet.ac.in
+  [OER] IGNOU e-GyanKosh: https://egyankosh.ac.in
+
+B29. CSIR NET (Science Research Fellowship)
+  Body: NTA
+  [DOC] Portal: https://csirnet.nta.nic.in
+  [PYQ] Papers: https://csirnet.nta.nic.in
+  [OER] NPTEL + MIT OCW (sciences): https://nptel.ac.in | https://ocw.mit.edu
+  [OER] LibreTexts: https://libretexts.org
+
+B30. ICAR NET (Agriculture)
+  Body: NTA / ICAR
+  [DOC] Portal: https://exams.nta.ac.in/ICAR/
+  [OER] NCERT Agriculture/Biology: https://ncert.nic.in | https://openstax.org
+
+B31. State TET & SLET (grouped - all states)
+  Body: Respective state boards
+  [DOC] e.g. UP: https://updeled.gov.in | Rajasthan REET: https://reet2026.org | etc.
+  [OER] NCERT Pedagogy: https://ncert.nic.in | https://egyankosh.ac.in
+
+-----------------------------------
+B6. ENGINEERING & TECHNOLOGY
+-----------------------------------
+
+B32. JEE Main (BTech/BE admission)
+  Body: NTA
+  [DOC] Portal + eligibility + syllabus: https://jeemain.nta.nic.in
+  [PYQ] Official papers: https://jeemain.nta.nic.in
+  [OER] NCERT Class 11-12 PCM: https://ncert.nic.in/textbook.php
+  [OER] NPTEL Physics/Chem/Math: https://nptel.ac.in
+  [OER] OpenStax + Khan Academy: https://openstax.org | https://www.khanacademy.org
+
+B33. JEE Advanced (IIT admission)
+  Body: IITs (rotating)
+  [DOC] Portal: https://jeeadv.ac.in
+  [PYQ] Previous papers: https://jeeadv.ac.in
+  [OER] NCERT PCM + MIT OCW: https://ncert.nic.in | https://ocw.mit.edu
+
+B34. GATE (Graduate Aptitude Test in Engineering - MTech/PSU)
+  Body: IIT / IISc (rotating)
+  [DOC] Portal: https://gate2026.iitr.ac.in (year-specific site)
+  [PYQ] Question papers: https://gate2026.iitr.ac.in (downloads)
+  [OER] NPTEL GATE-aligned courses: https://nptel.ac.in
+  [OER] MIT OCW Engineering: https://ocw.mit.edu
+
+B35. BITSAT / VITEEE / SRMJEEE / Other private entrances
+  Body: Respective universities (BITS, VIT, SRM)
+  [DOC] BITSAT: https://www.bitsadmission.com | VIT: https://viteee.vit.ac.in
+  [OER] NCERT PCM: https://ncert.nic.in | NPTEL: https://nptel.ac.in
+
+-----------------------------------
+B7. MEDICAL & HEALTH
+-----------------------------------
+
+B36. NEET UG (MBBS/BDS/AYUSH)
+  Body: NTA
+  [DOC] Portal + eligibility + syllabus: https://neet.nta.nic.in
+  [PYQ] Question papers: https://neet.nta.nic.in
+  [OER] NCERT Biology/Chem/Physics (11-12): https://ncert.nic.in/textbook.php
+  [OER] OpenStax Biology & A&P: https://openstax.org
+
+B37. NEET PG (MD/MS/Diploma)
+  Body: NBE
+  [DOC] Portal: https://nbe.edu.in
+  [OER] NPTEL + LibreTexts (med sciences): https://nptel.ac.in | https://libretexts.org
+
+B38. INI-CET (AIIMS, JIPMER, PGIMER)
+  Body: AIIMS
+  [DOC] Portal: https://aiimsexams.ac.in
+  [OER] LibreTexts + NPTEL: https://libretexts.org | https://nptel.ac.in
+
+B39. FMGE (Foreign Medical Graduate Examination)
+  Body: National Medical Commission
+  [DOC] Portal: https://www.nmc.org.in
+  [OER] OpenStax + LibreTexts: https://openstax.org | https://libretexts.org
+
+-----------------------------------
+B8. LAW
+-----------------------------------
+
+B40. CLAT UG & PG
+  Body: Consortium of National Law Universities
+  [DOC] Portal + syllabus: https://consortiumofnlus.ac.in
+  [PYQ] Sample papers: https://consortiumofnlus.ac.in
+  [OER] Constitution of India (official text): https://legislative.gov.in/constitution-of-india/
+  [OER] Indian Kanoon: https://indiankanoon.org
+  [OER] SWAYAM Law courses: https://swayam.gov.in
+
+B41. AILET (NLU Delhi)
+  Body: National Law University, Delhi
+  [DOC] Portal: https://nationallawuniversitydelhi.in
+  [PYQ] Previous papers: https://nationallawuniversitydelhi.in
+  [OER] Indian Kanoon + Constitution text: https://indiankanoon.org | https://legislative.gov.in/constitution-of-india/
+
+B42. LSAT India / SLAT (Symbiosis) / MHCET Law / LAWCETs
+  Body: Pearson (LSAT) / Symbiosis / State CET cells
+  [DOC] LSAT: https://lsatindia.in | SLAT: https://www.set-test.org
+  [OER] Indian Kanoon + SWAYAM Law: https://indiankanoon.org | https://swayam.gov.in
+
+-----------------------------------
+B9. MANAGEMENT & BUSINESS
+-----------------------------------
+
+B43. CAT (Common Admission Test)
+  Body: IIMs (rotating)
+  [DOC] Portal + pattern: https://iimcat.ac.in
+  [PYQ] Official mocks: https://iimcat.ac.in
+  [OER] NPTEL Quantitative Methods: https://nptel.ac.in
+  [OER] OpenStax Precalculus & Business Stats: https://openstax.org
+  [OER] MIT OCW Discrete Math: https://ocw.mit.edu
+
+B44. XAT / SNAP / NMAT / CMAT
+  Body: XLRI / SIBM / GMAC / NTA
+  [DOC] XAT: https://xatonline.in | SNAP: https://snaptest.org | NMAT: https://nmat.excelindia.com | CMAT: https://cmat.nta.nic.in
+  [PYQ] Official sample papers on each portal
+  [OER] OpenStax + NPTEL + Khan Academy: https://openstax.org | https://nptel.ac.in | https://www.khanacademy.org
+
+B45. MICAT / IRMA / Other B-school entrances
+  Body: MICA / IRMA
+  [DOC] IRMA: https://irma.ac.in | MICA: https://www.mica.ac.in
+  [OER] OpenStax + NPTEL: https://openstax.org | https://nptel.ac.in
+
+-----------------------------------
+B10. DESIGN, FASHION & ARCHITECTURE
+-----------------------------------
+
+B46. NIFT Entrance
+  Body: National Institute of Fashion Technology
+  [DOC] Portal: https://www.nift.ac.in
+  [PYQ] Sample papers: https://www.nift.ac.in
+  [OER] Creative Commons / NDLI design references: https://ndl.iitkgp.ac.in
+
+B47. NID DAT (Design Aptitude Test)
+  Body: National Institute of Design
+  [DOC] Portal: https://admissions.nid.edu
+  [OER] NDLI + Internet Archive: https://ndl.iitkgp.ac.in | https://archive.org
+
+B48. UCEED / CEED (IIT design)
+  Body: IIT Bombay (rotating)
+  [DOC] Portal: https://www.uceed.iitb.ac.in
+  [PYQ] Papers: https://www.uceed.iitb.ac.in
+  [OER] NDLI + Open Library: https://ndl.iitkgp.ac.in | https://openlibrary.org
+
+B49. NATA (Architecture)
+  Body: Council of Architecture
+  [DOC] Portal: https://www.nata.in
+  [PYQ] Sample papers: https://www.nata.in
+  [OER] OpenStax Physics/Math: https://openstax.org
+
+-----------------------------------
+B11. COMMERCE, PROFESSIONAL & OTHER
+-----------------------------------
+
+B50. CA (Chartered Accountancy)
+  Body: ICAI
+  [DOC] Portal + syllabus: https://www.icai.org
+  [OER] ICAI BoS open study material: https://www.icai.org (free study material)
+  [OER] OpenStax Accounting/Finance: https://openstax.org
+
+B51. CS (Company Secretary)
+  Body: ICSI
+  [DOC] Portal: https://www.icsi.edu
+  [OER] ICSI open study material + OpenStax: https://www.icsi.edu | https://openstax.org
+
+B52. CMA (Cost & Management Accountancy)
+  Body: ICMAI
+  [DOC] Portal: https://icmai.in
+  [OER] ICMAI free study material + OpenStax: https://icmai.in | https://openstax.org
+
+B53. GPAT (Pharmacy)
+  Body: NTA
+  [DOC] Portal: https://gpat.nta.nic.in
+  [PYQ] Papers: https://gpat.nta.nic.in
+  [OER] NCERT Chemistry/Biology: https://ncert.nic.in | https://openstax.org
+
+B54. NCHM JEE (Hotel Management)
+  Body: NTA
+  [DOC] Portal: https://nchmjee.nta.nic.in
+  [OER] NDLI + NCERT: https://ndl.iitkgp.ac.in | https://ncert.nic.in
+
+B55. ICAR AIEEA (Agriculture Entrance)
+  Body: NTA / ICAR
+  [DOC] Portal: https://exams.nta.ac.in/ICAR/
+  [OER] NCERT Biology/Agri: https://ncert.nic.in | https://openstax.org
+
+-----------------------------------
+B12. STATE PUBLIC SERVICE COMMISSIONS (grouped)
+-----------------------------------
+
+B56. State PSCs - Civil Services (all states)
+  [DOC] UP: https://uppsc.up.nic.in | Bihar: https://bpsc.bih.nic.in
+  [DOC] MP: https://mppsc.mp.gov.in | Rajasthan: https://rpsc.rajasthan.gov.in
+  [DOC] Haryana: https://hpsc.gov.in | Himachal: https://www.hp.gov.in/hppsc
+  [DOC] Punjab: https://ppsc.gov.in | Uttarakhand: https://ukpsc.gov.in
+  [DOC] Jharkhand: https://www.jpsc.gov.in | Chhattisgarh: https://psc.cg.gov.in
+  [DOC] Odisha: https://opsc.gov.in | Gujarat: https://gpsc.gujarat.gov.in
+  [DOC] Maharashtra: https://mpsc.gov.in | Tamil Nadu: https://www.tnpsc.gov.in
+  [DOC] Karnataka: https://kpsc.kar.nic.in | AP: https://psc.ap.gov.in | Telangana: https://tspsc.gov.in
+  [DOC] Kerala: https://www.keralapsc.gov.in | Assam: https://apsc.nic.in | WB: https://psc.wb.gov.in
+  [OER] NCERT (GS foundation): https://ncert.nic.in/textbook.php
+  [OER] e-GyanKosh (optional subjects): https://egyankosh.ac.in
+  [OER] NPTEL (Economy/Polity/Environment): https://nptel.ac.in
+  [OER] NDLI (previous papers): https://ndl.iitkgp.ac.in
+
+B57. State Staff Selection Commissions (SSC/DSSSB)
+  [DOC] Delhi: https://dsssb.delhi.gov.in | Haryana HSSC: https://hssc.gov.in
+  [DOC] Rajasthan RSMSSB: https://rsmssb.rajasthan.gov.in | Bihar BSSC: https://bssc.bih.nic.in
+  [OER] NCERT + NDLI: https://ncert.nic.in | https://ndl.iitkgp.ac.in
+
+================================================================================
+SECTION C - INTERNATIONAL EXAMINATIONS
+================================================================================
+
+-----------------------------------
+C1. STUDY ABROAD / STANDARDIZED TESTS
+-----------------------------------
+
+C01. GRE (Graduate Record Examinations)
+  Body: ETS
+  [DOC] Portal + registration + free prep: https://www.ets.org/gre
+  [PYQ] Official free practice: https://www.ets.org/gre/test-takers/general-test/prepare.html
+  [OER] ETS Official Math Review (free PDF): https://www.ets.org/gre/test-takers/general-test/prepare.html
+  [OER] Khan Academy Math: https://www.khanacademy.org/math
+  [OER] MIT OCW Quantitative: https://ocw.mit.edu
+
+C02. GMAT Focus Edition
+  Body: GMAC
+  [DOC] Portal: https://www.mba.com/exams/gmat-focus-edition
+  [PYQ] Official Starter Kit (free): https://www.mba.com/exam-prep/gmat-official-starter-kit
+  [OER] MIT OCW + OpenStax Business: https://ocw.mit.edu | https://openstax.org
+
+C03. SAT (Digital)
+  Body: College Board
+  [DOC] Portal: https://satsuite.collegeboard.org/digital
+  [PYQ] Bluebook free mocks: https://satsuite.collegeboard.org/practice/bluebook-app
+  [OER] Khan Academy Official SAT (free): https://www.khanacademy.org/digital-sat
+  [OER] OpenStax Algebra: https://openstax.org
+
+C04. ACT
+  Body: ACT Inc.
+  [DOC] Portal: https://www.act.org
+  [PYQ] Free practice tests: https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/free-act-test-prep.html
+  [OER] Khan Academy + OpenStax: https://www.khanacademy.org | https://openstax.org
+
+C05. AP Exams (Advanced Placement)
+  Body: College Board
+  [DOC] Portal: https://apstudents.collegeboard.org
+  [PYQ] Free response archive: https://apcentral.collegeboard.org
+  [OER] OpenStax AP-aligned textbooks: https://openstax.org
+  [OER] MIT OCW + Khan Academy: https://ocw.mit.edu | https://www.khanacademy.org
+
+C06. PSAT / NMSQT
+  Body: College Board
+  [DOC] Portal: https://satsuite.collegeboard.org/psat-nmsqt
+  [OER] Khan Academy + OpenStax: https://www.khanacademy.org | https://openstax.org
+
+-----------------------------------
+C2. ENGLISH LANGUAGE PROFICIENCY
+-----------------------------------
+
+C07. IELTS (Academic & General)
+  Body: IDP / British Council / Cambridge
+  [DOC] Official: https://www.ielts.org | IDP: https://ielts.idp.com | BC: https://www.britishcouncil.org/ielts
+  [PYQ] Official sample tests: https://www.ielts.org/for-test-takers/sample-test-questions
+  [OER] British Council LearnEnglish (free): https://learnenglish.britishcouncil.org
+  [OER] BBC Learning English: https://www.bbc.co.uk/learningenglish
+  [OER] Purdue OWL (writing): https://owl.purdue.edu
+
+C08. TOEFL iBT
+  Body: ETS
+  [DOC] Portal: https://www.ets.org/toefl
+  [PYQ] Free practice sets: https://www.ets.org/toefl/test-takers/ibt/prepare/practice-tests.html
+  [OER] VOA Learning English: https://learningenglish.voanews.com
+  [OER] Purdue OWL: https://owl.purdue.edu
+
+C09. PTE Academic
+  Body: Pearson
+  [DOC] Portal + free scored mock: https://www.pearsonpte.com
+  [PYQ] Practice app: https://www.pearsonpte.com/preparation
+  [OER] BBC Learning English: https://www.bbc.co.uk/learningenglish
+
+C10. Duolingo English Test
+  Body: Duolingo
+  [DOC] Portal: https://englishtest.duolingo.com
+  [PYQ] Free practice test: https://englishtest.duolingo.com/practice
+  [OER] Duolingo free lessons + BBC: https://www.duolingo.com | https://www.bbc.co.uk/learningenglish
+
+C11. OET (Healthcare English)
+  Body: OET (Cambridge Boxhill)
+  [DOC] Portal: https://www.oet.com
+  [PYQ] Free sample tests: https://www.oet.com/prepare
+  [OER] British Council LearnEnglish: https://learnenglish.britishcouncil.org
+
+C12. CELPIP / CAEL (Canada)
+  Body: Paragon / CAEL
+  [DOC] CELPIP: https://www.celpip.ca | CAEL: https://www.cael.ca
+  [OER] BBC Learning English: https://www.bbc.co.uk/learningenglish
+
+C13. TOEIC
+  Body: ETS
+  [DOC] Portal: https://www.toeicglobal.com
+  [OER] BBC Learning English + Purdue OWL: https://www.bbc.co.uk/learningenglish | https://owl.purdue.edu
+
+-----------------------------------
+C3. LAW (INTERNATIONAL)
+-----------------------------------
+
+C14. LSAT (US/Canada law school admission)
+  Body: LSAC
+  [DOC] Portal + registration: https://www.lsac.org
+  [PYQ] Free official LSAT prep: https://www.lsac.org/lsat/free-official-lsat-prep
+  [OER] Khan Academy LSAT (official partner, free): https://www.khanacademy.org/prep/lsat
+  [OER] Project Gutenberg (reading practice): https://www.gutenberg.org
+
+C15. LNAT (UK law - Oxford/Cambridge/others)
+  Body: LNAT Consortium
+  [DOC] Portal: https://lnat.ac.uk
+  [PYQ] Official practice tests: https://lnat.ac.uk/prepare/
+  [OER] Purdue OWL (argumentative writing): https://owl.purdue.edu
+
+-----------------------------------
+C4. MEDICAL & HEALTH (INTERNATIONAL)
+-----------------------------------
+
+C16. MCAT (US/Canada medical school)
+  Body: AAMC
+  [DOC] Portal: https://www.aamc.org
+  [PYQ] Official prep products (some free): https://www.aamc.org/mcat
+  [OER] Khan Academy MCAT (official, free): https://www.khanacademy.org/test-prep/mcat
+  [OER] OpenStax Biology/Chemistry/Physics: https://openstax.org
+
+C17. USMLE (US medical licensing)
+  Body: FSMB/NBME/ECFMG
+  [DOC] Portal: https://www.usmle.org
+  [PYQ] NBME practice materials: https://www.nbme.org
+  [OER] LibreTexts med sciences: https://libretexts.org
+  [OER] OpenStax Anatomy & Physiology: https://openstax.org
+
+C18. GAMSAT (UK/Aus/Ireland medical)
+  Body: ACER
+  [DOC] Portal: https://gamsat.acer.org
+  [PYQ] Official practice tests: https://gamsat.acer.org/prepare
+  [OER] Khan Academy Sciences + OpenStax: https://www.khanacademy.org | https://openstax.org
+
+C19. UCAT (UK/Aus medical)
+  Body: UCAT Consortium
+  [DOC] Portal: https://www.ucat.ac.uk
+  [PYQ] Official mock tests: https://www.ucat.ac.uk/ucat/mock-tests
+  [OER] Khan Academy (verbal/quant): https://www.khanacademy.org
+
+-----------------------------------
+C5. FINANCE, ACCOUNTING & BUSINESS (INTERNATIONAL)
+-----------------------------------
+
+C20. CFA Program
+  Body: CFA Institute
+  [DOC] Portal: https://www.cfainstitute.org
+  [PYQ] Candidate resources (free samples): https://www.cfainstitute.org/en/programs/cfa
+  [OER] OpenStax Corporate Finance: https://openstax.org
+  [OER] MIT OCW Finance: https://ocw.mit.edu
+
+C21. CPA (US)
+  Body: AICPA / NASBA
+  [DOC] Portal: https://www.aicpa-cima.com
+  [OER] OpenStax Accounting: https://openstax.org
+
+C22. ACCA
+  Body: ACCA
+  [DOC] Portal: https://www.accaglobal.com
+  [PYQ] Past exam papers: https://www.accaglobal.com (technical library)
+  [OER] OpenStax Accounting/Finance: https://openstax.org
+
+-----------------------------------
+C6. UK & COMMONWEALTH UNIVERSITY ADMISSIONS
+-----------------------------------
+
+C23. UCAT (already above), MAT/MATHS (Oxford/Imperial)
+  Body: Cambridge Assessment Admissions Testing
+  [DOC] Admissions testing portal: https://www.admissionstesting.org
+  [PYQ] Past papers: https://www.admissionstesting.org (past papers archive)
+  [OER] MIT OCW Math: https://ocw.mit.edu | Khan Academy: https://www.khanacademy.org
+
+C24. STEP (Cambridge Mathematics)
+  Body: Cambridge Assessment Admissions Testing
+  [DOC] Portal: https://www.stepmathematics.org.uk
+  [PYQ] Past papers: https://www.stepmathematics.org.uk/past-papers/
+  [OER] MIT OCW + OpenStax: https://ocw.mit.edu | https://openstax.org
+
+C25. TMUA / TSA / PAT / ESAT (Oxbridge)
+  Body: Cambridge Assessment Admissions Testing / Pearson VUE
+  [DOC] Portal: https://www.admissionstesting.org | https://www.ox.ac.uk/admissions/undergraduate
+  [PYQ] Past papers: https://www.admissionstesting.org
+  [OER] Khan Academy + MIT OCW: https://www.khanacademy.org | https://ocw.mit.edu
+
+-----------------------------------
+C7. INTERNATIONAL SCHOOL CURRICULA & TESTS
+-----------------------------------
+
+C26. IB Diploma Programme
+  Body: International Baccalaureate
+  [DOC] Portal: https://www.ibo.org
+  [PYQ] Past papers (subject archives): https://www.ibo.org/programmes/
+  [OER] OpenStax + Khan Academy: https://openstax.org | https://www.khanacademy.org
+
+C27. Cambridge IGCSE / A-Levels
+  Body: Cambridge International Education
+  [DOC] Portal: https://www.cambridgeinternational.org
+  [PYQ] Past papers: https://www.cambridgeinternational.org/programmes-and-qualifications/past-papers/
+  [OER] OpenStax + Khan Academy: https://openstax.org | https://www.khanacademy.org
+
+C28. GED / HiSET (High School Equivalency, US/Canada)
+  Body: GED Testing Service / ETS
+  [DOC] GED: https://ged.com | HiSET: https://hiset.ets.org
+  [OER] Khan Academy + OpenStax: https://www.khanacademy.org | https://openstax.org
+
+C29. SSAT / ISEE (US private school admission)
+  Body: EMA / ERB
+  [DOC] SSAT: https://www.ssat.org | ISEE: https://www.erblearn.org
+  [OER] Khan Academy + OpenStax: https://www.khanacademy.org | https://openstax.org
+
+-----------------------------------
+C8. INTERNATIONAL LANGUAGE CERTIFICATIONS
+-----------------------------------
+
+C30. JLPT (Japanese)
+  Body: Japan Foundation / JEES
+  [DOC] Portal: https://www.jlpt.jp
+  [PYQ] Sample questions: https://www.jlpt.jp/e/samples/sample12.html
+  [OER] JF Japanese learning (Marugoto): https://www.marugoto.org | https://minato-jf.jp
+
+C31. HSK (Chinese)
+  Body: Hanban / CTI
+  [DOC] Portal: https://www.chinesetest.cn
+  [PYQ] Sample tests: https://www.chinesetest.cn (mock section)
+  [OER] Confucius Institute free resources: https://www.chinesetest.cn
+
+C32. DELF / DALF (French)
+  Body: France Education International (CIEP)
+  [DOC] Portal: https://www.ciep.fr
+  [PYQ] Sample papers: https://www.ciep.fr/en/delf-dalf
+  [OER] TV5MONDE Learn French (free): https://apprendre.tv5monde.com
+  [OER] RFI Français: https://www.rfi.fr/fr/
+
+C33. Goethe-Zertifikat (German)
+  Body: Goethe-Institut
+  [DOC] Portal: https://www.goethe.de
+  [PYQ] Model papers: https://www.goethe.de/en/spr/prf/ueb.html
+  [OER] Deutsche Welle Learn German (free): https://learngerman.dw.com
+
+C34. DELE (Spanish)
+  Body: Instituto Cervantes
+  [DOC] Portal: https://examenes.cervantes.es
+  [PYQ] Model exams: https://examenes.cervantes.es/es/dele/modelos
+  [OER] Instituto Cervantes AVE (free samples): https://ave.cervantes.es
+
+C35. CELI / CILS (Italian)
+  Body: CVCL / University for Foreigners of Siena
+  [DOC] CELI: https://cvcl.it | CILS: https://cils.unistrasi.it
+  [OER] Rai Italia + Open University resources: https://www.italiano.rai.it
+
+C36. TOPIK (Korean)
+  Body: National Institute for International Education
+  [DOC] Portal: https://www.topik.go.kr
+  [PYQ] Past papers: https://www.topik.go.kr (downloads)
+  [OER] Sejong Institute (free): https://www.sejonghakdang.org
+
+C37. TRKI (Russian)
+  Body: Pushkin State Russian Language Institute
+  [DOC] Portal: https://www.pushkin.institute
+  [OER] Pushkin Institute open courses: https://pushkininstitute.ru
+
+================================================================================
+END OF DIRECTORY
+Compiled as part of Techno Wallah (technoedu) - Open Educational Resources.
+All [DOC]/[PYQ] links are official portals; all [OER] links are free & open.
+Always confirm the latest notification, eligibility and syllabus on the official
+portal before preparing, as exam patterns change year to year.
+================================================================================

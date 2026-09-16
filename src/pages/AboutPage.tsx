@@ -12,7 +12,7 @@ import {
 import { platformsData } from '../data/platformsData';
 import { LearningPlatformInfo } from '../types';
 
-const GIL_SANS = { fontFamily: "'Gil Sans', 'Gill Sans MT', 'Gill Sans', Calibri, sans-serif" };
+const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
 export const AboutPage: React.FC = () => {
   return (

@@ -52,6 +52,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Exam Aggregator', path: '/exams' },
+    { name: 'Complete Directory', path: '/directory' },
     { name: 'Open Library', path: '/library' },
     { name: 'Open Platforms', path: '/platforms' },
     { name: 'About Initiative', path: '/about' }

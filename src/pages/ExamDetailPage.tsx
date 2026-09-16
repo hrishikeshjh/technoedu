@@ -16,7 +16,7 @@ import { studyMaterials } from '../data/studyMaterialData';
 import { ExamInfo, OpenSourcePlatform, ExamTopicResource, RecommendedBook } from '../types';
 import { getExamEmblem } from '../components/common/ExamEmblems';
 
-const GIL_SANS = { fontFamily: "'Gil Sans', 'Gill Sans MT', 'Gill Sans', Calibri, sans-serif" };
+const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
 export const ExamDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

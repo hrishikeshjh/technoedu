@@ -49,7 +49,7 @@ export const PlatformsDirectoryPage: React.FC = () => {
   return (
     <div
       className="w-full bg-white text-slate-900 pt-6 sm:pt-8 pb-16"
-      style={{ fontFamily: "'Gil Sans', 'Gill Sans MT', 'Gill Sans', Calibri, sans-serif" }}
+      style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

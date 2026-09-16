@@ -134,6 +134,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li><Link to="/exams" className="hover:text-white transition-colors">Exam Directory</Link></li>
+              <li><Link to="/directory" className="hover:text-white transition-colors">Complete Exam Directory (100+ Exams)</Link></li>
               <li><Link to="/library" className="hover:text-white transition-colors">Open Study Material Library</Link></li>
               <li><Link to="/platforms" className="hover:text-white transition-colors">Global Learning Platforms</Link></li>
               <li><Link to="/about" className="hover:text-white transition-colors">About Open Initiative</Link></li>

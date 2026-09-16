@@ -1028,6 +1028,509 @@ export const examsData: ExamInfo[] = [
       { title: 'National Curriculum Framework for Foundational Stage', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
       { title: 'e-PG Pathshala Education Modules', author: 'INFLIBNET / UGC', platform: 'e-PG Pathshala', url: 'https://epgp.inflibnet.ac.in' }
     ]
+  },
+  {
+    id: 'wb-police',
+    name: 'West Bengal Police (Constable & Sub-Inspector)',
+    shortCode: 'WB Police',
+    category: 'Government',
+    description: 'Recruitment examination for WB Police Constable, Lady Constable, and Sub-Inspector cadres, conducted by the West Bengal Police Recruitment Board.',
+    tag: 'State Police Recruitment',
+    officialPortalUrl: 'https://wbpolice.gov.in',
+    officialPortalName: 'West Bengal Police',
+    officialPYQUrl: 'https://wbpolice.gov.in',
+    syllabusHighlights: [
+      'Written Test: General Awareness, Arithmetic, Reasoning, English & Bengali',
+      'Physical Measurement Test (PMT) & Physical Efficiency Test (PET)',
+      'SI Cadre: Additional descriptive paper and interview'
+    ],
+    popularTopics: ['Current Affairs', 'Bengali & English Grammar', 'General Science', 'Mental Ability & Reasoning'],
+    openSourcePlatforms: [
+      { id: 'ncert-police', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Class 6-10 foundational textbooks for GK, Science, and Mathematics sections.', badge: 'Core Foundation' },
+      { id: 'khan-police', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Free practice for arithmetic, mental ability, and reasoning fundamentals.', badge: 'Free Practice' },
+      { id: 'ndli-police', name: 'NDLI (National Digital Library)', provider: 'IIT Kharagpur / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ndl.iitkgp.ac.in', description: 'All-discipline reference material for general studies and GK preparation.', badge: 'National Portal' }
+    ],
+    topicResources: [
+      { topicName: 'Bengali & English Grammar', description: 'Comprehension, synonyms, antonyms, idioms, and common error spotting for the language paper.', platformName: 'Banglar Shiksha Portal', platformType: 'Official Textbook', resourceTitle: 'WB Board Language Textbooks (Class 8-10)', resourceUrl: 'https://banglarshiksha.gov.in', isFreeOpenSource: true },
+      { topicName: 'Arithmetic & Reasoning', description: 'Percentages, ratios, time-work, puzzles, and non-verbal reasoning for the written test.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Arithmetic & Logical Reasoning Modules', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'NCERT General Science & Social Science', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'WB Board Language Textbooks', author: 'WBBSE', platform: 'Banglar Shiksha', url: 'https://banglarshiksha.gov.in' }
+    ]
+  },
+  {
+    id: 'wbpsc-clerkship',
+    name: 'WBPSC Clerkship & Miscellaneous (Group C/D)',
+    shortCode: 'WBPSC Misc',
+    category: 'Government',
+    description: 'State clerical and miscellaneous recruitment for Group C and D posts across West Bengal government departments, conducted by WBPSC.',
+    tag: 'State Group C/D',
+    officialPortalUrl: 'https://psc.wb.gov.in',
+    officialPortalName: 'WBPSC Official Portal',
+    officialPYQUrl: 'https://psc.wb.gov.in',
+    syllabusHighlights: [
+      'Compulsory: Bengali, English, Arithmetic, General Studies',
+      'Optional: Constitution, Geography of WB, General Science, History',
+      'Screening (for some posts) and personality interview'
+    ],
+    popularTopics: ['Bengali Language', 'English Comprehension', 'Mental Ability', 'Current Affairs'],
+    openSourcePlatforms: [
+      { id: 'ncert-clerk', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Foundational school textbooks covering the General Studies paper.', badge: 'Core Foundation' },
+      { id: 'khan-clerk', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Arithmetic and data-interpretation practice modules.', badge: 'Free Practice' },
+      { id: 'egyankosh-clerk', name: 'e-GyanKosh (IGNOU)', provider: 'IGNOU', type: 'Textbooks & Notes', url: 'https://egyankosh.ac.in', description: 'Undergraduate modules for geography of West Bengal and Indian history.', badge: 'IGNOU Open Library' }
+    ],
+    topicResources: [
+      { topicName: 'Geography of West Bengal', description: 'Physical features, climate, rivers, agriculture, and districts of West Bengal for the optional paper.', platformName: 'e-GyanKosh / Banglar Shiksha', platformType: 'Open Repository', resourceTitle: 'Geography of West Bengal Open Modules', resourceUrl: 'https://egyankosh.ac.in', isFreeOpenSource: true },
+      { topicName: 'English & Bengali Composition', description: 'Essay, precis, and comprehension required for both language papers.', platformName: 'Banglar Shiksha', platformType: 'Official Textbook', resourceTitle: 'WBBSE & WBCHSE Language Textbooks', resourceUrl: 'https://banglarshiksha.gov.in', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'NCERT Geography & Polity Textbooks', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'WBBSE Bengali & English Textbooks', author: 'WBBSE', platform: 'Banglar Shiksha', url: 'https://banglarshiksha.gov.in' }
+    ]
+  },
+  {
+    id: 'wbhrb',
+    name: 'West Bengal Staff Recruitment Commission (Group C & D)',
+    shortCode: 'WBHRB',
+    category: 'Government',
+    description: 'Clerk, LDC, cashier, and office-staff recruitment for various West Bengal departments under the WB Staff Recruitment Commission.',
+    tag: 'State Clerical Cadre',
+    officialPortalUrl: 'https://wbhrb.in',
+    officialPortalName: 'WBHRB Official',
+    officialPYQUrl: 'https://wbhrb.in',
+    syllabusHighlights: [
+      'Prelims: Arithmetic, English, Bengali, Reasoning, General Awareness',
+      'Post-specific skill tests (typing, shorthand) where applicable',
+      'Document verification and final merit list'
+    ],
+    popularTopics: ['Reasoning', 'Arithmetic', 'Bengali & English Grammar', 'General Knowledge'],
+    openSourcePlatforms: [
+      { id: 'ncert-wbhrb', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'School-level textbooks for the written examination syllabus.', badge: 'Core Foundation' },
+      { id: 'khan-wbhrb', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Interactive arithmetic and reasoning practice.', badge: 'Free Practice' },
+      { id: 'ndli-wbhrb', name: 'NDLI (National Digital Library)', provider: 'IIT Kharagpur / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ndl.iitkgp.ac.in', description: 'General studies references across multiple disciplines.', badge: 'National Portal' }
+    ],
+    topicResources: [
+      { topicName: 'Logical Reasoning', description: 'Number series, coding-decoding, syllogisms, and seating arrangements for the reasoning paper.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Logical Reasoning Practice Sets', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true },
+      { topicName: 'General Awareness', description: 'Static GK, current affairs, Indian polity, and West Bengal-specific facts.', platformName: 'e-GyanKosh', platformType: 'Open Repository', resourceTitle: 'IGNOU General Studies Modules', resourceUrl: 'https://egyankosh.ac.in', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'NCERT Mathematics & Science Textbooks', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'WBBSE Bengali & English Textbooks', author: 'WBBSE', platform: 'Banglar Shiksha', url: 'https://banglarshiksha.gov.in' }
+    ]
+  },
+  {
+    id: 'ssc-je',
+    name: 'SSC JE (Junior Engineer)',
+    shortCode: 'SSC JE',
+    category: 'Government',
+    description: 'Junior Engineer recruitment for Civil, Electrical, and Mechanical disciplines under central government departments, conducted by SSC.',
+    tag: 'Central Engineering Recruitment',
+    officialPortalUrl: 'https://ssc.gov.in',
+    officialPortalName: 'SSC Official Portal',
+    officialPYQUrl: 'https://ssc.gov.in',
+    syllabusHighlights: [
+      'Paper I: General Intelligence & Reasoning, General Awareness, General Engineering',
+      'Paper II: Subject-specific Civil / Electrical / Mechanical engineering',
+      'Document verification and medical examination'
+    ],
+    popularTopics: ['Engineering Mechanics', 'Electrical Circuits', 'Strength of Materials', 'Reasoning & GK'],
+    openSourcePlatforms: [
+      { id: 'nptel-je', name: 'NPTEL Engineering Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University-level lectures for core Civil, Electrical, and Mechanical subjects.', badge: 'NPTEL Courseware' },
+      { id: 'mitocw-je', name: 'MIT OpenCourseWare', provider: 'MIT', type: 'Video Lectures', url: 'https://ocw.mit.edu', description: 'Graduate engineering course materials and problem sets.', badge: 'CC Licensed' },
+      { id: 'openstax-je', name: 'OpenStax Physics & Math', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed physics and mathematics textbooks for the technical paper.', badge: 'CC BY 4.0' },
+      { id: 'ncert-je', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Physics, Chemistry, and Mathematics fundamentals from Class 11-12.', badge: 'Core Foundation' }
+    ],
+    topicResources: [
+      { topicName: 'Electrical Circuits & Machines', description: 'DC/AC circuits, transformers, induction motors, and measuring instruments for the electrical paper.', platformName: 'NPTEL', platformType: 'Video Lectures', resourceTitle: 'NPTEL Electrical Engineering Course Series', resourceUrl: 'https://nptel.ac.in', isFreeOpenSource: true },
+      { topicName: 'Strength of Materials', description: 'Stress-strain relations, beams, bending moments, and shear forces for civil candidates.', platformName: 'NPTEL', platformType: 'Video Lectures', resourceTitle: 'NPTEL Mechanics of Solids', resourceUrl: 'https://nptel.ac.in', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'University Physics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'Engineering Mechanics Modules', author: 'NPTEL / IIT', platform: 'NPTEL', url: 'https://nptel.ac.in' }
+    ]
+  },
+  {
+    id: 'epfo-ssa',
+    name: 'EPFO SSA & Enforcement Officer',
+    shortCode: 'EPFO',
+    category: 'Government',
+    description: 'Recruitment for Social Security Assistant (SSA) and Enforcement Officer posts under the Employees Provident Fund Organisation.',
+    tag: 'Central Govt Departmental',
+    officialPortalUrl: 'https://www.epfindia.gov.in',
+    officialPortalName: 'EPFO Official',
+    officialPYQUrl: 'https://www.epfindia.gov.in',
+    syllabusHighlights: [
+      'SSA: Reasoning, English, Quantitative Aptitude, GK, Computer Awareness',
+      'EO: General (Reasoning, English, GK) + Economics/Social Science/Industrial Relations',
+      'Typing skill test for SSA posts'
+    ],
+    popularTopics: ['Computer Awareness', 'Quantitative Aptitude', 'Industrial Relations', 'Labour Laws'],
+    openSourcePlatforms: [
+      { id: 'ncert-epfo', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Economics and polity textbooks covering the general awareness syllabus.', badge: 'Core Foundation' },
+      { id: 'khan-epfo', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Quantitative aptitude and computer logic practice modules.', badge: 'Free Practice' },
+      { id: 'openstax-epfo', name: 'OpenStax Economics', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed introductory economics text for the EO paper.', badge: 'CC BY 4.0' },
+      { id: 'egyankosh-epfo', name: 'e-GyanKosh (IGNOU)', provider: 'IGNOU', type: 'Textbooks & Notes', url: 'https://egyankosh.ac.in', description: 'Labour law and industrial relations open modules.', badge: 'IGNOU Open Library' }
+    ],
+    topicResources: [
+      { topicName: 'Industrial Relations & Labour Laws', description: 'Factories Act, industrial disputes, and employee provident fund legislation for the EO paper.', platformName: 'e-GyanKosh (IGNOU)', platformType: 'Open Repository', resourceTitle: 'IGNOU Labour & Industrial Law Modules', resourceUrl: 'https://egyankosh.ac.in', isFreeOpenSource: true },
+      { topicName: 'Economics & Social Security', description: 'National income, social security schemes, and Indian economy basics.', platformName: 'OpenStax / PRS India', platformType: 'Open Textbooks', resourceTitle: 'OpenStax Principles of Economics', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Principles of Economics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'Labour Law Open Modules', author: 'IGNOU', platform: 'e-GyanKosh', url: 'https://egyankosh.ac.in' }
+    ]
+  },
+  {
+    id: 'lic-aao',
+    name: 'LIC AAO & Insurance (LIC, NICL, UIIC, OICL)',
+    shortCode: 'LIC / Insurance',
+    category: 'Government',
+    description: 'Recruitment for Assistant Administrative Officer (AAO), ADO, and Generalist posts across Life and General Insurance corporations.',
+    tag: 'PSU Financial Services',
+    officialPortalUrl: 'https://licindia.in',
+    officialPortalName: 'LIC Careers',
+    officialPYQUrl: 'https://licindia.in',
+    syllabusHighlights: [
+      'Prelims: English, Reasoning, Quantitative Aptitude',
+      'Mains: Reasoning, Data Analysis, English, General/Financial Awareness',
+      'Descriptive paper and interview for selected streams'
+    ],
+    popularTopics: ['Financial Awareness', 'Data Interpretation', 'Reasoning', 'English Language'],
+    openSourcePlatforms: [
+      { id: 'rbi-fin', name: 'RBI Financial Education', provider: 'Reserve Bank of India', type: 'Textbooks & Notes', url: 'https://rbi.org.in/financialeducation/', description: 'Official RBI material on banking, monetary policy, and financial markets.', badge: 'RBI Official' },
+      { id: 'ncert-lic', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Economics and commerce fundamentals for financial awareness.', badge: 'Core Foundation' },
+      { id: 'openstax-lic', name: 'OpenStax Business & Finance', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Introductory finance, accounting, and business textbooks.', badge: 'CC BY 4.0' },
+      { id: 'nptel-lic', name: 'NPTEL Management Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University lectures on financial management and corporate finance.', badge: 'NPTEL Courseware' }
+    ],
+    topicResources: [
+      { topicName: 'Financial & Banking Awareness', description: 'Monetary policy, inflation, insurance regulations, and Indian financial institutions.', platformName: 'RBI Financial Education', platformType: 'Official Repository', resourceTitle: 'RBI Financial Education Series', resourceUrl: 'https://rbi.org.in/financialeducation/', isFreeOpenSource: true },
+      { topicName: 'Data Analysis & Interpretation', description: 'Tables, charts, and caselet-based data interpretation for the mains paper.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Data & Statistics Modules', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Principles of Finance', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'Banking & Insurance Open Material', author: 'RBI / IGNOU', platform: 'RBI Financial Education', url: 'https://rbi.org.in/financialeducation/' }
+    ]
+  },
+  {
+    id: 'ailet',
+    name: 'AILET (NLU Delhi)',
+    shortCode: 'AILET',
+    category: 'Law & Entrance',
+    description: 'All India Law Entrance Test conducted by the National Law University, Delhi for BA LLB (Hons), LLM, and PhD programmes.',
+    tag: 'National Law University Entrance',
+    officialPortalUrl: 'https://nationallawuniversitydelhi.in',
+    officialPortalName: 'NLU Delhi',
+    officialPYQUrl: 'https://nationallawuniversitydelhi.in',
+    syllabusHighlights: [
+      'Logical Reasoning (35 questions)',
+      'Legal Reasoning & Legal Knowledge (35 questions)',
+      'Current Affairs & General Knowledge (20 questions)',
+      'English Language & Comprehension (20 questions)'
+    ],
+    popularTopics: ['Legal Reasoning', 'Logical Reasoning', 'Constitutional Law', 'Current Affairs'],
+    openSourcePlatforms: [
+      { id: 'constitution-ailet', name: 'Constitution of India Official Text', provider: 'Ministry of Law & Justice', type: 'Textbooks & Notes', url: 'https://legislative.gov.in/constitution-of-india/', description: 'The authoritative text of the Constitution for legal knowledge preparation.', badge: 'Official Source' },
+      { id: 'indiankanoon-ailet', name: 'Indian Kanoon', provider: 'Indian Kanoon', type: 'Textbooks & Notes', url: 'https://indiankanoon.org', description: 'Free searchable database of Supreme Court and High Court judgments.', badge: 'Case Law Open Access' },
+      { id: 'swayam-ailet', name: 'SWAYAM Law Courses', provider: 'Ministry of Education', type: 'Video Lectures', url: 'https://swayam.gov.in', description: 'Open online courses on constitutional law, jurisprudence, and legal methods.', badge: 'Govt MOOCs' },
+      { id: 'egpg-ailet', name: 'e-PG Pathshala Law', provider: 'UGC INFLIBNET', type: 'Textbooks & Notes', url: 'https://epgp.inflibnet.ac.in', description: 'Post-graduate law modules covering contracts, torts, and constitutional law.', badge: 'UGC INFLIBNET' }
+    ],
+    topicResources: [
+      { topicName: 'Legal Reasoning & Legal Knowledge', description: 'Legal propositions, principles, and application to fact situations for the core paper.', platformName: 'SWAYAM / e-PG Pathshala', platformType: 'Open Courseware', resourceTitle: 'Legal Methods & Jurisprudence Modules', resourceUrl: 'https://epgp.inflibnet.ac.in', isFreeOpenSource: true },
+      { topicName: 'Constitutional Law', description: 'Fundamental rights, directive principles, and landmark Supreme Court rulings.', platformName: 'Legislative Gov / Indian Kanoon', platformType: 'Official Repository', resourceTitle: 'Official Constitution Text & Landmark Judgments', resourceUrl: 'https://indiankanoon.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Constitution of India (Official Text)', author: 'Ministry of Law & Justice', platform: 'Legislative Gov', url: 'https://legislative.gov.in' },
+      { title: 'Introduction to the Constitution of India', author: 'e-PG Pathshala', platform: 'e-PG Pathshala', url: 'https://epgp.inflibnet.ac.in' }
+    ]
+  },
+  {
+    id: 'slat',
+    name: 'SLAT (Symbiosis Law Admission Test)',
+    shortCode: 'SLAT',
+    category: 'Law & Entrance',
+    description: 'Computer-based law entrance for Symbiosis Law Schools (Pune, Noida, Hyderabad, Nagpur) covering analytical, logical, legal, and reading comprehension ability.',
+    tag: 'Private Law University Entrance',
+    officialPortalUrl: 'https://www.set-test.org',
+    officialPortalName: 'SET / SLAT Official',
+    officialPYQUrl: 'https://www.set-test.org',
+    syllabusHighlights: [
+      'Analytical Reasoning (12 questions)',
+      'Logical Reasoning (12 questions)',
+      'Legal Reasoning (12 questions)',
+      'Reading Comprehension (12 questions)',
+      'General Knowledge (12 questions)'
+    ],
+    popularTopics: ['Legal Reasoning', 'Logical & Analytical Reasoning', 'Reading Comprehension', 'Current Affairs'],
+    openSourcePlatforms: [
+      { id: 'constitution-slat', name: 'Constitution of India Official Text', provider: 'Ministry of Law & Justice', type: 'Textbooks & Notes', url: 'https://legislative.gov.in/constitution-of-india/', description: 'Authoritative constitutional text for the legal reasoning paper.', badge: 'Official Source' },
+      { id: 'indiankanoon-slat', name: 'Indian Kanoon', provider: 'Indian Kanoon', type: 'Textbooks & Notes', url: 'https://indiankanoon.org', description: 'Searchable case law database for landmark legal principles.', badge: 'Case Law Open Access' },
+      { id: 'swayam-slat', name: 'SWAYAM Law Courses', provider: 'Ministry of Education', type: 'Video Lectures', url: 'https://swayam.gov.in', description: 'Open courses on legal reasoning and constitutional essentials.', badge: 'Govt MOOCs' },
+      { id: 'gutenberg-slat', name: 'Project Gutenberg English Classics', provider: 'Project Gutenberg', type: 'Textbooks & Notes', url: 'https://www.gutenberg.org', description: 'Public-domain literature for reading comprehension practice.', badge: 'Public Domain' }
+    ],
+    topicResources: [
+      { topicName: 'Legal Reasoning', description: 'Application of legal principles to hypothetical facts across contract, tort, and criminal law.', platformName: 'e-PG Pathshala', platformType: 'Open Courseware', resourceTitle: 'Legal Reasoning & Law Modules', resourceUrl: 'https://epgp.inflibnet.ac.in', isFreeOpenSource: true },
+      { topicName: 'Reading Comprehension', description: 'Passage-based inference, tone, and main-idea questions from diverse sources.', platformName: 'Project Gutenberg', platformType: 'Open Repository', resourceTitle: 'Classic English Texts for RC Practice', resourceUrl: 'https://www.gutenberg.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Constitution of India (Official Text)', author: 'Ministry of Law & Justice', platform: 'Legislative Gov', url: 'https://legislative.gov.in' },
+      { title: 'English Classics (Public Domain)', author: 'Various Authors', platform: 'Project Gutenberg', url: 'https://www.gutenberg.org' }
+    ]
+  },
+  {
+    id: 'xat',
+    name: 'XAT (Xavier Aptitude Test)',
+    shortCode: 'XAT',
+    category: 'Law & Entrance',
+    description: 'National management aptitude test conducted by XLRI for admission to over 160 B-schools across India, including the XAT Decision Making section.',
+    tag: 'Management Entrance',
+    officialPortalUrl: 'https://xatonline.in',
+    officialPortalName: 'XAT Official',
+    officialPYQUrl: 'https://xatonline.in',
+    syllabusHighlights: [
+      'Verbal & Logical Ability',
+      'Decision Making (unique XAT section)',
+      'Quantitative Aptitude & Data Interpretation',
+      'General Knowledge & Essay'
+    ],
+    popularTopics: ['Decision Making', 'Verbal Ability', 'Quantitative Aptitude', 'Data Interpretation'],
+    openSourcePlatforms: [
+      { id: 'openstax-xat', name: 'OpenStax Business & Math', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed quantitative reasoning and business textbooks.', badge: 'CC BY 4.0' },
+      { id: 'nptel-xat', name: 'NPTEL Management Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University lectures on decision science and managerial economics.', badge: 'NPTEL Courseware' },
+      { id: 'khan-xat', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Quantitative and logical reasoning practice modules.', badge: 'Free Practice' },
+      { id: 'mitocw-xat', name: 'MIT OpenCourseWare Economics', provider: 'MIT', type: 'Video Lectures', url: 'https://ocw.mit.edu', description: 'Foundational microeconomics and statistics courseware.', badge: 'CC Licensed' }
+    ],
+    topicResources: [
+      { topicName: 'Decision Making', description: 'Ethical and situational decision questions unique to XAT based on business scenarios.', platformName: 'NPTEL', platformType: 'Video Lectures', resourceTitle: 'Decision Science & Ethics Courses', resourceUrl: 'https://nptel.ac.in', isFreeOpenSource: true },
+      { topicName: 'Quantitative Aptitude & DI', description: 'Algebra, arithmetic, geometry, and data interpretation for the quantitative sections.', platformName: 'OpenStax / Khan Academy', platformType: 'Open Textbooks', resourceTitle: 'OpenStax Algebra & Statistics Texts', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'College Algebra', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'Introductory Statistics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' }
+    ]
+  },
+  {
+    id: 'snap',
+    name: 'SNAP (Symbiosis National Aptitude Test)',
+    shortCode: 'SNAP',
+    category: 'Law & Entrance',
+    description: 'National-level aptitude test for admission to all Symbiosis International University (SIU) institutes offering MBA and related programmes.',
+    tag: 'Management Entrance',
+    officialPortalUrl: 'https://snaptest.org',
+    officialPortalName: 'SNAP Official',
+    officialPYQUrl: 'https://snaptest.org',
+    syllabusHighlights: [
+      'General English (15 questions)',
+      'Quantitative, Data Interpretation & Data Sufficiency (40 questions)',
+      'Analytical & Logical Reasoning (35 questions)',
+      'Current Affairs (10 questions)'
+    ],
+    popularTopics: ['Logical Reasoning', 'Quantitative Aptitude', 'Data Sufficiency', 'Current Affairs'],
+    openSourcePlatforms: [
+      { id: 'openstax-snap', name: 'OpenStax Math', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed algebra and statistics textbooks for the quantitative paper.', badge: 'CC BY 4.0' },
+      { id: 'khan-snap', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Reasoning and quantitative practice modules.', badge: 'Free Practice' },
+      { id: 'ncert-snap', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Mathematics fundamentals for quantitative aptitude.', badge: 'Core Foundation' },
+      { id: 'nptel-snap', name: 'NPTEL Analytics Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University lectures on data interpretation and analytics.', badge: 'NPTEL Courseware' }
+    ],
+    topicResources: [
+      { topicName: 'Data Sufficiency', description: 'Determining whether given data is sufficient to answer quantitative questions.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Data & Statistics Modules', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true },
+      { topicName: 'Analytical & Logical Reasoning', description: 'Puzzles, arrangement, syllogisms, and critical reasoning for the reasoning paper.', platformName: 'OpenStax', platformType: 'Open Textbooks', resourceTitle: 'Contemporary Mathematics Text', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Contemporary Mathematics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'NCERT Mathematics (Class 11-12)', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' }
+    ]
+  },
+  {
+    id: 'nmat',
+    name: 'NMAT by GMAC',
+    shortCode: 'NMAT',
+    category: 'Law & Entrance',
+    description: 'GMAC-conducted computer-adaptive management aptitude test for admission to NMIMS and 30+ leading B-schools across India.',
+    tag: 'Management Entrance',
+    officialPortalUrl: 'https://www.nmat.org.in',
+    officialPortalName: 'NMAT Official',
+    officialPYQUrl: 'https://www.nmat.org.in',
+    syllabusHighlights: [
+      'Language Skills (36 questions)',
+      'Quantitative Skills (36 questions)',
+      'Logical Reasoning (36 questions)',
+      'Computer-adaptive, sectional time limits'
+    ],
+    popularTopics: ['Language Skills', 'Quantitative Skills', 'Logical Reasoning', 'Reading Comprehension'],
+    openSourcePlatforms: [
+      { id: 'openstax-nmat', name: 'OpenStax Math & Writing', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed algebra, statistics, and writing textbooks.', badge: 'CC BY 4.0' },
+      { id: 'khan-nmat', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Quantitative and logical reasoning practice modules.', badge: 'Free Practice' },
+      { id: 'owl-nmat', name: 'Purdue OWL', provider: 'Purdue University', type: 'Textbooks & Notes', url: 'https://owl.purdue.edu', description: 'Grammar, vocabulary, and academic writing reference for language skills.', badge: 'University Open Access' },
+      { id: 'ncert-nmat', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Mathematics fundamentals for quantitative skills.', badge: 'Core Foundation' }
+    ],
+    topicResources: [
+      { topicName: 'Language Skills', description: 'Grammar, vocabulary, reading comprehension, and sentence correction for the verbal paper.', platformName: 'Purdue OWL', platformType: 'Open Repository', resourceTitle: 'Grammar & Style Guide', resourceUrl: 'https://owl.purdue.edu', isFreeOpenSource: true },
+      { topicName: 'Quantitative Skills', description: 'Arithmetic, algebra, and geometry in a computer-adaptive format.', platformName: 'OpenStax', platformType: 'Open Textbooks', resourceTitle: 'OpenStax College Algebra', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'College Algebra', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'Grammar & Writing Reference', author: 'Purdue OWL', platform: 'Purdue OWL', url: 'https://owl.purdue.edu' }
+    ]
+  },
+  {
+    id: 'nift',
+    name: 'NIFT Entrance (Design, Technology & Management)',
+    shortCode: 'NIFT',
+    category: 'Law & Entrance',
+    description: 'National Institute of Fashion Technology entrance examination for B.Des, B.FTech, M.Des, and M.FTech programmes across fashion design, technology, and management.',
+    tag: 'Design & Fashion Entrance',
+    officialPortalUrl: 'https://www.nift.ac.in',
+    officialPortalName: 'NIFT Official',
+    officialPYQUrl: 'https://www.nift.ac.in',
+    syllabusHighlights: [
+      'CAT: Creative Ability Test (for B.Des)',
+      'GAT: General Ability Test (Quantitative, Communication, Analytical, GK)',
+      'Situation Test / Group Discussion & Interview',
+      'Case Study (for Management programmes)'
+    ],
+    popularTopics: ['Creative Ability Test', 'Quantitative Ability', 'Communication Ability', 'Analytical Ability'],
+    openSourcePlatforms: [
+      { id: 'ncert-nift', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'General studies and English foundation for the GAT paper.', badge: 'Core Foundation' },
+      { id: 'ndli-nift', name: 'NDLI Design & Art Collection', provider: 'IIT Kharagpur / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ndl.iitkgp.ac.in', description: 'Open collections on design fundamentals, art history, and fashion studies.', badge: 'National Portal' },
+      { id: 'openlib-nift', name: 'Internet Archive / Open Library', provider: 'Internet Archive', type: 'Textbooks & Notes', url: 'https://openlibrary.org', description: 'Public-domain books on drawing, design, and art appreciation.', badge: 'Universal Open Access' },
+      { id: 'khan-nift', name: 'Khan Academy Art History', provider: 'Khan Academy (Non-Profit)', type: 'Video Lectures', url: 'https://www.khanacademy.org', description: 'Free art history and visual analysis courseware for the CAT.', badge: 'Free Practice' }
+    ],
+    topicResources: [
+      { topicName: 'Creative Ability & Design Aptitude', description: 'Drawing, innovation, observation, and design sensibility for the Creative Ability Test.', platformName: 'Khan Academy', platformType: 'Video Lectures', resourceTitle: 'Art History & Visual Analysis', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true },
+      { topicName: 'General Ability Test', description: 'Quantitative, communication, analytical ability, and current affairs for the GAT paper.', platformName: 'NCERT e-Pathshala', platformType: 'Open Textbooks', resourceTitle: 'NCERT English & Mathematics Textbooks', resourceUrl: 'https://ncert.nic.in', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Art Appreciation Collection', author: 'Khan Academy', platform: 'Khan Academy', url: 'https://www.khanacademy.org' },
+      { title: 'Design Fundamentals (Open Library)', author: 'Public Domain', platform: 'Open Library', url: 'https://openlibrary.org' }
+    ]
+  },
+  {
+    id: 'pte',
+    name: 'PTE Academic',
+    shortCode: 'PTE',
+    category: 'Study Abroad',
+    description: 'Pearson Test of English (Academic) — a computer-based English proficiency test for study abroad accepted by universities in Australia, UK, USA, Canada, and New Zealand.',
+    tag: 'English Proficiency (Computer-Based)',
+    officialPortalUrl: 'https://www.pearsonpte.com',
+    officialPortalName: 'Pearson PTE Official',
+    officialPYQUrl: 'https://www.pearsonpte.com/preparation',
+    syllabusHighlights: [
+      'Speaking & Writing (77-93 minutes)',
+      'Reading (32-41 minutes)',
+      'Listening (45-57 minutes)',
+      'AI-scored, single 2-hour session'
+    ],
+    popularTopics: ['Read Aloud', 'Repeat Sentence', 'Describe Image', 'Essay Writing'],
+    openSourcePlatforms: [
+      { id: 'bbc-pte', name: 'BBC Learning English', provider: 'BBC', type: 'Textbooks & Notes', url: 'https://www.bbc.co.uk/learningenglish', description: 'Pronunciation, grammar, and listening resources for the integrated skills test.', badge: 'Free Public Service' },
+      { id: 'brcouncil-pte', name: 'British Council LearnEnglish', provider: 'British Council', type: 'Video Lectures', url: 'https://learnenglish.britishcouncil.org', description: 'Speaking, writing, and vocabulary modules aligned to proficiency descriptors.', badge: 'Free Public Service' },
+      { id: 'owl-pte', name: 'Purdue OWL', provider: 'Purdue University', type: 'Textbooks & Notes', url: 'https://owl.purdue.edu', description: 'Academic writing and grammar reference for the writing section.', badge: 'University Open Access' },
+      { id: 'khan-pte', name: 'Khan Academy English Grammar', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Grammar and usage practice exercises.', badge: 'Free Practice' }
+    ],
+    topicResources: [
+      { topicName: 'Integrated Speaking (Read Aloud & Describe Image)', description: 'Oral fluency, pronunciation, and structured image description tasks.', platformName: 'BBC Learning English', platformType: 'Open Repository', resourceTitle: 'Pronunciation & Speaking Courses', resourceUrl: 'https://www.bbc.co.uk/learningenglish', isFreeOpenSource: true },
+      { topicName: 'Academic Writing & Essay', description: 'Summarising written text and writing an argumentative academic essay.', platformName: 'Purdue OWL', platformType: 'Open Repository', resourceTitle: 'Academic Writing Resources', resourceUrl: 'https://owl.purdue.edu', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Academic Writing Guide', author: 'Purdue OWL', platform: 'Purdue OWL', url: 'https://owl.purdue.edu' },
+      { title: 'Learning English Courses', author: 'British Council', platform: 'British Council LearnEnglish', url: 'https://learnenglish.britishcouncil.org' }
+    ]
+  },
+  {
+    id: 'duolingo',
+    name: 'Duolingo English Test',
+    shortCode: 'DET',
+    category: 'Study Abroad',
+    description: 'AI-powered, on-demand English proficiency test accepted by 5000+ universities worldwide. Taken online at home in under one hour with results in two days.',
+    tag: 'English Proficiency (On-Demand)',
+    officialPortalUrl: 'https://englishtest.duolingo.com',
+    officialPortalName: 'Duolingo English Test',
+    officialPYQUrl: 'https://englishtest.duolingo.com/practice',
+    syllabusHighlights: [
+      'Adaptive test: Reading, Writing, Listening, Speaking',
+      'Integrated question types (e.g. read and complete, read aloud, write about the photo)',
+      'Interview & writing sample sent with certified score',
+      'Computer-adaptive, scored 10-160'
+    ],
+    popularTopics: ['Read & Complete', 'Interactive Reading', 'Write About the Photo', 'Speaking Sample'],
+    openSourcePlatforms: [
+      { id: 'bbc-det', name: 'BBC Learning English', provider: 'BBC', type: 'Textbooks & Notes', url: 'https://www.bbc.co.uk/learningenglish', description: 'Integrated English skills practice for the adaptive format.', badge: 'Free Public Service' },
+      { id: 'brcouncil-det', name: 'British Council LearnEnglish', provider: 'British Council', type: 'Video Lectures', url: 'https://learnenglish.britishcouncil.org', description: 'Reading, writing, and speaking modules for fast-paced preparation.', badge: 'Free Public Service' },
+      { id: 'owl-det', name: 'Purdue OWL', provider: 'Purdue University', type: 'Textbooks & Notes', url: 'https://owl.purdue.edu', description: 'Academic writing reference for the writing sample tasks.', badge: 'University Open Access' }
+    ],
+    topicResources: [
+      { topicName: 'Integrated Reading & Writing', description: 'Fill-in-the-blank, sentence completion, and short writing tasks across the adaptive test.', platformName: 'British Council', platformType: 'Open Repository', resourceTitle: 'Integrated Skills Courses', resourceUrl: 'https://learnenglish.britishcouncil.org', isFreeOpenSource: true },
+      { topicName: 'Speaking Sample', description: 'Structured spontaneous speaking on a given prompt, recorded and assessed.', platformName: 'BBC Learning English', platformType: 'Open Repository', resourceTitle: 'Speaking & Fluency Courses', resourceUrl: 'https://www.bbc.co.uk/learningenglish', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Integrated Skills Courses', author: 'British Council', platform: 'LearnEnglish', url: 'https://learnenglish.britishcouncil.org' },
+      { title: 'Speaking & Fluency Resources', author: 'BBC', platform: 'BBC Learning English', url: 'https://www.bbc.co.uk/learningenglish' }
+    ]
+  },
+  {
+    id: 'act',
+    name: 'ACT (American College Testing)',
+    shortCode: 'ACT',
+    category: 'Study Abroad',
+    description: 'US college admissions test measuring English, Mathematics, Reading, and Science reasoning, with an optional writing section.',
+    tag: 'US Undergraduate Admission',
+    officialPortalUrl: 'https://www.act.org',
+    officialPortalName: 'ACT Official',
+    officialPYQUrl: 'https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/free-act-test-prep.html',
+    syllabusHighlights: [
+      'English (75 questions, 45 minutes)',
+      'Mathematics (60 questions, 60 minutes)',
+      'Reading (40 questions, 35 minutes)',
+      'Science (40 questions, 35 minutes)',
+      'Optional Writing (40 minutes)'
+    ],
+    popularTopics: ['Reading Comprehension', 'Math Problem Solving', 'Science Data Interpretation', 'English Usage'],
+    openSourcePlatforms: [
+      { id: 'khan-act', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Official ACT-prep-aligned practice for math, reading, and science sections.', badge: 'Free Practice' },
+      { id: 'openstax-act', name: 'OpenStax Math & Science', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Algebra, geometry, and science reasoning textbooks for the core sections.', badge: 'CC BY 4.0' },
+      { id: 'gutenberg-act', name: 'Project Gutenberg Reading Passages', provider: 'Project Gutenberg', type: 'Textbooks & Notes', url: 'https://www.gutenberg.org', description: 'Public-domain literature for reading practice.', badge: 'Public Domain' },
+      { id: 'owl-act', name: 'Purdue OWL', provider: 'Purdue University', type: 'Textbooks & Notes', url: 'https://owl.purdue.edu', description: 'Grammar and usage reference for the English section.', badge: 'University Open Access' }
+    ],
+    topicResources: [
+      { topicName: 'Science Reasoning', description: 'Data representation, research summaries, and conflicting viewpoints passages.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Science & Data Interpretation Modules', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true },
+      { topicName: 'Math Problem Solving', description: 'Pre-algebra, algebra, geometry, and trigonometry problem sets.', platformName: 'OpenStax', platformType: 'Open Textbooks', resourceTitle: 'OpenStax College Algebra & Geometry', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'College Algebra', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'ACT Prep Practice Sets', author: 'Khan Academy', platform: 'Khan Academy', url: 'https://www.khanacademy.org' }
+    ]
+  },
+  {
+    id: 'lsat',
+    name: 'LSAT (US/Canada Law School Admission Test)',
+    shortCode: 'LSAT',
+    category: 'Study Abroad',
+    description: 'Standardised test for law school admission in the US and Canada, assessing reading comprehension, analytical reasoning (logic games), and logical reasoning.',
+    tag: 'Global Law School Admission',
+    officialPortalUrl: 'https://www.lsac.org',
+    officialPortalName: 'LSAC Official',
+    officialPYQUrl: 'https://www.lsac.org/lsat/free-official-lsat-prep',
+    syllabusHighlights: [
+      'Logical Reasoning (two scored sections)',
+      'Reading Comprehension (one scored section)',
+      'Unscored Variable Section',
+      'LSAT Writing (online essay)'
+    ],
+    popularTopics: ['Logical Reasoning', 'Analytical Reasoning', 'Reading Comprehension', 'Law School Admissions'],
+    openSourcePlatforms: [
+      { id: 'khan-lsat', name: 'Khan Academy Official LSAT Prep', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Free official LSAT preparation built with LSAC, including full practice tests.', badge: 'Official Prep Partner' },
+      { id: 'gutenberg-lsat', name: 'Project Gutenberg', provider: 'Project Gutenberg', type: 'Textbooks & Notes', url: 'https://www.gutenberg.org', description: 'Dense classic texts for reading comprehension practice.', badge: 'Public Domain' },
+      { id: 'owl-lsat', name: 'Purdue OWL', provider: 'Purdue University', type: 'Textbooks & Notes', url: 'https://owl.purdue.edu', description: 'Critical thinking and argument analysis resources.', badge: 'University Open Access' }
+    ],
+    topicResources: [
+      { topicName: 'Logical Reasoning', description: 'Arguments, assumptions, flaws, and inference questions — the largest scored section.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Official LSAT Logical Reasoning Practice', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true },
+      { topicName: 'Analytical Reasoning (Logic Games)', description: 'Ordering, grouping, and assignment games with constraint-based deductions.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Official LSAT Logic Games Practice', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true }
+    ],
+    recommendedTextbooks: [
+      { title: 'Official LSAT Prep', author: 'LSAC / Khan Academy', platform: 'Khan Academy', url: 'https://www.khanacademy.org' },
+      { title: 'Classic English Texts', author: 'Public Domain', platform: 'Project Gutenberg', url: 'https://www.gutenberg.org' }
+    ]
   }
 ];
 
