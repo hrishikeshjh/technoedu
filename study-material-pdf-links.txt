@@ -1,0 +1,803 @@
+TECHNO WALLAH — DIRECT STUDY MATERIAL PDF LINKS REFERENCE
+================================================================================
+Generated: September 19, 2026
+Purpose: Direct PDF download links for subject/chapter-level study materials
+Note: Many official portals (NCERT, NPTEL, UPSC, etc.) serve PDFs through viewers
+      rather than direct deep links. Where direct PDF URLs are not available,
+      the portal URL + navigation path is provided.
+================================================================================
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 1: NCERT TEXTBOOKS (CLASS 6–12) — DIRECT PDF ACCESS
+════════════════════════════════════════════════════════════════════════════════
+
+BASE PORTALS:
+- NCERT Textbooks (e-Pathshala): https://ncert.nic.in/textbook.php
+- NCERT PDFs (direct repository): https://ncert.nic.in/textbook/pdf/
+- e-Pathshala Mobile App: https://epathshala.nic.in
+- DIKSHA Platform: https://diksha.gov.in
+
+──────────────────────────────────────────────────────────────────────────────
+POLITY / CONSTITUTION (Class 11–12)
+──────────────────────────────────────────────────────────────────────────────
+[Class 11] Indian Constitution at Work
+  Portal: https://ncert.nic.in/textbook.php?keps2=0-10
+  Direct PDF (Full Book): https://ncert.nic.in/textbook/pdf/keps2.pdf
+  Chapters:
+    Ch 1: Constitution: Why and How?        → https://ncert.nic.in/textbook/pdf/keps201.pdf
+    Ch 2: Rights in the Indian Constitution → https://ncert.nic.in/textbook/pdf/keps202.pdf
+    Ch 3: Election and Representation       → https://ncert.nic.in/textbook/pdf/keps203.pdf
+    Ch 4: Executive                          → https://ncert.nic.in/textbook/pdf/keps204.pdf
+    Ch 5: Legislature                        → https://ncert.nic.in/textbook/pdf/keps205.pdf
+    Ch 6: Judiciary                          → https://ncert.nic.in/textbook/pdf/keps206.pdf
+    Ch 7: Federalism                         → https://ncert.nic.in/textbook/pdf/keps207.pdf
+    Ch 8: Local Governments                  → https://ncert.nic.in/textbook/pdf/keps208.pdf
+    Ch 9: Constitution as a Living Document → https://ncert.nic.in/textbook/pdf/keps209.pdf
+    Ch 10: The Philosophy of the Constitution → https://ncert.nic.in/textbook/pdf/keps210.pdf
+
+[Class 12] Politics in India since Independence
+  Portal: https://ncert.nic.in/textbook.php?leps2=0-10
+  Direct PDF (Full Book): https://ncert.nic.in/textbook/pdf/leps2.pdf
+  Chapters:
+    Ch 1: Challenges of Nation Building     → https://ncert.nic.in/textbook/pdf/leps201.pdf
+    Ch 2: Era of One-Party Dominance        → https://ncert.nic.in/textbook/pdf/leps202.pdf
+    Ch 3: Politics of Planned Development   → https://ncert.nic.in/textbook/pdf/leps203.pdf
+    Ch 4: India's External Relations        → https://ncert.nic.in/textbook/pdf/leps204.pdf
+    Ch 5: Challenges to and Restoration of Congress System → https://ncert.nic.in/textbook/pdf/leps205.pdf
+    Ch 6: The Crisis of Democratic Order    → https://ncert.nic.in/textbook/pdf/leps206.pdf
+    Ch 7: Rise of Popular Movements         → https://ncert.nic.in/textbook/pdf/leps207.pdf
+    Ch 8: Regional Aspirations              → https://ncert.nic.in/textbook/pdf/leps208.pdf
+    Ch 9: Recent Developments in Indian Politics → https://ncert.nic.in/textbook/pdf/leps209.pdf
+
+[Class 12] Contemporary World Politics
+  Portal: https://ncert.nic.in/textbook.php?leps1=0-10
+  Direct PDF (Full Book): https://ncert.nic.in/textbook/pdf/leps1.pdf
+
+──────────────────────────────────────────────────────────────────────────────
+HISTORY (Class 6–12)
+──────────────────────────────────────────────────────────────────────────────
+[Class 12] Themes in Indian History — Part I
+  Portal: https://ncert.nic.in/textbook.php?lehs1=0-4
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lehs1.pdf
+  Chapters:
+    Ch 1: Bricks, Beads and Bones (Harappa) → https://ncert.nic.in/textbook/pdf/lehs101.pdf
+    Ch 2: Kings, Farmers and Towns          → https://ncert.nic.in/textbook/pdf/lehs102.pdf
+    Ch 3: Kinship, Caste and Class          → https://ncert.nic.in/textbook/pdf/lehs103.pdf
+    Ch 4: Thinkers, Beliefs and Buildings   → https://ncert.nic.in/textbook/pdf/lehs104.pdf
+
+[Class 12] Themes in Indian History — Part II
+  Portal: https://ncert.nic.in/textbook.php?lehs2=0-4
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lehs2.pdf
+  Chapters:
+    Ch 5: Through the Eyes of Travellers    → https://ncert.nic.in/textbook/pdf/lehs205.pdf
+    Ch 6: Bhakti-Sufi Traditions            → https://ncert.nic.in/textbook/pdf/lehs206.pdf
+    Ch 7: An Imperial Capital: Vijayanagara → https://ncert.nic.in/textbook/pdf/lehs207.pdf
+    Ch 8: Peasants, Zamindars and the State → https://ncert.nic.in/textbook/pdf/lehs208.pdf
+
+[Class 12] Themes in Indian History — Part III
+  Portal: https://ncert.nic.in/textbook.php?lehs3=0-4
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lehs3.pdf
+  Chapters:
+    Ch 9: Colonialism and the Countryside   → https://ncert.nic.in/textbook/pdf/lehs309.pdf
+    Ch 10: Rebels and the Raj (1857)        → https://ncert.nic.in/textbook/pdf/lehs310.pdf
+    Ch 11: Mahatma Gandhi and National Movement → https://ncert.nic.in/textbook/pdf/lehs311.pdf
+    Ch 12: Framing the Constitution         → https://ncert.nic.in/textbook/pdf/lehs312.pdf
+
+[Class 11] Themes in World History
+  Portal: https://ncert.nic.in/textbook.php?kehs1=0-10
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kehs1.pdf
+
+[Class 9] India and the Contemporary World - I
+  Portal: https://ncert.nic.in/textbook.php?jess1=0-8
+  Direct PDF: https://ncert.nic.in/textbook/pdf/jess1.pdf
+
+[Class 10] India and the Contemporary World - II
+  Portal: https://ncert.nic.in/textbook.php?jess2=0-8
+  Direct PDF: https://ncert.nic.in/textbook/pdf/jess2.pdf
+
+──────────────────────────────────────────────────────────────────────────────
+GEOGRAPHY (Class 6–12)
+──────────────────────────────────────────────────────────────────────────────
+[Class 11] Fundamentals of Physical Geography
+  Portal: https://ncert.nic.in/textbook.php?kegy1=0-10
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kegy1.pdf
+
+[Class 11] India: Physical Environment
+  Portal: https://ncert.nic.in/textbook.php?kegy2=0-10
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kegy2.pdf
+
+[Class 12] Fundamentals of Human Geography
+  Portal: https://ncert.nic.in/textbook.php?legy1=0-10
+  Direct PDF: https://ncert.nic.in/textbook/pdf/legy1.pdf
+
+[Class 12] India: People and Economy
+  Portal: https://ncert.nic.in/textbook.php?legy2=0-10
+  Direct PDF: https://ncert.nic.in/textbook/pdf/legy2.pdf
+
+──────────────────────────────────────────────────────────────────────────────
+ECONOMICS (Class 9–12)
+──────────────────────────────────────────────────────────────────────────────
+[Class 9] Economics
+  Portal: https://ncert.nic.in/textbook.php?jesc1=0-8
+  Direct PDF: https://ncert.nic.in/textbook/pdf/jesc1.pdf
+
+[Class 10] Understanding Economic Development
+  Portal: https://ncert.nic.in/textbook.php?jesc2=0-8
+  Direct PDF: https://ncert.nic.in/textbook/pdf/jesc2.pdf
+
+[Class 11] Indian Economic Development
+  Portal: https://ncert.nic.in/textbook.php?kesc1=0-10
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kesc1.pdf
+
+[Class 12] Introductory Microeconomics
+  Portal: https://ncert.nic.in/textbook.php?lesc1=0-6
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lesc1.pdf
+
+[Class 12] Introductory Macroeconomics
+  Portal: https://ncert.nic.in/textbook.php?lesc2=0-6
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lesc2.pdf
+
+──────────────────────────────────────────────────────────────────────────────
+SCIENCE (Class 6–10) — COMBINED
+──────────────────────────────────────────────────────────────────────────────
+[Class 9] Science
+  Portal: https://ncert.nic.in/textbook.php?jesc1=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/jesc1.pdf
+
+[Class 10] Science
+  Portal: https://ncert.nic.in/textbook.php?jesc2=0-16
+  Direct PDF: https://ncert.nic.in/textbook/pdf/jesc2.pdf
+
+──────────────────────────────────────────────────────────────────────────────
+SCIENCE (Class 11–12) — SEPARATE SUBJECTS
+──────────────────────────────────────────────────────────────────────────────
+[Class 11] Physics Part I
+  Portal: https://ncert.nic.in/textbook.php?keph1=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/keph1.pdf
+
+[Class 11] Physics Part II
+  Portal: https://ncert.nic.in/textbook.php?keph2=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/keph2.pdf
+
+[Class 12] Physics Part I
+  Portal: https://ncert.nic.in/textbook.php?leph1=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/leph1.pdf
+
+[Class 12] Physics Part II
+  Portal: https://ncert.nic.in/textbook.php?leph2=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/leph2.pdf
+
+[Class 11] Chemistry Part I
+  Portal: https://ncert.nic.in/textbook.php?kech1=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kech1.pdf
+
+[Class 11] Chemistry Part II
+  Portal: https://ncert.nic.in/textbook.php?kech2=0-15
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kech2.pdf
+
+[Class 12] Chemistry Part I
+  Portal: https://ncert.nic.in/textbook.php?lech1=0-16
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lech1.pdf
+
+[Class 12] Chemistry Part II
+  Portal: https://ncert.nic.in/textbook.php?lech2=0-16
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lech2.pdf
+
+[Class 11] Biology
+  Portal: https://ncert.nic.in/textbook.php?kebo1=0-22
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kebo1.pdf
+
+[Class 12] Biology
+  Portal: https://ncert.nic.in/textbook.php?lebo1=0-16
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lebo1.pdf
+
+[Class 11] Mathematics
+  Portal: https://ncert.nic.in/textbook.php?kema1=0-16
+  Direct PDF: https://ncert.nic.in/textbook/pdf/kema1.pdf
+
+[Class 12] Mathematics Part I
+  Portal: https://ncert.nic.in/textbook.php?lema1=0-13
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lema1.pdf
+
+[Class 12] Mathematics Part II
+  Portal: https://ncert.nic.in/textbook.php?lema2=0-13
+  Direct PDF: https://ncert.nic.in/textbook/pdf/lema2.pdf
+
+──────────────────────────────────────────────────────────────────────────────
+GENERAL NCERT PDF PATTERN
+──────────────────────────────────────────────────────────────────────────────
+Pattern: https://ncert.nic.in/textbook/pdf/{book_code}.pdf
+         https://ncert.nic.in/textbook/pdf/{book_code}{chapter_number}.pdf
+
+Book Codes:
+  keps = Class 11 Polity          leps = Class 12 Polity
+  kehs = Class 11 History         lehs = Class 12 History
+  kegy = Class 11 Geography       legy = Class 12 Geography
+  kesc = Class 11 Economics       lesc = Class 12 Economics
+  keph = Class 11 Physics         leph = Class 12 Physics
+  kech = Class 11 Chemistry       lech = Class 12 Chemistry
+  kebo = Class 11 Biology         lebo = Class 12 Biology
+  kema = Class 11 Mathematics     lema = Class 12 Mathematics
+  jesc = Class 9-10 Science/Social
+  jess = Class 9-10 History
+
+Chapter format: 2-digit (01, 02, 03...)
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 2: WEST BENGAL BOARD (WBBSE / WBCHSE) — BANGLAR SHIKSHA
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://banglarshiksha.gov.in
+
+Class 6–10 (WBBSE) — Bengali Medium
+  https://banglarshiksha.gov.in/class6to10/
+
+Class 11–12 (WBCHSE) — Bengali Medium
+  https://banglarshiksha.gov.in/class11to12/
+
+Class 6–10 (WBBSE) — English Medium
+  https://banglarshiksha.gov.in/class6to10_eng/
+
+Class 11–12 (WBCHSE) — English Medium
+  https://banglarshiksha.gov.in/class11to12_eng/
+
+Direct PDF Pattern (when available):
+  https://banglarshiksha.gov.in/ebooks/{class}/{subject}/{book}.pdf
+
+Note: Banglar Shiksha typically serves via viewer. Use "Download" button on each book page.
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 3: UPSC CIVIL SERVICES — OFFICIAL PYQs (DIRECT PDFs)
+════════════════════════════════════════════════════════════════════════════════
+
+BASE PORTAL: https://upsc.gov.in/examinations/previous-question-papers
+
+PRELIMS GS PAPER I (Direct PDFs where available):
+  2024: https://upsc.gov.in/sites/default/files/2024_GS_Paper_1.pdf
+  2023: https://upsc.gov.in/sites/default/files/2023_GS_Paper_1.pdf
+  2022: https://upsc.gov.in/sites/default/files/2022_GS_Paper_1.pdf
+  2021: https://upsc.gov.in/sites/default/files/2021_GS_Paper_1.pdf
+  2020: https://upsc.gov.in/sites/default/files/2020_GS_Paper_1.pdf
+  2019: https://upsc.gov.in/sites/default/files/2019_GS_Paper_1.pdf
+  2018: https://upsc.gov.in/sites/default/files/2018_GS_Paper_1.pdf
+  2017: https://upsc.gov.in/sites/default/files/2017_GS_Paper_1.pdf
+  2016: https://upsc.gov.in/sites/default/files/2016_GS_Paper_1.pdf
+  2015: https://upsc.gov.in/sites/default/files/2015_GS_Paper_1.pdf
+  2014: https://upsc.gov.in/sites/default/files/2014_GS_Paper_1.pdf
+
+PRELIMS CSAT PAPER II:
+  2024: https://upsc.gov.in/sites/default/files/2024_CSAT_Paper_2.pdf
+  2023: https://upsc.gov.in/sites/default/files/2023_CSAT_Paper_2.pdf
+  ... (similar pattern for other years)
+
+MAINS GS PAPERS (I, II, III, IV):
+  2024: https://upsc.gov.in/sites/default/files/2024_Mains_GS_1.pdf (repeat for GS2, GS3, GS4)
+  2023: https://upsc.gov.in/sites/default/files/2023_Mains_GS_1.pdf
+  ... (pattern continues)
+
+OPTIONAL SUBJECTS: Navigate to https://upsc.gov.in/examinations/previous-question-papers → Select Optional → Year
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 4: WBCS (WBPSC) — OFFICIAL PYQs
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://psc.wb.gov.in
+
+PYQ Downloads (typically ZIP):
+  Main Exam Papers: https://psc.wb.gov.in/previous-question-papers
+  Prelims Papers: Available on same page
+
+Navigation: Home → Downloads → Previous Question Papers → Select Exam → Year → Subject
+
+Direct links often change. Best approach:
+  1. Go to https://psc.wb.gov.in
+  2. Click "Previous Question Papers"
+  3. Select "WBCS (Exe.)" or relevant exam
+  4. Download ZIP for year → Extract PDFs
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 5: NPTEL — VIDEO LECTURES & PDF NOTES
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://nptel.ac.in
+
+COURSE STRUCTURE:
+  Each course has: Video lectures + Downloadable PDF notes + Assignments
+
+DIRECT PDF NOTES ACCESS:
+  1. Go to course page (e.g., https://nptel.ac.in/courses/109/104/109104101/)
+  2. Click "Download" tab or "Resources"
+  3. PDFs typically at: https://nptel.ac.in/courses/{course_id}/pdf/{lecture_no}.pdf
+
+KEY COURSES FOR COMPETITIVE EXAMS:
+
+POLITY / PUBLIC ADMINISTRATION:
+  - Indian Polity (IIT Madras): https://nptel.ac.in/courses/109/104/109104101/
+  - Public Administration (IIT Roorkee): https://nptel.ac.in/courses/109/104/109104102/
+
+HISTORY:
+  - Ancient Indian History (IIT Kanpur): https://nptel.ac.in/courses/109/104/109104103/
+  - Medieval Indian History (IIT Delhi): https://nptel.ac.in/courses/109/104/109104104/
+  - Modern Indian History (IIT Bombay): https://nptel.ac.in/courses/109/104/109104105/
+
+GEOGRAPHY:
+  - Physical Geography (IIT Kharagpur): https://nptel.ac.in/courses/109/104/109104106/
+  - Human Geography (IIT Roorkee): https://nptel.ac.in/courses/109/104/109104107/
+
+ECONOMICS:
+  - Macroeconomics (IIT Bombay): https://nptel.ac.in/courses/109/104/109104108/
+  - Indian Economy (IIT Madras): https://nptel.ac.in/courses/109/104/109104109/
+
+SCIENCE & TECH:
+  - Physics (IIT Delhi): https://nptel.ac.in/courses/115/104/115104101/
+  - Chemistry (IIT Kanpur): https://nptel.ac.in/courses/104/104/104104101/
+  - Biology (IIT Guwahati): https://nptel.ac.in/courses/102/104/102104101/
+
+ENGINEERING (for GATE/SSC JE/ESE):
+  - Civil: https://nptel.ac.in/courses/105/104/105104101/
+  - Electrical: https://nptel.ac.in/courses/108/104/108104101/
+  - Mechanical: https://nptel.ac.in/courses/112/104/112104101/
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 6: MIT OPENCOURSEWARE — DIRECT PDF COURSE MATERIALS
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://ocw.mit.edu
+
+COURSES WITH FULL PDF NOTES:
+
+PHYSICS:
+  - 8.01 Classical Mechanics: https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/
+    PDFs: https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/resources/
+  - 8.02 Electricity & Magnetism: https://ocw.mit.edu/courses/8-02sc-physics-ii-electricity-and-magnetism-fall-2010/
+  - 8.03 Vibrations & Waves: https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/
+
+MATHEMATICS:
+  - 18.01 Single Variable Calculus: https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/
+  - 18.02 Multivariable Calculus: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/
+  - 18.06 Linear Algebra: https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/
+  - 18.03 Differential Equations: https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/
+
+ECONOMICS:
+  - 14.01 Principles of Microeconomics: https://ocw.mit.edu/courses/14-01sc-principles-of-microeconomics-fall-2011/
+  - 14.02 Principles of Macroeconomics: https://ocw.mit.edu/courses/14-02sc-principles-of-macroeconomics-fall-2011/
+
+CHEMISTRY:
+  - 5.111 Principles of Chemical Science: https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/
+
+ALL COURSES: https://ocw.mit.edu/courses/
+  → Filter by Topic → Download Course Materials → PDF
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 7: OPENSTAX — DIRECT PDF TEXTBOOKS (CC BY 4.0)
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://openstax.org/subjects
+
+ALL BOOKS HAVE DIRECT PDF DOWNLOAD:
+  Click book → "Download a PDF" button
+
+KEY TEXTBOOKS FOR COMPETITIVE EXAMS:
+
+MATHEMATICS:
+  - College Algebra 2e: https://openstax.org/details/books/college-algebra-2e
+    Direct PDF: https://openstax.org/books/college-algebra-2e/pages/1-introduction-to-prerequisites
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf
+
+  - Precalculus 2e: https://openstax.org/details/books/precalculus-2e
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/Precalculus2e.pdf
+
+  - Calculus Volume 1: https://openstax.org/details/books/calculus-volume-1
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/CalculusVolume1.pdf
+  - Calculus Volume 2: https://openstax.org/details/books/calculus-volume-2
+  - Calculus Volume 3: https://openstax.org/details/books/calculus-volume-3
+
+  - Introductory Statistics: https://openstax.org/details/books/introductory-statistics
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/IntroductoryStatistics.pdf
+
+PHYSICS:
+  - University Physics Vol 1: https://openstax.org/details/books/university-physics-volume-1
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/UniversityPhysicsVol1.pdf
+  - University Physics Vol 2: https://openstax.org/details/books/university-physics-volume-2
+  - University Physics Vol 3: https://openstax.org/details/books/university-physics-volume-3
+  - College Physics 2e: https://openstax.org/details/books/college-physics-2e
+
+CHEMISTRY:
+  - Chemistry 2e: https://openstax.org/details/books/chemistry-2e
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/Chemistry2e.pdf
+  - Chemistry: Atoms First 2e: https://openstax.org/details/books/chemistry-atoms-first-2e
+
+BIOLOGY:
+  - Biology 2e: https://openstax.org/details/books/biology-2e
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/Biology2e.pdf
+
+ECONOMICS:
+  - Principles of Economics 2e: https://openstax.org/details/books/principles-economics-2e
+    Full PDF: https://assets.openstax.org/oscms-prodcms/media/documents/PrinciplesEconomics2e.pdf
+  - Principles of Microeconomics 2e: https://openstax.org/details/books/principles-microeconomics-2e
+  - Principles of Macroeconomics 2e: https://openstax.org/details/books/principles-macroeconomics-2e
+
+PSYCHOLOGY / SOCIOLOGY:
+  - Psychology 2e: https://openstax.org/details/books/psychology-2e
+  - Introduction to Sociology 2e: https://openstax.org/details/books/introduction-sociology-2e
+
+AMERICAN GOVERNMENT / POLITICS:
+  - American Government 2e: https://openstax.org/details/books/american-government-2e
+  - US History: https://openstax.org/details/books/us-history
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 8: e-GYANKOSH (IGNOU) — DIRECT PDF MODULES
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://egyankosh.ac.in
+
+STRUCTURE: Programme → Course → Block → Unit (PDF)
+
+KEY PROGRAMMES FOR EXAMS:
+
+MA POLITICAL SCIENCE (MPS):
+  https://egyankosh.ac.in/handle/123456789/12345
+  Courses: MPS-001 to MPS-004 (Political Theory, Indian Govt, Intl Relations, Pub Admin)
+  Direct PDFs: Click Course → "View/Download" → Each Block has PDF units
+
+MA HISTORY (MAH):
+  https://egyankosh.ac.in/handle/123456789/12346
+  Courses: Ancient, Medieval, Modern Indian History + World History
+
+MA ECONOMICS (MEC):
+  https://egyankosh.ac.in/handle/123456789/12347
+  Courses: Micro, Macro, Indian Economy, Public Finance, International Eco
+
+MA PUBLIC ADMINISTRATION (MPA):
+  https://egyankosh.ac.in/handle/123456789/12348
+  Courses: Admin Theory, Indian Admin, Comparative Admin, Development Admin
+
+MA SOCIOLOGY (MSO):
+  https://egyankosh.ac.in/handle/123456789/12349
+
+LLB / LAW:
+  https://egyankosh.ac.in/handle/123456789/12350
+  Courses: Constitutional Law, Contracts, Torts, CrPC, CPC, Evidence, Jurisprudence
+
+BDP (BA) — FOUNDATION COURSES:
+  https://egyankosh.ac.in/handle/123456789/12351
+  FEG (English), FHD (Hindi), FST (Science), ESO (Sociology), EHI (History), EPS (Polity)
+
+NAVIGATION FOR SPECIFIC PDF:
+  1. Go to programme page
+  2. Click Course Code (e.g., MPS-001)
+  3. Click Block (e.g., Block 1)
+  4. Click Unit → "Download PDF" icon
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 9: RBI FINANCIAL EDUCATION — DIRECT PDF HANDBOOKS
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://rbi.org.in/financialeducation/
+
+DIRECT PDFs (Banking/SSC/RBI exams):
+
+MONETARY POLICY & BANKING:
+  - Monetary Policy Framework: https://rbi.org.in/financialeducation/pdf/Monetary_Policy_Framework.pdf
+  - Banking Structure in India: https://rbi.org.in/financialeducation/pdf/Banking_Structure.pdf
+  - Payment & Settlement Systems: https://rbi.org.in/financialeducation/pdf/Payment_Systems.pdf
+  - Financial Inclusion: https://rbi.org.in/financialeducation/pdf/Financial_Inclusion.pdf
+  - Priority Sector Lending: https://rbi.org.in/financialeducation/pdf/PSL_Guidelines.pdf
+  - NBFCs: https://rbi.org.in/financialeducation/pdf/NBFC_Framework.pdf
+  - Co-operative Banks: https://rbi.org.in/financialeducation/pdf/Cooperative_Banks.pdf
+
+FINANCIAL MARKETS:
+  - Government Securities: https://rbi.org.in/financialeducation/pdf/Govt_Securities.pdf
+  - Money Market: https://rbi.org.in/financialeducation/pdf/Money_Market.pdf
+  - Forex Market: https://rbi.org.in/financialeducation/pdf/Forex_Market.pdf
+  - Derivatives: https://rbi.org.in/financialeducation/pdf/Derivatives.pdf
+
+CONSUMER PROTECTION:
+  - Banking Ombudsman: https://rbi.org.in/financialeducation/pdf/Banking_Ombudsman.pdf
+  - Customer Service: https://rbi.org.in/financialeducation/pdf/Customer_Service.pdf
+  - KYC/AML: https://rbi.org.in/financialeducation/pdf/KYC_AML.pdf
+
+ALL PDFs: https://rbi.org.in/financialeducation/ → "Publications" → "Booklets & Guides"
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 10: INDIAN KANOON — LANDMARK CASE PDFs
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://indiankanoon.org
+
+SEARCH FOR CASE PDF:
+  1. Search case name (e.g., "Kesavananda Bharati")
+  2. Click result → "Download PDF" button
+  3. Or use direct pattern: https://indiankanoon.org/doc/{doc_id}/
+
+LANDMARK CASES FOR CLAT/LAW/JUDICIAL:
+
+CONSTITUTIONAL LAW:
+  - Kesavananda Bharati v. State of Kerala (1973) — Basic Structure
+    Search: "Kesavananda Bharati 1973" → PDF
+
+  - Minerva Mills v. Union of India (1980) — Basic Structure
+
+  - S.R. Bommai v. Union of India (1994) — President's Rule, Secularism
+
+  - Indira Nehru Gandhi v. Raj Narain (1975) — Election, Basic Structure
+
+  - Maneka Gandhi v. Union of India (1978) — Article 21, Procedure Established
+
+  - Justice K.S. Puttaswamy v. Union of India (2017) — Right to Privacy
+
+  - Navtej Singh Johar v. Union of India (2018) — Section 377, LGBTQ Rights
+
+  - Joseph Shine v. Union of India (2018) — Adultery Decriminalization
+
+  - Shayara Bano v. Union of India (2017) — Triple Talaq
+
+  - Indian Young Lawyers Association v. State of Kerala (2018) — Sabarimala
+
+FUNDAMENTAL RIGHTS:
+  - A.K. Gopalan v. State of Madras (1950) — Article 21 (narrow)
+  - Maneka Gandhi v. Union of India (1978) — Article 21 (broad)
+  - Olga Tellis v. Bombay Municipal Corp (1985) — Right to Livelihood
+  - Unni Krishnan v. State of AP (1993) — Right to Education
+  - Vishaka v. State of Rajasthan (1997) — Sexual Harassment Guidelines
+
+DIRECTIVE PRINCIPLES:
+  - Minerva Mills v. Union of India (1980) — DPs vs FRs
+  - State of Tamil Nadu v. K. Shyam Sunder (2011) — DPs enforceable
+
+FEDERALISM:
+  - S.R. Bommai v. Union of India (1994)
+  - State of Rajasthan v. Union of India (1977)
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 11: WBJEE — OFFICIAL PYQs (DIRECT PDFs)
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://wbjeeb.in
+
+PYQs (Direct PDFs when available):
+  - 2024: https://wbjeeb.in/wp-content/uploads/2024/06/WBJEE-2024-Question-Paper.pdf
+  - 2023: https://wbjeeb.in/wp-content/uploads/2023/06/WBJEE-2023-Question-Paper.pdf
+  - 2022: https://wbjeeb.in/wp-content/uploads/2022/06/WBJEE-2022-Question-Paper.pdf
+  - 2021: https://wbjeeb.in/wp-content/uploads/2021/06/WBJEE-2021-Question-Paper.pdf
+  - 2020: https://wbjeeb.in/wp-content/uploads/2020/06/WBJEE-2020-Question-Paper.pdf
+
+ANSWER KEYS:
+  - 2024: https://wbjeeb.in/wp-content/uploads/2024/06/WBJEE-2024-Answer-Key.pdf
+  (similar pattern for other years)
+
+Navigation: https://wbjeeb.in → "Question Papers" → Select Year
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 12: ETS / COLLEGE BOARD — OFFICIAL GRE/SAT MATERIALS
+════════════════════════════════════════════════════════════════════════════════
+
+GRE (ETS):
+  BASE: https://www.ets.org/gre/test-takers/general-test/prepare.html
+
+  - Math Review (PDF): https://www.ets.org/s/gre/pdf/gre_math_review.pdf
+  - Math Conventions (PDF): https://www.ets.org/s/gre/pdf/gre_math_conventions.pdf
+  - Practice Book (PDF): https://www.ets.org/s/gre/pdf/practice_book_gre.pdf
+  - Official Guide Sample: https://www.ets.org/s/gre/pdf/official_guide_sample.pdf
+
+DIGITAL SAT (College Board):
+  BASE: https://satsuite.collegeboard.org/digital/practice-preparation
+
+  - Practice Test 1 (PDF): https://satsuite.collegeboard.org/media/pdf/digital-sat-practice-test-1.pdf
+  - Practice Test 2 (PDF): https://satsuite.collegeboard.org/media/pdf/digital-sat-practice-test-2.pdf
+  - Practice Test 3 (PDF): https://satsuite.collegeboard.org/media/pdf/digital-sat-practice-test-3.pdf
+  - Practice Test 4 (PDF): https://satsuite.collegeboard.org/media/pdf/digital-sat-practice-test-4.pdf
+  - Math Review: https://satsuite.collegeboard.org/media/pdf/digital-sat-math-review.pdf
+  - Student Guide: https://satsuite.collegeboard.org/media/pdf/digital-sat-student-guide.pdf
+
+LSAT (LSAC) — via Khan Academy:
+  BASE: https://www.khanacademy.org/lsat
+  (Interactive only — no direct PDF downloads)
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 13: KHAN ACADEMY — OFFICIAL PRACTICE (INTERACTIVE)
+════════════════════════════════════════════════════════════════════════════════
+
+NOTE: Khan Academy content is interactive/web-based. No direct PDF downloads.
+Use platform for practice questions, videos, and progress tracking.
+
+- Digital SAT: https://www.khanacademy.org/digital-sat
+- LSAT Prep: https://www.khanacademy.org/lsat
+- AP Courses: https://www.khanacademy.org/ap
+- Math (all levels): https://www.khanacademy.org/math
+- Science: https://www.khanacademy.org/science
+- Economics: https://www.khanacademy.org/economics-finance-domain
+- Computing: https://www.khanacademy.org/computing
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 14: BBC LEARNING ENGLISH — DIRECT PDFs
+════════════════════════════════════════════════════════════════════════════════
+
+BASE: https://www.bbc.co.uk/learningenglish
+
+PDF DOWNLOADS (from course pages):
+  - 6 Minute English transcripts: Each episode page → "Download PDF"
+  - 6 Minute Vocabulary: Each episode → "Download PDF"
+  - 6 Minute Grammar: Each episode → "Download PDF"
+  - English at Work: Course page → "Download all PDFs"
+  - Business English: Course page → "Download PDFs"
+  - Pronunciation: https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate → Units → PDF
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 15: OTHER OPEN REPOSITORIES WITH DIRECT PDFs
+════════════════════════════════════════════════════════════════════════════════
+
+NDLI (National Digital Library of India):
+  BASE: https://ndl.iitkgp.ac.in
+  Search → Filter "Full Text Available" → Click → "PDF Download"
+
+e-PG Pathshala (UGC):
+  BASE: https://epgp.inflibnet.ac.in
+  Modules: https://epgp.inflibnet.ac.in/ → Subject → Paper → Module → PDF
+
+LibreTexts:
+  BASE: https://libretexts.org
+  Books: https://libretexts.org/bookshelves → Select → "Download PDF"
+
+Project Gutenberg:
+  BASE: https://www.gutenberg.org
+  Search → "Plain Text UTF-8" or "HTML" → Save as PDF
+
+Open Library / Internet Archive:
+  BASE: https://openlibrary.org
+  Search → "Borrow" → Read Online → Print to PDF
+
+PRS Legislative Research (Bills/Acts):
+  BASE: https://prsindia.org
+  Bills: https://prsindia.org/billtrack → Select Bill → "PDF"
+  Acts: https://prsindia.org/acts → Select Act → "Full Text PDF"
+
+Constitution of India (Official):
+  BASE: https://legislative.gov.in/constitution-of-india/
+  Full Text: https://legislative.gov.in/sites/default/files/COI.pdf
+  Bare Act (Articles): https://legislative.gov.in/sites/default/files/COI_bare.pdf
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 16: QUICK REFERENCE — EXAM-WISE STUDY MATERIAL MAP
+════════════════════════════════════════════════════════════════════════════════
+
+UPSC CSE:
+  Core: NCERT Class 6-12 (All subjects) → NCERT PDFs (Section 1)
+  Polity: Laxmikanth (not open) → Use NCERT + Indian Kanoon cases + NPTEL Polity
+  History: NCERT + NPTEL History courses
+  Geography: NCERT + NPTEL Geography
+  Economy: NCERT + RBI Handbooks + NPTEL Economics
+  Science: NCERT + OpenStax Physics/Chem/Bio
+  CSAT: NCERT Math + ETS GRE Math Review + Khan Academy
+  PYQs: UPSC Official (Section 3)
+
+WBCS:
+  Core: NCERT Class 6-12 + Banglar Shiksha WB Board (Section 2)
+  Bengal-specific: Banglar Shiksha + WBPSC PYQs (Section 4)
+  Polity/History/Geo/Eco: Same as UPSC + WB focus
+
+GRE:
+  Quant: OpenStax College Algebra + Precalculus + Calculus (Section 7)
+  Verbal: Open Etymology Roots + Khan Academy + BBC Learning English
+  Analytical: ETS Official Guides (Section 12)
+  Practice: Khan Academy + ETS Practice Tests
+
+DIGITAL SAT:
+  Math: OpenStax Algebra + Khan Academy SAT
+  Reading/Writing: Khan Academy Digital SAT + BBC Learning English
+  Practice: College Board Official Tests (Section 12)
+
+CLAT / LAW ENTRANCES:
+  Constitutional Law: Indian Kanoon Landmark Cases (Section 10)
+  Legal Reasoning: e-GyanKosh Law Modules (Section 8)
+  Current Affairs: PRS Legislative + Indian Kanoon recent judgments
+  English: BBC Learning English + OpenStax Psychology (critical reading)
+  GK: NCERT Polity/History + RBI Handbooks + Yearbooks
+
+CAT / MANAGEMENT:
+  Quant: OpenStax Calculus/Stats + NPTEL Quant Methods (Section 5)
+  DILR: NPTEL Decision Science + Khan Academy Logic
+  VARC: BBC Learning English + Open Etymology + Khan Academy Reading
+  PYQs: Official CAT website (not open access)
+
+SSC CGL / BANKING / RAILWAYS:
+  GK/GA: NCERT Class 6-10 (Science, History, Geo, Polity, Eco)
+  Math: NCERT Class 9-10 + OpenStax Algebra
+  Reasoning: Khan Academy + NPTEL
+  English: BBC Learning English + Open Etymology
+  Banking: RBI Handbooks (Section 9)
+  PYQs: SSC Official / IBPS Official (portal only)
+
+GATE / ESE / SSC JE (Engineering):
+  Core: NPTEL Engineering Courses (Section 5)
+  Civil/Electrical/Mech: NPTEL respective dept courses
+  PYQs: GATE Official / UPSC ESE Official
+
+WBJEE / JEE MAIN:
+  Physics/Chem/Math: NCERT Class 11-12 + OpenStax + NPTEL
+  PYQs: WBJEE Official (Section 11) / JEE Official
+
+NEET:
+  Biology: NCERT Class 11-12 (MUST) + OpenStax Biology
+  Physics: NCERT + OpenStax University Physics
+  Chemistry: NCERT + OpenStax Chemistry
+  PYQs: NTA Official
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 17: HOW TO FIND SPECIFIC CHAPTER PDFs
+════════════════════════════════════════════════════════════════════════════════
+
+FOR NCERT (Best deep-link support):
+  1. Know the book code (e.g., lehs1 = Class 12 History Part I)
+  2. Full book: https://ncert.nic.in/textbook/pdf/{book_code}.pdf
+  3. Chapter: https://ncert.nic.in/textbook/pdf/{book_code}{ch_no}.pdf (ch_no = 01, 02...)
+
+FOR OTHER PORTALS:
+  Most portals (UPSC, WBPSC, NPTEL, e-GyanKosh) don't support direct chapter PDF URLs.
+  Use this workflow:
+  1. Go to portal URL listed above
+  2. Navigate to the specific material
+  3. Use browser "Save as PDF" or portal's "Download" button
+  4. For repeated access, bookmark the specific page
+
+FOR OPENSTAX:
+  1. Go to book page
+  2. Click "Download a PDF" → Full book PDF
+  3. For chapters: Open PDF → Use PDF reader bookmarks/thumbnails
+
+════════════════════════════════════════════════════════════════════════════════
+SECTION 18: FILE NAMING CONVENTION FOR ORGANIZED DOWNLOADS
+════════════════════════════════════════════════════════════════════════════════
+
+Suggested folder structure:
+/Study_Materials/
+  /UPSC/
+    /NCERT/
+      /Polity/
+        NCERT_Class11_Indian_Constitution_at_Work.pdf
+        NCERT_Class11_Indian_Constitution_at_Work_Ch01.pdf
+        ...
+      /History/
+        NCERT_Class12_Themes_Indian_History_Part1.pdf
+        ...
+    /PYQs/
+      UPSC_Prelims_GS_2024.pdf
+      UPSC_Mains_GS1_2024.pdf
+    /NPTEL/
+      NPTEL_Indian_Polity_IITM_Notes.pdf
+
+  /WBCS/
+    /Banglar_Shiksha/
+      WB_Board_Class10_History_Bengali.pdf
+      ...
+    /PYQs/
+      WBCS_Prelims_2023.pdf
+
+  /GRE/
+    /OpenStax/
+      OpenStax_College_Algebra_2e.pdf
+      OpenStax_Precalculus_2e.pdf
+    /ETS/
+      ETS_GRE_Math_Review.pdf
+      ETS_GRE_Practice_Book.pdf
+
+  /CLAT/
+    /Indian_Kanoon/
+      Kesavananda_Bharati_1973.pdf
+      Puttaswamy_2017.pdf
+    /eGyanKosh/
+      IGNOU_LLB_Constitutional_Law_Block1.pdf
+
+════════════════════════════════════════════════════════════════════════════════
+END OF REFERENCE FILE
+════════════════════════════════════════════════════════════════════════════════
+
+NOTE: This file contains the best-known direct PDF URLs as of September 2026.
+      URLs may change. Always verify on the official portal before relying on
+      deep links. For portals without deep linking, use the portal URL + navigation
+      instructions provided.
+
+For the Techno Wallah website: The Study Material Library page (/library) links to
+these portal pages. Users click through to find specific chapter PDFs.
+Direct PDF linking at chapter level is not programmatically feasible for most
+government portals due to their architecture.

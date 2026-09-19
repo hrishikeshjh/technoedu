@@ -68,6 +68,10 @@ export interface StudyMaterialItem {
   previewSummary: string;
   keyTopics: string[];
   licenseType: string;
+  // Optional: Direct PDF download URL (when available from open portals)
+  directPdfUrl?: string;
+  // Optional: Chapter-level PDF URLs for granular access
+  chapterPdfUrls?: { chapter: string; url: string }[];
 }
 
 export interface LearningPlatformInfo {
