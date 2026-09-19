@@ -10,6 +10,14 @@ import { StudyMaterialPage } from './pages/StudyMaterialPage';
 import { PlatformsDirectoryPage } from './pages/PlatformsDirectoryPage';
 import { CompleteDirectoryPage } from './pages/CompleteDirectoryPage';
 import { AboutPage } from './pages/AboutPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsPage } from './pages/TermsPage';
+import { CookiesPage } from './pages/CookiesPage';
+import { ContactPage } from './pages/ContactPage';
+import { DisclaimerPage } from './pages/DisclaimerPage';
+import { RefundPolicyPage } from './pages/RefundPolicyPage';
+import { AccessibilityPage } from './pages/AccessibilityPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 // Scroll to top automatically upon route navigation
 const ScrollToTop: React.FC = () => {
@@ -36,13 +44,22 @@ export const App: React.FC = () => {
           <Route path="/directory" element={<CompleteDirectoryPage />} />
           <Route path="/about" element={<AboutPage />} />
 
+          {/* Legal & Policy Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/disclaimer" element={<DisclaimerPage />} />
+          <Route path="/refund-policy" element={<RefundPolicyPage />} />
+          <Route path="/accessibility" element={<AccessibilityPage />} />
+
           {/* Aliases & Fallbacks */}
           <Route path="/practice" element={<Navigate to="/exams" replace />} />
           <Route path="/study-material" element={<Navigate to="/library" replace />} />
           <Route path="/courses" element={<Navigate to="/exams" replace />} />
           <Route path="/courses/:id" element={<Navigate to="/exams" replace />} />
           <Route path="/test-series" element={<Navigate to="/exams" replace />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

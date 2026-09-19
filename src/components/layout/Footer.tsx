@@ -1,24 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  GraduationCap, 
-  Library, 
-  Globe, 
-  ExternalLink, 
-  BookOpen, 
-  ShieldCheck, 
-  Award, 
-  ArrowUpRight 
+import {
+  GraduationCap,
+  Library,
+  Globe,
+  ExternalLink,
+  BookOpen,
+  ShieldCheck,
+  Award,
+  ArrowUpRight,
+  FileText,
+  Shield,
+  Cookie,
+  Scale,
+  Accessibility,
+  HeartHandshake
 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 text-slate-300 pt-12 pb-24 lg:pb-12 border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Open Brand Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-slate-800">
+
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <img
@@ -27,7 +33,7 @@ export const Footer: React.FC = () => {
                 className="h-12 w-auto object-contain brightness-0 invert"
               />
             </div>
-            
+
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
               An open-access academic initiative aggregating authentic open-source learning repositories, government digital portals, peer-reviewed textbooks, and verified previous year question banks.
             </p>
@@ -141,6 +147,51 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
+          {/* Legal & Policy Links */}
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5">
+              Legal & Policies
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link to="/privacy-policy" className="hover:text-white transition-colors flex items-center gap-1">
+                  <Shield className="w-2.5 h-2.5 text-slate-500" />
+                  <span>Privacy Policy</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-white transition-colors flex items-center gap-1">
+                  <FileText className="w-2.5 h-2.5 text-slate-500" />
+                  <span>Terms & Conditions</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/cookies" className="hover:text-white transition-colors flex items-center gap-1">
+                  <Cookie className="w-2.5 h-2.5 text-slate-500" />
+                  <span>Cookie Policy</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/disclaimer" className="hover:text-white transition-colors flex items-center gap-1">
+                  <Scale className="w-2.5 h-2.5 text-slate-500" />
+                  <span>Disclaimer</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/refund-policy" className="hover:text-white transition-colors flex items-center gap-1">
+                  <HeartHandshake className="w-2.5 h-2.5 text-slate-500" />
+                  <span>Refund Policy</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/accessibility" className="hover:text-white transition-colors flex items-center gap-1">
+                  <Accessibility className="w-2.5 h-2.5 text-slate-500" />
+                  <span>Accessibility</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
         {/* Bottom Strip */}
@@ -148,10 +199,14 @@ export const Footer: React.FC = () => {
           <div>
             Techno Wallah Open Education Resource Initiative. Non-commercial, open-access public knowledge repository.
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             <Link to="/about" className="hover:text-slate-300">About</Link>
-            <Link to="/library" className="hover:text-slate-300">Open Library</Link>
-            <Link to="/platforms" className="hover:text-slate-300">Platforms</Link>
+            <Link to="/contact" className="hover:text-slate-300">Contact</Link>
+            <Link to="/privacy-policy" className="hover:text-slate-300">Privacy</Link>
+            <Link to="/terms" className="hover:text-slate-300">Terms</Link>
+            <Link to="/cookies" className="hover:text-slate-300">Cookies</Link>
+            <Link to="/disclaimer" className="hover:text-slate-300">Disclaimer</Link>
+            <Link to="/accessibility" className="hover:text-slate-300">Accessibility</Link>
           </div>
         </div>
 

@@ -55,7 +55,8 @@ export const Navbar: React.FC = () => {
     { name: 'Complete Directory', path: '/directory' },
     { name: 'Open Library', path: '/library' },
     { name: 'Open Platforms', path: '/platforms' },
-    { name: 'About Initiative', path: '/about' }
+    { name: 'About Initiative', path: '/about' },
+    { name: 'Contact', path: '/contact' }
   ];
 
   return (
