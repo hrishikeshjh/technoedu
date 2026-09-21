@@ -1,6 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MessageSquare, Send, CheckCircle, AlertCircle, Loader2, MapPin, Phone, Globe, ShieldCheck, Accessibility, FileText } from 'lucide-react';
+import {
+  Mail,
+  MessageSquare,
+  Send,
+  CheckCircle,
+  AlertCircle,
+  MapPin,
+  Globe,
+  ShieldCheck,
+  Accessibility,
+  FileText,
+  ArrowRight,
+  Sparkles
+} from 'lucide-react';
+import { RoseLoader } from '../components/common/RoseLoader';
+import { ScrollReveal } from '../components/common/ScrollReveal';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
@@ -39,18 +55,9 @@ export const ContactPage: React.FC = () => {
     }
 
     try {
-      // In production, replace this with your actual form submission endpoint
-      // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) });
-
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // For demonstration - in production, integrate with:
-      // - Formspree, Netlify Forms, EmailJS, SendGrid, etc.
-      // - Or your own backend API endpoint
-
       console.log('Contact form submission:', formData);
-
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
@@ -59,177 +66,155 @@ export const ContactPage: React.FC = () => {
     }
   };
 
-  const lastUpdated = 'September 19, 2026';
-
   return (
     <div className="w-full bg-white text-slate-900 pt-6 sm:pt-8 pb-16" style={GIL_SANS}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Contact Us</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Contact' }]} />
 
         {/* Hero Section */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-medium mb-4">
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Contact Us</span>
+        <ScrollReveal animation="fade-up" delay={50}>
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 text-brand-darkred text-xs font-bold uppercase tracking-wider mb-4">
+              <MessageSquare className="w-3.5 h-3.5 text-brand-red" />
+              <span>Contact &amp; Academic Support</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+              Get in Touch with Us
+            </h1>
+            <p className="mt-3 sm:mt-4 text-slate-500 text-xs sm:text-base leading-relaxed max-w-2xl mx-auto">
+              Have questions regarding open educational resources, syllabus indexing, or want to suggest verified public repositories? We're here to help.
+            </p>
           </div>
-          <h1 className="text-2xl sm:text-5xl font-bold text-slate-900 tracking-tight">
-            Get in Touch
-          </h1>
-          <p className="mt-3 sm:mt-4 text-slate-500 text-xs sm:text-base leading-relaxed">
-            Have questions, feedback, or suggestions? We'd love to hear from you.
-            Choose the best way to reach us below.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Contact Methods & Form Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main 2-Column Grid: Left Contact Info (5 cols) & Right Form (7 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-6">
+          {/* Left Column: Contact Channels & Campus Desk */}
+          <div className="lg:col-span-5 space-y-4 min-w-0">
 
-            {/* Email */}
-            <div className="card-subtle p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-brand-red flex-shrink-0">
+            {/* Channel 1: Academic Support */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-soft hover:border-brand-red/40 hover:shadow-card-hover transition-all duration-200">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100/80 flex items-center justify-center text-brand-red flex-shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-1">Email Us</h3>
-                  <p className="text-xs text-slate-500">For general inquiries, partnerships, or feedback</p>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-bold text-slate-900 text-sm">Academic Support</h3>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred">
+                      Primary
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">General inquiries, syllabus guidance, or exam queries</p>
                   <a
-                    href="mailto:hello@technoedu.example.com"
-                    className="mt-2 inline-block text-xs text-brand-red hover:underline font-mono"
+                    href="mailto:support@technowallah.in"
+                    className="mt-2 inline-block text-xs font-semibold text-brand-red hover:text-brand-darkred hover:underline break-all"
                   >
-                    hello@technoedu.example.com
-                    <span className="text-amber-600 ml-1">[PLACEHOLDER]</span>
+                    support@technowallah.in
                   </a>
-                  <p className="mt-1 text-[10px] text-slate-400">Typical response: 1-2 business days</p>
+                  <p className="mt-1 text-[11px] text-slate-400">Response within 24 business hours</p>
                 </div>
               </div>
             </div>
 
-            {/* Data Protection / Privacy */}
-            <div className="card-subtle p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 flex-shrink-0">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-1">Data Protection Officer</h3>
-                  <p className="text-xs text-slate-500">Privacy concerns, data requests, GDPR/DPDP inquiries</p>
-                  <a
-                    href="mailto:privacy@technoedu.example.com"
-                    className="mt-2 inline-block text-xs text-emerald-600 hover:underline font-mono"
-                  >
-                    privacy@technoedu.example.com
-                    <span className="text-amber-600 ml-1">[PLACEHOLDER]</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Legal */}
-            <div className="card-subtle p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 flex-shrink-0">
+            {/* Channel 2: OER Content Curation */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-soft hover:border-brand-red/40 hover:shadow-card-hover transition-all duration-200">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100/80 flex items-center justify-center text-brand-red flex-shrink-0">
                   <FileText className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-1">Legal & Compliance</h3>
-                  <p className="text-xs text-slate-500">Terms of use, copyright, DMCA, legal notices</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-bold text-slate-900 text-sm">OER Resource Curation</h3>
+                  <p className="text-xs text-slate-500 mt-1">Suggest open textbooks, PYQ links, or report broken resources</p>
                   <a
-                    href="mailto:legal@technoedu.example.com"
-                    className="mt-2 inline-block text-xs text-amber-600 hover:underline font-mono"
+                    href="mailto:curation@technowallah.in"
+                    className="mt-2 inline-block text-xs font-semibold text-brand-red hover:text-brand-darkred hover:underline break-all"
                   >
-                    legal@technoedu.example.com
-                    <span className="text-amber-600 ml-1">[PLACEHOLDER]</span>
+                    curation@technowallah.in
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Social / Community */}
-            <div className="card-subtle p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-                  <Globe className="w-5 h-5" />
+            {/* Channel 3: Privacy & Data Protection */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-soft hover:border-brand-red/40 hover:shadow-card-hover transition-all duration-200">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100/80 flex items-center justify-center text-brand-red flex-shrink-0">
+                  <ShieldCheck className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-1">Community & Feedback</h3>
-                  <p className="text-xs text-slate-500">Content suggestions, broken links, new resource requests</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-bold text-slate-900 text-sm">Privacy &amp; Data Rights</h3>
+                  <p className="text-xs text-slate-500 mt-1">DPDP / GDPR inquiries, privacy concerns, and compliance</p>
                   <a
-                    href="mailto:feedback@technoedu.example.com"
-                    className="mt-2 inline-block text-xs text-blue-600 hover:underline font-mono"
+                    href="mailto:privacy@technowallah.in"
+                    className="mt-2 inline-block text-xs font-semibold text-brand-red hover:text-brand-darkred hover:underline break-all"
                   >
-                    feedback@technoedu.example.com
-                    <span className="text-amber-600 ml-1">[PLACEHOLDER]</span>
+                    privacy@technowallah.in
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Office Address Placeholder */}
-            <div className="card-subtle p-6 border-l-4 border-amber-500">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 flex-shrink-0">
+            {/* Channel 4: Campus Center */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-soft hover:border-brand-red/40 hover:shadow-card-hover transition-all duration-200">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100/80 flex items-center justify-center text-brand-red flex-shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-sm mb-1">Physical Address</h3>
-                  <p className="text-xs text-slate-500">
-                    Techno Wallah Open Education Initiative<br/>
-                    [CITY, STATE, PIN CODE] <span className="text-amber-600">[PLACEHOLDER — REPLACE]</span><br/>
-                    India
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-bold text-slate-900 text-sm">Campus Desk</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Techno India Campus • Salt Lake<br />
+                    EM-4/1, Sector V, Bidhannagar, Kolkata, West Bengal 700091
                   </p>
-                  <p className="mt-1 text-[10px] text-slate-400">This is an online-first initiative. For postal correspondence only.</p>
+                  <p className="mt-2 text-[11px] text-slate-400">
+                    Open education initiative desk for physical correspondence.
+                  </p>
                 </div>
               </div>
             </div>
 
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="card-subtle p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-brand-red">
-                  <MessageSquare className="w-4 h-4" />
-                </span>
-                Send Us a Message
-              </h2>
+          {/* Right Column: Clean Interactive Contact Form */}
+          <div className="lg:col-span-7 min-w-0">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-soft hover:shadow-card-hover transition-all duration-300">
+              
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100/80 flex items-center justify-center text-brand-red flex-shrink-0">
+                  <Send className="w-5 h-5" />
+                </div>
+                <div>
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900">Send Us a Direct Message</h2>
+                  <p className="text-xs text-slate-500">Fill out your inquiry and our academic desk will get in touch.</p>
+                </div>
+              </div>
 
-              {/* Success State */}
+              {/* Success Notification */}
               {status === 'success' && (
-                <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 animate-fade-in">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                      <CheckCircle className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-emerald-800 text-sm">Message Sent Successfully!</p>
-                      <p className="text-xs text-emerald-600">Thank you for reaching out. We'll respond within 1-2 business days.</p>
-                    </div>
+                <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 animate-fade-in-smooth flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center text-brand-red flex-shrink-0">
+                    <CheckCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900 text-sm">Message Sent Successfully!</p>
+                    <p className="text-xs text-slate-600 mt-0.5">Thank you for contacting us. We'll respond within 1–2 business days.</p>
                   </div>
                 </div>
               )}
 
-              {/* Error State */}
+              {/* Error Notification */}
               {status === 'error' && (
-                <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 animate-fade-in">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
-                      <AlertCircle className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-red-800 text-sm">Unable to Send Message</p>
-                      <p className="text-xs text-red-600">{errorMessage}</p>
-                    </div>
+                <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 animate-fade-in-smooth flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center text-brand-red flex-shrink-0">
+                    <AlertCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-brand-darkred text-sm">Unable to Send Message</p>
+                    <p className="text-xs text-brand-red mt-0.5">{errorMessage}</p>
                   </div>
                 </div>
               )}
@@ -238,7 +223,7 @@ export const ContactPage: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name */}
                   <div>
-                    <label htmlFor="name" className="block text-xs font-medium text-slate-700 mb-1.5">
+                    <label htmlFor="name" className="block text-xs font-bold text-slate-700 mb-1.5">
                       Full Name <span className="text-brand-red">*</span>
                     </label>
                     <input
@@ -248,7 +233,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       disabled={status === 'submitting'}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50"
                       placeholder="Your full name"
                       required
                       autoComplete="name"
@@ -257,7 +242,7 @@ export const ContactPage: React.FC = () => {
 
                   {/* Email */}
                   <div>
-                    <label htmlFor="email" className="block text-xs font-medium text-slate-700 mb-1.5">
+                    <label htmlFor="email" className="block text-xs font-bold text-slate-700 mb-1.5">
                       Email Address <span className="text-brand-red">*</span>
                     </label>
                     <input
@@ -267,7 +252,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       disabled={status === 'submitting'}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50"
                       placeholder="you@example.com"
                       required
                       autoComplete="email"
@@ -275,10 +260,10 @@ export const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Subject */}
+                {/* Subject Dropdown */}
                 <div>
-                  <label htmlFor="subject" className="block text-xs font-medium text-slate-700 mb-1.5">
-                    Subject <span className="text-brand-red">*</span>
+                  <label htmlFor="subject" className="block text-xs font-bold text-slate-700 mb-1.5">
+                    Subject / Category <span className="text-brand-red">*</span>
                   </label>
                   <select
                     id="subject"
@@ -286,26 +271,24 @@ export const ContactPage: React.FC = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     disabled={status === 'submitting'}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50 cursor-pointer"
                     required
                   >
                     <option value="">Select a topic</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="content">Content Suggestion / Correction</option>
-                    <option value="broken-link">Report Broken Link</option>
-                    <option value="new-resource">Suggest New Resource</option>
-                    <option value="privacy">Privacy / Data Protection</option>
-                    <option value="legal">Legal / Copyright / DMCA</option>
-                    <option value="partnership">Partnership / Collaboration</option>
-                    <option value="technical">Technical Issue / Bug Report</option>
-                    <option value="accessibility">Accessibility Concern</option>
-                    <option value="other">Other</option>
+                    <option value="academic">Academic &amp; Syllabus Guidance</option>
+                    <option value="content">Content Suggestion or Correction</option>
+                    <option value="broken-link">Report Broken External Link</option>
+                    <option value="new-resource">Suggest Verified OER Material</option>
+                    <option value="privacy">Privacy &amp; Data Rights (DPDP)</option>
+                    <option value="partnership">University / Campus Collaboration</option>
+                    <option value="technical">Technical Support or Bug Report</option>
+                    <option value="other">Other Inquiry</option>
                   </select>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-xs font-medium text-slate-700 mb-1.5">
+                  <label htmlFor="message" className="block text-xs font-bold text-slate-700 mb-1.5">
                     Message <span className="text-brand-red">*</span>
                   </label>
                   <textarea
@@ -315,96 +298,101 @@ export const ContactPage: React.FC = () => {
                     onChange={handleChange}
                     disabled={status === 'submitting'}
                     rows={5}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50 resize-y min-h-[120px]"
-                    placeholder="Describe your inquiry in detail..."
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all disabled:opacity-50 resize-y min-h-[130px]"
+                    placeholder="Describe your question or feedback in detail..."
                     required
                   />
                 </div>
 
-                {/* Privacy Notice */}
-                <div className="flex items-start gap-2 text-xs text-slate-500 p-3 bg-slate-50 rounded-xl">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <p>
-                    By submitting this form, you agree to our <Link to="/privacy-policy" className="text-brand-red hover:underline">Privacy Policy</Link>
-                    and consent to us processing your data to respond to your inquiry. We do not share your information with third parties.
+                {/* Privacy Consent */}
+                <div className="flex items-start gap-2.5 text-xs text-slate-500 p-3.5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <ShieldCheck className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                  <p className="leading-relaxed">
+                    By submitting this form, you agree to our{' '}
+                    <Link to="/privacy-policy" className="text-brand-red hover:underline font-semibold">
+                      Privacy Policy
+                    </Link>{' '}
+                    and consent to processing your details to respond to your inquiry. We never share your contact information.
                   </p>
                 </div>
 
                 {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={status === 'submitting'}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-red text-white text-sm font-bold hover:bg-brand-darkred transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 justify-center shadow-red-glow"
-                >
-                  {status === 'submitting' ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </button>
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="w-full sm:w-auto px-7 py-3 rounded-xl bg-brand-red text-white text-xs sm:text-sm font-bold hover:bg-brand-darkred transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 justify-center shadow-red-glow hover:-translate-y-0.5"
+                  >
+                    {status === 'submitting' ? (
+                      <div className="flex items-center gap-2">
+                        <RoseLoader mode="inline" size={18} color="#ffffff" showNumbers={false} text="" />
+                        <span>Sending Message...</span>
+                      </div>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>Send Message</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
-            </div>
-
-            {/* Alternative Contact Methods */}
-            <div className="mt-6 card-subtle p-6">
-              <h3 className="font-bold text-slate-900 text-sm mb-4">Prefer Another Way?</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <Link
-                  to="/privacy-policy"
-                  className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
-                >
-                  <ShieldCheck className="w-5 h-5 text-emerald-600 mx-auto mb-1" />
-                  <p className="text-xs font-medium text-slate-900">Privacy Concerns</p>
-                  <p className="text-[10px] text-slate-500">GDPR/DPDP requests, data deletion</p>
-                </Link>
-                <Link
-                  to="/terms"
-                  className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
-                >
-                  <FileText className="w-5 h-5 text-amber-600 mx-auto mb-1" />
-                  <p className="text-xs font-medium text-slate-900">Legal Matters</p>
-                  <p className="text-[10px] text-slate-500">Copyright, DMCA, terms questions</p>
-                </Link>
-                <Link
-                  to="/accessibility"
-                  className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
-                >
-                  <Accessibility className="w-5 h-5 text-blue-600 mx-auto mb-1" />
-                  <p className="text-xs font-medium text-slate-900">Accessibility Issues</p>
-                  <p className="text-[10px] text-slate-500">Report barriers, suggest improvements</p>
-                </Link>
-                <a
-                  href="https://github.com/technoedu/technoedu/issues"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center flex items-center justify-center gap-1"
-                >
-                  <Globe className="w-5 h-5 text-purple-600" />
-                  <span className="flex flex-col items-start text-left">
-                    <p className="text-xs font-medium text-slate-900">GitHub Issues</p>
-                    <p className="text-[10px] text-slate-500">Bug reports, feature requests</p>
-                  </span>
-                </a>
-              </div>
             </div>
           </div>
 
         </div>
 
-        {/* Back to Home */}
-        <div className="mt-12 text-center">
-          <Link to="/" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-red hover:bg-brand-darkred text-white text-xs sm:text-sm font-semibold transition-all">
-            ← Back to Home
-          </Link>
+        {/* Quick Policies & Reference Row */}
+        <div className="mt-14 pt-10 border-t border-slate-200">
+          <div className="text-center mb-6">
+            <h3 className="font-extrabold text-slate-900 text-sm sm:text-base">
+              Quick Reference &amp; Guidelines
+            </h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Direct access to initiative documentation, rights, and policies.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              to="/privacy-policy"
+              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-red/40 hover:bg-white transition-all text-center group"
+            >
+              <ShieldCheck className="w-5 h-5 text-brand-red mx-auto mb-1.5 group-hover:scale-110 transition-transform" />
+              <p className="text-xs font-bold text-slate-900">Privacy Policy</p>
+              <p className="text-[11px] text-slate-500 mt-0.5">DPDP compliance &amp; student rights</p>
+            </Link>
+
+            <Link
+              to="/terms"
+              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-red/40 hover:bg-white transition-all text-center group"
+            >
+              <FileText className="w-5 h-5 text-brand-red mx-auto mb-1.5 group-hover:scale-110 transition-transform" />
+              <p className="text-xs font-bold text-slate-900">Terms &amp; Fair Use</p>
+              <p className="text-[11px] text-slate-500 mt-0.5">Open education resource terms</p>
+            </Link>
+
+            <Link
+              to="/accessibility"
+              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-red/40 hover:bg-white transition-all text-center group"
+            >
+              <Accessibility className="w-5 h-5 text-brand-red mx-auto mb-1.5 group-hover:scale-110 transition-transform" />
+              <p className="text-xs font-bold text-slate-900">Accessibility</p>
+              <p className="text-[11px] text-slate-500 mt-0.5">WCAG 2.1 AA academic standards</p>
+            </Link>
+
+            <Link
+              to="/disclaimer"
+              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-red/40 hover:bg-white transition-all text-center group"
+            >
+              <Globe className="w-5 h-5 text-brand-red mx-auto mb-1.5 group-hover:scale-110 transition-transform" />
+              <p className="text-xs font-bold text-slate-900">Disclaimer</p>
+              <p className="text-[11px] text-slate-500 mt-0.5">Non-commercial OER index details</p>
+            </Link>
+          </div>
         </div>
 
       </div>
     </div>
   );
-}
+};

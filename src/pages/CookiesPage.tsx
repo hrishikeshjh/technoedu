@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Cookie, ShieldCheck, Database, Eye, EyeOff, Globe, AlertCircle, CheckCircle, XCircle, Clock, ExternalLink } from 'lucide-react';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
@@ -24,11 +25,7 @@ export const CookiesPage: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Cookie Policy</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Cookie Policy' }]} />
 
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">

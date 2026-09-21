@@ -18,15 +18,175 @@
     /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
   }
-  /* Minimum touch target size for accessibility */
-  button, a, [role="button"] {
+  /* Minimum touch target size for accessibility on buttons and interactive roles (WCAG 2.5.5) */
+  button:not(.no-min-touch),
+  [role="button"]:not(.no-min-touch) {
     min-height: 44px;
     min-width: 44px;
   }
-  /* Override for very small inline elements that shouldn't enforce 44px */
-  .no-min-touch {
-    min-height: unset;
-    min-width: unset;
+  /* Override for breadcrumbs, inline links, and compact controls */
+  .no-min-touch,
+  .breadcrumb,
+  .breadcrumb *,
+  nav[aria-label="Breadcrumb"] * {
+    min-height: unset !important;
+    min-width: unset !important;
+  }
+}
+
+@layer components {
+  /* Smooth transitions for all interactive elements */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-smooth-fast {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .transition-smooth-slow {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* Enhanced fade-in animations */
+  .animate-fade-in-smooth {
+    animation: fadeInSmooth 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInSmooth {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Lazy/entrance animations using intersection observer */
+  .lazy-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lazy-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lazy-slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lazy-slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lazy-slide-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lazy-slide-down.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lazy-scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lazy-scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .lazy-slide-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lazy-slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .lazy-slide-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lazy-slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Staggered animation delays */
+  .stagger-1 { transition-delay: 50ms; }
+  .stagger-2 { transition-delay: 100ms; }
+  .stagger-3 { transition-delay: 150ms; }
+  .stagger-4 { transition-delay: 200ms; }
+  .stagger-5 { transition-delay: 250ms; }
+  .stagger-6 { transition-delay: 300ms; }
+  .stagger-7 { transition-delay: 350ms; }
+  .stagger-8 { transition-delay: 400ms; }
+
+  /* Mobile drawer smooth animation */
+  .mobile-drawer-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-drawer-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .mobile-drawer-exit {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 1, 1),
+                transform 0.25s cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  .mobile-drawer-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  /* Hamburger icon animation */
+  .hamburger-line {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hamburger-line.open:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger-line.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-line.open:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
 
@@ -80,3 +240,44 @@
 .safe-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+
+/* Rose loader and scroll animations */
+.rose-glow {
+  filter: drop-shadow(0 0 16px rgba(220, 38, 38, 0.45));
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes roseBreath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+.animate-rose-breath {
+  animation: roseBreath 4.4s ease-in-out infinite;
+}
+
+@keyframes statBarFill {
+  from {
+    width: 0%;
+    opacity: 0.3;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.animate-stat-fill {
+  animation: statBarFill 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+

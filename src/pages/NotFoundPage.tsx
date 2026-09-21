@@ -50,7 +50,7 @@ export const NotFoundPage: React.FC = () => {
               className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
             >
               <RotateCcw className="w-5 h-5 text-brand-red mx-auto mb-1" />
-              <p className="text-xs font-medium text-slate-900">Exam Directory</p>
+              <p className="text-xs font-medium text-slate-900">Exams</p>
               <p className="text-[10px] text-slate-500">Browse 100+ exams</p>
             </Link>
             <Link
@@ -58,7 +58,7 @@ export const NotFoundPage: React.FC = () => {
               className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
             >
               <ExternalLink className="w-5 h-5 text-blue-500 mx-auto mb-1" />
-              <p className="text-xs font-medium text-slate-900">Complete Directory</p>
+              <p className="text-xs font-medium text-slate-900">Directory</p>
               <p className="text-[10px] text-slate-500">All exams catalogued</p>
             </Link>
             <Link
@@ -66,7 +66,7 @@ export const NotFoundPage: React.FC = () => {
               className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
             >
               <Search className="w-5 h-5 text-emerald-500 mx-auto mb-1" />
-              <p className="text-xs font-medium text-slate-900">Study Library</p>
+              <p className="text-xs font-medium text-slate-900">Library</p>
               <p className="text-[10px] text-slate-500">Open materials</p>
             </Link>
             <Link
@@ -74,7 +74,7 @@ export const NotFoundPage: React.FC = () => {
               className="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-brand-red/30 hover:bg-white transition-all text-center"
             >
               <ExternalLink className="w-5 h-5 text-purple-500 mx-auto mb-1" />
-              <p className="text-xs font-medium text-slate-900">Open Platforms</p>
+              <p className="text-xs font-medium text-slate-900">Platforms</p>
               <p className="text-[10px] text-slate-500">Global repositories</p>
             </Link>
           </div>

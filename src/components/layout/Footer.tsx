@@ -16,6 +16,7 @@ import {
   Accessibility,
   HeartHandshake
 } from 'lucide-react';
+import { ScrollReveal } from '../common/ScrollReveal';
 
 export const Footer: React.FC = () => {
   return (
@@ -23,14 +24,15 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Top Open Brand Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-slate-800">
+        <ScrollReveal animation="fade-up" delay={50}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-slate-800">
 
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.png"
+                src="/logowhite.png"
                 alt="Techno Wallah"
-                className="h-12 w-auto object-contain brightness-0 invert"
+                className="h-12 w-auto object-contain"
               />
             </div>
 
@@ -139,11 +141,12 @@ export const Footer: React.FC = () => {
               Hub Directory
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><Link to="/exams" className="hover:text-white transition-colors">Exam Directory</Link></li>
-              <li><Link to="/directory" className="hover:text-white transition-colors">Complete Exam Directory (100+ Exams)</Link></li>
-              <li><Link to="/library" className="hover:text-white transition-colors">Open Study Material Library</Link></li>
-              <li><Link to="/platforms" className="hover:text-white transition-colors">Global Learning Platforms</Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors">About Open Initiative</Link></li>
+              <li><Link to="/exams" className="hover:text-white transition-colors">Exams</Link></li>
+              <li><Link to="/directory" className="hover:text-white transition-colors">Directory</Link></li>
+              <li><Link to="/library" className="hover:text-white transition-colors">Library</Link></li>
+              <li><Link to="/platforms" className="hover:text-white transition-colors">Platforms</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -191,24 +194,24 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
-
         </div>
+      </ScrollReveal>
 
-        {/* Bottom Strip */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <div>
-            Techno Wallah Open Education Resource Initiative. Non-commercial, open-access public knowledge repository.
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link to="/about" className="hover:text-slate-300">About</Link>
-            <Link to="/contact" className="hover:text-slate-300">Contact</Link>
-            <Link to="/privacy-policy" className="hover:text-slate-300">Privacy</Link>
-            <Link to="/terms" className="hover:text-slate-300">Terms</Link>
-            <Link to="/cookies" className="hover:text-slate-300">Cookies</Link>
-            <Link to="/disclaimer" className="hover:text-slate-300">Disclaimer</Link>
-            <Link to="/accessibility" className="hover:text-slate-300">Accessibility</Link>
-          </div>
+      {/* Bottom Strip */}
+      <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        <div>
+          Techno Wallah Open Education Resource Initiative. Non-commercial, open-access public knowledge repository.
         </div>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link to="/about" className="hover:text-slate-300">About</Link>
+          <Link to="/contact" className="hover:text-slate-300">Contact</Link>
+          <Link to="/privacy-policy" className="hover:text-slate-300">Privacy</Link>
+          <Link to="/terms" className="hover:text-slate-300">Terms</Link>
+          <Link to="/cookies" className="hover:text-slate-300">Cookies</Link>
+          <Link to="/disclaimer" className="hover:text-slate-300">Disclaimer</Link>
+          <Link to="/accessibility" className="hover:text-slate-300">Accessibility</Link>
+        </div>
+      </div>
 
       </div>
     </footer>

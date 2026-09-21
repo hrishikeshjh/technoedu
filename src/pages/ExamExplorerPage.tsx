@@ -13,6 +13,9 @@ import {
 import { examsData, examCategories } from '../data/examsData';
 import { ExamInfo } from '../types';
 import { getExamEmblem } from '../components/common/ExamEmblems';
+import { AnimatedCounter } from '../components/common/AnimatedCounter';
+import { ScrollReveal } from '../components/common/ScrollReveal';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 // Icon per exam category (for filter tabs only)
 const categoryIcon: Record<string, React.ReactNode> = {
@@ -51,11 +54,7 @@ export const ExamExplorerPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Examinations Directory</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Exams' }]} />
 
         {/* Page Header */}
         <div className="mb-6 sm:mb-8 border-b border-slate-200 pb-6 sm:pb-8">
@@ -146,7 +145,7 @@ export const ExamExplorerPage: React.FC = () => {
         {/* Results Counter */}
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-slate-500">
-            Showing <span className="text-slate-900 font-semibold">{filteredExams.length}</span> examinations
+            Showing <span className="text-slate-900 font-semibold"><AnimatedCounter end={filteredExams.length} duration={500} /></span> examinations
           </p>
           {(selectedCategory !== 'All' || searchQuery !== '') && (
             <button
@@ -163,11 +162,15 @@ export const ExamExplorerPage: React.FC = () => {
 
         {/* Exams Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {filteredExams.map((exam: ExamInfo) => (
-            <div
+          {filteredExams.map((exam: ExamInfo, idx: number) => (
+            <ScrollReveal
               key={exam.id}
-              className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand-red/40 hover:shadow-md transition-all flex flex-col justify-between group"
+              animation="fade-up"
+              delay={(idx % 6) * 60}
+              duration={550}
+              className="h-full flex flex-col"
             >
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand-red/40 hover:shadow-md transition-all flex flex-col justify-between group h-full">
               <div>
                 {/* Header */}
                 <div className="flex items-start justify-between gap-3 mb-3">
@@ -278,7 +281,8 @@ export const ExamExplorerPage: React.FC = () => {
               </div>
 
             </div>
-          ))}
+          </ScrollReveal>
+        ))}
         </div>
 
       </div>

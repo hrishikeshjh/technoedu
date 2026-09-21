@@ -15,6 +15,7 @@ import { examsData } from '../data/examsData';
 import { studyMaterials } from '../data/studyMaterialData';
 import { ExamInfo, OpenSourcePlatform, ExamTopicResource, RecommendedBook } from '../types';
 import { getExamEmblem } from '../components/common/ExamEmblems';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
@@ -48,13 +49,7 @@ export const ExamDetailPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <Link to="/exams" className="hover:text-brand-red transition-colors">Examinations</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">{exam.name}</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Exams', path: '/exams' }, { label: exam.name }]} />
 
         {/* Hero Header */}
         <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-8 mb-8 shadow-sm">

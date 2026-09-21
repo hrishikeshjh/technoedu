@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { MobileNav } from './components/layout/MobileNav';
+import { InitialLoadingScreen } from './components/common/InitialLoadingScreen';
 import { LandingPage } from './pages/LandingPage';
 import { ExamExplorerPage } from './pages/ExamExplorerPage';
 import { ExamDetailPage } from './pages/ExamDetailPage';
@@ -29,8 +30,16 @@ const ScrollToTop: React.FC = () => {
 };
 
 export const App: React.FC = () => {
+  const [showInitialLoader, setShowInitialLoader] = useState(true);
+
   return (
     <div className="min-h-screen bg-white flex flex-col selection:bg-brand-red selection:text-white">
+      {showInitialLoader && (
+        <InitialLoadingScreen 
+          durationMs={3000} 
+          onComplete={() => setShowInitialLoader(false)} 
+        />
+      )}
       <ScrollToTop />
       <Navbar />
       <main className="flex-1 pb-16 lg:pb-0">

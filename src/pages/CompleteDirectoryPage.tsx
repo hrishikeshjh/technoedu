@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { completeExamDirectory, directoryRegions } from '../data/completeExamDirectory';
 import { DirectoryExam, DirectoryRegion } from '../types';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 const regionBadgeStyles: Record<DirectoryRegion, string> = {
   'West Bengal': 'bg-red-50 text-red-700 border-red-200',
@@ -88,11 +89,7 @@ export const CompleteDirectoryPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Complete Exam Directory</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Directory' }]} />
 
         {/* Page Header */}
         <div className="mb-6 sm:mb-8 border-b border-slate-200 pb-6 sm:pb-8">

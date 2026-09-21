@@ -22,6 +22,9 @@ import {
 import { studyMaterials, materialCategories } from '../data/studyMaterialData';
 import { examsData } from '../data/examsData';
 import { StudyMaterialItem, ExamInfo } from '../types';
+import { AnimatedCounter } from '../components/common/AnimatedCounter';
+import { ScrollReveal } from '../components/common/ScrollReveal';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 const platformIconMap: Record<string, React.ReactNode> = {
   'NPTEL':         <GraduationCap className="w-3.5 h-3.5 text-brand-red" />,
@@ -84,11 +87,7 @@ export const StudyMaterialPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Open Study Material Library</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Library' }]} />
 
         {/* Page Header */}
         <div className="mb-6 sm:mb-8 border-b border-slate-200 pb-6 sm:pb-8">
@@ -192,7 +191,7 @@ export const StudyMaterialPage: React.FC = () => {
         {/* Results Count */}
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-slate-500">
-            Showing <span className="text-slate-900 font-semibold">{filteredMaterials.length}</span> resources
+            Showing <span className="text-slate-900 font-semibold"><AnimatedCounter end={filteredMaterials.length} duration={500} /></span> resources
           </p>
           {(selectedCategory !== 'All' || selectedExam !== 'All' || searchQuery !== '') && (
             <button
@@ -229,11 +228,15 @@ export const StudyMaterialPage: React.FC = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredMaterials.map((item: StudyMaterialItem) => (
-              <div
+            {filteredMaterials.map((item: StudyMaterialItem, idx: number) => (
+              <ScrollReveal
                 key={item.id}
-                className="bg-white border border-slate-200 rounded-xl p-5 hover:border-brand-red/40 hover:shadow-md transition-all flex flex-col justify-between group"
+                animation="fade-up"
+                delay={(idx % 6) * 60}
+                duration={550}
+                className="h-full flex flex-col"
               >
+                <div className="bg-white border border-slate-200 rounded-xl p-5 hover:border-brand-red/40 hover:shadow-md transition-all flex flex-col justify-between group h-full">
                 <div>
                   {/* Top Bar */}
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -314,7 +317,8 @@ export const StudyMaterialPage: React.FC = () => {
                 </div>
 
               </div>
-            ))}
+            </ScrollReveal>
+          ))}
           </div>
         )}
 

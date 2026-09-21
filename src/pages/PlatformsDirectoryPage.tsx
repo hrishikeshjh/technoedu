@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { platformsData } from '../data/platformsData';
 import { LearningPlatformInfo } from '../types';
+import { Breadcrumb } from '../components/common/Breadcrumb';
 
 const platformIconMap: Record<string, React.ReactNode> = {
   'nptel-swayam':             <GraduationCap className="w-5 h-5 text-brand-red" />,
@@ -54,11 +55,7 @@ export const PlatformsDirectoryPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
-        <div className="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <Link to="/" className="hover:text-brand-red transition-colors">Home</Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Open Learning Platforms</span>
-        </div>
+        <Breadcrumb items={[{ label: 'Platforms' }]} />
 
         {/* Page Header */}
         <div className="mb-6 sm:mb-8 border-b border-slate-200 pb-6 sm:pb-8">
