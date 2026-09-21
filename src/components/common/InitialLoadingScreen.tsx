@@ -63,21 +63,16 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
         fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
-      {/* Ambient soft red glows */}
-      <div className="absolute w-[520px] h-[520px] rounded-full bg-red-500/10 blur-[130px] pointer-events-none -z-10" />
-      <div className="absolute w-[320px] h-[320px] rounded-full bg-rose-400/15 blur-[90px] pointer-events-none -z-10" />
-
       <div className="relative flex flex-col items-center max-w-md w-full text-center space-y-6">
         
         {/* Rose Three Animation Canvas in vibrant red color */}
-        <div className="relative w-full flex items-center justify-center py-2">
+        <div className="relative w-full flex items-center justify-center py-2 bg-transparent">
           <RoseThreeAnimation
-            size="min(68vmin, 290px)"
+            size="min(68vmin, 280px)"
             color="#dc2626"
             particleColor="#dc2626"
-            glowColor="rgba(220, 38, 38, 0.25)"
             showTrack={true}
-            trackOpacity={0.16}
+            trackOpacity={0.15}
           />
         </div>
 
@@ -101,9 +96,9 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
             </span>
           </div>
 
-          <div className="w-full h-1.5 bg-slate-200/80 rounded-full overflow-hidden p-[1px]">
+          <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden p-[1px]">
             <div
-              className="h-full bg-gradient-to-r from-red-600 via-rose-500 to-red-500 rounded-full transition-all duration-75 ease-out shadow-[0_0_10px_rgba(220,38,38,0.5)]"
+              className="h-full bg-brand-red rounded-full transition-all duration-75 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>

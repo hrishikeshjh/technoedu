@@ -75,7 +75,6 @@ export const RoseLoader: React.FC<RoseLoaderProps> = ({
           size={260}
           color={resolvedColor}
           particleColor={dark ? '#ffffff' : '#dc2626'}
-          glowColor={dark ? 'rgba(220, 38, 38, 0.2)' : 'rgba(220, 38, 38, 0.1)'}
           showTrack={true}
           trackOpacity={dark ? 0.15 : 0.2}
         />

@@ -15,14 +15,6 @@ export const HeroSection: React.FC = () => {
           {/* Left: Text content */}
           <div className="lg:col-span-6 xl:col-span-7 space-y-5 sm:space-y-6">
 
-            {/* Brand wordmark */}
-            <ScrollReveal animation="fade-down" delay={100}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-bold tracking-wide uppercase">
-                <span className="w-2 h-2 rounded-full bg-brand-red animate-pulse" />
-                <span>TechnoWallah Initiative</span>
-              </div>
-            </ScrollReveal>
-
             <ScrollReveal animation="fade-up" delay={200}>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
                 Everything You Need<br /> to <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-rose-600">Learn Better.</span>
