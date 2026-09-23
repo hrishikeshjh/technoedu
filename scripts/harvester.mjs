@@ -422,24 +422,25 @@ export const UPSC_PYQ_CATALOG = [
   {
     year: '2024',
     papers: [
-      { name: 'Prelims General Studies Paper I', code: '2024_GS_1', url: 'https://upsc.gov.in/sites/default/files/QP-CSP-24-GS-P-I-260624.pdf' },
-      { name: 'Prelims CSAT Paper II', code: '2024_CSAT_2', url: 'https://upsc.gov.in/sites/default/files/QP-CSP-24-CSAT-P-II-260624.pdf' },
-      { name: 'Mains Essay Paper', code: '2024_Mains_Essay', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-24-Essay-200924.pdf' },
-      { name: 'Mains General Studies I', code: '2024_Mains_GS1', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-I-210924.pdf' },
-      { name: 'Mains General Studies II', code: '2024_Mains_GS2', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-II-210924.pdf' },
-      { name: 'Mains General Studies III', code: '2024_Mains_GS3', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-III-220924.pdf' },
-      { name: 'Mains General Studies IV (Ethics)', code: '2024_Mains_GS4', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-IV-220924.pdf' }
+      { name: 'Prelims General Studies Paper I', code: '2024_GS_1', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSP-24-GENERAL-STUDIES-PAPER-I-180624.pdf' },
+      { name: 'Prelims CSAT Paper II', code: '2024_CSAT_2', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSP-24-GENERAL-STUDIES-PAPER-II-180624.pdf' },
+      { name: 'Mains Essay Paper', code: '2024_Mains_Essay', url: 'https://www.upsc.gov.in/sites/default/files/QP_CSM_2024_ESSAY_03102024.pdf' },
+      { name: 'Mains General Studies I', code: '2024_Mains_GS1', url: 'https://www.upsc.gov.in/sites/default/files/QP_CSM_2024_GenStud_I_03102024.pdf' },
+      { name: 'Mains General Studies II', code: '2024_Mains_GS2', url: 'https://www.upsc.gov.in/sites/default/files/QP_CSM_2024_GenStud_II_03102024.pdf' },
+      { name: 'Mains General Studies III', code: '2024_Mains_GS3', url: 'https://www.upsc.gov.in/sites/default/files/QP_CSM_2024_GenStud_III_03102024.pdf' },
+      { name: 'Mains General Studies IV (Ethics)', code: '2024_Mains_GS4', url: 'https://www.upsc.gov.in/sites/default/files/QP_CSM_2024_GenStud_IV_03102024.pdf' }
     ]
   },
   {
     year: '2023',
     papers: [
-      { name: 'Prelims General Studies Paper I', code: '2023_GS_1', url: 'https://upsc.gov.in/sites/default/files/QP-CSP-2023-GS-Paper-I-280523.pdf' },
-      { name: 'Prelims CSAT Paper II', code: '2023_CSAT_2', url: 'https://upsc.gov.in/sites/default/files/QP-CSP-2023-CSAT-Paper-II-280523.pdf' },
-      { name: 'Mains General Studies I', code: '2023_Mains_GS1', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-I-160923.pdf' },
-      { name: 'Mains General Studies II', code: '2023_Mains_GS2', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-II-160923.pdf' },
-      { name: 'Mains General Studies III', code: '2023_Mains_GS3', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-III-170923.pdf' },
-      { name: 'Mains General Studies IV (Ethics)', code: '2023_Mains_GS4', url: 'https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-IV-170923.pdf' }
+      { name: 'Prelims General Studies Paper I', code: '2023_GS_1', url: 'https://www.upsc.gov.in/sites/default/files/QP_CS_Pre_Exam_2023_280523.pdf' },
+      { name: 'Prelims CSAT Paper II', code: '2023_CSAT_2', url: 'https://www.upsc.gov.in/sites/default/files/QP_CS_Pre_Exam_2023_GENERAL_STUDIES_PAPER_II_280523.pdf' },
+      { name: 'Mains Essay Paper', code: '2023_Mains_Essay', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSM-23-ESSAY-180923.pdf' },
+      { name: 'Mains General Studies I', code: '2023_Mains_GS1', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSM-23-GENERAL-STUDIES-PAPER-I-180923.pdf' },
+      { name: 'Mains General Studies II', code: '2023_Mains_GS2', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSM-23-GENERAL-STUDIES-PAPER-II-180923.pdf' },
+      { name: 'Mains General Studies III', code: '2023_Mains_GS3', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSM-23-GENERAL-STUDIES-PAPER-III-180923.pdf' },
+      { name: 'Mains General Studies IV (Ethics)', code: '2023_Mains_GS4', url: 'https://www.upsc.gov.in/sites/default/files/QP-CSM-23-GENERAL-STUDIES-PAPER-IV-180923.pdf' }
     ]
   }
 ];

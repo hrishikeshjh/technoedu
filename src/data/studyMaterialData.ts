@@ -52,6 +52,7 @@ export const studyMaterialData: StudyMaterialItem[] = [
       { chapter: 'Mains 2024 GS Paper IV', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_Mains_GS4.pdf' },
       { chapter: 'Prelims 2023 GS Paper I', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_GS_1.pdf' },
       { chapter: 'Prelims 2023 CSAT Paper II', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_CSAT_2.pdf' },
+      { chapter: 'Mains 2023 Essay Paper', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_Essay.pdf' },
       { chapter: 'Mains 2023 GS Paper I', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS1.pdf' },
       { chapter: 'Mains 2023 GS Paper II', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS2.pdf' },
       { chapter: 'Mains 2023 GS Paper III', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS3.pdf' },
