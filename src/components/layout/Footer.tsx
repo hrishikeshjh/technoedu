@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="pt-1 text-xs text-slate-500">
-              Curated under Open Educational Resources (OER) guidelines by Techno Wallah for students and competitive exam aspirants.
+              Developed and maintained by GDG on campus TIU
             </div>
           </div>
 
