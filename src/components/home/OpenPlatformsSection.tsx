@@ -96,8 +96,8 @@ export const OpenPlatformsSection: React.FC = () => {
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 dark:border-[#252932] flex items-center justify-between">
-                  <span className="text-[10px] font-medium text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
-                    <ShieldCheck className="w-3 h-3" />
+                  <span className="text-[10px] font-medium text-slate-600 dark:text-[#A7AFBD] flex items-center gap-1">
+                    <ShieldCheck className="w-3 h-3 text-brand-red" />
                     {platform.accessType}
                   </span>
 

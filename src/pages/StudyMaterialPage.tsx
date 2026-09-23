@@ -41,39 +41,7 @@ const platformIconMap: Record<string, React.ReactNode> = {
   'Open Library':  <Globe2 className="w-3.5 h-3.5 text-brand-red" />,
 };
 
-// Build a fast lookup map: original official URL -> best resolved URL (Cloudflare R2 CDN or local mirror)
-const resolvedUrlMap = new Map<string, string>();
-try {
-  const subjects = (subjectPdfDirectory as any).subjects || {};
-  for (const sKey of Object.keys(subjects)) {
-    const s = subjects[sKey];
-    if (s.textbooks) {
-      for (const b of s.textbooks) {
-        if (b.chapters) {
-          for (const ch of b.chapters) {
-            if (ch.directPdfUrl && (ch.cdnUrl || ch.localPath)) {
-              resolvedUrlMap.set(ch.directPdfUrl, ch.cdnUrl || ch.localPath);
-            }
-          }
-        }
-      }
-    }
-    if (s.questionPapers) {
-      for (const qp of s.questionPapers) {
-        if (qp.directPdfUrl && (qp.cdnUrl || qp.localPath)) {
-          resolvedUrlMap.set(qp.directPdfUrl, qp.cdnUrl || qp.localPath);
-        }
-      }
-    }
-  }
-} catch {
-  // Graceful fallback if directory metadata is missing
-}
-
-function resolvePdfUrl(url?: string): string {
-  if (!url) return '#';
-  return resolvedUrlMap.get(url) || url;
-}
+import { resolvePdfUrl } from '../utils/pdfResolver';
 
 function getPlatformIcon(platform: string): React.ReactNode {
   for (const key of Object.keys(platformIconMap)) {
@@ -138,9 +106,9 @@ export const StudyMaterialPage: React.FC = () => {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
-                <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span><strong>{subjectPdfDirectory.metadata.totalChapters}</strong> Verified Direct PDFs Indexed</span>
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-red/10 dark:bg-brand-red/20 border border-brand-red/30 text-brand-red text-xs font-semibold">
+                <CheckCircle className="w-4 h-4 text-brand-red" />
+                <span><strong>{subjectPdfDirectory.metadata.totalChapters}</strong> Verified Direct PDFs on GitHub</span>
               </span>
               <Link
                 to="/platforms"
@@ -316,46 +284,53 @@ export const StudyMaterialPage: React.FC = () => {
                   {/* Metadata */}
                   <div className="pt-3 border-t border-slate-100 dark:border-[#252932] mb-3 flex items-center justify-between text-xs text-slate-400 dark:text-[#7F8795]">
                     <span className="flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-brand-red" />
                       <span className="text-slate-600 dark:text-[#A7AFBD] text-[11px]">{item.licenseType}</span>
                     </span>
                     <span className="text-[11px]">{item.pageCount} Pages</span>
                   </div>
 
                   {/* Actions */}
-                  <div className="grid grid-cols-2 gap-2">
-                    {item.directPdfUrl && (
-                      <a
-                        href={item.directPdfUrl}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        referrerPolicy="no-referrer"
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-all shadow-emerald-glow"
-                        title="Direct PDF Download"
-                      >
-                        <Download className="w-3 h-3" />
-                        <span>Direct PDF</span>
-                      </a>
-                    )}
-                    <a
-                      href={item.sourceUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      referrerPolicy="no-referrer"
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-brand-red hover:bg-brand-darkred text-white text-xs font-semibold transition-all"
-                    >
-                      <span>Open Source</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                  {(() => {
+                    const directUrl = resolvePdfUrl(
+                      item.chapterPdfUrls && item.chapterPdfUrls.length > 0
+                        ? item.chapterPdfUrls[0].url
+                        : item.directPdfUrl
+                    );
+                    return (
+                      <div className="grid grid-cols-2 gap-2">
+                        {directUrl && (
+                          <a
+                            href={directUrl}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-brand-red hover:bg-brand-darkred text-white text-xs font-semibold transition-all shadow-sm"
+                            title={item.chapterPdfUrls && item.chapterPdfUrls.length > 0 ? "Open Chapter 1 directly from GitHub" : "Direct PDF from GitHub"}
+                          >
+                            <Download className="w-3 h-3" />
+                            <span>Direct PDF</span>
+                          </a>
+                        )}
+                        <a
+                          href={item.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 hover:bg-black text-white dark:bg-[#15171C] dark:hover:bg-[#1E222A] dark:text-[#F8FAFC] border border-slate-700/40 dark:border-[#2E333D] text-xs font-semibold transition-all"
+                        >
+                          <span>Open Source</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
 
-                    <button
-                      onClick={() => setSelectedItem(item)}
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-100 dark:bg-[#15171C] hover:bg-slate-200 dark:hover:bg-[#1A1D23] text-slate-700 dark:text-[#F8FAFC] text-xs font-medium border border-slate-200 dark:border-[#252932] transition-all"
-                    >
-                      <BookOpen className="w-3 h-3" />
-                      <span>Details</span>
-                    </button>
-                  </div>
+                        <button
+                          onClick={() => setSelectedItem(item)}
+                          className="col-span-2 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-100 dark:bg-[#0E1015] hover:bg-slate-200 dark:hover:bg-[#15171C] text-slate-700 dark:text-[#A7AFBD] hover:text-slate-900 dark:hover:text-[#F8FAFC] text-xs font-medium border border-slate-200 dark:border-[#252932] transition-all"
+                        >
+                          <BookOpen className="w-3 h-3" />
+                          <span>{item.chapterPdfUrls && item.chapterPdfUrls.length > 0 ? `View All ${item.chapterPdfUrls.length} Chapters` : 'Details & Topics'}</span>
+                        </button>
+                      </div>
+                    );
+                  })()}
                 </div>
 
               </div>
@@ -400,7 +375,7 @@ export const StudyMaterialPage: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-slate-400 dark:text-[#7F8795] block">Open License</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">{selectedItem.licenseType}</span>
+                    <span className="text-brand-red font-medium">{selectedItem.licenseType}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 dark:text-[#7F8795] block">Document Volume</span>
@@ -408,7 +383,7 @@ export const StudyMaterialPage: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-slate-400 dark:text-[#7F8795] block">Access Model</span>
-                    <span className="text-emerald-600 dark:text-emerald-400">100% Free Open Educational Resource</span>
+                    <span className="text-slate-600 dark:text-[#A7AFBD]">100% Free Open Educational Resource</span>
                   </div>
                 </div>
 
@@ -429,8 +404,8 @@ export const StudyMaterialPage: React.FC = () => {
                 <div className="bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] rounded-xl p-4 mb-6">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-semibold text-slate-700 dark:text-[#F8FAFC] flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                      Chapter-level Direct PDF Downloads
+                      <FileText className="w-4 h-4 text-brand-red" />
+                      Chapter-level Direct PDF Downloads (GitHub Verified)
                     </span>
                     <span className="text-[10px] text-slate-400 dark:text-[#7F8795] bg-white dark:bg-[#15171C] px-2 py-0.5 rounded border border-slate-200 dark:border-[#252932]">
                       {selectedItem.chapterPdfUrls.length} chapters
@@ -443,37 +418,35 @@ export const StudyMaterialPage: React.FC = () => {
                         href={resolvePdfUrl(ch.url)}
                         target="_blank"
                         rel="noreferrer noopener"
-                        referrerPolicy="no-referrer"
-                        className="inline-flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] hover:border-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 transition-all text-xs"
-                        title="Open chapter PDF directly"
+                        className="inline-flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] hover:border-brand-red/60 hover:bg-brand-red/5 dark:hover:bg-brand-red/10 transition-all text-xs"
+                        title="Open chapter PDF directly from GitHub"
                       >
                         <span className="text-slate-700 dark:text-[#F8FAFC] truncate pr-2">{ch.chapter}</span>
-                        <Download className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+                        <Download className="w-3.5 h-3.5 text-brand-red flex-shrink-0" />
                       </a>
                     ))}
                   </div>
                   <p className="mt-2 text-[10px] text-slate-500 dark:text-[#7F8795] text-center">
-                    Opens directly in browser. Use "Save as..." to download.
+                    Hosted on GitHub — opens instantly in browser without errors.
                   </p>
                 </div>
               )}
 
               {/* Direct PDF Download Button (Full Book) */}
               {selectedItem.directPdfUrl && !selectedItem.chapterPdfUrls && (
-                <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 rounded-xl p-4 mb-6 text-center">
-                  <Download className="w-6 h-6 text-emerald-600 dark:text-emerald-400 mx-auto mb-2" />
-                  <p className="text-xs text-slate-600 dark:text-[#A7AFBD] mb-2">Full book direct PDF available</p>
+                <div className="bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] rounded-xl p-4 mb-6 text-center">
+                  <Download className="w-6 h-6 text-brand-red mx-auto mb-2" />
+                  <p className="text-xs text-slate-600 dark:text-[#A7AFBD] mb-2">Direct PDF verified on GitHub</p>
                   <a
                     href={resolvePdfUrl(selectedItem.directPdfUrl)}
                     target="_blank"
                     rel="noreferrer noopener"
-                    referrerPolicy="no-referrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-all"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-red hover:bg-brand-darkred text-white text-xs font-semibold transition-all shadow-sm"
                   >
                     <Download className="w-3.5 h-3.5" />
-                    <span>Download Full PDF</span>
+                    <span>Download Direct PDF</span>
                   </a>
-                  <p className="mt-2 text-[10px] text-slate-500 dark:text-[#7F8795]">Opens in new tab. Use browser "Save as..." to save locally.</p>
+                  <p className="mt-2 text-[10px] text-slate-500 dark:text-[#7F8795]">Opens directly in new tab.</p>
                 </div>
               )}
 
@@ -485,8 +458,8 @@ export const StudyMaterialPage: React.FC = () => {
                 >
                   {copiedId === selectedItem.id ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-500" />
-                      <span className="text-emerald-600 dark:text-emerald-400">Link Copied!</span>
+                      <Check className="w-3.5 h-3.5 text-brand-red" />
+                      <span className="text-brand-red font-medium">Link Copied!</span>
                     </>
                   ) : (
                     <>

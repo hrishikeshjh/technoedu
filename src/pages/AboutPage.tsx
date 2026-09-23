@@ -111,7 +111,7 @@ export const AboutPage: React.FC = () => {
                       {plat.description}
                     </p>
                   </div>
-                  <div className="pt-3 mt-3 border-t border-slate-100 dark:border-[#252932] text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+                  <div className="pt-3 mt-3 border-t border-slate-100 dark:border-[#252932] text-[11px] font-medium text-slate-600 dark:text-[#A7AFBD]">
                     {plat.accessType}
                   </div>
                 </a>

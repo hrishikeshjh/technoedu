@@ -17,6 +17,7 @@ import { studyMaterials } from '../data/studyMaterialData';
 import { ExamInfo, OpenSourcePlatform, ExamTopicResource, RecommendedBook } from '../types';
 import { getExamEmblem } from '../components/common/ExamEmblems';
 import { Breadcrumb } from '../components/common/Breadcrumb';
+import { resolvePdfUrl } from '../utils/pdfResolver';
 
 const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
@@ -100,10 +101,9 @@ export const ExamDetailPage: React.FC = () => {
 
               {exam.officialPYQUrl && (
                 <a
-                  href={exam.officialPYQUrl}
+                  href={resolvePdfUrl(exam.officialPYQUrl)}
                   target="_blank"
                   rel="noreferrer noopener"
-                  referrerPolicy="no-referrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-white dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] hover:border-brand-red/40 text-slate-700 dark:text-[#F8FAFC] text-xs font-medium transition-all"
                 >
                   <FileCheck2 className="w-3.5 h-3.5 text-brand-red" />
@@ -113,7 +113,7 @@ export const ExamDetailPage: React.FC = () => {
                       : 'Official PYQs Archive'}
                   </span>
                   {exam.officialPYQUrl.toLowerCase().endsWith('.pdf') && (
-                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase">
+                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-brand-red/10 dark:bg-brand-red/20 text-brand-red border border-brand-red/30 uppercase">
                       PDF
                     </span>
                   )}
@@ -229,10 +229,9 @@ export const ExamDetailPage: React.FC = () => {
                 {exam.recommendedTextbooks.map((book: RecommendedBook, bIdx: number) => (
                   <a
                     key={bIdx}
-                    href={book.url}
+                    href={resolvePdfUrl(book.url)}
                     target="_blank"
                     rel="noreferrer noopener"
-                    referrerPolicy="no-referrer"
                     className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] hover:border-brand-red/30 hover:bg-white dark:hover:bg-[#15171C] transition-all flex flex-col justify-between group"
                   >
                     <div>
@@ -249,9 +248,9 @@ export const ExamDetailPage: React.FC = () => {
 
                     <div className="pt-3 border-t border-slate-100 dark:border-[#252932] mt-3 flex items-center justify-between text-xs">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-emerald-600 dark:text-emerald-400 font-medium text-[11px]">Free Open Access</span>
+                        <span className="text-slate-600 dark:text-[#A7AFBD] font-medium text-[11px]">Free Open Access</span>
                         {book.url.toLowerCase().endsWith('.pdf') && (
-                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40 uppercase">
+                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-brand-red/10 dark:bg-brand-red/20 text-brand-red border border-brand-red/30 uppercase">
                             Direct PDF
                           </span>
                         )}

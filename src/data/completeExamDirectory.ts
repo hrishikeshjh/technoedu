@@ -24,17 +24,17 @@ const BANGLAR = { title: 'Banglar Shiksha (WB textbooks)', url: 'https://banglar
 const CONSTITUTION = { title: 'Constitution of India Bare Act (Direct PDF)', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' };
 const RBIEDU = { title: 'RBI Banking Structure & Policy (Direct PDF)', url: 'https://rbi.org.in/financialeducation/pdf/Banking_Structure.pdf' };
 
-// Direct NCERT Subject Books (Chapter/Full Book PDFs)
-const NCERT_POLITY = { title: 'NCERT Indian Constitution at Work (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf' };
-const NCERT_HISTORY = { title: 'NCERT Themes in Indian History (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/lehs1.pdf' };
-const NCERT_GEO = { title: 'NCERT Physical Geography (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/kegy1.pdf' };
-const NCERT_ECO = { title: 'NCERT Macroeconomics (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/lesc2.pdf' };
-const NCERT_SCIENCE = { title: 'NCERT Class 10 Science (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf' };
-const NCERT_SCIENCE9 = { title: 'NCERT Class 9 Science (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/jesc1.pdf' };
-const NCERT_MATH = { title: 'NCERT Class 12 Mathematics (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/lema1.pdf' };
-const NCERT_BIO = { title: 'NCERT Class 11 Biology (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/kebo1.pdf' };
-const NCERT_PHYSICS = { title: 'NCERT Class 11 Physics (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/keph1.pdf' };
-const NCERT_CHEM = { title: 'NCERT Class 11 Chemistry (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/kech1.pdf' };
+// Direct NCERT Subject Books (Verified GitHub Hosted Direct PDFs)
+const NCERT_POLITY = { title: 'NCERT Indian Constitution at Work (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps201.pdf' };
+const NCERT_HISTORY = { title: 'NCERT Themes in Indian History (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs1/lehs101.pdf' };
+const NCERT_GEO = { title: 'NCERT Physical Geography (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy101.pdf' };
+const NCERT_ECO = { title: 'NCERT Macroeconomics (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec101.pdf' };
+const NCERT_SCIENCE = { title: 'NCERT Class 10 Science (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech101.pdf' };
+const NCERT_SCIENCE9 = { title: 'NCERT Class 9 Science (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph101.pdf' };
+const NCERT_MATH = { title: 'NCERT Class 12 Mathematics (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh101.pdf' };
+const NCERT_BIO = { title: 'NCERT Class 11 Biology (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo101.pdf' };
+const NCERT_PHYSICS = { title: 'NCERT Class 11 Physics (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph101.pdf' };
+const NCERT_CHEM = { title: 'NCERT Class 11 Chemistry (Direct PDF)', url: 'https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech101.pdf' };
 
 // Direct OpenStax University Textbooks (Direct PDFs)
 const OPENSTAX = { title: 'OpenStax College Algebra 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' };
