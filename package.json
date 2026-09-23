@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "harvest:generate": "node scripts/harvester.mjs --generate",
+    "harvest:verify": "node scripts/harvester.mjs --verify",
+    "harvest:download": "node scripts/harvester.mjs --download",
+    "harvest:upload-r2": "node scripts/r2-uploader.mjs"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

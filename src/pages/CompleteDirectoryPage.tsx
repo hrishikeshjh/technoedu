@@ -234,7 +234,8 @@ export const CompleteDirectoryPage: React.FC = () => {
                 <a
                   href={exam.officialPortalUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer noopener"
+                  referrerPolicy="no-referrer"
                   className="w-full inline-flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-lg bg-slate-900 hover:bg-brand-red dark:bg-[#15171C] dark:hover:bg-brand-red dark:border dark:border-[#252932] text-white text-xs font-semibold transition-all"
                 >
                   <span className="flex items-center gap-2">
@@ -246,7 +247,8 @@ export const CompleteDirectoryPage: React.FC = () => {
                 <a
                   href={exam.docsUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer noopener"
+                  referrerPolicy="no-referrer"
                   className="w-full inline-flex items-center justify-between gap-2 px-3.5 py-2 rounded-lg border border-slate-200 hover:border-brand-red/50 hover:bg-red-50/50 text-slate-700 dark:border-[#252932] dark:hover:border-brand-red/50 dark:hover:bg-red-950/20 dark:text-[#F8FAFC] text-xs font-semibold transition-all"
                 >
                   <span className="flex items-center gap-2">
@@ -266,7 +268,8 @@ export const CompleteDirectoryPage: React.FC = () => {
                   <a
                     href={exam.pyqUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noreferrer noopener"
+                    referrerPolicy="no-referrer"
                     className="w-full inline-flex items-center justify-between gap-2 px-3.5 py-2 rounded-lg border border-slate-200 hover:border-brand-red/50 hover:bg-red-50/50 text-slate-700 dark:border-[#252932] dark:hover:border-brand-red/50 dark:hover:bg-red-950/20 dark:text-[#F8FAFC] text-xs font-semibold transition-all"
                   >
                     <span className="flex items-center gap-2">
@@ -303,7 +306,8 @@ export const CompleteDirectoryPage: React.FC = () => {
                       <a
                         href={material.url}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noreferrer noopener"
+                        referrerPolicy="no-referrer"
                         className="flex items-center justify-between gap-2 text-[11px] text-slate-600 dark:text-[#A7AFBD] hover:text-brand-red dark:hover:text-red-400 transition-colors group/link"
                       >
                         <span className="flex items-center gap-1.5 min-w-0">

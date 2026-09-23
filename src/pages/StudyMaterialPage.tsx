@@ -18,11 +18,13 @@ import {
   FileText,
   ChevronDown,
   ChevronUp,
+  CheckCircle,
 } from 'lucide-react';
 import { studyMaterials, materialCategories } from '../data/studyMaterialData';
 import { examsData } from '../data/examsData';
 import { StudyMaterialItem, ExamInfo } from '../types';
 import { AnimatedCounter } from '../components/common/AnimatedCounter';
+import subjectPdfDirectory from '../data/subjectPdfDirectory.json';
 import { ScrollReveal } from '../components/common/ScrollReveal';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 
@@ -38,6 +40,40 @@ const platformIconMap: Record<string, React.ReactNode> = {
   'PRS India':     <Scale className="w-3.5 h-3.5 text-brand-red" />,
   'Open Library':  <Globe2 className="w-3.5 h-3.5 text-brand-red" />,
 };
+
+// Build a fast lookup map: original official URL -> best resolved URL (Cloudflare R2 CDN or local mirror)
+const resolvedUrlMap = new Map<string, string>();
+try {
+  const subjects = (subjectPdfDirectory as any).subjects || {};
+  for (const sKey of Object.keys(subjects)) {
+    const s = subjects[sKey];
+    if (s.textbooks) {
+      for (const b of s.textbooks) {
+        if (b.chapters) {
+          for (const ch of b.chapters) {
+            if (ch.directPdfUrl && (ch.cdnUrl || ch.localPath)) {
+              resolvedUrlMap.set(ch.directPdfUrl, ch.cdnUrl || ch.localPath);
+            }
+          }
+        }
+      }
+    }
+    if (s.questionPapers) {
+      for (const qp of s.questionPapers) {
+        if (qp.directPdfUrl && (qp.cdnUrl || qp.localPath)) {
+          resolvedUrlMap.set(qp.directPdfUrl, qp.cdnUrl || qp.localPath);
+        }
+      }
+    }
+  }
+} catch {
+  // Graceful fallback if directory metadata is missing
+}
+
+function resolvePdfUrl(url?: string): string {
+  if (!url) return '#';
+  return resolvedUrlMap.get(url) || url;
+}
 
 function getPlatformIcon(platform: string): React.ReactNode {
   for (const key of Object.keys(platformIconMap)) {
@@ -101,10 +137,14 @@ export const StudyMaterialPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
+                <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span><strong>{subjectPdfDirectory.metadata.totalChapters}</strong> Verified Direct PDFs Indexed</span>
+              </span>
               <Link
                 to="/platforms"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-slate-700 dark:text-[#F8FAFC] text-xs sm:text-sm font-medium hover:border-brand-red/40 hover:text-brand-red transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-slate-700 dark:text-[#F8FAFC] text-xs sm:text-sm font-medium hover:border-brand-red/40 hover:text-brand-red transition-all"
               >
                 <Building2 className="w-4 h-4 text-brand-red" />
                 <span>Browse All Platforms</span>
@@ -288,7 +328,8 @@ export const StudyMaterialPage: React.FC = () => {
                       <a
                         href={item.directPdfUrl}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noreferrer noopener"
+                        referrerPolicy="no-referrer"
                         className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-all shadow-emerald-glow"
                         title="Direct PDF Download"
                       >
@@ -299,7 +340,8 @@ export const StudyMaterialPage: React.FC = () => {
                     <a
                       href={item.sourceUrl}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noreferrer noopener"
+                      referrerPolicy="no-referrer"
                       className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-brand-red hover:bg-brand-darkred text-white text-xs font-semibold transition-all"
                     >
                       <span>Open Source</span>
@@ -398,9 +440,10 @@ export const StudyMaterialPage: React.FC = () => {
                     {selectedItem.chapterPdfUrls.map((ch, idx) => (
                       <a
                         key={idx}
-                        href={ch.url}
+                        href={resolvePdfUrl(ch.url)}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noreferrer noopener"
+                        referrerPolicy="no-referrer"
                         className="inline-flex items-center justify-between px-3 py-2 rounded-lg bg-white dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] hover:border-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 transition-all text-xs"
                         title="Open chapter PDF directly"
                       >
@@ -421,9 +464,10 @@ export const StudyMaterialPage: React.FC = () => {
                   <Download className="w-6 h-6 text-emerald-600 dark:text-emerald-400 mx-auto mb-2" />
                   <p className="text-xs text-slate-600 dark:text-[#A7AFBD] mb-2">Full book direct PDF available</p>
                   <a
-                    href={selectedItem.directPdfUrl}
+                    href={resolvePdfUrl(selectedItem.directPdfUrl)}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noreferrer noopener"
+                    referrerPolicy="no-referrer"
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-all"
                   >
                     <Download className="w-3.5 h-3.5" />

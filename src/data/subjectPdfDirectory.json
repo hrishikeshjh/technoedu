@@ -1,0 +1,2799 @@
+{
+  "metadata": {
+    "generatedAt": "2026-09-23T13:19:28.767Z",
+    "initiative": "Techno Wallah Open Academic Repository",
+    "license": "Free & Open Educational Resources (OER)",
+    "totalSubjects": 9,
+    "totalTextbooks": 25,
+    "totalChapters": 179,
+    "totalDownloadedLocally": 179
+  },
+  "subjects": {
+    "Political Science": {
+      "name": "Political Science",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Indian Constitution at Work",
+          "class": "11",
+          "code": "keps2",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?keps2=0-10",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/keps2.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "CUET UG/PG",
+            "State PSCs"
+          ],
+          "totalChapters": 10,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Constitution: Why and How?",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps201.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps201.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps201.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps201.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.01",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Rights in the Indian Constitution",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps202.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps202.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps202.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps202.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.82",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Election and Representation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps203.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps203.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps203.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps203.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.07",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Executive",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps204.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps204.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps204.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps204.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.73",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Legislature",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps205.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps205.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps205.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps205.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.99",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Judiciary",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps206.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps206.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps206.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps206.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.92",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Federalism",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps207.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps207.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps207.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps207.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.42",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Local Governments",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps208.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps208.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps208.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps208.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.59",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 9,
+              "title": "Ch 9: Constitution as a Living Document",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps209.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps209.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps209.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps209.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.49",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 10,
+              "title": "Ch 10: The Philosophy of the Constitution",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps210.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps2/keps210.pdf"
+              ],
+              "localPath": "/materials/ncert/keps2/keps210.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps2/keps210.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.42",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Political Theory",
+          "class": "11",
+          "code": "keps1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?keps1=0-8",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/keps1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "CUET UG/PG"
+          ],
+          "totalChapters": 8,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Political Theory: An Introduction",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps101.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.69",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Freedom",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps102.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.98",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Equality",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps103.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.78",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Social Justice",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps104.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.95",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Rights",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps105.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.76",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Citizenship",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps106.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.45",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Nationalism",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps107.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.59",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Secularism",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keps108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keps1/keps108.pdf"
+              ],
+              "localPath": "/materials/ncert/keps1/keps108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keps1/keps108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.20",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Contemporary World Politics",
+          "class": "12",
+          "code": "leps1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?leps1=0-7",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/leps1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "CUET UG/PG"
+          ],
+          "totalChapters": 7,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: The End of Bipolarity",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps101.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.47",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Contemporary Centres of Power",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps102.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.83",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Contemporary South Asia",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps103.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.80",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: International Organisations",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps104.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.93",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Security in the Contemporary World",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps105.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.20",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Environment and Natural Resources",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps106.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.10",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Globalisation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps1/leps107.pdf"
+              ],
+              "localPath": "/materials/ncert/leps1/leps107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps1/leps107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "27.35",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Politics in India Since Independence",
+          "class": "12",
+          "code": "leps2",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?leps2=0-8",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/leps2.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "CUET UG/PG"
+          ],
+          "totalChapters": 8,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Challenges of Nation Building",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps201.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps201.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps201.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps201.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "8.19",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Era of One-Party Dominance",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps202.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps202.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps202.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps202.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.82",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Politics of Planned Development",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps203.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps203.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps203.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps203.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.50",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: India’s External Relations",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps204.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps204.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps204.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps204.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.18",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Challenges to and Restoration of the Congress System",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps205.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps205.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps205.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps205.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.38",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: The Crisis of Democratic Order",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps206.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps206.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps206.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps206.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.26",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Regional Aspirations",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps207.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps207.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps207.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps207.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.73",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Recent Developments in Indian Politics",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leps208.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leps2/leps208.pdf"
+              ],
+              "localPath": "/materials/ncert/leps2/leps208.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leps2/leps208.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.72",
+              "status": "active"
+            }
+          ]
+        }
+      ]
+    },
+    "History": {
+      "name": "History",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Themes in World History",
+          "class": "11",
+          "code": "kehs1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?kehs1=0-7",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/kehs1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "State PSCs",
+            "SSC CGL"
+          ],
+          "totalChapters": 7,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Writing and City Life",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs101.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.55",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: An Empire Across Three Continents",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs102.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.33",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Nomadic Empires",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs103.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.71",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: The Three Orders",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs104.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.96",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Changing Cultural Traditions",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs105.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.06",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Displacing Indigenous Peoples",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs106.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.52",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Paths to Modernisation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kehs107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kehs1/kehs107.pdf"
+              ],
+              "localPath": "/materials/ncert/kehs1/kehs107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kehs1/kehs107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.56",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Themes in Indian History - Part I (Ancient)",
+          "class": "12",
+          "code": "lehs1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?lehs1=0-4",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/lehs1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "State PSCs"
+          ],
+          "totalChapters": 4,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Bricks, Beads and Bones (The Harappan Civilisation)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs1/lehs101.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs1/lehs101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs1/lehs101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.23",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Kings, Farmers and Towns (Early States and Economies)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs1/lehs102.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs1/lehs102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs1/lehs102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.81",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Kinship, Caste and Class (Early Societies)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs1/lehs103.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs1/lehs103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs1/lehs103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.03",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Thinkers, Beliefs and Buildings (Cultural Developments)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs1/lehs104.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs1/lehs104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs1/lehs104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "8.87",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Themes in Indian History - Part II (Medieval)",
+          "class": "12",
+          "code": "lehs2",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?lehs2=0-4",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/lehs2.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "State PSCs"
+          ],
+          "totalChapters": 4,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Through the Eyes of Travellers",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs201.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs2/lehs201.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs2/lehs201.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs2/lehs201.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.36",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Bhakti-Sufi Traditions",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs202.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs2/lehs202.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs2/lehs202.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs2/lehs202.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.34",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: An Imperial Capital: Vijayanagara",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs203.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs2/lehs203.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs2/lehs203.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs2/lehs203.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.89",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Peasants, Zamindars and the State (Agrarian Society & Mughal Empire)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs204.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs2/lehs204.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs2/lehs204.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs2/lehs204.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.62",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Themes in Indian History - Part III (Modern)",
+          "class": "12",
+          "code": "lehs3",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?lehs3=0-4",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/lehs3.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "State PSCs"
+          ],
+          "totalChapters": 4,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Colonialism and the Countryside",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs301.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs3/lehs301.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs3/lehs301.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs3/lehs301.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.52",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Rebels and the Raj (The 1857 Revolt)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs302.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs3/lehs302.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs3/lehs302.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs3/lehs302.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.35",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Mahatma Gandhi and the Nationalist Movement",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs303.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs3/lehs303.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs3/lehs303.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs3/lehs303.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.06",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Framing the Constitution (A New Era Begins)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lehs304.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lehs3/lehs304.pdf"
+              ],
+              "localPath": "/materials/ncert/lehs3/lehs304.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lehs3/lehs304.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.87",
+              "status": "active"
+            }
+          ]
+        }
+      ]
+    },
+    "Geography": {
+      "name": "Geography",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Fundamentals of Physical Geography",
+          "class": "11",
+          "code": "kegy2",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?kegy2=0-14",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/kegy2.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "NDA",
+            "CDS",
+            "SSC"
+          ],
+          "totalChapters": 14,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Geography as a Discipline",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy201.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy201.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy201.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy201.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.15",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: The Origin and Evolution of the Earth",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy202.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy202.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy202.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy202.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.63",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Interior of the Earth",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy203.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy203.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy203.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy203.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.03",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Distribution of Oceans and Continents",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy204.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy204.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy204.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy204.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.87",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Geomorphic Processes",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy205.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy205.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy205.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy205.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.91",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Landforms and their Evolution",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy206.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy206.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy206.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy206.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.44",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Composition and Structure of Atmosphere",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy207.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy207.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy207.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy207.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.39",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Solar Radiation, Heat Balance and Temperature",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy208.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy208.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy208.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy208.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.87",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 9,
+              "title": "Ch 9: Atmospheric Circulation and Weather Systems",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy209.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy209.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy209.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy209.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.09",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 10,
+              "title": "Ch 10: Water in the Atmosphere",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy210.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy210.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy210.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy210.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.46",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 11,
+              "title": "Ch 11: World Climate and Climate Change",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy211.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy211.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy211.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy211.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.19",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 12,
+              "title": "Ch 12: Water (Oceans)",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy212.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy212.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy212.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy212.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.94",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 13,
+              "title": "Ch 13: Movements of Ocean Water",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy213.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy213.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy213.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy213.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.61",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 14,
+              "title": "Ch 14: Biodiversity and Conservation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy214.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy2/kegy214.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy2/kegy214.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy2/kegy214.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.63",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "India: Physical Environment",
+          "class": "11",
+          "code": "kegy1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?kegy1=0-6",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/kegy1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "State PSCs"
+          ],
+          "totalChapters": 6,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: India — Location",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy1/kegy101.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy1/kegy101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.96",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Structure and Physiography",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy1/kegy102.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy1/kegy102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.00",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Drainage System",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy1/kegy103.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy1/kegy103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.94",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Climate",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy1/kegy104.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy1/kegy104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.93",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Natural Vegetation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy1/kegy105.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy1/kegy105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.64",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Soils",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kegy106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kegy1/kegy106.pdf"
+              ],
+              "localPath": "/materials/ncert/kegy1/kegy106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kegy1/kegy106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.95",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Fundamentals of Human Geography",
+          "class": "12",
+          "code": "legy1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?legy1=0-8",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/legy1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "State PSCs"
+          ],
+          "totalChapters": 8,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Human Geography: Nature and Scope",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy101.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.35",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: The World Population: Distribution, Density and Growth",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy102.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.59",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Human Development",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy103.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.00",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Primary Activities",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy104.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.32",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Secondary Activities",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy105.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.48",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Tertiary and Quaternary Activities",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy106.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.00",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Transport and Communication",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy107.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.48",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: International Trade",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/legy108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-legy1/legy108.pdf"
+              ],
+              "localPath": "/materials/ncert/legy1/legy108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/legy1/legy108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.11",
+              "status": "active"
+            }
+          ]
+        }
+      ]
+    },
+    "Economics": {
+      "name": "Economics",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Indian Economic Development",
+          "class": "11",
+          "code": "keec1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?keec1=0-8",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/keec1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "WBCS",
+            "Banking (IBPS/SBI)",
+            "RBI Grade B"
+          ],
+          "totalChapters": 8,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Indian Economy on the Eve of Independence",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec101.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.13",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Indian Economy 1950–1990",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec102.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.41",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Liberalisation, Privatisation and Globalisation: An Appraisal",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec103.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.78",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Human Capital Formation in India",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec104.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.80",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Rural Development",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec105.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.98",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Employment: Growth, Informalisation and Other Issues",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec106.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.11",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Environment and Sustainable Development",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec107.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.12",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Comparative Development Experiences of India and Its Neighbours",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keec108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keec1/keec108.pdf"
+              ],
+              "localPath": "/materials/ncert/keec1/keec108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keec1/keec108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.65",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Introductory Macroeconomics",
+          "class": "12",
+          "code": "leec1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?leec1=0-6",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/leec1.pdf",
+          "targetExams": [
+            "UPSC Civil Services",
+            "RBI Grade B",
+            "WBCS",
+            "Banking Exams"
+          ],
+          "totalChapters": 6,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Introduction to Macroeconomics",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leec101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leec1/leec101.pdf"
+              ],
+              "localPath": "/materials/ncert/leec1/leec101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.99",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: National Income Accounting",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leec102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leec1/leec102.pdf"
+              ],
+              "localPath": "/materials/ncert/leec1/leec102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.14",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Money and Banking",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leec103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leec1/leec103.pdf"
+              ],
+              "localPath": "/materials/ncert/leec1/leec103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.55",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Determination of Income and Employment",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leec104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leec1/leec104.pdf"
+              ],
+              "localPath": "/materials/ncert/leec1/leec104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.48",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Government Budget and the Economy",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leec105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leec1/leec105.pdf"
+              ],
+              "localPath": "/materials/ncert/leec1/leec105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.09",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Open Economy Macroeconomics",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leec106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leec1/leec106.pdf"
+              ],
+              "localPath": "/materials/ncert/leec1/leec106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leec1/leec106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.30",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Principles of Economics 3e",
+          "platform": "OpenStax (Rice University)",
+          "license": "CC BY 4.0",
+          "directPdfUrl": "https://assets.openstax.org/oscms-prodcms/media/documents/PrinciplesofEconomics3e-WEB_1.pdf",
+          "sourceUrl": "https://openstax.org/subjects",
+          "localPath": null,
+          "isDownloadedLocally": false,
+          "fileSizeMb": null,
+          "status": "active"
+        }
+      ]
+    },
+    "Physics": {
+      "name": "Physics",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Physics - Class 11 (Part 1)",
+          "class": "11",
+          "code": "keph1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?keph1=0-7",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/keph1.pdf",
+          "targetExams": [
+            "JEE Main & Advanced",
+            "NEET UG",
+            "WBJEE",
+            "NDA"
+          ],
+          "totalChapters": 7,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Units and Measurements",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph101.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.08",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Motion in a Straight Line",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph102.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.36",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Motion in a Plane",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph103.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.10",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Laws of Motion",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph104.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.01",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Work, Energy and Power",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph105.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.90",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: System of Particles and Rotational Motion",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph106.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.03",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Gravitation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/keph107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-keph1/keph107.pdf"
+              ],
+              "localPath": "/materials/ncert/keph1/keph107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/keph1/keph107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.72",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Physics - Class 12 (Part 1)",
+          "class": "12",
+          "code": "leph1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?leph1=0-8",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/leph1.pdf",
+          "targetExams": [
+            "JEE Main & Advanced",
+            "NEET UG",
+            "WBJEE",
+            "NDA"
+          ],
+          "totalChapters": 8,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Electric Charges and Fields",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph101.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.77",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Electrostatic Potential and Capacitance",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph102.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.70",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Current Electricity",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph103.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.06",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Moving Charges and Magnetism",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph104.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.52",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Magnetism and Matter",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph105.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.83",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Electromagnetic Induction",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph106.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.28",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Alternating Current",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph107.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.30",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Electromagnetic Waves",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/leph108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-leph1/leph108.pdf"
+              ],
+              "localPath": "/materials/ncert/leph1/leph108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/leph1/leph108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.30",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "University Physics Volume 1 (Mechanics, Waves, Acoustics)",
+          "platform": "OpenStax (Rice University)",
+          "license": "CC BY 4.0",
+          "directPdfUrl": "https://assets.openstax.org/oscms-prodcms/media/documents/UniversityPhysicsVolume1-WEB_2.pdf",
+          "sourceUrl": "https://openstax.org/subjects",
+          "localPath": null,
+          "isDownloadedLocally": false,
+          "fileSizeMb": null,
+          "status": "active"
+        },
+        {
+          "title": "University Physics Volume 2 (Thermodynamics, Electricity & Magnetism)",
+          "platform": "OpenStax (Rice University)",
+          "license": "CC BY 4.0",
+          "directPdfUrl": "https://assets.openstax.org/oscms-prodcms/media/documents/UniversityPhysicsVolume2-WEB_1.pdf",
+          "sourceUrl": "https://openstax.org/subjects",
+          "localPath": null,
+          "isDownloadedLocally": false,
+          "fileSizeMb": null,
+          "status": "active"
+        }
+      ]
+    },
+    "Chemistry": {
+      "name": "Chemistry",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Chemistry - Class 11 (Part 1)",
+          "class": "11",
+          "code": "kech1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?kech1=0-6",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/kech1.pdf",
+          "targetExams": [
+            "JEE Main & Advanced",
+            "NEET UG",
+            "WBJEE"
+          ],
+          "totalChapters": 6,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Some Basic Concepts of Chemistry",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kech101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kech1/kech101.pdf"
+              ],
+              "localPath": "/materials/ncert/kech1/kech101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.82",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Structure of Atom",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kech102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kech1/kech102.pdf"
+              ],
+              "localPath": "/materials/ncert/kech1/kech102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.23",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Classification of Elements and Periodicity in Properties",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kech103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kech1/kech103.pdf"
+              ],
+              "localPath": "/materials/ncert/kech1/kech103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.28",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Chemical Bonding and Molecular Structure",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kech1/kech104.pdf"
+              ],
+              "localPath": "/materials/ncert/kech1/kech104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.33",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Thermodynamics",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kech105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kech1/kech105.pdf"
+              ],
+              "localPath": "/materials/ncert/kech1/kech105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.89",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Equilibrium",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kech106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kech1/kech106.pdf"
+              ],
+              "localPath": "/materials/ncert/kech1/kech106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kech1/kech106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.41",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Chemistry - Class 12 (Part 1)",
+          "class": "12",
+          "code": "lech1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?lech1=0-5",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/lech1.pdf",
+          "targetExams": [
+            "JEE Main & Advanced",
+            "NEET UG",
+            "WBJEE"
+          ],
+          "totalChapters": 5,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Solutions",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lech101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lech1/lech101.pdf"
+              ],
+              "localPath": "/materials/ncert/lech1/lech101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lech1/lech101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.76",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Electrochemistry",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lech102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lech1/lech102.pdf"
+              ],
+              "localPath": "/materials/ncert/lech1/lech102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lech1/lech102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.18",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Chemical Kinetics",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lech103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lech1/lech103.pdf"
+              ],
+              "localPath": "/materials/ncert/lech1/lech103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lech1/lech103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.80",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: The d- and f-Block Elements",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lech104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lech1/lech104.pdf"
+              ],
+              "localPath": "/materials/ncert/lech1/lech104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lech1/lech104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.99",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Coordination Compounds",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lech105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lech1/lech105.pdf"
+              ],
+              "localPath": "/materials/ncert/lech1/lech105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lech1/lech105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.53",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Chemistry 2e (College Chemistry)",
+          "platform": "OpenStax (Rice University)",
+          "license": "CC BY 4.0",
+          "directPdfUrl": "https://assets.openstax.org/oscms-prodcms/media/documents/Chemistry2e-WEB_1.pdf",
+          "sourceUrl": "https://openstax.org/subjects",
+          "localPath": null,
+          "isDownloadedLocally": false,
+          "fileSizeMb": null,
+          "status": "active"
+        }
+      ]
+    },
+    "Biology": {
+      "name": "Biology",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Biology - Class 11",
+          "class": "11",
+          "code": "kebo1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?kebo1=0-19",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/kebo1.pdf",
+          "targetExams": [
+            "NEET UG",
+            "CUET Biology",
+            "Nursing / Paramedical"
+          ],
+          "totalChapters": 19,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: The Living World",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo101.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.16",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Biological Classification",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo102.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.14",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Plant Kingdom",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo103.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.94",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Animal Kingdom",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo104.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "5.93",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Morphology of Flowering Plants",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo105.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.27",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Anatomy of Flowering Plants",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo106.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.81",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Structural Organisation in Animals",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo107.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "0.97",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Cell: The Unit of Life",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo108.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "6.66",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 9,
+              "title": "Ch 9: Biomolecules",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo109.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo109.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo109.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.77",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 10,
+              "title": "Ch 10: Cell Cycle and Cell Division",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo110.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo110.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo110.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.37",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 11,
+              "title": "Ch 11: Photosynthesis in Higher Plants",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo111.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo111.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo111.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo111.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.55",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 12,
+              "title": "Ch 12: Respiration in Plants",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo112.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo112.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo112.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo112.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.58",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 13,
+              "title": "Ch 13: Plant Growth and Development",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo113.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo113.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo113.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo113.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.83",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 14,
+              "title": "Ch 14: Breathing and Exchange of Gases",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo114.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo114.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo114.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo114.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.96",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 15,
+              "title": "Ch 15: Body Fluids and Circulation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo115.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo115.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo115.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo115.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.96",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 16,
+              "title": "Ch 16: Excretory Products and their Elimination",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo116.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo116.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo116.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo116.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.69",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 17,
+              "title": "Ch 17: Locomotion and Movement",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo117.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo117.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo117.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo117.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.29",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 18,
+              "title": "Ch 18: Neural Control and Coordination",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo118.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo118.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo118.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo118.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.06",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 19,
+              "title": "Ch 19: Chemical Coordination and Integration",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kebo119.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kebo1/kebo119.pdf"
+              ],
+              "localPath": "/materials/ncert/kebo1/kebo119.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kebo1/kebo119.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.03",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "Biology - Class 12",
+          "class": "12",
+          "code": "lebo1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?lebo1=0-13",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/lebo1.pdf",
+          "targetExams": [
+            "NEET UG",
+            "CUET Biology"
+          ],
+          "totalChapters": 13,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Sexual Reproduction in Flowering Plants",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo101.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "35.10",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Human Reproduction",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo102.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "61.47",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Reproductive Health",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo103.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.20",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Principles of Inheritance and Variation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo104.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "18.32",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Molecular Basis of Inheritance",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo105.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.94",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Evolution",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo106.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "12.13",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Human Health and Disease",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo107.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "4.29",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Microbes in Human Welfare",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo108.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "12.34",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 9,
+              "title": "Ch 9: Biotechnology: Principles and Processes",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo109.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo109.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo109.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo109.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.99",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 10,
+              "title": "Ch 10: Biotechnology and its Applications",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo110.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo110.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo110.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo110.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.42",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 11,
+              "title": "Ch 11: Organisms and Populations",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo111.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo111.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo111.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo111.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.48",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 12,
+              "title": "Ch 12: Ecosystem",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo112.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo112.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo112.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo112.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.30",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 13,
+              "title": "Ch 13: Biodiversity and Conservation",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/lebo113.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-lebo1/lebo113.pdf"
+              ],
+              "localPath": "/materials/ncert/lebo1/lebo113.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/lebo1/lebo113.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.24",
+              "status": "active"
+            }
+          ]
+        }
+      ]
+    },
+    "Mathematics": {
+      "name": "Mathematics",
+      "categories": [
+        "NCERT Foundational",
+        "Board Examinations",
+        "Competitive Entrances"
+      ],
+      "textbooks": [
+        {
+          "title": "Mathematics - Class 11",
+          "class": "11",
+          "code": "kemh1",
+          "source": "NCERT e-Pathshala",
+          "officialPortal": "https://ncert.nic.in/textbook.php?kemh1=0-14",
+          "fullBookDirectUrl": "https://ncert.nic.in/textbook/pdf/kemh1.pdf",
+          "targetExams": [
+            "JEE Main & Advanced",
+            "WBJEE",
+            "NDA",
+            "CUET Mathematics"
+          ],
+          "totalChapters": 14,
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "title": "Ch 1: Sets",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh101.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh101.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh101.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.12",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 2,
+              "title": "Ch 2: Relations and Functions",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh102.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh102.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh102.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.95",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 3,
+              "title": "Ch 3: Trigonometric Functions",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh103.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh103.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh103.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh103.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.90",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 4,
+              "title": "Ch 4: Complex Numbers and Quadratic Equations",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh104.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh104.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh104.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh104.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.49",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 5,
+              "title": "Ch 5: Linear Inequalities",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh105.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh105.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh105.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh105.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.30",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 6,
+              "title": "Ch 6: Permutations and Combinations",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh106.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh106.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh106.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh106.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.30",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 7,
+              "title": "Ch 7: Binomial Theorem",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh107.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh107.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh107.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh107.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.23",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 8,
+              "title": "Ch 8: Sequences and Series",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh108.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh108.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh108.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh108.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.64",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 9,
+              "title": "Ch 9: Straight Lines",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh109.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh109.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh109.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh109.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.35",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 10,
+              "title": "Ch 10: Conic Sections",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh110.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh110.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh110.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh110.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.90",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 11,
+              "title": "Ch 11: Introduction to Three Dimensional Geometry",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh111.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh111.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh111.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh111.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "1.20",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 12,
+              "title": "Ch 12: Limits and Derivatives",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh112.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh112.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh112.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh112.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "3.27",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 13,
+              "title": "Ch 13: Statistics",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh113.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh113.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh113.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh113.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.72",
+              "status": "active"
+            },
+            {
+              "chapterNumber": 14,
+              "title": "Ch 14: Probability",
+              "directPdfUrl": "https://ncert.nic.in/textbook/pdf/kemh114.pdf",
+              "mirrorUrls": [
+                "https://archive.org/download/ncert-kemh1/kemh114.pdf"
+              ],
+              "localPath": "/materials/ncert/kemh1/kemh114.pdf",
+              "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/ncert/kemh1/kemh114.pdf",
+              "isDownloadedLocally": true,
+              "fileSizeMb": "2.22",
+              "status": "active"
+            }
+          ]
+        },
+        {
+          "title": "College Algebra 2e",
+          "platform": "OpenStax (Rice University)",
+          "license": "CC BY 4.0",
+          "directPdfUrl": "https://assets.openstax.org/oscms-prodcms/media/documents/College_Algebra_2e-WEB_1.pdf",
+          "sourceUrl": "https://openstax.org/subjects",
+          "localPath": null,
+          "isDownloadedLocally": false,
+          "fileSizeMb": null,
+          "status": "active"
+        }
+      ]
+    },
+    "UPSC Civil Services PYQ": {
+      "name": "UPSC Civil Services PYQ",
+      "categories": [
+        "Official Previous Year Papers",
+        "Civil Services"
+      ],
+      "questionPapers": [
+        {
+          "year": "2024",
+          "paperName": "Prelims General Studies Paper I",
+          "code": "2024_GS_1",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSP-24-GS-P-I-260624.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_GS_1.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_GS_1.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2024",
+          "paperName": "Prelims CSAT Paper II",
+          "code": "2024_CSAT_2",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSP-24-CSAT-P-II-260624.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_CSAT_2.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_CSAT_2.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2024",
+          "paperName": "Mains Essay Paper",
+          "code": "2024_Mains_Essay",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-24-Essay-200924.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_Mains_Essay.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_Mains_Essay.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2024",
+          "paperName": "Mains General Studies I",
+          "code": "2024_Mains_GS1",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-I-210924.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_Mains_GS1.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_Mains_GS1.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2024",
+          "paperName": "Mains General Studies II",
+          "code": "2024_Mains_GS2",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-II-210924.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_Mains_GS2.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_Mains_GS2.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2024",
+          "paperName": "Mains General Studies III",
+          "code": "2024_Mains_GS3",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-III-220924.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_Mains_GS3.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_Mains_GS3.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2024",
+          "paperName": "Mains General Studies IV (Ethics)",
+          "code": "2024_Mains_GS4",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-24-GS-IV-220924.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2024/2024_Mains_GS4.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2024/2024_Mains_GS4.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2023",
+          "paperName": "Prelims General Studies Paper I",
+          "code": "2023_GS_1",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSP-2023-GS-Paper-I-280523.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2023/2023_GS_1.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_GS_1.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2023",
+          "paperName": "Prelims CSAT Paper II",
+          "code": "2023_CSAT_2",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSP-2023-CSAT-Paper-II-280523.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2023/2023_CSAT_2.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_CSAT_2.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2023",
+          "paperName": "Mains General Studies I",
+          "code": "2023_Mains_GS1",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-I-160923.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2023/2023_Mains_GS1.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS1.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2023",
+          "paperName": "Mains General Studies II",
+          "code": "2023_Mains_GS2",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-II-160923.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2023/2023_Mains_GS2.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS2.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2023",
+          "paperName": "Mains General Studies III",
+          "code": "2023_Mains_GS3",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-III-170923.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2023/2023_Mains_GS3.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS3.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        },
+        {
+          "year": "2023",
+          "paperName": "Mains General Studies IV (Ethics)",
+          "code": "2023_Mains_GS4",
+          "directPdfUrl": "https://upsc.gov.in/sites/default/files/QP-CSM-23-GS-IV-170923.pdf",
+          "officialPortal": "https://upsc.gov.in/examinations/previous-question-papers",
+          "localPath": "/materials/upsc/2023/2023_Mains_GS4.pdf",
+          "githubRawUrl": "https://raw.githubusercontent.com/hrishikeshjh/technoedu/main/public/materials/upsc/2023/2023_Mains_GS4.pdf",
+          "isDownloadedLocally": true,
+          "fileSizeMb": "0.10",
+          "status": "active"
+        }
+      ]
+    }
+  }
+}

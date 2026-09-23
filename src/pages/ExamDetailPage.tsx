@@ -102,7 +102,8 @@ export const ExamDetailPage: React.FC = () => {
                 <a
                   href={exam.officialPYQUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer noopener"
+                  referrerPolicy="no-referrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-white dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] hover:border-brand-red/40 text-slate-700 dark:text-[#F8FAFC] text-xs font-medium transition-all"
                 >
                   <FileCheck2 className="w-3.5 h-3.5 text-brand-red" />
@@ -176,7 +177,8 @@ export const ExamDetailPage: React.FC = () => {
                         <a
                           href={topicItem.resourceUrl}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noreferrer noopener"
+                          referrerPolicy="no-referrer"
                           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-red hover:bg-brand-darkred text-white text-xs font-medium self-start transition-all shrink-0"
                         >
                           {topicItem.resourceUrl.toLowerCase().endsWith('.pdf') ? (
@@ -229,7 +231,8 @@ export const ExamDetailPage: React.FC = () => {
                     key={bIdx}
                     href={book.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noreferrer noopener"
+                    referrerPolicy="no-referrer"
                     className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] hover:border-brand-red/30 hover:bg-white dark:hover:bg-[#15171C] transition-all flex flex-col justify-between group"
                   >
                     <div>
