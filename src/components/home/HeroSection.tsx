@@ -6,7 +6,7 @@ import { ScrollReveal } from '../common/ScrollReveal';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white dark:bg-[#08090B]">
 
       {/* Two-column hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,13 +16,13 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-6 xl:col-span-7 space-y-5 sm:space-y-6">
 
             <ScrollReveal animation="fade-up" delay={200}>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight leading-[1.08]">
                 Everything You Need<br /> to <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-rose-600">Learn Better.</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={300}>
-              <p className="text-slate-600 text-sm sm:text-base max-w-lg leading-relaxed">
+              <p className="text-slate-600 dark:text-[#A7AFBD] text-sm sm:text-base max-w-lg leading-relaxed">
                 Curated resources, exam syllabi, peer-reviewed textbooks, and verified previous year question archives — 100% open and free.
               </p>
             </ScrollReveal>
@@ -40,7 +40,7 @@ export const HeroSection: React.FC = () => {
 
                 <Link
                   to="/library"
-                  className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] dark:border dark:border-[#252932] text-white text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
                   <Library className="w-4 h-4" />
                   <span>Open Textbooks &amp; PYQs</span>
@@ -50,7 +50,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Trust points */}
             <ScrollReveal animation="fade-up" delay={500}>
-              <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs text-slate-600 pt-1">
+              <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs text-slate-600 dark:text-[#A7AFBD] pt-1">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle className="w-4 h-4 text-brand-red flex-shrink-0" />
                   <span className="font-medium">NPTEL, MIT OCW &amp; SWAYAM</span>
@@ -72,10 +72,10 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-6 xl:col-span-5 relative flex items-center justify-center">
             <ScrollReveal animation="zoom-in" delay={300} className="w-full">
               {/* Ambient soft glow backdrop */}
-              <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-tr from-brand-red/15 via-rose-100/50 to-slate-200/50 rounded-[2.5rem] blur-2xl -z-10 opacity-70" />
+              <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-tr from-brand-red/15 via-rose-100/50 to-slate-200/50 dark:from-brand-red/10 dark:via-red-950/20 dark:to-transparent rounded-[2.5rem] blur-2xl -z-10 opacity-70" />
               
               {/* Image card with rounded corners and soft shadow */}
-              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_15px_35px_-5px_rgba(0,0,0,0.12),0_6px_16px_-4px_rgba(0,0,0,0.06)] border border-slate-200/80 bg-white group">
+              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_15px_35px_-5px_rgba(0,0,0,0.12),0_6px_16px_-4px_rgba(0,0,0,0.06)] border border-slate-200/80 dark:border-[#252932] bg-white dark:bg-[#111318] group">
                 <img
                   src="/hero-illustration.png"
                   alt="Techno India Campus - Open Resource Hub"
@@ -106,23 +106,23 @@ export const HeroSection: React.FC = () => {
 
           {/* Stat 1 */}
           <ScrollReveal animation="fade-up" delay={100} className="h-full">
-            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-soft hover:shadow-md hover:border-brand-red/40 transition-all duration-300 group flex flex-col justify-between h-full">
+            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red border border-red-100/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <GraduationCap className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
                     Programs
                   </span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
                   <AnimatedCounter end={15} suffix="+" duration={1800} delay={100} />
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Target Examinations</div>
-                <p className="text-[11px] text-slate-500 mt-0.5">Civil Services, Abroad, Law &amp; Govt</p>
+                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Target Examinations</div>
+                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">Civil Services, Abroad, Law &amp; Govt</p>
               </div>
-              <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden mt-4">
+              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
                 <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '150ms' }} />
               </div>
             </div>
@@ -130,23 +130,23 @@ export const HeroSection: React.FC = () => {
 
           {/* Stat 2 */}
           <ScrollReveal animation="fade-up" delay={200} className="h-full">
-            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-soft hover:shadow-md hover:border-brand-red/40 transition-all duration-300 group flex flex-col justify-between h-full">
+            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red border border-red-100/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
                     Verified
                   </span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
                   <AnimatedCounter end={100} suffix="%" duration={2000} delay={250} />
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Free &amp; Open Source</div>
-                <p className="text-[11px] text-slate-500 mt-0.5">No paywalls or subscriptions</p>
+                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Free &amp; Open Source</div>
+                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">No paywalls or subscriptions</p>
               </div>
-              <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden mt-4">
+              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
                 <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '300ms' }} />
               </div>
             </div>
@@ -154,23 +154,23 @@ export const HeroSection: React.FC = () => {
 
           {/* Stat 3 */}
           <ScrollReveal animation="fade-up" delay={300} className="h-full">
-            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-soft hover:shadow-md hover:border-brand-red/40 transition-all duration-300 group flex flex-col justify-between h-full">
+            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red border border-red-100/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <BookOpen className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
                     Compendiums
                   </span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
                   <AnimatedCounter end={500} suffix="+" duration={2200} delay={400} />
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Curated Textbooks</div>
-                <p className="text-[11px] text-slate-500 mt-0.5">Direct links to verified repositories</p>
+                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Curated Textbooks</div>
+                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">Direct links to verified repositories</p>
               </div>
-              <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden mt-4">
+              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
                 <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '450ms' }} />
               </div>
             </div>
@@ -178,23 +178,23 @@ export const HeroSection: React.FC = () => {
 
           {/* Stat 4 */}
           <ScrollReveal animation="fade-up" delay={400} className="h-full">
-            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-soft hover:shadow-md hover:border-brand-red/40 transition-all duration-300 group flex flex-col justify-between h-full">
+            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red border border-red-100/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Globe2 className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
                     OER Network
                   </span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
                   <AnimatedCounter end={9} suffix="+" duration={1600} delay={550} />
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Global Open Platforms</div>
-                <p className="text-[11px] text-slate-500 mt-0.5">NPTEL, MIT OCW, NCERT, OpenStax</p>
+                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Global Open Platforms</div>
+                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">NPTEL, MIT OCW, NCERT, OpenStax</p>
               </div>
-              <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden mt-4">
+              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
                 <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '600ms' }} />
               </div>
             </div>

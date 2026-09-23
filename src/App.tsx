@@ -19,6 +19,7 @@ import { DisclaimerPage } from './pages/DisclaimerPage';
 import { RefundPolicyPage } from './pages/RefundPolicyPage';
 import { AccessibilityPage } from './pages/AccessibilityPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Scroll to top automatically upon route navigation
 const ScrollToTop: React.FC = () => {
@@ -33,16 +34,17 @@ export const App: React.FC = () => {
   const [showInitialLoader, setShowInitialLoader] = useState(true);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col selection:bg-brand-red selection:text-white">
-      {showInitialLoader && (
-        <InitialLoadingScreen 
-          durationMs={3000} 
-          onComplete={() => setShowInitialLoader(false)} 
-        />
-      )}
-      <ScrollToTop />
-      <Navbar />
-      <main className="flex-1 pb-16 lg:pb-0">
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-[#08090B] text-slate-900 dark:text-[#F8FAFC] flex flex-col selection:bg-brand-red selection:text-white transition-colors duration-200">
+        {showInitialLoader && (
+          <InitialLoadingScreen 
+            durationMs={3000} 
+            onComplete={() => setShowInitialLoader(false)} 
+          />
+        )}
+        <ScrollToTop />
+        <Navbar />
+        <main className="flex-1 pb-16 lg:pb-0">
         <Routes>
           {/* Core Open Aggregator Routes */}
           <Route path="/" element={<LandingPage />} />
@@ -74,6 +76,7 @@ export const App: React.FC = () => {
       <Footer />
       <MobileNav />
     </div>
+  </ThemeProvider>
   );
 };
 

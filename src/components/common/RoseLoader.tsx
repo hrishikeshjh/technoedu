@@ -68,7 +68,7 @@ export const RoseLoader: React.FC<RoseLoaderProps> = ({
     return (
       <div
         className={`fixed inset-0 z-50 flex flex-col items-center justify-center p-6 ${
-          dark ? 'bg-[#050505] text-[#f5f5f5]' : 'bg-white/95 backdrop-blur-md text-slate-900'
+          dark ? 'bg-[#050505] text-[#f5f5f5]' : 'bg-white/95 dark:bg-[#08090B]/95 backdrop-blur-md text-slate-900 dark:text-[#F8FAFC]'
         } ${className}`}
       >
         <RoseThreeAnimation
@@ -84,12 +84,12 @@ export const RoseLoader: React.FC<RoseLoaderProps> = ({
           </h3>
         )}
         {subtitle && (
-          <p className="mt-1 text-xs text-slate-500 max-w-sm text-center">
+          <p className="mt-1 text-xs text-slate-500 dark:text-[#A7AFBD] max-w-sm text-center">
             {subtitle}
           </p>
         )}
         {showNumbers && (
-          <div className="mt-4 flex items-center gap-2 font-mono text-xs text-slate-400">
+          <div className="mt-4 flex items-center gap-2 font-mono text-xs text-slate-400 dark:text-[#7F8795]">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse" />
             <span>Processing nodes: {ticker.toString().padStart(2, '0')}%</span>
           </div>
@@ -102,7 +102,7 @@ export const RoseLoader: React.FC<RoseLoaderProps> = ({
   return (
     <div
       className={`flex flex-col items-center justify-center py-10 px-4 text-center ${
-        dark ? 'bg-[#050505] text-[#f5f5f5] rounded-2xl' : 'text-slate-800'
+        dark ? 'bg-[#050505] text-[#f5f5f5] rounded-2xl' : 'text-slate-800 dark:text-[#F8FAFC]'
       } ${className}`}
     >
       <div className="relative flex items-center justify-center">
@@ -122,13 +122,13 @@ export const RoseLoader: React.FC<RoseLoaderProps> = ({
       )}
 
       {subtitle && (
-        <p className="mt-1 text-xs text-slate-500 max-w-xs leading-relaxed">
+        <p className="mt-1 text-xs text-slate-500 dark:text-[#A7AFBD] max-w-xs leading-relaxed">
           {subtitle}
         </p>
       )}
 
       {showNumbers && (
-        <div className="mt-2.5 inline-flex items-center gap-1.5 font-mono text-[11px] text-slate-400 bg-slate-100 dark:bg-white/5 px-2.5 py-0.5 rounded-full">
+        <div className="mt-2.5 inline-flex items-center gap-1.5 font-mono text-[11px] text-slate-400 dark:text-[#7F8795] bg-slate-100 dark:bg-[#15171C] px-2.5 py-0.5 rounded-full">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-ping" />
           <span>Syncing: {ticker}%</span>
         </div>

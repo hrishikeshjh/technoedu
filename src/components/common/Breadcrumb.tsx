@@ -15,11 +15,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' })
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`breadcrumb mb-4 sm:mb-6 flex items-center flex-wrap gap-2 text-xs sm:text-sm text-slate-400 no-min-touch ${className}`}
+      className={`breadcrumb mb-4 sm:mb-6 flex items-center flex-wrap gap-2 text-xs sm:text-sm text-slate-400 dark:text-[#7F8795] no-min-touch ${className}`}
     >
       <Link
         to="/"
-        className="inline-flex items-center text-slate-500 hover:text-brand-red font-medium transition-colors no-min-touch"
+        className="inline-flex items-center text-slate-500 dark:text-[#A7AFBD] hover:text-brand-red dark:hover:text-red-400 font-medium transition-colors no-min-touch"
       >
         Home
       </Link>
@@ -29,7 +29,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' })
         return (
           <React.Fragment key={index}>
             <span
-              className="text-slate-300 font-normal select-none inline-flex items-center leading-none"
+              className="text-slate-300 dark:text-[#252932] font-normal select-none inline-flex items-center leading-none"
               aria-hidden="true"
             >
               /
@@ -37,13 +37,13 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' })
             {item.path && !isLast ? (
               <Link
                 to={item.path}
-                className="inline-flex items-center text-slate-500 hover:text-brand-red font-medium transition-colors no-min-touch"
+                className="inline-flex items-center text-slate-500 dark:text-[#A7AFBD] hover:text-brand-red dark:hover:text-red-400 font-medium transition-colors no-min-touch"
               >
                 {item.label}
               </Link>
             ) : (
               <span
-                className="inline-flex items-center text-slate-700 font-medium truncate no-min-touch"
+                className="inline-flex items-center text-slate-700 dark:text-[#F8FAFC] font-medium truncate no-min-touch"
                 aria-current={isLast ? 'page' : undefined}
               >
                 {item.label}

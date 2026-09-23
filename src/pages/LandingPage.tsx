@@ -34,18 +34,18 @@ export const LandingPage: React.FC = () => {
       <OpenPlatformsSection />
 
       {/* 4. Open-Access Study Material Spotlight */}
-      <section className="py-10 sm:py-16 bg-slate-50/70 border-t border-slate-200">
+      <section className="py-10 sm:py-16 bg-slate-50/70 dark:bg-[#0B0C0F] border-t border-slate-200 dark:border-[#252932] transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade-up" delay={50}>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-brand-darkred text-xs font-bold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-bold uppercase tracking-wider">
                   <span>Open Textbooks & Handbooks</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-dark-900 tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-dark-900 dark:text-[#F8FAFC] tracking-tight">
                   Curated Open Knowledge Library
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-[#A7AFBD] max-w-xl leading-relaxed">
                   Direct access to NCERT foundational series, OpenStax peer-reviewed college textbooks, official UPSC/SSC PYQ archives, and formula compendiums.
                 </p>
               </div>
@@ -69,41 +69,41 @@ export const LandingPage: React.FC = () => {
                 duration={550}
                 className="h-full flex flex-col"
               >
-                <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs hover:shadow-md hover:border-brand-red/40 transition-all flex flex-col justify-between space-y-3.5 h-full">
+                <div className="bg-white dark:bg-[#111318] rounded-2xl p-4 sm:p-5 border border-slate-200 dark:border-[#252932] shadow-xs hover:shadow-md hover:border-brand-red/40 transition-all flex flex-col justify-between space-y-3.5 h-full">
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-red-50 text-brand-darkred">
+                      <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400">
                         {mat.category}
                       </span>
-                      <span className="text-[10px] font-medium text-slate-500">
+                      <span className="text-[10px] font-medium text-slate-500 dark:text-[#7F8795]">
                         {mat.sourcePlatform}
                       </span>
                     </div>
 
-                    <h3 className="text-sm sm:text-base font-bold text-dark-900 leading-snug line-clamp-2">
+                    <h3 className="text-sm sm:text-base font-bold text-dark-900 dark:text-[#F8FAFC] leading-snug line-clamp-2">
                       {mat.title}
                     </h3>
 
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-slate-600 dark:text-[#A7AFBD] line-clamp-2 leading-relaxed">
                       {mat.previewSummary}
                     </p>
 
                     <div className="flex flex-wrap gap-1 pt-1">
                       {mat.keyTopics.slice(0, 2).map((t, topicIdx) => (
-                        <span key={topicIdx} className="text-[10px] px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-slate-600">
+                        <span key={topicIdx} className="text-[10px] px-2 py-0.5 bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] rounded text-slate-600 dark:text-[#A7AFBD]">
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] text-slate-500 font-semibold">{mat.examName}</span>
+                  <div className="pt-3 border-t border-slate-100 dark:border-[#252932] flex items-center justify-between">
+                    <span className="text-[11px] text-slate-500 dark:text-[#7F8795] font-semibold">{mat.examName}</span>
                     <a
                       href={mat.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-brand-red text-white text-xs font-bold transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-brand-red dark:bg-[#15171C] dark:hover:bg-brand-red dark:border dark:border-[#252932] text-white text-xs font-bold transition-colors flex items-center gap-1"
                     >
                       <span>Open Source</span>
                       <ExternalLink className="w-3 h-3" />

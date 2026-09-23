@@ -41,12 +41,12 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
             key={toast.id}
             className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl border shadow-xl animate-fade-in text-sm ${
               toast.type === 'success'
-                ? 'bg-white border-emerald-200 text-slate-800'
+                ? 'bg-white dark:bg-[#111318] border-emerald-200 dark:border-emerald-900/50 text-slate-800 dark:text-[#F8FAFC]'
                 : toast.type === 'info'
-                ? 'bg-white border-blue-200 text-slate-800'
+                ? 'bg-white dark:bg-[#111318] border-blue-200 dark:border-blue-900/50 text-slate-800 dark:text-[#F8FAFC]'
                 : toast.type === 'warning'
-                ? 'bg-white border-amber-200 text-slate-800'
-                : 'bg-white border-red-200 text-slate-800'
+                ? 'bg-white dark:bg-[#111318] border-amber-200 dark:border-amber-900/50 text-slate-800 dark:text-[#F8FAFC]'
+                : 'bg-white dark:bg-[#111318] border-red-200 dark:border-red-900/50 text-slate-800 dark:text-[#F8FAFC]'
             }`}
           >
             <div className={`w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0 ${
@@ -55,12 +55,12 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
               toast.type === 'warning' ? 'bg-amber-500' : 'bg-red-500'
             }`} />
             <div className="flex-1">
-              <h5 className="font-semibold text-dark-900 text-sm">{toast.title}</h5>
-              <p className="text-slate-600 text-xs mt-0.5 leading-relaxed">{toast.message}</p>
+              <h5 className="font-semibold text-dark-900 dark:text-[#F8FAFC] text-sm">{toast.title}</h5>
+              <p className="text-slate-600 dark:text-[#A7AFBD] text-xs mt-0.5 leading-relaxed">{toast.message}</p>
             </div>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-slate-400 hover:text-slate-600 text-base leading-none p-1"
+              className="text-slate-400 hover:text-slate-600 dark:text-[#7F8795] dark:hover:text-[#F8FAFC] text-base leading-none p-1"
             >
               ×
             </button>

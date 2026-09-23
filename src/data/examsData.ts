@@ -10,7 +10,7 @@ export const examsData: ExamInfo[] = [
     tag: 'Civil Services Flagship',
     officialPortalUrl: 'https://upsc.gov.in',
     officialPortalName: 'UPSC Official Portal',
-    officialPYQUrl: 'https://upsc.gov.in/examinations/previous-question-papers',
+    officialPYQUrl: 'https://upsc.gov.in/sites/default/files/2024_GS_Paper_1.pdf',
     syllabusHighlights: [
       'Prelims GS Paper I (History, Polity, Economy, Geography, Environment, Science)',
       'Prelims Paper II CSAT (Reading Comprehension, Logical Reasoning, Basic Numeracy)',
@@ -24,7 +24,7 @@ export const examsData: ExamInfo[] = [
         name: 'NCERT e-Pathshala',
         provider: 'NCERT / Ministry of Education',
         type: 'Textbooks & Notes',
-        url: 'https://ncert.nic.in/textbook.php',
+        url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf',
         description: 'Foundational Class 6-12 NCERT textbooks in History, Geography, Polity, Economics, and Science.',
         badge: 'Core Foundation'
       },
@@ -72,7 +72,7 @@ export const examsData: ExamInfo[] = [
         platformName: 'Ministry of Law & Justice / Indian Kanoon',
         platformType: 'Official Portal',
         resourceTitle: 'Official Constitution of India Full Text Repository',
-        resourceUrl: 'https://legislative.gov.in/constitution-of-india/',
+        resourceUrl: 'https://legislative.gov.in/sites/default/files/COI_English.pdf',
         isFreeOpenSource: true
       },
       {
@@ -80,8 +80,8 @@ export const examsData: ExamInfo[] = [
         description: 'From the advent of Europeans to Indian Independence and post-independence consolidation.',
         platformName: 'NCERT Class 12 / National Archives',
         platformType: 'Open Textbooks',
-        resourceTitle: 'NCERT Themes in Indian History (Vols 1, 2, 3)',
-        resourceUrl: 'https://ncert.nic.in/textbook.php',
+        resourceTitle: 'NCERT Themes in Indian History (Direct PDF)',
+        resourceUrl: 'https://ncert.nic.in/textbook/pdf/lehs1.pdf',
         isFreeOpenSource: true
       },
       {
@@ -104,8 +104,8 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'Indian Polity (Constitutional Framework)', author: 'Constitution of India Open Repository', platform: 'Legislative Gov', url: 'https://legislative.gov.in' },
-      { title: 'India: Physical Environment & Contemporary India', author: 'NCERT Class 11 & 12 Board', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'Constitution of India Bare Act (Direct PDF)', author: 'Ministry of Law & Justice', platform: 'Official Legislative Portal', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' },
+      { title: 'NCERT Physical Geography Class 11 (Direct PDF)', author: 'NCERT Curriculum Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/kegy1.pdf' },
       { title: 'Public Administration & Governance Modules', author: 'IGNOU Faculty of Social Sciences', platform: 'e-GyanKosh', url: 'https://egyankosh.ac.in' }
     ]
   },
@@ -176,7 +176,7 @@ export const examsData: ExamInfo[] = [
     ],
     recommendedTextbooks: [
       { title: 'West Bengal Physical & Regional Geography', author: 'WBBSE Board', platform: 'Banglar Shiksha', url: 'https://banglarsiksha.gov.in' },
-      { title: 'Indian Constitution & Financial Institutions', author: 'e-GyanKosh', platform: 'IGNOU Open Repository', url: 'https://egyankosh.ac.in' }
+      { title: 'Constitution of India Bare Act (Direct PDF)', author: 'Ministry of Law & Justice', platform: 'Official Legislative Portal', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' }
     ]
   },
   {
@@ -188,7 +188,7 @@ export const examsData: ExamInfo[] = [
     tag: 'ETS Standard',
     officialPortalUrl: 'https://www.ets.org/gre',
     officialPortalName: 'ETS Official GRE Portal',
-    officialPYQUrl: 'https://www.ets.org/gre/test-takers/general-test/prepare.html',
+    officialPYQUrl: 'https://www.ets.org/s/gre/pdf/practice_book_gre.pdf',
     syllabusHighlights: [
       'Quantitative Reasoning (Arithmetic, Algebra, Geometry, Data Analysis)',
       'Verbal Reasoning (Reading Comprehension, Text Completion, Sentence Equivalence)',
@@ -240,7 +240,7 @@ export const examsData: ExamInfo[] = [
         platformName: 'ETS Official Free Resources',
         platformType: 'Official PDF Handbook',
         resourceTitle: 'ETS Official GRE Math Review PDF Handbook',
-        resourceUrl: 'https://www.ets.org/gre/test-takers/general-test/prepare.html',
+        resourceUrl: 'https://www.ets.org/s/gre/pdf/gre_math_review.pdf',
         isFreeOpenSource: true
       },
       {
@@ -254,8 +254,8 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'ETS GRE Math Review & Convention Guide', author: 'ETS Assessment Board', platform: 'ETS Official', url: 'https://www.ets.org' },
-      { title: 'College Algebra & Elementary Statistics', author: 'OpenStax Rice University', platform: 'OpenStax Open License', url: 'https://openstax.org' }
+      { title: 'ETS Official GRE Math Review (Direct PDF)', author: 'ETS Assessment Board', platform: 'ETS Official', url: 'https://www.ets.org/s/gre/pdf/gre_math_review.pdf' },
+      { title: 'OpenStax College Algebra 2e (Direct PDF)', author: 'Jay Abramson et al.', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' }
     ]
   },
   {
@@ -324,7 +324,7 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'Introductory Business Statistics', author: 'Alexander Holmes et al.', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'OpenStax Introductory Statistics (Direct PDF)', author: 'Alexander Holmes et al.', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/IntroductoryStatistics.pdf' },
       { title: 'Critical Reasoning & Logic Foundations', author: 'Open Logic Project', platform: 'Open Logic', url: 'https://openlogicproject.net' }
     ]
   },
@@ -395,7 +395,7 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'Official IELTS Assessment Criteria & Band Descriptors', author: 'Cambridge English Language Assessment', platform: 'IELTS Official', url: 'https://www.ielts.org' },
+      { title: 'Official IELTS Writing Band Descriptors (Direct PDF)', author: 'Cambridge Assessment English', platform: 'IELTS Official', url: 'https://www.ielts.org/-/media/pdfs/writing-band-descriptors.pdf' },
       { title: 'Purdue OWL Academic English Writing Manual', author: 'Purdue University', platform: 'Purdue OWL', url: 'https://owl.purdue.edu' }
     ]
   },
@@ -448,7 +448,7 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'TOEFL iBT Official Test Taker Handbook', author: 'ETS Assessment Division', platform: 'ETS Official', url: 'https://www.ets.org' }
+      { title: 'TOEFL iBT Official Bulletin & Guide (Direct PDF)', author: 'ETS Assessment Division', platform: 'ETS Official', url: 'https://www.ets.org/s/toefl/pdf/toefl_bulletin.pdf' }
     ]
   },
   {
@@ -517,8 +517,8 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'The Official Digital SAT Study Guide', author: 'The College Board', platform: 'College Board Open', url: 'https://satsuite.collegeboard.org' },
-      { title: 'OpenStax Algebra and Trigonometry', author: 'Jay Abramson et al.', platform: 'OpenStax', url: 'https://openstax.org' }
+      { title: 'Digital SAT Official Math Review (Direct PDF)', author: 'The College Board', platform: 'College Board Official', url: 'https://satsuite.collegeboard.org/media/pdf/digital-sat-math-review.pdf' },
+      { title: 'OpenStax College Algebra 2e (Direct PDF)', author: 'Jay Abramson et al.', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' }
     ]
   },
   {
@@ -573,8 +573,8 @@ export const examsData: ExamInfo[] = [
         description: 'Circles, chords, tangents, triangles similarity, height & distance, coordinate geometry, and polynomials.',
         platformName: 'NCERT & OpenStax',
         platformType: 'Open Textbooks',
-        resourceTitle: 'NCERT Class 10 Geometry & Trigonometry Chapters',
-        resourceUrl: 'https://ncert.nic.in/textbook.php',
+        resourceTitle: 'NCERT Class 10 Mathematics (Direct PDF)',
+        resourceUrl: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf',
         isFreeOpenSource: true
       },
       {
@@ -588,8 +588,8 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT Mathematics Class 9 & 10 (Full Text)', author: 'NCERT Curriculum Board', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
-      { title: 'Basic Science & Technology Handbook', author: 'NCERT e-Pathshala', platform: 'NCERT', url: 'https://ncert.nic.in' }
+      { title: 'NCERT Class 9 Mathematics (Direct PDF)', author: 'NCERT Curriculum Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/jesc1.pdf' },
+      { title: 'NCERT Class 10 Science (Direct PDF)', author: 'NCERT Curriculum Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf' }
     ]
   },
   {
@@ -644,8 +644,8 @@ export const examsData: ExamInfo[] = [
         description: 'Structure of Indian banking system, Basel III norms, Priority Sector Lending (PSL), inflation indices, and RBI functions.',
         platformName: 'Reserve Bank of India Open Portal',
         platformType: 'Official Resource',
-        resourceTitle: 'RBI Monetary Policy Framework & FAQs on Banking Terms',
-        resourceUrl: 'https://rbi.org.in/financialeducation/',
+        resourceTitle: 'RBI Banking Structure & Policy Guide (Direct PDF)',
+        resourceUrl: 'https://rbi.org.in/financialeducation/pdf/Banking_Structure.pdf',
         isFreeOpenSource: true
       },
       {
@@ -659,8 +659,8 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'Financial Education & Banking Operations Handbook', author: 'Reserve Bank of India', platform: 'RBI Financial Education', url: 'https://rbi.org.in' },
-      { title: 'Introductory Macroeconomics: Money and Banking', author: 'NCERT Class 12', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' }
+      { title: 'RBI Banking Structure & Policy Guide (Direct PDF)', author: 'Reserve Bank of India', platform: 'RBI Financial Education', url: 'https://rbi.org.in/financialeducation/pdf/Banking_Structure.pdf' },
+      { title: 'NCERT Class 12 Macroeconomics (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/lesc2.pdf' }
     ]
   },
   {
@@ -731,7 +731,7 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'The Constitution of India: Text with Amendments', author: 'Ministry of Law and Justice', platform: 'Official Legislative Portal', url: 'https://legislative.gov.in' },
+      { title: 'Constitution of India Bare Act (Direct PDF)', author: 'Ministry of Law & Justice', platform: 'Official Legislative Portal', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' },
       { title: 'Introduction to Law & Legal Methods', author: 'e-PG Pathshala UGC Law Board', platform: 'e-PG Pathshala', url: 'https://epgp.inflibnet.ac.in' }
     ]
   },
@@ -795,14 +795,14 @@ export const examsData: ExamInfo[] = [
         description: 'Quadratic equations, polynomials, log properties, sequences and series, maxima-minima, and coordinate geometry.',
         platformName: 'OpenStax & Khan Academy',
         platformType: 'Open Textbooks',
-        resourceTitle: 'OpenStax Precalculus & Functions Mastery',
-        resourceUrl: 'https://openstax.org',
+        resourceTitle: 'OpenStax Precalculus 2e (Direct PDF)',
+        resourceUrl: 'https://assets.openstax.org/oscms-prodcms/media/documents/Precalculus2e.pdf',
         isFreeOpenSource: true
       }
     ],
     recommendedTextbooks: [
       { title: 'Mathematics for Computer Science (Discrete Math & Logic)', author: 'Eric Lehman et al.', platform: 'MIT OCW', url: 'https://ocw.mit.edu' },
-      { title: 'OpenStax Precalculus: Functions and Graphs', author: 'Jay Abramson et al.', platform: 'OpenStax', url: 'https://openstax.org' }
+      { title: 'OpenStax Precalculus 2e (Direct PDF)', author: 'Jay Abramson et al.', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Precalculus2e.pdf' }
     ]
   },
   {
@@ -836,7 +836,7 @@ export const examsData: ExamInfo[] = [
         name: 'NCERT Class 12 Official Textbooks',
         provider: 'NCERT',
         type: 'Textbooks & Notes',
-        url: 'https://ncert.nic.in/textbook.php',
+        url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf',
         description: 'The exact source syllabus textbooks for all 27 domain specific subjects tested in CUET UG.',
         badge: 'Official Syllabus Source'
       },
@@ -856,13 +856,13 @@ export const examsData: ExamInfo[] = [
         description: 'Physics, Chemistry, Biology, Mathematics, History, Political Science, Economics based on Class 12 NCERT.',
         platformName: 'NCERT e-Pathshala',
         platformType: 'Open Textbooks',
-        resourceTitle: 'NCERT e-Pathshala Class 12 Digital Repository',
-        resourceUrl: 'https://ncert.nic.in/textbook.php',
+        resourceTitle: 'NCERT Class 12 Domain Mathematics (Direct PDF)',
+        resourceUrl: 'https://ncert.nic.in/textbook/pdf/lema1.pdf',
         isFreeOpenSource: true
       }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT Class 12 Domain Subjects Collection', author: 'NCERT National Faculty', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' }
+      { title: 'NCERT Class 12 Mathematics (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/lema1.pdf' }
     ]
   },
   {
@@ -896,7 +896,7 @@ export const examsData: ExamInfo[] = [
         name: 'NCERT Class 9 & 10 General Science Textbook',
         provider: 'NCERT',
         type: 'Textbooks & Notes',
-        url: 'https://ncert.nic.in/textbook.php',
+        url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf',
         description: 'Complete syllabus match for RRB General Science (Light, Electricity, Periodic Table, Human Body Systems).',
         badge: 'NCERT Core'
       }
@@ -907,13 +907,13 @@ export const examsData: ExamInfo[] = [
         description: 'Physics laws, electricity, chemical reactions, acids/bases, cell biology, and genetics.',
         platformName: 'NCERT e-Pathshala',
         platformType: 'Open Textbooks',
-        resourceTitle: 'NCERT Class 9 & 10 Science Digital Edition',
-        resourceUrl: 'https://ncert.nic.in/textbook.php',
+        resourceTitle: 'NCERT Class 9 Science (Direct PDF)',
+        resourceUrl: 'https://ncert.nic.in/textbook/pdf/jesc1.pdf',
         isFreeOpenSource: true
       }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT Class 9 & 10 Science (Complete Book)', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' }
+      { title: 'NCERT Class 10 Science (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf' }
     ]
   },
   {
@@ -964,7 +964,7 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT Class 11 & 12 Mathematics (Part 1 & 2)', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' }
+      { title: 'NCERT Class 12 Mathematics (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/lema1.pdf' }
     ]
   },
   {
@@ -1025,7 +1025,7 @@ export const examsData: ExamInfo[] = [
       }
     ],
     recommendedTextbooks: [
-      { title: 'National Curriculum Framework for Foundational Stage', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'NCERT Indian Constitution at Work (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf' },
       { title: 'e-PG Pathshala Education Modules', author: 'INFLIBNET / UGC', platform: 'e-PG Pathshala', url: 'https://epgp.inflibnet.ac.in' }
     ]
   },
@@ -1046,7 +1046,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Current Affairs', 'Bengali & English Grammar', 'General Science', 'Mental Ability & Reasoning'],
     openSourcePlatforms: [
-      { id: 'ncert-police', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Class 6-10 foundational textbooks for GK, Science, and Mathematics sections.', badge: 'Core Foundation' },
+      { id: 'ncert-police', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Class 6-10 foundational textbooks for GK, Science, and Mathematics sections.', badge: 'Core Foundation' },
       { id: 'khan-police', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Free practice for arithmetic, mental ability, and reasoning fundamentals.', badge: 'Free Practice' },
       { id: 'ndli-police', name: 'NDLI (National Digital Library)', provider: 'IIT Kharagpur / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ndl.iitkgp.ac.in', description: 'All-discipline reference material for general studies and GK preparation.', badge: 'National Portal' }
     ],
@@ -1055,7 +1055,7 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Arithmetic & Reasoning', description: 'Percentages, ratios, time-work, puzzles, and non-verbal reasoning for the written test.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Arithmetic & Logical Reasoning Modules', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT General Science & Social Science', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'NCERT Class 10 Science (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf' },
       { title: 'WB Board Language Textbooks', author: 'WBBSE', platform: 'Banglar Shiksha', url: 'https://banglarshiksha.gov.in' }
     ]
   },
@@ -1076,7 +1076,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Bengali Language', 'English Comprehension', 'Mental Ability', 'Current Affairs'],
     openSourcePlatforms: [
-      { id: 'ncert-clerk', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Foundational school textbooks covering the General Studies paper.', badge: 'Core Foundation' },
+      { id: 'ncert-clerk', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Foundational school textbooks covering the General Studies paper.', badge: 'Core Foundation' },
       { id: 'khan-clerk', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Arithmetic and data-interpretation practice modules.', badge: 'Free Practice' },
       { id: 'egyankosh-clerk', name: 'e-GyanKosh (IGNOU)', provider: 'IGNOU', type: 'Textbooks & Notes', url: 'https://egyankosh.ac.in', description: 'Undergraduate modules for geography of West Bengal and Indian history.', badge: 'IGNOU Open Library' }
     ],
@@ -1085,7 +1085,7 @@ export const examsData: ExamInfo[] = [
       { topicName: 'English & Bengali Composition', description: 'Essay, precis, and comprehension required for both language papers.', platformName: 'Banglar Shiksha', platformType: 'Official Textbook', resourceTitle: 'WBBSE & WBCHSE Language Textbooks', resourceUrl: 'https://banglarshiksha.gov.in', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT Geography & Polity Textbooks', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'NCERT Physical Geography Class 11 (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/kegy1.pdf' },
       { title: 'WBBSE Bengali & English Textbooks', author: 'WBBSE', platform: 'Banglar Shiksha', url: 'https://banglarshiksha.gov.in' }
     ]
   },
@@ -1106,7 +1106,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Reasoning', 'Arithmetic', 'Bengali & English Grammar', 'General Knowledge'],
     openSourcePlatforms: [
-      { id: 'ncert-wbhrb', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'School-level textbooks for the written examination syllabus.', badge: 'Core Foundation' },
+      { id: 'ncert-wbhrb', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'School-level textbooks for the written examination syllabus.', badge: 'Core Foundation' },
       { id: 'khan-wbhrb', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Interactive arithmetic and reasoning practice.', badge: 'Free Practice' },
       { id: 'ndli-wbhrb', name: 'NDLI (National Digital Library)', provider: 'IIT Kharagpur / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ndl.iitkgp.ac.in', description: 'General studies references across multiple disciplines.', badge: 'National Portal' }
     ],
@@ -1115,7 +1115,7 @@ export const examsData: ExamInfo[] = [
       { topicName: 'General Awareness', description: 'Static GK, current affairs, Indian polity, and West Bengal-specific facts.', platformName: 'e-GyanKosh', platformType: 'Open Repository', resourceTitle: 'IGNOU General Studies Modules', resourceUrl: 'https://egyankosh.ac.in', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'NCERT Mathematics & Science Textbooks', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' },
+      { title: 'NCERT Class 10 Science (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf' },
       { title: 'WBBSE Bengali & English Textbooks', author: 'WBBSE', platform: 'Banglar Shiksha', url: 'https://banglarshiksha.gov.in' }
     ]
   },
@@ -1139,14 +1139,14 @@ export const examsData: ExamInfo[] = [
       { id: 'nptel-je', name: 'NPTEL Engineering Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University-level lectures for core Civil, Electrical, and Mechanical subjects.', badge: 'NPTEL Courseware' },
       { id: 'mitocw-je', name: 'MIT OpenCourseWare', provider: 'MIT', type: 'Video Lectures', url: 'https://ocw.mit.edu', description: 'Graduate engineering course materials and problem sets.', badge: 'CC Licensed' },
       { id: 'openstax-je', name: 'OpenStax Physics & Math', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed physics and mathematics textbooks for the technical paper.', badge: 'CC BY 4.0' },
-      { id: 'ncert-je', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Physics, Chemistry, and Mathematics fundamentals from Class 11-12.', badge: 'Core Foundation' }
+      { id: 'ncert-je', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Physics, Chemistry, and Mathematics fundamentals from Class 11-12.', badge: 'Core Foundation' }
     ],
     topicResources: [
       { topicName: 'Electrical Circuits & Machines', description: 'DC/AC circuits, transformers, induction motors, and measuring instruments for the electrical paper.', platformName: 'NPTEL', platformType: 'Video Lectures', resourceTitle: 'NPTEL Electrical Engineering Course Series', resourceUrl: 'https://nptel.ac.in', isFreeOpenSource: true },
       { topicName: 'Strength of Materials', description: 'Stress-strain relations, beams, bending moments, and shear forces for civil candidates.', platformName: 'NPTEL', platformType: 'Video Lectures', resourceTitle: 'NPTEL Mechanics of Solids', resourceUrl: 'https://nptel.ac.in', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'University Physics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'OpenStax University Physics Vol 1 (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/UniversityPhysicsVol1.pdf' },
       { title: 'Engineering Mechanics Modules', author: 'NPTEL / IIT', platform: 'NPTEL', url: 'https://nptel.ac.in' }
     ]
   },
@@ -1167,7 +1167,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Computer Awareness', 'Quantitative Aptitude', 'Industrial Relations', 'Labour Laws'],
     openSourcePlatforms: [
-      { id: 'ncert-epfo', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Economics and polity textbooks covering the general awareness syllabus.', badge: 'Core Foundation' },
+      { id: 'ncert-epfo', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Economics and polity textbooks covering the general awareness syllabus.', badge: 'Core Foundation' },
       { id: 'khan-epfo', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Quantitative aptitude and computer logic practice modules.', badge: 'Free Practice' },
       { id: 'openstax-epfo', name: 'OpenStax Economics', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed introductory economics text for the EO paper.', badge: 'CC BY 4.0' },
       { id: 'egyankosh-epfo', name: 'e-GyanKosh (IGNOU)', provider: 'IGNOU', type: 'Textbooks & Notes', url: 'https://egyankosh.ac.in', description: 'Labour law and industrial relations open modules.', badge: 'IGNOU Open Library' }
@@ -1177,7 +1177,7 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Economics & Social Security', description: 'National income, social security schemes, and Indian economy basics.', platformName: 'OpenStax / PRS India', platformType: 'Open Textbooks', resourceTitle: 'OpenStax Principles of Economics', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'Principles of Economics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'OpenStax Principles of Economics 2e (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/PrinciplesEconomics2e.pdf' },
       { title: 'Labour Law Open Modules', author: 'IGNOU', platform: 'e-GyanKosh', url: 'https://egyankosh.ac.in' }
     ]
   },
@@ -1199,7 +1199,7 @@ export const examsData: ExamInfo[] = [
     popularTopics: ['Financial Awareness', 'Data Interpretation', 'Reasoning', 'English Language'],
     openSourcePlatforms: [
       { id: 'rbi-fin', name: 'RBI Financial Education', provider: 'Reserve Bank of India', type: 'Textbooks & Notes', url: 'https://rbi.org.in/financialeducation/', description: 'Official RBI material on banking, monetary policy, and financial markets.', badge: 'RBI Official' },
-      { id: 'ncert-lic', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Economics and commerce fundamentals for financial awareness.', badge: 'Core Foundation' },
+      { id: 'ncert-lic', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Economics and commerce fundamentals for financial awareness.', badge: 'Core Foundation' },
       { id: 'openstax-lic', name: 'OpenStax Business & Finance', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Introductory finance, accounting, and business textbooks.', badge: 'CC BY 4.0' },
       { id: 'nptel-lic', name: 'NPTEL Management Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University lectures on financial management and corporate finance.', badge: 'NPTEL Courseware' }
     ],
@@ -1208,8 +1208,8 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Data Analysis & Interpretation', description: 'Tables, charts, and caselet-based data interpretation for the mains paper.', platformName: 'Khan Academy', platformType: 'Practice Engine', resourceTitle: 'Data & Statistics Modules', resourceUrl: 'https://www.khanacademy.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'Principles of Finance', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
-      { title: 'Banking & Insurance Open Material', author: 'RBI / IGNOU', platform: 'RBI Financial Education', url: 'https://rbi.org.in/financialeducation/' }
+      { title: 'OpenStax Principles of Accounting Vol 1 (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Principles_of_Accounting_Volume_1-WEB.pdf' },
+      { title: 'RBI Banking Structure & Policy Guide (Direct PDF)', author: 'Reserve Bank of India', platform: 'RBI Financial Education', url: 'https://rbi.org.in/financialeducation/pdf/Banking_Structure.pdf' }
     ]
   },
   {
@@ -1230,7 +1230,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Legal Reasoning', 'Logical Reasoning', 'Constitutional Law', 'Current Affairs'],
     openSourcePlatforms: [
-      { id: 'constitution-ailet', name: 'Constitution of India Official Text', provider: 'Ministry of Law & Justice', type: 'Textbooks & Notes', url: 'https://legislative.gov.in/constitution-of-india/', description: 'The authoritative text of the Constitution for legal knowledge preparation.', badge: 'Official Source' },
+      { id: 'constitution-ailet', name: 'Constitution of India Official Text', provider: 'Ministry of Law & Justice', type: 'Textbooks & Notes', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf', description: 'The authoritative text of the Constitution for legal knowledge preparation.', badge: 'Official Source' },
       { id: 'indiankanoon-ailet', name: 'Indian Kanoon', provider: 'Indian Kanoon', type: 'Textbooks & Notes', url: 'https://indiankanoon.org', description: 'Free searchable database of Supreme Court and High Court judgments.', badge: 'Case Law Open Access' },
       { id: 'swayam-ailet', name: 'SWAYAM Law Courses', provider: 'Ministry of Education', type: 'Video Lectures', url: 'https://swayam.gov.in', description: 'Open online courses on constitutional law, jurisprudence, and legal methods.', badge: 'Govt MOOCs' },
       { id: 'egpg-ailet', name: 'e-PG Pathshala Law', provider: 'UGC INFLIBNET', type: 'Textbooks & Notes', url: 'https://epgp.inflibnet.ac.in', description: 'Post-graduate law modules covering contracts, torts, and constitutional law.', badge: 'UGC INFLIBNET' }
@@ -1240,7 +1240,7 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Constitutional Law', description: 'Fundamental rights, directive principles, and landmark Supreme Court rulings.', platformName: 'Legislative Gov / Indian Kanoon', platformType: 'Official Repository', resourceTitle: 'Official Constitution Text & Landmark Judgments', resourceUrl: 'https://indiankanoon.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'Constitution of India (Official Text)', author: 'Ministry of Law & Justice', platform: 'Legislative Gov', url: 'https://legislative.gov.in' },
+      { title: 'Constitution of India Bare Act (Direct PDF)', author: 'Ministry of Law & Justice', platform: 'Official Legislative Portal', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' },
       { title: 'Introduction to the Constitution of India', author: 'e-PG Pathshala', platform: 'e-PG Pathshala', url: 'https://epgp.inflibnet.ac.in' }
     ]
   },
@@ -1263,7 +1263,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Legal Reasoning', 'Logical & Analytical Reasoning', 'Reading Comprehension', 'Current Affairs'],
     openSourcePlatforms: [
-      { id: 'constitution-slat', name: 'Constitution of India Official Text', provider: 'Ministry of Law & Justice', type: 'Textbooks & Notes', url: 'https://legislative.gov.in/constitution-of-india/', description: 'Authoritative constitutional text for the legal reasoning paper.', badge: 'Official Source' },
+      { id: 'constitution-slat', name: 'Constitution of India Official Text', provider: 'Ministry of Law & Justice', type: 'Textbooks & Notes', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf', description: 'Authoritative constitutional text for the legal reasoning paper.', badge: 'Official Source' },
       { id: 'indiankanoon-slat', name: 'Indian Kanoon', provider: 'Indian Kanoon', type: 'Textbooks & Notes', url: 'https://indiankanoon.org', description: 'Searchable case law database for landmark legal principles.', badge: 'Case Law Open Access' },
       { id: 'swayam-slat', name: 'SWAYAM Law Courses', provider: 'Ministry of Education', type: 'Video Lectures', url: 'https://swayam.gov.in', description: 'Open courses on legal reasoning and constitutional essentials.', badge: 'Govt MOOCs' },
       { id: 'gutenberg-slat', name: 'Project Gutenberg English Classics', provider: 'Project Gutenberg', type: 'Textbooks & Notes', url: 'https://www.gutenberg.org', description: 'Public-domain literature for reading comprehension practice.', badge: 'Public Domain' }
@@ -1273,7 +1273,7 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Reading Comprehension', description: 'Passage-based inference, tone, and main-idea questions from diverse sources.', platformName: 'Project Gutenberg', platformType: 'Open Repository', resourceTitle: 'Classic English Texts for RC Practice', resourceUrl: 'https://www.gutenberg.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'Constitution of India (Official Text)', author: 'Ministry of Law & Justice', platform: 'Legislative Gov', url: 'https://legislative.gov.in' },
+      { title: 'Constitution of India Bare Act (Direct PDF)', author: 'Ministry of Law & Justice', platform: 'Official Legislative Portal', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' },
       { title: 'English Classics (Public Domain)', author: 'Various Authors', platform: 'Project Gutenberg', url: 'https://www.gutenberg.org' }
     ]
   },
@@ -1305,8 +1305,8 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Quantitative Aptitude & DI', description: 'Algebra, arithmetic, geometry, and data interpretation for the quantitative sections.', platformName: 'OpenStax / Khan Academy', platformType: 'Open Textbooks', resourceTitle: 'OpenStax Algebra & Statistics Texts', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'College Algebra', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
-      { title: 'Introductory Statistics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' }
+      { title: 'OpenStax College Algebra 2e (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' },
+      { title: 'OpenStax Introductory Statistics (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/IntroductoryStatistics.pdf' }
     ]
   },
   {
@@ -1329,7 +1329,7 @@ export const examsData: ExamInfo[] = [
     openSourcePlatforms: [
       { id: 'openstax-snap', name: 'OpenStax Math', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed algebra and statistics textbooks for the quantitative paper.', badge: 'CC BY 4.0' },
       { id: 'khan-snap', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Reasoning and quantitative practice modules.', badge: 'Free Practice' },
-      { id: 'ncert-snap', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Mathematics fundamentals for quantitative aptitude.', badge: 'Core Foundation' },
+      { id: 'ncert-snap', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Mathematics fundamentals for quantitative aptitude.', badge: 'Core Foundation' },
       { id: 'nptel-snap', name: 'NPTEL Analytics Courses', provider: 'IITs & IISc', type: 'Video Lectures', url: 'https://nptel.ac.in', description: 'University lectures on data interpretation and analytics.', badge: 'NPTEL Courseware' }
     ],
     topicResources: [
@@ -1337,8 +1337,8 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Analytical & Logical Reasoning', description: 'Puzzles, arrangement, syllogisms, and critical reasoning for the reasoning paper.', platformName: 'OpenStax', platformType: 'Open Textbooks', resourceTitle: 'Contemporary Mathematics Text', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'Contemporary Mathematics', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
-      { title: 'NCERT Mathematics (Class 11-12)', author: 'NCERT', platform: 'NCERT e-Pathshala', url: 'https://ncert.nic.in' }
+      { title: 'OpenStax Introductory Statistics (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/IntroductoryStatistics.pdf' },
+      { title: 'NCERT Class 12 Mathematics (Direct PDF)', author: 'NCERT Board', platform: 'NCERT Official', url: 'https://ncert.nic.in/textbook/pdf/lema1.pdf' }
     ]
   },
   {
@@ -1362,14 +1362,14 @@ export const examsData: ExamInfo[] = [
       { id: 'openstax-nmat', name: 'OpenStax Math & Writing', provider: 'Rice University', type: 'Textbooks & Notes', url: 'https://openstax.org', description: 'Peer-reviewed algebra, statistics, and writing textbooks.', badge: 'CC BY 4.0' },
       { id: 'khan-nmat', name: 'Khan Academy', provider: 'Khan Academy (Non-Profit)', type: 'Practice Engine', url: 'https://www.khanacademy.org', description: 'Quantitative and logical reasoning practice modules.', badge: 'Free Practice' },
       { id: 'owl-nmat', name: 'Purdue OWL', provider: 'Purdue University', type: 'Textbooks & Notes', url: 'https://owl.purdue.edu', description: 'Grammar, vocabulary, and academic writing reference for language skills.', badge: 'University Open Access' },
-      { id: 'ncert-nmat', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'Mathematics fundamentals for quantitative skills.', badge: 'Core Foundation' }
+      { id: 'ncert-nmat', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'Mathematics fundamentals for quantitative skills.', badge: 'Core Foundation' }
     ],
     topicResources: [
       { topicName: 'Language Skills', description: 'Grammar, vocabulary, reading comprehension, and sentence correction for the verbal paper.', platformName: 'Purdue OWL', platformType: 'Open Repository', resourceTitle: 'Grammar & Style Guide', resourceUrl: 'https://owl.purdue.edu', isFreeOpenSource: true },
       { topicName: 'Quantitative Skills', description: 'Arithmetic, algebra, and geometry in a computer-adaptive format.', platformName: 'OpenStax', platformType: 'Open Textbooks', resourceTitle: 'OpenStax College Algebra', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'College Algebra', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
+      { title: 'OpenStax College Algebra 2e (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' },
       { title: 'Grammar & Writing Reference', author: 'Purdue OWL', platform: 'Purdue OWL', url: 'https://owl.purdue.edu' }
     ]
   },
@@ -1391,7 +1391,7 @@ export const examsData: ExamInfo[] = [
     ],
     popularTopics: ['Creative Ability Test', 'Quantitative Ability', 'Communication Ability', 'Analytical Ability'],
     openSourcePlatforms: [
-      { id: 'ncert-nift', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook.php', description: 'General studies and English foundation for the GAT paper.', badge: 'Core Foundation' },
+      { id: 'ncert-nift', name: 'NCERT e-Pathshala', provider: 'NCERT / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf', description: 'General studies and English foundation for the GAT paper.', badge: 'Core Foundation' },
       { id: 'ndli-nift', name: 'NDLI Design & Art Collection', provider: 'IIT Kharagpur / Ministry of Education', type: 'Textbooks & Notes', url: 'https://ndl.iitkgp.ac.in', description: 'Open collections on design fundamentals, art history, and fashion studies.', badge: 'National Portal' },
       { id: 'openlib-nift', name: 'Internet Archive / Open Library', provider: 'Internet Archive', type: 'Textbooks & Notes', url: 'https://openlibrary.org', description: 'Public-domain books on drawing, design, and art appreciation.', badge: 'Universal Open Access' },
       { id: 'khan-nift', name: 'Khan Academy Art History', provider: 'Khan Academy (Non-Profit)', type: 'Video Lectures', url: 'https://www.khanacademy.org', description: 'Free art history and visual analysis courseware for the CAT.', badge: 'Free Practice' }
@@ -1477,7 +1477,7 @@ export const examsData: ExamInfo[] = [
     tag: 'US Undergraduate Admission',
     officialPortalUrl: 'https://www.act.org',
     officialPortalName: 'ACT Official',
-    officialPYQUrl: 'https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/free-act-test-prep.html',
+    officialPYQUrl: 'https://www.act.org/content/dam/act/unsecured/documents/Preparing-for-the-ACT.pdf',
     syllabusHighlights: [
       'English (75 questions, 45 minutes)',
       'Mathematics (60 questions, 60 minutes)',
@@ -1497,8 +1497,8 @@ export const examsData: ExamInfo[] = [
       { topicName: 'Math Problem Solving', description: 'Pre-algebra, algebra, geometry, and trigonometry problem sets.', platformName: 'OpenStax', platformType: 'Open Textbooks', resourceTitle: 'OpenStax College Algebra & Geometry', resourceUrl: 'https://openstax.org', isFreeOpenSource: true }
     ],
     recommendedTextbooks: [
-      { title: 'College Algebra', author: 'OpenStax', platform: 'OpenStax', url: 'https://openstax.org' },
-      { title: 'ACT Prep Practice Sets', author: 'Khan Academy', platform: 'Khan Academy', url: 'https://www.khanacademy.org' }
+      { title: 'OpenStax College Algebra 2e (Direct PDF)', author: 'OpenStax', platform: 'OpenStax Rice University', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' },
+      { title: 'Official Preparing for the ACT Guide (Direct PDF)', author: 'ACT Assessment Board', platform: 'ACT Official', url: 'https://www.act.org/content/dam/act/unsecured/documents/Preparing-for-the-ACT.pdf' }
     ]
   },
   {

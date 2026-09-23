@@ -20,12 +20,12 @@ import { ScrollReveal } from '../common/ScrollReveal';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-12 pb-24 lg:pb-12 border-t border-slate-900">
+    <footer className="bg-slate-950 dark:bg-[#08090B] text-slate-300 pt-12 pb-24 lg:pb-12 border-t border-slate-900 dark:border-[#252932]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Top Open Brand Row */}
         <ScrollReveal animation="fade-up" delay={50}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-slate-800">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-slate-800 dark:border-[#252932]">
 
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">

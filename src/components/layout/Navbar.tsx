@@ -10,10 +10,13 @@ import {
   Library,
   Globe,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { examsData } from '../../data/examsData';
 import { platformsData } from '../../data/platformsData';
+import { ThemeToggle } from '../common/ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -104,8 +107,8 @@ export const Navbar: React.FC = () => {
     <header 
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-xl shadow-soft border-b border-slate-200/70 py-2' 
-          : 'bg-white border-b border-slate-100 py-2.5'
+          ? 'bg-white/95 dark:bg-[#090A0C]/95 backdrop-blur-xl shadow-soft dark:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] border-b border-slate-200/70 dark:border-[#252932] py-2' 
+          : 'bg-white dark:bg-[#090A0C] border-b border-slate-100 dark:border-[#252932] py-2.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,7 +119,12 @@ export const Navbar: React.FC = () => {
             <img
               src="/logo.png"
               alt="Techno Wallah"
-              className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 block dark:hidden"
+            />
+            <img
+              src="/logowhite.png"
+              alt="Techno Wallah"
+              className="h-8 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 hidden dark:block"
             />
           </Link>
 
@@ -130,8 +138,8 @@ export const Navbar: React.FC = () => {
                   to={link.path}
                   className={`h-9 flex items-center px-2.5 xl:px-3 text-xs xl:text-[13px] font-semibold rounded-xl transition-all duration-200 ease-out ${
                     isActive
-                      ? 'text-brand-red bg-red-50 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                      ? 'text-brand-red bg-red-50 dark:bg-red-950/40 dark:text-red-400 shadow-xs'
+                      : 'text-slate-600 dark:text-[#A7AFBD] hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#15171C]'
                   }`}
                   style={{ transitionDelay: `${index * 25}ms` }}
                 >
@@ -141,13 +149,13 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* 3. Right: Universal Search & CTA Actions */}
+          {/* 3. Right: Universal Search, Theme Toggle & CTA Actions */}
           <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
 
-            {/* Desktop Search Input (Fixed width, never crushed) */}
+            {/* Desktop Search Input */}
             <div className="hidden md:block relative w-44 lg:w-52 xl:w-60">
               <div className="relative w-full">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 dark:text-slate-500 pointer-events-none" />
                 <input
                   type="text"
                   value={searchQuery}
@@ -157,40 +165,40 @@ export const Navbar: React.FC = () => {
                   }}
                   onFocus={() => setShowSearchDropdown(true)}
                   placeholder="Search OER, exams..."
-                  className="w-full h-9 pl-9 pr-7 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white transition-all shadow-xs"
+                  className="w-full h-9 pl-9 pr-7 bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-xl text-xs text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 dark:placeholder-[#737B89] focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red focus:bg-white dark:focus:bg-[#111318] transition-all shadow-xs"
                 />
                 {searchQuery && (
                   <button 
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 bg-slate-200 rounded-full w-4 h-4 flex items-center justify-center no-min-touch"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 dark:text-slate-300 hover:text-slate-600 dark:hover:text-white bg-slate-200 dark:bg-[#252932] rounded-full w-4 h-4 flex items-center justify-center no-min-touch"
                   >
                     <X className="w-2.5 h-2.5" />
                   </button>
                 )}
               </div>
 
-              {/* Search Dropdown positioned nicely to the right */}
+              {/* Search Dropdown */}
               {showSearchDropdown && (filteredExams.length > 0 || filteredPlatforms.length > 0) && (
                 <div
-                  className="absolute top-full right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-slate-200/90 overflow-hidden z-50 animate-fade-in-smooth"
+                  className="absolute top-full right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-[#111318] rounded-2xl shadow-xl border border-slate-200/90 dark:border-[#252932] overflow-hidden z-50 animate-fade-in-smooth"
                   onMouseLeave={() => setShowSearchDropdown(false)}
                 >
                   {filteredExams.length > 0 && (
                     <div>
-                      <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 border-b border-slate-100">
+                      <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 dark:text-[#7F8795] uppercase tracking-wider bg-slate-50 dark:bg-[#15171C] border-b border-slate-100 dark:border-[#252932]">
                         Examinations
                       </div>
                       {filteredExams.map((exam) => (
                         <button
                           key={exam.id}
                           onClick={() => handleSelectExam(exam.id)}
-                          className="w-full text-left px-3.5 py-2.5 hover:bg-slate-50 flex items-center justify-between border-b border-slate-100 last:border-0 transition-colors"
+                          className="w-full text-left px-3.5 py-2.5 hover:bg-slate-50 dark:hover:bg-[#15171C] flex items-center justify-between border-b border-slate-100 dark:border-[#252932] last:border-0 transition-colors"
                         >
                           <div>
-                            <div className="text-xs font-bold text-slate-900">{exam.name}</div>
-                            <div className="text-[11px] text-slate-500">{exam.category} • {exam.openSourcePlatforms.length} Open Platforms</div>
+                            <div className="text-xs font-bold text-slate-900 dark:text-[#F8FAFC]">{exam.name}</div>
+                            <div className="text-[11px] text-slate-500 dark:text-[#A7AFBD]">{exam.category} • {exam.openSourcePlatforms.length} Open Platforms</div>
                           </div>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-brand-darkred">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400">
                             {exam.shortCode}
                           </span>
                         </button>
@@ -200,7 +208,7 @@ export const Navbar: React.FC = () => {
 
                   {filteredPlatforms.length > 0 && (
                     <div>
-                      <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 border-b border-slate-100">
+                      <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 dark:text-[#7F8795] uppercase tracking-wider bg-slate-50 dark:bg-[#15171C] border-b border-slate-100 dark:border-[#252932]">
                         Open Educational Platforms
                       </div>
                       {filteredPlatforms.map((plat) => (
@@ -209,16 +217,16 @@ export const Navbar: React.FC = () => {
                           href={plat.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full text-left px-3.5 py-2.5 hover:bg-slate-50 flex items-center justify-between border-b border-slate-100 last:border-0 transition-colors"
+                          className="w-full text-left px-3.5 py-2.5 hover:bg-slate-50 dark:hover:bg-[#15171C] flex items-center justify-between border-b border-slate-100 dark:border-[#252932] last:border-0 transition-colors"
                         >
                           <div>
-                            <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                            <div className="text-xs font-bold text-slate-900 dark:text-[#F8FAFC] flex items-center gap-1.5">
                               <span>{plat.name}</span>
                               <ExternalLink className="w-3 h-3 text-slate-400" />
                             </div>
-                            <div className="text-[11px] text-slate-500">{plat.organization}</div>
+                            <div className="text-[11px] text-slate-500 dark:text-[#A7AFBD]">{plat.organization}</div>
                           </div>
-                          <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                          <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-700 dark:bg-[#1A1D23] dark:text-[#A7AFBD]">
                             {plat.accessType}
                           </span>
                         </a>
@@ -228,6 +236,9 @@ export const Navbar: React.FC = () => {
                 </div>
               )}
             </div>
+
+            {/* Theme Toggle (Desktop) */}
+            <ThemeToggle className="hidden sm:inline-block" />
 
             {/* Direct CTA Button */}
             <Link
@@ -241,7 +252,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden h-9 w-9 p-2 text-slate-600 hover:text-dark-900 hover:bg-slate-100 rounded-xl transition-colors flex flex-col items-center justify-center gap-1"
+              className="lg:hidden h-9 w-9 p-2 text-slate-600 dark:text-slate-300 hover:text-dark-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#15171C] rounded-xl transition-colors flex flex-col items-center justify-center gap-1"
               aria-label="Toggle navigation"
               aria-expanded={mobileMenuOpen}
             >
@@ -258,22 +269,32 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div
           ref={drawerRef}
-          className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-soft safe-bottom max-h-[calc(100vh-65px)] overflow-y-auto mobile-drawer-enter"
+          className="lg:hidden bg-white dark:bg-[#090A0C] border-b border-slate-200 dark:border-[#252932] px-4 pt-3 pb-6 space-y-3 shadow-soft dark:shadow-[0_8px_30px_rgba(0,0,0,0.6)] safe-bottom max-h-[calc(100vh-65px)] overflow-y-auto mobile-drawer-enter"
         >
+          {/* Theme Appearance Switcher Row in Mobile Menu */}
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932]">
+            <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <Sun className="w-4 h-4 text-amber-500 block dark:hidden" />
+              <Moon className="w-4 h-4 text-indigo-400 hidden dark:block" />
+              <span>Theme Appearance</span>
+            </div>
+            <ThemeToggle showDropdown={true} />
+          </div>
+
           {/* Mobile Search with live results */}
           <div className="relative mb-2">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search exams, NCERT, NPTEL..."
-              className="w-full pl-10 pr-9 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red transition-all"
+              className="w-full pl-10 pr-9 py-2.5 bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-2xl text-sm text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 dark:placeholder-[#737B89] focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red transition-all"
             />
             {searchQuery && (
               <button 
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 bg-slate-200 rounded-full w-5 h-5 flex items-center justify-center no-min-touch"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 dark:text-slate-300 hover:text-slate-600 dark:hover:text-white bg-slate-200 dark:bg-[#252932] rounded-full w-5 h-5 flex items-center justify-center no-min-touch"
               >
                 <X className="w-3 h-3" />
               </button>
@@ -281,7 +302,7 @@ export const Navbar: React.FC = () => {
 
             {/* Live Search Results inside Mobile Drawer */}
             {searchQuery.trim() !== '' && (filteredExams.length > 0 || filteredPlatforms.length > 0) && (
-              <div className="mt-2 bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden divide-y divide-slate-100">
+              <div className="mt-2 bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-2xl overflow-hidden divide-y divide-slate-100 dark:divide-[#252932]">
                 {filteredExams.map((exam) => (
                   <button
                     key={exam.id}
@@ -289,13 +310,13 @@ export const Navbar: React.FC = () => {
                       handleSelectExam(exam.id);
                       setMobileMenuOpen(false);
                     }}
-                    className="w-full text-left p-3 hover:bg-white flex items-center justify-between transition-colors"
+                    className="w-full text-left p-3 hover:bg-white dark:hover:bg-[#15171C] flex items-center justify-between transition-colors"
                   >
                     <div>
-                      <div className="text-xs font-bold text-slate-900">{exam.name}</div>
-                      <div className="text-[10px] text-slate-500">{exam.category}</div>
+                      <div className="text-xs font-bold text-slate-900 dark:text-[#F8FAFC]">{exam.name}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-[#A7AFBD]">{exam.category}</div>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 text-brand-darkred">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
                       {exam.shortCode}
                     </span>
                   </button>
@@ -307,16 +328,16 @@ export const Navbar: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="w-full text-left p-3 hover:bg-white flex items-center justify-between transition-colors block"
+                    className="w-full text-left p-3 hover:bg-white dark:hover:bg-[#15171C] flex items-center justify-between transition-colors block"
                   >
                     <div>
-                      <div className="text-xs font-bold text-slate-900 flex items-center gap-1">
+                      <div className="text-xs font-bold text-slate-900 dark:text-[#F8FAFC] flex items-center gap-1">
                         <span>{plat.name}</span>
                         <ExternalLink className="w-3 h-3 text-slate-400" />
                       </div>
-                      <div className="text-[10px] text-slate-500">{plat.organization}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-[#A7AFBD]">{plat.organization}</div>
                     </div>
-                    <span className="text-[9px] font-medium px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                    <span className="text-[9px] font-medium px-2 py-0.5 rounded bg-slate-200 dark:bg-[#1A1D23] text-slate-700 dark:text-[#A7AFBD]">
                       {plat.accessType}
                     </span>
                   </a>
@@ -337,18 +358,18 @@ export const Navbar: React.FC = () => {
                   ref={(el) => { navLinksRef.current[index] = el; }}
                   className={`flex items-center justify-between px-3.5 py-3 text-sm font-semibold rounded-2xl transition-all duration-200 ease-out lazy-slide-in-right stagger-${Math.min(index + 1, 8)} ${
                     isActive
-                      ? 'text-brand-red bg-red-50'
-                      : 'text-slate-700 hover:text-brand-red hover:bg-red-50'
+                      ? 'text-brand-red bg-red-50 dark:bg-red-950/40 dark:text-red-400'
+                      : 'text-slate-700 dark:text-[#A7AFBD] hover:text-brand-red dark:hover:text-white hover:bg-red-50 dark:hover:bg-[#15171C]'
                   }`}
                 >
                   <span>{link.name}</span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 transition-transform duration-200 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               );
             })}
           </div>
 
-          <div className="pt-2 border-t border-slate-100">
+          <div className="pt-2 border-t border-slate-100 dark:border-[#252932]">
             <Link
               to="/library"
               onClick={() => setMobileMenuOpen(false)}

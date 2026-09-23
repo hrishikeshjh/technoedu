@@ -1,12 +1,11 @@
 import { DirectoryExam } from '../types';
 
-// ── Shared open study repositories (referenced throughout) ─────────────────
+// ── Shared Open Study Repositories ──────────────────────────────────────────
 const NCERT = { title: 'NCERT Textbooks (Class 6-12)', url: 'https://ncert.nic.in/textbook.php' };
 const EPATH = { title: 'e-Pathshala / DIKSHA', url: 'https://epathshala.nic.in' };
 const NPTEL = { title: 'NPTEL (IIT courseware)', url: 'https://nptel.ac.in' };
 const SWAYAM = { title: 'SWAYAM (Govt MOOCs)', url: 'https://swayam.gov.in' };
 const MITOCW = { title: 'MIT OpenCourseWare', url: 'https://ocw.mit.edu' };
-const OPENSTAX = { title: 'OpenStax (peer-reviewed books)', url: 'https://openstax.org' };
 const KHAN = { title: 'Khan Academy', url: 'https://www.khanacademy.org' };
 const EGYANKOSH = { title: 'e-GyanKosh (IGNOU)', url: 'https://egyankosh.ac.in' };
 const NDLI = { title: 'NDLI (National Digital Library)', url: 'https://ndl.iitkgp.ac.in' };
@@ -15,13 +14,47 @@ const GUTENBERG = { title: 'Project Gutenberg', url: 'https://www.gutenberg.org'
 const OPENLIB = { title: 'Internet Archive / Open Library', url: 'https://openlibrary.org' };
 const LIBRETEXTS = { title: 'LibreTexts', url: 'https://libretexts.org' };
 const INDKANOON = { title: 'Indian Kanoon (case law)', url: 'https://indiankanoon.org' };
-const CONSTITUTION = { title: 'Constitution of India (official text)', url: 'https://legislative.gov.in/constitution-of-india/' };
 const PRS = { title: 'PRS Legislative Research', url: 'https://prsindia.org' };
-const RBIEDU = { title: 'RBI Financial Education', url: 'https://rbi.org.in/financialeducation/' };
 const BBC = { title: 'BBC Learning English', url: 'https://www.bbc.co.uk/learningenglish' };
 const BRCOUNCIL = { title: 'British Council LearnEnglish', url: 'https://learnenglish.britishcouncil.org' };
 const OWL = { title: 'Purdue OWL (academic writing)', url: 'https://owl.purdue.edu' };
 const BANGLAR = { title: 'Banglar Shiksha (WB textbooks)', url: 'https://banglarshiksha.gov.in' };
+
+// ── Direct 1-Click Official PDFs & Textbooks ───────────────────────────────
+const CONSTITUTION = { title: 'Constitution of India Bare Act (Direct PDF)', url: 'https://legislative.gov.in/sites/default/files/COI_English.pdf' };
+const RBIEDU = { title: 'RBI Banking Structure & Policy (Direct PDF)', url: 'https://rbi.org.in/financialeducation/pdf/Banking_Structure.pdf' };
+
+// Direct NCERT Subject Books (Chapter/Full Book PDFs)
+const NCERT_POLITY = { title: 'NCERT Indian Constitution at Work (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf' };
+const NCERT_HISTORY = { title: 'NCERT Themes in Indian History (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/lehs1.pdf' };
+const NCERT_GEO = { title: 'NCERT Physical Geography (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/kegy1.pdf' };
+const NCERT_ECO = { title: 'NCERT Macroeconomics (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/lesc2.pdf' };
+const NCERT_SCIENCE = { title: 'NCERT Class 10 Science (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/jesc2.pdf' };
+const NCERT_SCIENCE9 = { title: 'NCERT Class 9 Science (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/jesc1.pdf' };
+const NCERT_MATH = { title: 'NCERT Class 12 Mathematics (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/lema1.pdf' };
+const NCERT_BIO = { title: 'NCERT Class 11 Biology (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/kebo1.pdf' };
+const NCERT_PHYSICS = { title: 'NCERT Class 11 Physics (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/keph1.pdf' };
+const NCERT_CHEM = { title: 'NCERT Class 11 Chemistry (Direct PDF)', url: 'https://ncert.nic.in/textbook/pdf/kech1.pdf' };
+
+// Direct OpenStax University Textbooks (Direct PDFs)
+const OPENSTAX = { title: 'OpenStax College Algebra 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' };
+const OPENSTAX_ALGEBRA = { title: 'OpenStax College Algebra 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CollegeAlgebra2e.pdf' };
+const OPENSTAX_PRECALC = { title: 'OpenStax Precalculus 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Precalculus2e.pdf' };
+const OPENSTAX_CALC = { title: 'OpenStax Calculus Vol 1 (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/CalculusVolume1.pdf' };
+const OPENSTAX_STATS = { title: 'OpenStax Introductory Statistics (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/IntroductoryStatistics.pdf' };
+const OPENSTAX_PHYSICS = { title: 'OpenStax University Physics Vol 1 (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/UniversityPhysicsVol1.pdf' };
+const OPENSTAX_CHEM = { title: 'OpenStax Chemistry 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Chemistry2e.pdf' };
+const OPENSTAX_BIO = { title: 'OpenStax Biology 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Biology2e.pdf' };
+const OPENSTAX_ANATOMY = { title: 'OpenStax Anatomy & Physiology 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/AnatomyAndPhysiology2e-WEB.pdf' };
+const OPENSTAX_ECON = { title: 'OpenStax Principles of Economics 2e (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/PrinciplesEconomics2e.pdf' };
+const OPENSTAX_ACCOUNTING = { title: 'OpenStax Principles of Accounting (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Principles_of_Accounting_Volume_1-WEB.pdf' };
+const OPENSTAX_MGMT = { title: 'OpenStax Principles of Management (Direct PDF)', url: 'https://assets.openstax.org/oscms-prodcms/media/documents/Principles_of_Management-WEB.pdf' };
+
+// Direct International Official Reviews & Guides (Direct PDFs)
+const ETS_GRE_MATH = { title: 'ETS GRE Official Math Review (Direct PDF)', url: 'https://www.ets.org/s/gre/pdf/gre_math_review.pdf' };
+const SAT_MATH_REVIEW = { title: 'Digital SAT Official Math Review (Direct PDF)', url: 'https://satsuite.collegeboard.org/media/pdf/digital-sat-math-review.pdf' };
+const ACT_PREP_BOOK = { title: 'Official Preparing for the ACT Guide (Direct PDF)', url: 'https://www.act.org/content/dam/act/unsecured/documents/Preparing-for-the-ACT.pdf' };
+const JLPT_N5_BOOK = { title: 'JLPT N5 Official Sample Booklet (Direct PDF)', url: 'https://www.jlpt.jp/e/samples/pdf/N5-mondai.pdf' };
 
 export const completeExamDirectory: DirectoryExam[] = [
   // ══════════════════════════════════════════════════════════════════════════
@@ -33,7 +66,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://psc.wb.gov.in', officialPortalName: 'WBPSC Official Portal',
     docsUrl: 'https://psc.wb.gov.in', docsLabel: 'Notifications · Eligibility · Syllabus',
     pyqUrl: 'https://psc.wb.gov.in', pyqLabel: 'Previous Papers (downloads)',
-    studyMaterials: [NCERT, EGYANKOSH, BANGLAR, PRS],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, BANGLAR],
   },
   {
     id: 'wbpsc-clerkship', name: 'WBPSC Clerkship / Miscellaneous (Group C & D)', shortCode: 'WBPSC Misc',
@@ -41,35 +74,35 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://psc.wb.gov.in', officialPortalName: 'WBPSC Official Portal',
     docsUrl: 'https://psc.wb.gov.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://psc.wb.gov.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_SCIENCE, NCERT_MATH, OPENSTAX_ALGEBRA, BANGLAR, NDLI],
   },
   {
     id: 'wb-police', name: 'WB Police Constable & Sub-Inspector', shortCode: 'WB Police',
     conductingBody: 'West Bengal Police Recruitment Board', region: 'West Bengal', category: 'Police & Defence',
     officialPortalUrl: 'https://wbpolice.gov.in', officialPortalName: 'West Bengal Police',
     docsUrl: 'https://wbpolice.gov.in', docsLabel: 'Notifications · Eligibility · Syllabus',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_SCIENCE, NCERT_SCIENCE9, NCERT_MATH, BANGLAR, NDLI],
   },
   {
     id: 'kolkata-police', name: 'Kolkata Police Constable / SI', shortCode: 'Kolkata Police',
     conductingBody: 'Kolkata Police / West Bengal Police', region: 'West Bengal', category: 'Police & Defence',
     officialPortalUrl: 'https://wbpolice.gov.in', officialPortalName: 'Kolkata Police Official',
     docsUrl: 'https://wbpolice.gov.in', docsLabel: 'Notifications · Syllabus',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_SCIENCE, NCERT_SCIENCE9, NCERT_MATH, BANGLAR, NDLI],
   },
   {
     id: 'wbhrb', name: 'WBHRB Group C & D (Clerk, LDC, Office Staff)', shortCode: 'WBHRB',
     conductingBody: 'West Bengal Staff Recruitment Commission', region: 'West Bengal', category: 'Government Recruitment',
     officialPortalUrl: 'https://wbhrb.in', officialPortalName: 'WBHRB Official',
     docsUrl: 'https://wbhrb.in', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_BIO, OPENSTAX_BIO, OPENSTAX_ANATOMY, NDLI],
   },
   {
     id: 'wbssc', name: 'WBSSC — Assistant Teacher Recruitment', shortCode: 'WBSSC',
     conductingBody: 'West Bengal School Service Commission', region: 'West Bengal', category: 'Teaching',
     officialPortalUrl: 'https://wbscc.wb.gov.in', officialPortalName: 'WBSSC Official Portal',
     docsUrl: 'https://wbscc.wb.gov.in', docsLabel: 'Portal · Notifications · Eligibility',
-    studyMaterials: [NCERT, EGYANKOSH, BANGLAR],
+    studyMaterials: [NCERT_POLITY, NCERT_SCIENCE, EGYANKOSH, BANGLAR],
   },
   {
     id: 'wb-tet', name: 'WB TET (Primary & Upper Primary)', shortCode: 'WB TET',
@@ -77,106 +110,106 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.wbbpe.org', officialPortalName: 'WBBPE Official',
     docsUrl: 'https://www.wbbpe.org', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://www.wbbpe.org', pyqLabel: 'Model Questions',
-    studyMaterials: [NCERT, EGYANKOSH, BANGLAR],
+    studyMaterials: [NCERT_POLITY, NCERT_SCIENCE, EGYANKOSH, BANGLAR],
   },
   {
     id: 'wb-set', name: 'WB SET — State Eligibility Test', shortCode: 'WB SET',
     conductingBody: 'WB School Service Commission (SLET Cell)', region: 'West Bengal', category: 'Teaching',
     officialPortalUrl: 'http://www.wbsclet.net', officialPortalName: 'WB SLET Official',
     docsUrl: 'http://www.wbsclet.net', docsLabel: 'Portal · Eligibility · Subject List',
-    studyMaterials: [EGPG, EGYANKOSH, NDLI],
+    studyMaterials: [EGPG, EGYANKOSH, NDLI, NCERT_POLITY],
   },
   {
     id: 'wbjee', name: 'WBJEE — WB Joint Entrance (UG Engineering)', shortCode: 'WBJEE',
     conductingBody: 'West Bengal Joint Entrance Examinations Board (WBJEEB)', region: 'West Bengal', category: 'Engineering',
     officialPortalUrl: 'https://wbjeeb.in', officialPortalName: 'WBJEEB Official',
     docsUrl: 'https://wbjeeb.in', docsLabel: 'Portal · Eligibility · Syllabus',
-    pyqUrl: 'https://wbjeeb.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, NPTEL, MITOCW],
+    pyqUrl: 'https://wbjeeb.in/wp-content/uploads/2024/06/WBJEE-2024-Question-Paper.pdf', pyqLabel: 'WBJEE 2024 Official Paper (Direct PDF)',
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'jenpas', name: 'JENPAS-UG / JENPAUH (Nursing & Paramedical)', shortCode: 'JENPAS',
     conductingBody: 'West Bengal Joint Entrance Examinations Board', region: 'West Bengal', category: 'Medical & Health',
     officialPortalUrl: 'https://wbjeeb.in', officialPortalName: 'WBJEEB Official',
     docsUrl: 'https://wbjeeb.in', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [NCERT, OPENSTAX],
+    studyMaterials: [NCERT_BIO, OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM],
   },
   {
     id: 'wb-medical-counselling', name: 'WB Medical & Dental Counselling (via NEET-UG)', shortCode: 'WB NEET Counselling',
     conductingBody: 'West Bengal Medical Council / NTA', region: 'West Bengal', category: 'Medical & Health',
     officialPortalUrl: 'https://wbmcc.nic.in', officialPortalName: 'WB MCC Official',
     docsUrl: 'https://neet.nta.nic.in', docsLabel: 'NEET Official (Eligibility · Syllabus)',
-    studyMaterials: [NCERT, OPENSTAX],
+    studyMaterials: [NCERT_BIO, OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM],
   },
   {
     id: 'wb-food-si', name: 'WB Food & Supplies Sub-Inspector', shortCode: 'WB Food SI',
     conductingBody: 'West Bengal Food & Supplies Department', region: 'West Bengal', category: 'Government Recruitment',
     officialPortalUrl: 'https://wbfood.in', officialPortalName: 'WB Food & Supplies',
     docsUrl: 'https://wbfood.in', docsLabel: 'Notifications · Eligibility',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_SCIENCE, NCERT_MATH, OPENSTAX_ALGEBRA, BANGLAR],
   },
   {
     id: 'icds', name: 'ICDS Supervisor (Anganwadi Cadre)', shortCode: 'ICDS',
     conductingBody: 'Dept of Women & Child Development, WB', region: 'West Bengal', category: 'Government Recruitment',
     officialPortalUrl: 'https://www.wb.gov.in', officialPortalName: 'Govt of West Bengal Portal',
     docsUrl: 'https://www.wb.gov.in', docsLabel: 'Departmental Notifications',
-    studyMaterials: [NCERT, NDLI, KHAN],
+    studyMaterials: [NCERT_SCIENCE, NCERT_POLITY, EGYANKOSH, BANGLAR],
   },
   {
     id: 'wbsedcl', name: 'WBSEDCL — Assistant Manager / AE / Line Posts', shortCode: 'WBSEDCL',
     conductingBody: 'West Bengal State Electricity Distribution Company', region: 'West Bengal', category: 'Govt PSU / Energy',
     officialPortalUrl: 'https://www.wbsedcl.in', officialPortalName: 'WBSEDCL Official',
     docsUrl: 'https://www.wbsedcl.in', docsLabel: 'Careers · Notifications',
-    studyMaterials: [NPTEL, MITOCW, OPENSTAX],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CALC, NPTEL, MITOCW],
   },
   {
     id: 'wbjs', name: 'WB Judicial Service (Civil Judge, Jr. Division)', shortCode: 'WBJS',
     conductingBody: 'Calcutta High Court / WBPSC', region: 'West Bengal', category: 'Law & Judiciary',
     officialPortalUrl: 'https://www.calcuttahighcourt.gov.in', officialPortalName: 'Calcutta High Court',
-    docsUrl: 'https://psc.wb.gov.in', docsLabel: 'WBPSC Notifications · Syllabus',
-    studyMaterials: [CONSTITUTION, INDKANOON, EGPG],
+    docsUrl: 'https://legislative.gov.in/sites/default/files/COI_English.pdf', docsLabel: 'Constitution Bare Act (Direct PDF)',
+    studyMaterials: [CONSTITUTION, INDKANOON, NCERT_POLITY, EGPG, PRS],
   },
   {
     id: 'wb-excise', name: 'WB Excise (Constable / Sub-Inspector)', shortCode: 'WB Excise',
     conductingBody: 'West Bengal Excise / WBPSC', region: 'West Bengal', category: 'Government Recruitment',
     officialPortalUrl: 'https://wbexcise.gov.in', officialPortalName: 'WB Excise Official',
     docsUrl: 'https://psc.wb.gov.in', docsLabel: 'WBPSC Notifications · Syllabus',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_SCIENCE, NCERT_MATH, OPENSTAX_ALGEBRA, BANGLAR],
   },
   {
     id: 'wbmhrb', name: 'WB Health Recruitment (Staff Nurse, Paramedical)', shortCode: 'WB Health',
     conductingBody: 'WB Medical & Health Recruitment Board', region: 'West Bengal', category: 'Medical & Health',
     officialPortalUrl: 'https://wbmhrb.in', officialPortalName: 'WBMHRB Official',
     docsUrl: 'https://wbmhrb.in', docsLabel: 'Notifications · Eligibility',
-    studyMaterials: [OPENSTAX, NCERT, LIBRETEXTS],
+    studyMaterials: [NCERT_BIO, OPENSTAX_BIO, OPENSTAX_ANATOMY, NDLI],
   },
   {
     id: 'madhyamik', name: 'Madhyamik (Class 10) Board Examination', shortCode: 'Madhyamik',
     conductingBody: 'West Bengal Board of Secondary Education (WBBSE)', region: 'West Bengal', category: 'School Boards',
     officialPortalUrl: 'https://wbbse.wb.gov.in', officialPortalName: 'WBBSE Official',
     docsUrl: 'https://wbbse.wb.gov.in', docsLabel: 'Portal · Syllabus · Sample Papers',
-    studyMaterials: [BANGLAR, NCERT],
+    studyMaterials: [NCERT_SCIENCE, NCERT_MATH, NCERT_POLITY, BANGLAR, NDLI],
   },
   {
     id: 'hs-west-bengal', name: 'WB Higher Secondary (Class 12) Examination', shortCode: 'WB HS',
     conductingBody: 'West Bengal Council of Higher Secondary Education (WBCHSE)', region: 'West Bengal', category: 'School Boards',
     officialPortalUrl: 'https://wbchse.nic.in', officialPortalName: 'WBCHSE Official',
     docsUrl: 'https://wbchse.nic.in', docsLabel: 'Portal · Syllabus · Model Papers',
-    studyMaterials: [BANGLAR, NCERT],
+    studyMaterials: [NCERT_SCIENCE, NCERT_MATH, NCERT_POLITY, BANGLAR, NDLI],
   },
   {
     id: 'ju-cu-entrance', name: 'Jadavpur University & Calcutta University Entrance', shortCode: 'JU / CU',
     conductingBody: 'Jadavpur University / University of Calcutta', region: 'West Bengal', category: 'University Entrance',
     officialPortalUrl: 'https://jaduniv.edu.in', officialPortalName: 'Jadavpur University',
     docsUrl: 'https://www.caluniv.ac.in', docsLabel: 'Calcutta University Admission Notices',
-    studyMaterials: [NPTEL, NCERT, MITOCW],
+    studyMaterials: [NCERT_PHYSICS, OPENSTAX_CALC, NPTEL, MITOCW],
   },
   {
     id: 'jexpo', name: 'JEXPO — Diploma / Polytechnic Admission', shortCode: 'JEXPO',
     conductingBody: 'WBJEEB / WBSCTE', region: 'West Bengal', category: 'Engineering',
     officialPortalUrl: 'https://wbjeeb.in', officialPortalName: 'WBJEEB Official',
     docsUrl: 'https://wbjeeb.in', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [NCERT, NPTEL],
+    studyMaterials: [NCERT_SCIENCE, NCERT_MATH, OPENSTAX_PHYSICS, NPTEL],
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -187,8 +220,8 @@ export const completeExamDirectory: DirectoryExam[] = [
     conductingBody: 'Union Public Service Commission (UPSC)', region: 'All India', category: 'Civil Services',
     officialPortalUrl: 'https://upsc.gov.in', officialPortalName: 'UPSC Official Portal',
     docsUrl: 'https://upsc.gov.in', docsLabel: 'Notification · Eligibility · Syllabus',
-    pyqUrl: 'https://upsc.gov.in/examinations/previous-question-papers', pyqLabel: 'Official Previous Papers',
-    studyMaterials: [NCERT, NPTEL, EGYANKOSH, PRS],
+    pyqUrl: 'https://upsc.gov.in/sites/default/files/2024_GS_Paper_1.pdf', pyqLabel: 'Prelims 2024 GS 1 (Direct PDF)',
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'upsc-capf', name: 'UPSC CAPF (Assistant Commandant)', shortCode: 'CAPF',
@@ -196,7 +229,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://upsc.gov.in', officialPortalName: 'UPSC Official',
     docsUrl: 'https://upsc.gov.in', docsLabel: 'Notification · Eligibility · Syllabus',
     pyqUrl: 'https://upsc.gov.in/examinations/previous-question-papers', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, NPTEL, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_GEO, NCERT_SCIENCE, CONSTITUTION, PRS],
   },
   {
     id: 'ese', name: 'UPSC Engineering Services (IES / ESE)', shortCode: 'ESE',
@@ -204,14 +237,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://upsc.gov.in', officialPortalName: 'UPSC Official',
     docsUrl: 'https://upsc.gov.in', docsLabel: 'Notification · Eligibility · Syllabus',
     pyqUrl: 'https://upsc.gov.in/examinations/previous-question-papers', pyqLabel: 'Previous Papers',
-    studyMaterials: [NPTEL, MITOCW, OPENSTAX],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'geoscientist', name: 'UPSC Combined Geo-Scientist & Geologist', shortCode: 'Geo-Scientist',
     conductingBody: 'UPSC', region: 'All India', category: 'Civil Services',
     officialPortalUrl: 'https://upsc.gov.in', officialPortalName: 'UPSC Official',
     docsUrl: 'https://upsc.gov.in', docsLabel: 'Notification · Syllabus',
-    studyMaterials: [NPTEL, MITOCW],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'ssc-cgl', name: 'SSC CGL — Graduate Level', shortCode: 'SSC CGL',
@@ -219,7 +252,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://ssc.gov.in', officialPortalName: 'SSC Official Portal',
     docsUrl: 'https://ssc.gov.in', docsLabel: 'Notification · Eligibility · Syllabus',
     pyqUrl: 'https://ssc.gov.in', pyqLabel: 'Previous Papers (downloads)',
-    studyMaterials: [NCERT, KHAN, OPENSTAX],
+    studyMaterials: [OPENSTAX_ALGEBRA, OPENSTAX_STATS, NCERT_POLITY, RBIEDU, NDLI],
   },
   {
     id: 'ssc-chsl', name: 'SSC CHSL — 10+2 Level', shortCode: 'SSC CHSL',
@@ -227,7 +260,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://ssc.gov.in', officialPortalName: 'SSC Official',
     docsUrl: 'https://ssc.gov.in', docsLabel: 'Notification · Syllabus',
     pyqUrl: 'https://ssc.gov.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, KHAN],
+    studyMaterials: [OPENSTAX_ALGEBRA, NCERT_SCIENCE, NCERT_MATH, NDLI],
   },
   {
     id: 'ssc-mts-gd', name: 'SSC MTS / GD Constable / CPO', shortCode: 'SSC MTS',
@@ -235,21 +268,21 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://ssc.gov.in', officialPortalName: 'SSC Official',
     docsUrl: 'https://ssc.gov.in', docsLabel: 'Notification · Syllabus',
     pyqUrl: 'https://ssc.gov.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [OPENSTAX_ALGEBRA, NCERT_SCIENCE, NCERT_MATH, NDLI],
   },
   {
     id: 'epfo-ssa', name: 'EPFO SSA (Social Security Assistant)', shortCode: 'EPFO SSA',
     conductingBody: 'Employees’ Provident Fund Organisation', region: 'All India', category: 'Central Govt Recruitment',
     officialPortalUrl: 'https://www.epfindia.gov.in', officialPortalName: 'EPFO Official',
     docsUrl: 'https://www.epfindia.gov.in', docsLabel: 'Careers · Notifications',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [OPENSTAX_ECON, NCERT_POLITY, EGYANKOSH, PRS, RBIEDU],
   },
   {
     id: 'esic', name: 'ESIC Recruitment (UDC, MTS, Nursing)', shortCode: 'ESIC',
     conductingBody: 'Employees’ State Insurance Corporation', region: 'All India', category: 'Central Govt Recruitment',
     officialPortalUrl: 'https://www.esic.gov.in', officialPortalName: 'ESIC Official',
     docsUrl: 'https://www.esic.gov.in', docsLabel: 'Careers · Notifications',
-    studyMaterials: [NCERT, NDLI, KHAN],
+    studyMaterials: [OPENSTAX_ECON, NCERT_POLITY, EGYANKOSH, PRS, RBIEDU],
   },
   {
     id: 'ibps-po', name: 'IBPS PO (Probationary Officer)', shortCode: 'IBPS PO',
@@ -257,7 +290,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.ibps.in', officialPortalName: 'IBPS Official',
     docsUrl: 'https://www.ibps.in', docsLabel: 'Notification · Eligibility · Pattern',
     pyqUrl: 'https://www.ibps.in', pyqLabel: 'Sample Papers',
-    studyMaterials: [RBIEDU, NCERT, OPENSTAX],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_ALGEBRA, OPENSTAX_STATS],
   },
   {
     id: 'ibps-clerk', name: 'IBPS Clerk', shortCode: 'IBPS Clerk',
@@ -265,14 +298,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.ibps.in', officialPortalName: 'IBPS Official',
     docsUrl: 'https://www.ibps.in', docsLabel: 'Notification · Syllabus',
     pyqUrl: 'https://www.ibps.in', pyqLabel: 'Sample Papers',
-    studyMaterials: [NCERT, KHAN, RBIEDU],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_ALGEBRA, OPENSTAX_STATS],
   },
   {
     id: 'ibps-rrb', name: 'IBPS RRB (PO & Office Assistant)', shortCode: 'IBPS RRB',
     conductingBody: 'Institute of Banking Personnel Selection', region: 'All India', category: 'Banking & Finance',
     officialPortalUrl: 'https://www.ibps.in', officialPortalName: 'IBPS Official',
     docsUrl: 'https://www.ibps.in', docsLabel: 'Notification · Syllabus',
-    studyMaterials: [RBIEDU, NCERT, KHAN],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_ALGEBRA, OPENSTAX_STATS],
   },
   {
     id: 'sbi-po', name: 'SBI PO / Clerk / Specialist Officer', shortCode: 'SBI',
@@ -280,7 +313,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://sbi.co.in/careers', officialPortalName: 'SBI Careers',
     docsUrl: 'https://sbi.co.in/careers', docsLabel: 'Notifications · Eligibility',
     pyqUrl: 'https://sbi.co.in/careers', pyqLabel: 'Model Papers',
-    studyMaterials: [RBIEDU, OPENSTAX, NCERT],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_ALGEBRA, OPENSTAX_STATS],
   },
   {
     id: 'rbi-grade-b', name: 'RBI Grade B & RBI Assistant', shortCode: 'RBI',
@@ -288,28 +321,28 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://opportunities.rbi.org.in', officialPortalName: 'RBI Careers',
     docsUrl: 'https://opportunities.rbi.org.in', docsLabel: 'Notification · Eligibility · Syllabus',
     pyqUrl: 'https://opportunities.rbi.org.in', pyqLabel: 'Phase 1/2 Sample Papers',
-    studyMaterials: [RBIEDU, NPTEL, NCERT],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_STATS, OPENSTAX_MGMT],
   },
   {
     id: 'nabard', name: 'NABARD Grade A / B', shortCode: 'NABARD',
     conductingBody: 'National Bank for Agriculture & Rural Development', region: 'All India', category: 'Banking & Finance',
     officialPortalUrl: 'https://www.nabard.org', officialPortalName: 'NABARD Official',
     docsUrl: 'https://www.nabard.org', docsLabel: 'Careers · Notifications',
-    studyMaterials: [NCERT, RBIEDU, NPTEL],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_STATS, EGYANKOSH],
   },
   {
     id: 'sebi-grade-a', name: 'SEBI Grade A', shortCode: 'SEBI',
     conductingBody: 'Securities & Exchange Board of India', region: 'All India', category: 'Banking & Finance',
     officialPortalUrl: 'https://www.sebi.gov.in', officialPortalName: 'SEBI Official',
     docsUrl: 'https://www.sebi.gov.in', docsLabel: 'Careers · Notifications',
-    studyMaterials: [NPTEL, OPENSTAX, RBIEDU],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, RBIEDU, OPENSTAX_MGMT, SWAYAM],
   },
   {
     id: 'insurance-exams', name: 'Insurance Exams (LIC AAO/ADO, NICL AO, UIIC, OICL)', shortCode: 'LIC / Insurance',
     conductingBody: 'LIC / GIC Insurance Companies', region: 'All India', category: 'Banking & Finance',
     officialPortalUrl: 'https://licindia.in', officialPortalName: 'LIC Careers',
     docsUrl: 'https://www.nic.co.in', docsLabel: 'NICL Notifications',
-    studyMaterials: [RBIEDU, NCERT, NPTEL],
+    studyMaterials: [RBIEDU, NCERT_ECO, OPENSTAX_ECON, OPENSTAX_STATS, NDLI],
   },
   {
     id: 'rrb-ntpc', name: 'RRB NTPC (Non-Technical Popular Categories)', shortCode: 'RRB NTPC',
@@ -317,37 +350,37 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://rrbapply.gov.in', officialPortalName: 'RRB Central Portal',
     docsUrl: 'https://rrbapply.gov.in', docsLabel: 'CEN Notifications · Eligibility · Syllabus',
     pyqUrl: 'https://rrbapply.gov.in', pyqLabel: 'CEN Sample Papers',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_SCIENCE, NCERT_SCIENCE9, NCERT_MATH, OPENSTAX_PHYSICS, NPTEL],
   },
   {
     id: 'rrb-group-d', name: 'RRB Group D (Level 1)', shortCode: 'RRB Group D',
     conductingBody: 'Railway Recruitment Boards', region: 'All India', category: 'Railways',
     officialPortalUrl: 'https://rrbapply.gov.in', officialPortalName: 'RRB Central Portal',
     docsUrl: 'https://rrbapply.gov.in', docsLabel: 'Notifications · Syllabus',
-    studyMaterials: [NCERT, KHAN],
+    studyMaterials: [NCERT_SCIENCE, NCERT_SCIENCE9, NCERT_MATH, OPENSTAX_PHYSICS, NPTEL],
   },
   {
     id: 'rrb-alp', name: 'RRB ALP / Technician / JE', shortCode: 'RRB ALP',
     conductingBody: 'Railway Recruitment Boards', region: 'All India', category: 'Railways',
     officialPortalUrl: 'https://rrbapply.gov.in', officialPortalName: 'RRB Central Portal',
     docsUrl: 'https://rrbapply.gov.in', docsLabel: 'Notifications · Syllabus',
-    studyMaterials: [NPTEL, MITOCW, NCERT],
+    studyMaterials: [NCERT_SCIENCE, NCERT_SCIENCE9, NCERT_MATH, OPENSTAX_PHYSICS, NPTEL],
   },
   {
     id: 'nda', name: 'NDA (National Defence Academy)', shortCode: 'NDA',
     conductingBody: 'UPSC', region: 'All India', category: 'Defence',
     officialPortalUrl: 'https://upsc.gov.in', officialPortalName: 'UPSC Official',
     docsUrl: 'https://upsc.gov.in', docsLabel: 'Notification · Eligibility · Syllabus',
-    pyqUrl: 'https://upsc.gov.in/examinations/previous-question-papers', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, NPTEL, MITOCW],
+    pyqUrl: 'https://upsc.gov.in/sites/default/files/NDA-I-2024-Maths.pdf', pyqLabel: 'NDA 2024 Maths Paper (Direct PDF)',
+    studyMaterials: [NCERT_MATH, NCERT_PHYSICS, OPENSTAX_PRECALC, OPENSTAX_PHYSICS, NDLI],
   },
   {
     id: 'cds', name: 'CDS (Combined Defence Services)', shortCode: 'CDS',
     conductingBody: 'UPSC', region: 'All India', category: 'Defence',
     officialPortalUrl: 'https://upsc.gov.in', officialPortalName: 'UPSC Official',
     docsUrl: 'https://upsc.gov.in', docsLabel: 'Notification · Syllabus',
-    pyqUrl: 'https://upsc.gov.in/examinations/previous-question-papers', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    pyqUrl: 'https://upsc.gov.in/sites/default/files/CDS-I-2024-English.pdf', pyqLabel: 'CDS 2024 English Paper (Direct PDF)',
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_SCIENCE, NDLI],
   },
   {
     id: 'afcat', name: 'AFCAT (Air Force Common Admission Test)', shortCode: 'AFCAT',
@@ -355,21 +388,21 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://afcat.cdac.in', officialPortalName: 'AFCAT Official',
     docsUrl: 'https://afcat.cdac.in', docsLabel: 'Notification · Eligibility · Syllabus',
     pyqUrl: 'https://afcat.cdac.in', pyqLabel: 'Model Papers',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_MATH, NCERT_PHYSICS, OPENSTAX_PHYSICS, NDLI],
   },
   {
     id: 'in-navy-army', name: 'Indian Navy / Army / Agniveer', shortCode: 'Agniveer',
     conductingBody: 'Indian Navy / Army / Air Force', region: 'All India', category: 'Defence',
     officialPortalUrl: 'https://www.joinindiannavy.gov.in', officialPortalName: 'Join Indian Navy',
     docsUrl: 'https://joinindianarmy.nic.in', docsLabel: 'Join Indian Army Notices',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_MATH, NCERT_PHYSICS, OPENSTAX_PHYSICS, NDLI],
   },
   {
     id: 'coastguard-paramilitary', name: 'Indian Coast Guard & Paramilitary (BSF/CRPF/CISF/ITBP/SSB)', shortCode: 'Paramilitary',
     conductingBody: 'Ministry of Home Affairs / Coast Guard', region: 'All India', category: 'Defence',
     officialPortalUrl: 'https://www.indiancoastguard.gov.in', officialPortalName: 'Indian Coast Guard',
     docsUrl: 'https://crpf.gov.in', docsLabel: 'CRPF Recruitment Notices',
-    studyMaterials: [NCERT, KHAN, NDLI],
+    studyMaterials: [NCERT_MATH, NCERT_PHYSICS, OPENSTAX_PHYSICS, NDLI],
   },
   {
     id: 'ctet', name: 'CTET (Central Teacher Eligibility Test)', shortCode: 'CTET',
@@ -377,7 +410,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://ctet.nic.in', officialPortalName: 'CTET Official',
     docsUrl: 'https://ctet.nic.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://ctet.nic.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, EGYANKOSH],
+    studyMaterials: [NCERT_POLITY, NCERT_SCIENCE, EGYANKOSH, EGPG, SWAYAM],
   },
   {
     id: 'ugc-net', name: 'UGC NET (University Grants Commission NET)', shortCode: 'UGC NET',
@@ -385,7 +418,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://ugcnet.nta.ac.in', officialPortalName: 'UGC NET Official',
     docsUrl: 'https://ugcnet.nta.ac.in', docsLabel: 'Portal · Subject List · Eligibility',
     pyqUrl: 'https://ugcnet.nta.ac.in', pyqLabel: 'Question Papers',
-    studyMaterials: [EGPG, EGYANKOSH, NDLI],
+    studyMaterials: [EGPG, EGYANKOSH, NCERT_POLITY, NDLI, SWAYAM],
   },
   {
     id: 'csir-net', name: 'CSIR NET (Science Research Fellowship)', shortCode: 'CSIR NET',
@@ -393,14 +426,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://csirnet.nta.nic.in', officialPortalName: 'CSIR NET Official',
     docsUrl: 'https://csirnet.nta.nic.in', docsLabel: 'Portal · Syllabus',
     pyqUrl: 'https://csirnet.nta.nic.in', pyqLabel: 'Question Papers',
-    studyMaterials: [NPTEL, MITOCW, LIBRETEXTS],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_BIO, NPTEL],
   },
   {
     id: 'icar-net', name: 'ICAR NET (Agriculture)', shortCode: 'ICAR NET',
     conductingBody: 'NTA / ICAR', region: 'All India', category: 'Agriculture',
     officialPortalUrl: 'https://exams.nta.ac.in/ICAR/', officialPortalName: 'ICAR NTA Portal',
     docsUrl: 'https://exams.nta.ac.in/ICAR/', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [NCERT, OPENSTAX],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_CHEM, EGYANKOSH, NDLI],
   },
   {
     id: 'jee-main', name: 'JEE Main (BTech/BE Admission)', shortCode: 'JEE Main',
@@ -408,7 +441,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://jeemain.nta.nic.in', officialPortalName: 'JEE Main Official',
     docsUrl: 'https://jeemain.nta.nic.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://jeemain.nta.nic.in', pyqLabel: 'Official Papers',
-    studyMaterials: [NCERT, NPTEL, OPENSTAX, KHAN],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'jee-advanced', name: 'JEE Advanced (IIT Admission)', shortCode: 'JEE Advanced',
@@ -416,7 +449,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://jeeadv.ac.in', officialPortalName: 'JEE Advanced Official',
     docsUrl: 'https://jeeadv.ac.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://jeeadv.ac.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NCERT, MITOCW, OPENSTAX],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'gate', name: 'GATE (Graduate Aptitude Test in Engineering)', shortCode: 'GATE',
@@ -424,14 +457,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://gate2026.iitr.ac.in', officialPortalName: 'GATE 2026 Official',
     docsUrl: 'https://gate2026.iitr.ac.in', docsLabel: 'Portal · Syllabus · Eligibility',
     pyqUrl: 'https://gate2026.iitr.ac.in', pyqLabel: 'Question Papers (downloads)',
-    studyMaterials: [NPTEL, MITOCW, LIBRETEXTS],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'private-eng-entrance', name: 'BITSAT / VITEEE / SRMJEEE (Private University Entrances)', shortCode: 'BITSAT / VIT',
     conductingBody: 'BITS Pilani / VIT / SRM Universities', region: 'All India', category: 'Engineering',
     officialPortalUrl: 'https://www.bitsadmission.com', officialPortalName: 'BITSAT Official',
     docsUrl: 'https://viteee.vit.ac.in', docsLabel: 'VITEEE Portal',
-    studyMaterials: [NCERT, NPTEL, KHAN],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_CALC, NCERT_PHYSICS, NPTEL],
   },
   {
     id: 'neet-ug', name: 'NEET UG (MBBS/BDS/AYUSH)', shortCode: 'NEET UG',
@@ -439,36 +472,36 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://neet.nta.nic.in', officialPortalName: 'NEET UG Official',
     docsUrl: 'https://neet.nta.nic.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://neet.nta.nic.in', pyqLabel: 'Question Papers',
-    studyMaterials: [NCERT, OPENSTAX],
+    studyMaterials: [NCERT_BIO, OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, OPENSTAX_PHYSICS],
   },
   {
     id: 'neet-pg', name: 'NEET PG (MD/MS/Diploma)', shortCode: 'NEET PG',
     conductingBody: 'National Board of Examinations', region: 'All India', category: 'Medical & Health',
     officialPortalUrl: 'https://nbe.edu.in', officialPortalName: 'NBE Official',
     docsUrl: 'https://nbe.edu.in', docsLabel: 'Portal · Eligibility · Pattern',
-    studyMaterials: [LIBRETEXTS, NPTEL, OPENSTAX],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, NDLI],
   },
   {
     id: 'ini-cet', name: 'INI-CET (AIIMS, JIPMER, PGIMER)', shortCode: 'INI-CET',
     conductingBody: 'All India Institute of Medical Sciences', region: 'All India', category: 'Medical & Health',
     officialPortalUrl: 'https://aiimsexams.ac.in', officialPortalName: 'AIIMS Exams Official',
     docsUrl: 'https://aiimsexams.ac.in', docsLabel: 'Portal · Eligibility · Pattern',
-    studyMaterials: [LIBRETEXTS, NPTEL, OPENSTAX],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, NDLI],
   },
   {
     id: 'fmge', name: 'FMGE (Foreign Medical Graduate Examination)', shortCode: 'FMGE',
     conductingBody: 'National Medical Commission', region: 'All India', category: 'Medical & Health',
     officialPortalUrl: 'https://www.nmc.org.in', officialPortalName: 'NMC Official',
     docsUrl: 'https://www.nmc.org.in', docsLabel: 'Portal · Eligibility · Pattern',
-    studyMaterials: [OPENSTAX, LIBRETEXTS],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, NDLI],
   },
   {
     id: 'clat-ug-pg', name: 'CLAT UG & PG', shortCode: 'CLAT',
     conductingBody: 'Consortium of National Law Universities', region: 'All India', category: 'Law',
     officialPortalUrl: 'https://consortiumofnlus.ac.in', officialPortalName: 'Consortium of NLUs',
-    docsUrl: 'https://consortiumofnlus.ac.in', docsLabel: 'Portal · Eligibility · Syllabus',
+    docsUrl: 'https://legislative.gov.in/sites/default/files/COI_English.pdf', docsLabel: 'Constitution Bare Act (Direct PDF)',
     pyqUrl: 'https://consortiumofnlus.ac.in', pyqLabel: 'Official Sample Papers',
-    studyMaterials: [CONSTITUTION, INDKANOON, SWAYAM, EGPG],
+    studyMaterials: [CONSTITUTION, INDKANOON, NCERT_POLITY, EGPG, PRS],
   },
   {
     id: 'ailct', name: 'AILET (NLU Delhi)', shortCode: 'AILET',
@@ -476,14 +509,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://nationallawuniversitydelhi.in', officialPortalName: 'NLU Delhi',
     docsUrl: 'https://nationallawuniversitydelhi.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://nationallawuniversitydelhi.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [INDKANOON, CONSTITUTION, SWAYAM],
+    studyMaterials: [CONSTITUTION, INDKANOON, NCERT_POLITY, EGPG, PRS],
   },
   {
     id: 'lsat-india-slat', name: 'LSAT India / SLAT / MHCET Law', shortCode: 'LSAT India',
     conductingBody: 'Pearson / Symbiosis / State CET Cells', region: 'All India', category: 'Law',
     officialPortalUrl: 'https://lsatindia.in', officialPortalName: 'LSAT India',
     docsUrl: 'https://www.set-test.org', docsLabel: 'SLAT / SET Portal',
-    studyMaterials: [INDKANOON, SWAYAM, CONSTITUTION],
+    studyMaterials: [CONSTITUTION, INDKANOON, OPENLIB, GUTENBERG, OWL],
   },
   {
     id: 'cat', name: 'CAT (Common Admission Test)', shortCode: 'CAT',
@@ -491,21 +524,21 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://iimcat.ac.in', officialPortalName: 'IIM CAT Official',
     docsUrl: 'https://iimcat.ac.in', docsLabel: 'Portal · Pattern · Eligibility',
     pyqUrl: 'https://iimcat.ac.in', pyqLabel: 'Official Mocks',
-    studyMaterials: [NPTEL, OPENSTAX, MITOCW],
+    studyMaterials: [OPENSTAX_ALGEBRA, OPENSTAX_STATS, OPENSTAX_PRECALC, OPENSTAX_MGMT, KHAN],
   },
   {
     id: 'xat-snap-nmat', name: 'XAT / SNAP / NMAT / CMAT', shortCode: 'XAT',
     conductingBody: 'XLRI / SIBM / GMAC / NTA', region: 'All India', category: 'Management',
     officialPortalUrl: 'https://xatonline.in', officialPortalName: 'XAT Official',
     docsUrl: 'https://snaptest.org', docsLabel: 'SNAP Official',
-    studyMaterials: [OPENSTAX, NPTEL, KHAN],
+    studyMaterials: [OPENSTAX_ALGEBRA, OPENSTAX_STATS, OPENSTAX_MGMT, OPENSTAX_ECON, KHAN],
   },
   {
     id: 'irma-mica', name: 'IRMA / MICAT / Other B-school Entrances', shortCode: 'IRMA / MICAT',
     conductingBody: 'IRMA / MICA', region: 'All India', category: 'Management',
     officialPortalUrl: 'https://irma.ac.in', officialPortalName: 'IRMA Official',
     docsUrl: 'https://www.mica.ac.in', docsLabel: 'MICA Admissions',
-    studyMaterials: [OPENSTAX, NPTEL],
+    studyMaterials: [OPENSTAX_MGMT, OPENSTAX_ECON, OPENSTAX_STATS, EGYANKOSH],
   },
   {
     id: 'nift', name: 'NIFT Entrance (Fashion Design, Tech & Management)', shortCode: 'NIFT',
@@ -513,14 +546,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.nift.ac.in', officialPortalName: 'NIFT Official',
     docsUrl: 'https://www.nift.ac.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://www.nift.ac.in', pyqLabel: 'Sample Papers',
-    studyMaterials: [NDLI, OPENLIB],
+    studyMaterials: [KHAN, NDLI, OPENLIB, NCERT_SCIENCE],
   },
   {
     id: 'nid-dat', name: 'NID DAT (Design Aptitude Test)', shortCode: 'NID DAT',
     conductingBody: 'National Institute of Design', region: 'All India', category: 'Design & Fashion',
     officialPortalUrl: 'https://admissions.nid.edu', officialPortalName: 'NID Admissions',
     docsUrl: 'https://admissions.nid.edu', docsLabel: 'Portal · Eligibility · Pattern',
-    studyMaterials: [NDLI, OPENLIB],
+    studyMaterials: [KHAN, NDLI, OPENLIB, NCERT_SCIENCE],
   },
   {
     id: 'uceed-ceed', name: 'UCEED / CEED (IIT Design)', shortCode: 'UCEED',
@@ -528,7 +561,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.uceed.iitb.ac.in', officialPortalName: 'UCEED/CEED Official',
     docsUrl: 'https://www.uceed.iitb.ac.in', docsLabel: 'Portal · Eligibility · Pattern',
     pyqUrl: 'https://www.uceed.iitb.ac.in', pyqLabel: 'Previous Papers',
-    studyMaterials: [NDLI, OPENLIB],
+    studyMaterials: [KHAN, NDLI, OPENLIB, NCERT_SCIENCE],
   },
   {
     id: 'nata', name: 'NATA (Architecture Aptitude Test)', shortCode: 'NATA',
@@ -536,28 +569,28 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.nata.in', officialPortalName: 'NATA Official',
     docsUrl: 'https://www.nata.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://www.nata.in', pyqLabel: 'Sample Papers',
-    studyMaterials: [OPENSTAX, NDLI],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CALC, NCERT_MATH, NPTEL],
   },
   {
     id: 'ca-icai', name: 'CA (Chartered Accountancy)', shortCode: 'CA',
     conductingBody: 'Institute of Chartered Accountants of India', region: 'All India', category: 'Commerce & Professional',
     officialPortalUrl: 'https://www.icai.org', officialPortalName: 'ICAI Official',
     docsUrl: 'https://www.icai.org', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [OPENSTAX, GUTENBERG],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, OPENSTAX_MGMT, RBIEDU, SWAYAM],
   },
   {
     id: 'cs-icsi', name: 'CS (Company Secretary)', shortCode: 'CS',
     conductingBody: 'Institute of Company Secretaries of India', region: 'All India', category: 'Commerce & Professional',
     officialPortalUrl: 'https://www.icsi.edu', officialPortalName: 'ICSI Official',
     docsUrl: 'https://www.icsi.edu', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [OPENSTAX, GUTENBERG],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, OPENSTAX_MGMT, RBIEDU, SWAYAM],
   },
   {
     id: 'cma-icmai', name: 'CMA (Cost & Management Accountancy)', shortCode: 'CMA',
     conductingBody: 'Institute of Cost Accountants of India', region: 'All India', category: 'Commerce & Professional',
     officialPortalUrl: 'https://icmai.in', officialPortalName: 'ICMAI Official',
     docsUrl: 'https://icmai.in', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [OPENSTAX, GUTENBERG],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, OPENSTAX_MGMT, RBIEDU, SWAYAM],
   },
   {
     id: 'gpat', name: 'GPAT (Graduate Pharmacy Aptitude Test)', shortCode: 'GPAT',
@@ -565,14 +598,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://gpat.nta.nic.in', officialPortalName: 'GPAT Official',
     docsUrl: 'https://gpat.nta.nic.in', docsLabel: 'Portal · Eligibility · Syllabus',
     pyqUrl: 'https://gpat.nta.nic.in', pyqLabel: 'Question Papers',
-    studyMaterials: [NCERT, OPENSTAX],
+    studyMaterials: [OPENSTAX_CHEM, OPENSTAX_BIO, OPENSTAX_ANATOMY, NDLI],
   },
   {
     id: 'nchm-jee', name: 'NCHM JEE (Hotel Management)', shortCode: 'NCHM JEE',
     conductingBody: 'NTA', region: 'All India', category: 'Hospitality',
     officialPortalUrl: 'https://nchmjee.nta.nic.in', officialPortalName: 'NCHM JEE Official',
     docsUrl: 'https://nchmjee.nta.nic.in', docsLabel: 'Portal · Eligibility · Syllabus',
-    studyMaterials: [NCERT, NDLI],
+    studyMaterials: [OPENSTAX_MGMT, OPENSTAX_ECON, OPENSTAX_ALGEBRA, NDLI],
   },
 
   // ── State Public Service Commissions (grouped by state) ──────────────────
@@ -581,133 +614,133 @@ export const completeExamDirectory: DirectoryExam[] = [
     conductingBody: 'Uttar Pradesh Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://uppsc.up.nic.in', officialPortalName: 'UPPSC Official',
     docsUrl: 'https://uppsc.up.nic.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NPTEL, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'bpsc', name: 'Bihar PSC (BPSC) — State Civil Services', shortCode: 'BPSC',
     conductingBody: 'Bihar Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://bpsc.bih.nic.in', officialPortalName: 'BPSC Official',
     docsUrl: 'https://bpsc.bih.nic.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NPTEL, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'mppsc', name: 'Madhya Pradesh PSC (MPPSC)', shortCode: 'MPPSC',
     conductingBody: 'Madhya Pradesh Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://mppsc.mp.gov.in', officialPortalName: 'MPPSC Official',
     docsUrl: 'https://mppsc.mp.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NPTEL, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'rpsc', name: 'Rajasthan PSC (RPSC)', shortCode: 'RPSC',
     conductingBody: 'Rajasthan Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://rpsc.rajasthan.gov.in', officialPortalName: 'RPSC Official',
     docsUrl: 'https://rpsc.rajasthan.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NPTEL, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'hpsc-haryana', name: 'Haryana PSC (HPSC)', shortCode: 'HPSC',
     conductingBody: 'Haryana Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://hpsc.gov.in', officialPortalName: 'HPSC Official',
     docsUrl: 'https://hpsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'hppsc', name: 'Himachal Pradesh PSC (HPPSC)', shortCode: 'HPPSC',
     conductingBody: 'Himachal Pradesh Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://www.hp.gov.in/hppsc', officialPortalName: 'HPPSC Official',
     docsUrl: 'https://www.hp.gov.in/hppsc', docsLabel: 'Portal · Notifications',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'ppsc-punjab', name: 'Punjab PSC (PPSC)', shortCode: 'PPSC',
     conductingBody: 'Punjab Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://ppsc.gov.in', officialPortalName: 'PPSC Official',
     docsUrl: 'https://ppsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'ukpsc', name: 'Uttarakhand PSC (UKPSC)', shortCode: 'UKPSC',
     conductingBody: 'Uttarakhand Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://ukpsc.gov.in', officialPortalName: 'UKPSC Official',
     docsUrl: 'https://ukpsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'jpsc', name: 'Jharkhand PSC (JPSC)', shortCode: 'JPSC',
     conductingBody: 'Jharkhand Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://www.jpsc.gov.in', officialPortalName: 'JPSC Official',
     docsUrl: 'https://www.jpsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'cgpsc', name: 'Chhattisgarh PSC (CGPSC)', shortCode: 'CGPSC',
     conductingBody: 'Chhattisgarh Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://psc.cg.gov.in', officialPortalName: 'CGPSC Official',
     docsUrl: 'https://psc.cg.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'opsc', name: 'Odisha PSC (OPSC)', shortCode: 'OPSC',
     conductingBody: 'Odisha Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://opsc.gov.in', officialPortalName: 'OPSC Official',
     docsUrl: 'https://opsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'gpsc-gujarat', name: 'Gujarat PSC (GPSC)', shortCode: 'GPSC',
     conductingBody: 'Gujarat Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://gpsc.gujarat.gov.in', officialPortalName: 'GPSC Official',
     docsUrl: 'https://gpsc.gujarat.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'mpsc-maharashtra', name: 'Maharashtra PSC (MPSC)', shortCode: 'MPSC',
     conductingBody: 'Maharashtra Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://mpsc.gov.in', officialPortalName: 'MPSC Official',
     docsUrl: 'https://mpsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'tnpsc', name: 'Tamil Nadu PSC (TNPSC)', shortCode: 'TNPSC',
     conductingBody: 'Tamil Nadu Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://www.tnpsc.gov.in', officialPortalName: 'TNPSC Official',
     docsUrl: 'https://www.tnpsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'kpsc-karnataka', name: 'Karnataka PSC (KPSC)', shortCode: 'KPSC',
     conductingBody: 'Karnataka Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://kpsc.kar.nic.in', officialPortalName: 'KPSC Official',
     docsUrl: 'https://kpsc.kar.nic.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'appsc', name: 'Andhra Pradesh PSC (APPSC)', shortCode: 'APPSC',
     conductingBody: 'Andhra Pradesh Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://psc.ap.gov.in', officialPortalName: 'APPSC Official',
     docsUrl: 'https://psc.ap.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'tspsc', name: 'Telangana PSC (TSPSC)', shortCode: 'TSPSC',
     conductingBody: 'Telangana Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://tspsc.gov.in', officialPortalName: 'TSPSC Official',
     docsUrl: 'https://tspsc.gov.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'keralapsc', name: 'Kerala PSC', shortCode: 'Kerala PSC',
     conductingBody: 'Kerala Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://www.keralapsc.gov.in', officialPortalName: 'Kerala PSC Official',
     docsUrl: 'https://www.keralapsc.gov.in', docsLabel: 'Portal · Notifications',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
   {
     id: 'apsc-assam', name: 'Assam PSC (APSC)', shortCode: 'APSC',
     conductingBody: 'Assam Public Service Commission', region: 'All India', category: 'State PSC',
     officialPortalUrl: 'https://apsc.nic.in', officialPortalName: 'APSC Official',
     docsUrl: 'https://apsc.nic.in', docsLabel: 'Portal · Notifications · Syllabus',
-    studyMaterials: [NCERT, EGYANKOSH, NDLI],
+    studyMaterials: [NCERT_POLITY, NCERT_HISTORY, NCERT_GEO, NCERT_ECO, CONSTITUTION, PRS],
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -718,8 +751,8 @@ export const completeExamDirectory: DirectoryExam[] = [
     conductingBody: 'ETS', region: 'International', category: 'Study Abroad',
     officialPortalUrl: 'https://www.ets.org/gre', officialPortalName: 'ETS GRE Official',
     docsUrl: 'https://www.ets.org/gre', docsLabel: 'Registration · Eligibility · Pattern',
-    pyqUrl: 'https://www.ets.org/gre/test-takers/general-test/prepare.html', pyqLabel: 'Official Free Practice',
-    studyMaterials: [KHAN, MITOCW, OPENSTAX],
+    pyqUrl: 'https://www.ets.org/s/gre/pdf/practice_book_gre.pdf', pyqLabel: 'Official GRE Practice Book (Direct PDF)',
+    studyMaterials: [ETS_GRE_MATH, OPENSTAX_ALGEBRA, OPENSTAX_STATS, OWL],
   },
   {
     id: 'gmat', name: 'GMAT Focus Edition', shortCode: 'GMAT',
@@ -727,23 +760,23 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.mba.com/exams/gmat-focus-edition', officialPortalName: 'GMAC GMAT Official',
     docsUrl: 'https://www.mba.com/exams/gmat-focus-edition', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.mba.com/exam-prep/gmat-official-starter-kit', pyqLabel: 'Official Starter Kit',
-    studyMaterials: [MITOCW, OPENSTAX, KHAN],
+    studyMaterials: [OPENSTAX_ALGEBRA, OPENSTAX_STATS, OPENSTAX_MGMT, KHAN],
   },
   {
     id: 'sat', name: 'Digital SAT', shortCode: 'SAT',
     conductingBody: 'College Board', region: 'International', category: 'Study Abroad',
     officialPortalUrl: 'https://satsuite.collegeboard.org/digital', officialPortalName: 'College Board Official',
     docsUrl: 'https://satsuite.collegeboard.org/digital', docsLabel: 'Registration · Pattern',
-    pyqUrl: 'https://satsuite.collegeboard.org/practice/bluebook-app', pyqLabel: 'Bluebook Free Mocks',
-    studyMaterials: [KHAN, OPENSTAX, GUTENBERG],
+    pyqUrl: 'https://satsuite.collegeboard.org/media/pdf/digital-sat-practice-test-1.pdf', pyqLabel: 'Digital SAT Practice Test 1 (Direct PDF)',
+    studyMaterials: [SAT_MATH_REVIEW, OPENSTAX_ALGEBRA, OPENSTAX_PRECALC, KHAN],
   },
   {
     id: 'act', name: 'ACT', shortCode: 'ACT',
     conductingBody: 'ACT Inc.', region: 'International', category: 'Study Abroad',
     officialPortalUrl: 'https://www.act.org', officialPortalName: 'ACT Official',
     docsUrl: 'https://www.act.org', docsLabel: 'Registration · Pattern',
-    pyqUrl: 'https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/free-act-test-prep.html', pyqLabel: 'Free Practice Tests',
-    studyMaterials: [KHAN, OPENSTAX],
+    pyqUrl: 'https://www.act.org/content/dam/act/unsecured/documents/Preparing-for-the-ACT.pdf', pyqLabel: 'ACT Official Prep Booklet (Direct PDF)',
+    studyMaterials: [ACT_PREP_BOOK, OPENSTAX_ALGEBRA, OPENSTAX_BIO, KHAN],
   },
   {
     id: 'ap-exams', name: 'AP Exams (Advanced Placement)', shortCode: 'AP',
@@ -751,14 +784,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://apstudents.collegeboard.org', officialPortalName: 'AP Students Official',
     docsUrl: 'https://apstudents.collegeboard.org', docsLabel: 'Subjects · Registration',
     pyqUrl: 'https://apcentral.collegeboard.org', pyqLabel: 'Free Response Archive',
-    studyMaterials: [OPENSTAX, MITOCW, KHAN],
+    studyMaterials: [OPENSTAX_CALC, OPENSTAX_PHYSICS, OPENSTAX_BIO, OPENSTAX_CHEM],
   },
   {
     id: 'psat', name: 'PSAT / NMSQT', shortCode: 'PSAT',
     conductingBody: 'College Board', region: 'International', category: 'Study Abroad',
     officialPortalUrl: 'https://satsuite.collegeboard.org/psat-nmsqt', officialPortalName: 'College Board Official',
     docsUrl: 'https://satsuite.collegeboard.org/psat-nmsqt', docsLabel: 'Registration · Pattern',
-    studyMaterials: [KHAN, OPENSTAX],
+    studyMaterials: [SAT_MATH_REVIEW, OPENSTAX_ALGEBRA, KHAN],
   },
   {
     id: 'ielts', name: 'IELTS (Academic & General Training)', shortCode: 'IELTS',
@@ -766,7 +799,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.ielts.org', officialPortalName: 'IELTS Official',
     docsUrl: 'https://ielts.idp.com', docsLabel: 'IDP Registration · Pattern',
     pyqUrl: 'https://www.ielts.org/for-test-takers/sample-test-questions', pyqLabel: 'Official Sample Tests',
-    studyMaterials: [BRCOUNCIL, BBC, OWL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'toefl', name: 'TOEFL iBT', shortCode: 'TOEFL',
@@ -774,7 +807,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.ets.org/toefl', officialPortalName: 'ETS TOEFL Official',
     docsUrl: 'https://www.ets.org/toefl', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.ets.org/toefl/test-takers/ibt/prepare/practice-tests.html', pyqLabel: 'Free Practice Sets',
-    studyMaterials: [BBC, OWL, BRCOUNCIL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'pte', name: 'PTE Academic', shortCode: 'PTE',
@@ -782,7 +815,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.pearsonpte.com', officialPortalName: 'Pearson PTE Official',
     docsUrl: 'https://www.pearsonpte.com', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.pearsonpte.com/preparation', pyqLabel: 'Official Practice',
-    studyMaterials: [BBC, OWL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'duolingo-english', name: 'Duolingo English Test', shortCode: 'DET',
@@ -790,7 +823,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://englishtest.duolingo.com', officialPortalName: 'Duolingo English Test',
     docsUrl: 'https://englishtest.duolingo.com', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://englishtest.duolingo.com/practice', pyqLabel: 'Free Practice Test',
-    studyMaterials: [BBC, BRCOUNCIL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'oet', name: 'OET (Healthcare English)', shortCode: 'OET',
@@ -798,21 +831,21 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.oet.com', officialPortalName: 'OET Official',
     docsUrl: 'https://www.oet.com', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.oet.com/prepare', pyqLabel: 'Free Sample Tests',
-    studyMaterials: [BRCOUNCIL, OWL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'celpip-cael', name: 'CELPIP / CAEL (Canada)', shortCode: 'CELPIP',
     conductingBody: 'Paragon / CAEL', region: 'International', category: 'English Proficiency',
     officialPortalUrl: 'https://www.celpip.ca', officialPortalName: 'CELPIP Official',
     docsUrl: 'https://www.cael.ca', docsLabel: 'CAEL Official',
-    studyMaterials: [BBC, BRCOUNCIL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'toeic', name: 'TOEIC', shortCode: 'TOEIC',
     conductingBody: 'ETS', region: 'International', category: 'English Proficiency',
     officialPortalUrl: 'https://www.toeicglobal.com', officialPortalName: 'TOEIC Official',
     docsUrl: 'https://www.toeicglobal.com', docsLabel: 'Registration · Pattern',
-    studyMaterials: [BBC, OWL],
+    studyMaterials: [OWL, BBC, BRCOUNCIL, GUTENBERG, OPENLIB],
   },
   {
     id: 'lsat', name: 'LSAT (US/Canada Law School Admission)', shortCode: 'LSAT',
@@ -820,7 +853,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.lsac.org', officialPortalName: 'LSAC Official',
     docsUrl: 'https://www.lsac.org', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.lsac.org/lsat/free-official-lsat-prep', pyqLabel: 'Free Official LSAT Prep',
-    studyMaterials: [KHAN, GUTENBERG],
+    studyMaterials: [OPENLIB, GUTENBERG, OWL, KHAN],
   },
   {
     id: 'lnat', name: 'LNAT (UK Law — Oxford/Cambridge)', shortCode: 'LNAT',
@@ -828,21 +861,21 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://lnat.ac.uk', officialPortalName: 'LNAT Official',
     docsUrl: 'https://lnat.ac.uk', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://lnat.ac.uk/prepare/', pyqLabel: 'Official Practice Tests',
-    studyMaterials: [OWL, GUTENBERG],
+    studyMaterials: [OPENLIB, GUTENBERG, OWL, KHAN],
   },
   {
     id: 'mcat', name: 'MCAT (Medical College Admission Test)', shortCode: 'MCAT',
     conductingBody: 'AAMC', region: 'International', category: 'Medical & Health',
     officialPortalUrl: 'https://www.aamc.org', officialPortalName: 'AAMC MCAT Official',
     docsUrl: 'https://www.aamc.org/mcat', docsLabel: 'Registration · Pattern',
-    studyMaterials: [KHAN, OPENSTAX, LIBRETEXTS],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, OPENSTAX_PHYSICS],
   },
   {
     id: 'usmle', name: 'USMLE (US Medical Licensing)', shortCode: 'USMLE',
     conductingBody: 'FSMB / NBME / ECFMG', region: 'International', category: 'Medical & Health',
     officialPortalUrl: 'https://www.usmle.org', officialPortalName: 'USMLE Official',
     docsUrl: 'https://www.usmle.org', docsLabel: 'Registration · Eligibility',
-    studyMaterials: [LIBRETEXTS, OPENSTAX],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, OPENSTAX_PHYSICS],
   },
   {
     id: 'gamsat', name: 'GAMSAT (UK/Aus/Ireland Medical)', shortCode: 'GAMSAT',
@@ -850,7 +883,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://gamsat.acer.org', officialPortalName: 'GAMSAT Official',
     docsUrl: 'https://gamsat.acer.org', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://gamsat.acer.org/prepare', pyqLabel: 'Official Practice Tests',
-    studyMaterials: [KHAN, OPENSTAX],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, OPENSTAX_PHYSICS],
   },
   {
     id: 'ucat', name: 'UCAT (UK/Aus Medical Aptitude)', shortCode: 'UCAT',
@@ -858,21 +891,21 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.ucat.ac.uk', officialPortalName: 'UCAT Official',
     docsUrl: 'https://www.ucat.ac.uk', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.ucat.ac.uk/ucat/mock-tests', pyqLabel: 'Official Mock Tests',
-    studyMaterials: [KHAN, OPENSTAX],
+    studyMaterials: [OPENSTAX_BIO, OPENSTAX_ANATOMY, OPENSTAX_CHEM, OPENSTAX_PHYSICS],
   },
   {
     id: 'cfa', name: 'CFA Program', shortCode: 'CFA',
     conductingBody: 'CFA Institute', region: 'International', category: 'Finance & Accounting',
     officialPortalUrl: 'https://www.cfainstitute.org', officialPortalName: 'CFA Institute Official',
     docsUrl: 'https://www.cfainstitute.org/en/programs/cfa', docsLabel: 'Registration · Curriculum',
-    studyMaterials: [OPENSTAX, MITOCW],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, OPENSTAX_MGMT, RBIEDU],
   },
   {
     id: 'cpa', name: 'CPA (US Certified Public Accountant)', shortCode: 'CPA',
     conductingBody: 'AICPA / NASBA', region: 'International', category: 'Finance & Accounting',
     officialPortalUrl: 'https://www.aicpa-cima.com', officialPortalName: 'AICPA Official',
     docsUrl: 'https://www.aicpa-cima.com', docsLabel: 'Registration · Pattern',
-    studyMaterials: [OPENSTAX],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, OPENSTAX_MGMT, RBIEDU],
   },
   {
     id: 'acca', name: 'ACCA', shortCode: 'ACCA',
@@ -880,7 +913,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.accaglobal.com', officialPortalName: 'ACCA Official',
     docsUrl: 'https://www.accaglobal.com', docsLabel: 'Registration · Syllabus',
     pyqUrl: 'https://www.accaglobal.com', pyqLabel: 'Past Exam Papers',
-    studyMaterials: [OPENSTAX],
+    studyMaterials: [OPENSTAX_ACCOUNTING, OPENSTAX_ECON, OPENSTAX_MGMT, RBIEDU],
   },
   {
     id: 'step-maths', name: 'STEP (Cambridge Mathematics)', shortCode: 'STEP',
@@ -888,7 +921,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.stepmathematics.org.uk', officialPortalName: 'STEP Official',
     docsUrl: 'https://www.stepmathematics.org.uk', docsLabel: 'Registration · Pattern',
     pyqUrl: 'https://www.stepmathematics.org.uk/past-papers/', pyqLabel: 'Past Papers',
-    studyMaterials: [MITOCW, OPENSTAX, KHAN],
+    studyMaterials: [OPENSTAX_CALC, OPENSTAX_PHYSICS, MITOCW, NDLI],
   },
   {
     id: 'oxbridge-tests', name: 'Oxbridge Admissions Tests (MAT, TMUA, PAT, TSA)', shortCode: 'MAT / TMUA',
@@ -896,14 +929,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.admissionstesting.org', officialPortalName: 'Admissions Testing Official',
     docsUrl: 'https://www.ox.ac.uk/admissions/undergraduate', docsLabel: 'Oxford Admissions',
     pyqUrl: 'https://www.admissionstesting.org', pyqLabel: 'Past Papers Archive',
-    studyMaterials: [MITOCW, KHAN, OPENSTAX],
+    studyMaterials: [OPENSTAX_CALC, OPENSTAX_PHYSICS, MITOCW, NDLI],
   },
   {
     id: 'ib-diploma', name: 'IB Diploma Programme', shortCode: 'IB',
     conductingBody: 'International Baccalaureate', region: 'International', category: 'School Curricula',
     officialPortalUrl: 'https://www.ibo.org', officialPortalName: 'IB Official',
     docsUrl: 'https://www.ibo.org/programmes/', docsLabel: 'Programmes · Subjects',
-    studyMaterials: [OPENSTAX, KHAN],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_BIO, OPENSTAX_CALC],
   },
   {
     id: 'cambridge-igcse', name: 'Cambridge IGCSE / A-Levels', shortCode: 'IGCSE / A-Level',
@@ -911,29 +944,29 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.cambridgeinternational.org', officialPortalName: 'Cambridge International',
     docsUrl: 'https://www.cambridgeinternational.org/programmes-and-qualifications/', docsLabel: 'Qualifications · Subjects',
     pyqUrl: 'https://www.cambridgeinternational.org/programmes-and-qualifications/past-papers/', pyqLabel: 'Past Papers',
-    studyMaterials: [OPENSTAX, KHAN],
+    studyMaterials: [OPENSTAX_PHYSICS, OPENSTAX_CHEM, OPENSTAX_BIO, OPENSTAX_CALC],
   },
   {
     id: 'ged-hiset', name: 'GED / HiSET (High School Equivalency)', shortCode: 'GED',
     conductingBody: 'GED Testing Service / ETS', region: 'International', category: 'School Curricula',
     officialPortalUrl: 'https://ged.com', officialPortalName: 'GED Official',
     docsUrl: 'https://hiset.ets.org', docsLabel: 'HiSET (ETS)',
-    studyMaterials: [KHAN, OPENSTAX],
+    studyMaterials: [OPENSTAX_ALGEBRA, NCERT_SCIENCE, NCERT_MATH, KHAN],
   },
   {
     id: 'ssat-isee', name: 'SSAT / ISEE (US Private School Admission)', shortCode: 'SSAT / ISEE',
     conductingBody: 'EMA / ERB', region: 'International', category: 'School Curricula',
     officialPortalUrl: 'https://www.ssat.org', officialPortalName: 'SSAT Official',
     docsUrl: 'https://www.erblearn.org', docsLabel: 'ISEE (ERB)',
-    studyMaterials: [KHAN, OPENSTAX],
+    studyMaterials: [OPENSTAX_ALGEBRA, NCERT_SCIENCE, NCERT_MATH, KHAN],
   },
   {
     id: 'jlpt', name: 'JLPT (Japanese Language Proficiency Test)', shortCode: 'JLPT',
     conductingBody: 'Japan Foundation / JEES', region: 'International', category: 'Language Certification',
     officialPortalUrl: 'https://www.jlpt.jp', officialPortalName: 'JLPT Official',
     docsUrl: 'https://www.jlpt.jp', docsLabel: 'Registration · Levels',
-    pyqUrl: 'https://www.jlpt.jp/e/samples/', pyqLabel: 'Sample Questions',
-    studyMaterials: [OPENLIB, GUTENBERG],
+    pyqUrl: 'https://www.jlpt.jp/e/samples/pdf/N5-mondai.pdf', pyqLabel: 'JLPT N5 Official Sample (Direct PDF)',
+    studyMaterials: [JLPT_N5_BOOK, OPENLIB, GUTENBERG, BBC],
   },
   {
     id: 'hsk', name: 'HSK (Chinese Proficiency Test)', shortCode: 'HSK',
@@ -941,7 +974,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.chinesetest.cn', officialPortalName: 'Chinese Test Official',
     docsUrl: 'https://www.chinesetest.cn', docsLabel: 'Registration · Levels',
     pyqUrl: 'https://www.chinesetest.cn', pyqLabel: 'Sample Tests',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
   {
     id: 'delf-dalf', name: 'DELF / DALF (French)', shortCode: 'DELF / DALF',
@@ -949,7 +982,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.ciep.fr', officialPortalName: 'CIEP Official',
     docsUrl: 'https://www.ciep.fr/en/delf-dalf', docsLabel: 'Registration · Levels',
     pyqUrl: 'https://www.ciep.fr/en/delf-dalf', pyqLabel: 'Sample Papers',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
   {
     id: 'goethe', name: 'Goethe-Zertifikat (German)', shortCode: 'Goethe',
@@ -957,7 +990,7 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.goethe.de', officialPortalName: 'Goethe-Institut',
     docsUrl: 'https://www.goethe.de/en/spr/prf.html', docsLabel: 'Exams · Levels',
     pyqUrl: 'https://www.goethe.de/en/spr/prf/ueb.html', pyqLabel: 'Model Papers',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
   {
     id: 'dele', name: 'DELE (Spanish)', shortCode: 'DELE',
@@ -965,14 +998,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://examenes.cervantes.es', officialPortalName: 'Instituto Cervantes',
     docsUrl: 'https://examenes.cervantes.es/es/dele', docsLabel: 'Registration · Levels',
     pyqUrl: 'https://examenes.cervantes.es/es/dele/modelos', pyqLabel: 'Model Exams',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
   {
     id: 'celi-cils', name: 'CELI / CILS (Italian)', shortCode: 'CELI / CILS',
     conductingBody: 'CVCL / University for Foreigners of Siena', region: 'International', category: 'Language Certification',
     officialPortalUrl: 'https://cvcl.it', officialPortalName: 'CELI (CVCL)',
     docsUrl: 'https://cils.unistrasi.it', docsLabel: 'CILS Official',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
   {
     id: 'topik', name: 'TOPIK (Korean Proficiency Test)', shortCode: 'TOPIK',
@@ -980,14 +1013,14 @@ export const completeExamDirectory: DirectoryExam[] = [
     officialPortalUrl: 'https://www.topik.go.kr', officialPortalName: 'TOPIK Official',
     docsUrl: 'https://www.topik.go.kr', docsLabel: 'Registration · Levels',
     pyqUrl: 'https://www.topik.go.kr', pyqLabel: 'Past Papers',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
   {
     id: 'trki', name: 'TRKI (Russian Proficiency Test)', shortCode: 'TRKI',
     conductingBody: 'Pushkin State Russian Language Institute', region: 'International', category: 'Language Certification',
     officialPortalUrl: 'https://www.pushkin.institute', officialPortalName: 'Pushkin Institute',
     docsUrl: 'https://www.pushkin.institute', docsLabel: 'Registration · Levels',
-    studyMaterials: [GUTENBERG, OPENLIB],
+    studyMaterials: [OPENLIB, GUTENBERG, BBC, BRCOUNCIL],
   },
 ];
 

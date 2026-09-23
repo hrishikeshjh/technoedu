@@ -56,7 +56,7 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
     <div
       role="status"
       aria-label="Loading Learn Better"
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white/85 backdrop-blur-2xl text-slate-900 select-none transition-all duration-500 ease-out overflow-hidden px-4 ${
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white/85 dark:bg-[#08090B]/90 backdrop-blur-2xl text-slate-900 dark:text-[#F8FAFC] select-none transition-all duration-500 ease-out overflow-hidden px-4 ${
         isFadingOut ? 'opacity-0 pointer-events-none scale-105 filter blur-xs' : 'opacity-100'
       }`}
       style={{
@@ -78,11 +78,11 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
 
         {/* Main Headline */}
         <div className="space-y-1.5">
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center justify-center gap-2">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-[#F8FAFC] flex items-center justify-center gap-2">
             <span>Learn</span>
             <span className="text-brand-red">Better.</span>
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium tracking-wide">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-[#A7AFBD] font-medium tracking-wide">
             Techno Wallah • Curated Open Knowledge Aggregator
           </p>
         </div>
@@ -90,13 +90,13 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
         {/* Animated Number & Progress Bar */}
         <div className="w-full max-w-[260px] space-y-2 pt-1">
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="text-slate-400 uppercase tracking-widest text-[10px]">Loading</span>
+            <span className="text-slate-400 dark:text-[#7F8795] uppercase tracking-widest text-[10px]">Loading</span>
             <span className="text-brand-red font-bold tracking-wider tabular-nums">
               {progress.toString().padStart(2, '0')}%
             </span>
           </div>
 
-          <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden p-[1px]">
+          <div className="w-full h-1.5 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden p-[1px]">
             <div
               className="h-full bg-brand-red rounded-full transition-all duration-75 ease-out"
               style={{ width: `${progress}%` }}
@@ -115,7 +115,7 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
             if (onComplete) onComplete();
           }, 250);
         }}
-        className="absolute bottom-6 text-[11px] text-slate-400 hover:text-slate-700 font-mono tracking-wider transition-colors uppercase px-3 py-1.5 rounded-lg hover:bg-slate-100"
+        className="absolute bottom-6 text-[11px] text-slate-400 dark:text-[#7F8795] hover:text-slate-700 dark:hover:text-[#F8FAFC] font-mono tracking-wider transition-colors uppercase px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1A1D23]"
       >
         Skip [Esc]
       </button>

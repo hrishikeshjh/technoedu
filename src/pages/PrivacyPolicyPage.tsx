@@ -9,7 +9,7 @@ export const PrivacyPolicyPage: React.FC = () => {
   const lastUpdated = 'September 19, 2026';
 
   return (
-    <div className="w-full bg-white text-slate-900 pt-6 sm:pt-8 pb-16" style={GIL_SANS}>
+    <div className="w-full bg-white dark:bg-[#08090B] text-slate-900 dark:text-[#F8FAFC] pt-6 sm:pt-8 pb-16 transition-colors duration-200" style={GIL_SANS}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
@@ -17,17 +17,17 @@ export const PrivacyPolicyPage: React.FC = () => {
 
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red text-xs font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-medium mb-4">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Privacy Policy</span>
           </div>
-          <h1 className="text-2xl sm:text-5xl font-bold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-5xl font-bold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
             Your Privacy Matters
           </h1>
-          <p className="mt-3 sm:mt-4 text-slate-500 text-xs sm:text-base leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-slate-500 dark:text-[#A7AFBD] text-xs sm:text-base leading-relaxed">
             This Privacy Policy explains how Techno Wallah collects, uses, and protects your information when you visit our website.
           </p>
-          <p className="mt-2 text-xs text-slate-400">Last Updated: {lastUpdated}</p>
+          <p className="mt-2 text-xs text-slate-400 dark:text-[#7F8795]">Last Updated: {lastUpdated}</p>
         </div>
 
         {/* Content Sections */}

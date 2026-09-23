@@ -3,6 +3,32 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f8fafc;
+    --bg-surface-hover: #f1f5f9;
+    --border-subtle: #e2e8f0;
+    --border-input: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --brand-primary: #dc2626;
+  }
+
+  .dark {
+    --bg-primary: #08090b;
+    --bg-surface: #111318;
+    --bg-surface-elevated: #15171c;
+    --bg-surface-hover: #1a1d23;
+    --border-subtle: #252932;
+    --border-input: #292d36;
+    --text-primary: #f8fafc;
+    --text-secondary: #a7afbd;
+    --text-muted: #7f8795;
+    --brand-primary: #dc2626;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -13,10 +39,13 @@
       "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   body {
-    @apply bg-white text-dark-900 antialiased;
+    @apply bg-white dark:bg-[#08090B] text-slate-900 dark:text-[#F8FAFC] antialiased;
     color: #111827;
     /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
+  }
+  .dark body {
+    color: #f8fafc;
   }
   /* Minimum touch target size for accessibility on buttons and interactive roles (WCAG 2.5.5) */
   button:not(.no-min-touch),
@@ -200,13 +229,25 @@
   background: #f8fafc;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #08090b;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #252932;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374151;
 }
 
 .gradient-mesh {
@@ -216,14 +257,137 @@
     radial-gradient(at 100% 100%, rgba(17, 24, 39, 0.04) 0px, transparent 50%);
 }
 
+.dark .gradient-mesh {
+  background-color: #08090b;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(37, 41, 50, 0.25) 0px, transparent 50%);
+}
+
 .card-subtle {
-  @apply bg-white border border-slate-200/80 rounded-2xl shadow-soft transition-all duration-200 hover:shadow-card-hover hover:border-brand-red/30;
+  @apply bg-white dark:bg-[#111318] border border-slate-200/80 dark:border-[#252932] rounded-2xl shadow-soft dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5)] transition-all duration-200 hover:shadow-card-hover hover:border-brand-red/30 dark:hover:border-brand-red/40;
+}
+
+.dark .card-subtle h2,
+.dark .card-subtle h3 {
+  color: #f8fafc;
+}
+
+.dark .card-subtle p,
+.dark .card-subtle li {
+  color: #a7afbd;
+}
+
+.dark .card-subtle .text-slate-900,
+.dark .card-subtle .text-slate-800,
+.dark .card-subtle strong {
+  color: #f8fafc;
+}
+
+.dark .card-subtle .text-slate-700 {
+  color: #e2e8f0;
+}
+
+.dark .card-subtle .text-slate-600 {
+  color: #a7afbd;
+}
+
+.dark .card-subtle .text-slate-500 {
+  color: #7f8795;
+}
+
+.dark .card-subtle .text-slate-400 {
+  color: #64748b;
+}
+
+.dark .card-subtle .bg-slate-50 {
+  background-color: #0e1015;
+}
+
+.dark .card-subtle .bg-slate-100 {
+  background-color: #15171c;
+}
+
+.dark .card-subtle .border-slate-100,
+.dark .card-subtle .border-slate-200,
+.dark .card-subtle .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #252932;
+}
+
+.dark .card-subtle tr.hover\:bg-slate-50:hover,
+.dark .card-subtle a.hover\:bg-slate-100:hover {
+  background-color: #15171c;
+}
+
+.dark .card-subtle .bg-red-50 {
+  background-color: rgba(69, 10, 10, 0.35);
+  border-color: rgba(153, 27, 27, 0.4);
+}
+
+.dark .card-subtle .bg-emerald-50 {
+  background-color: rgba(6, 78, 59, 0.35);
+  border-color: rgba(6, 95, 70, 0.4);
+}
+
+.dark .card-subtle .bg-emerald-100 {
+  background-color: rgba(6, 78, 59, 0.45);
+}
+
+.dark .card-subtle .text-emerald-700 {
+  color: #34d399;
+}
+
+.dark .card-subtle .bg-amber-50 {
+  background-color: rgba(120, 53, 15, 0.35);
+  border-color: rgba(146, 64, 14, 0.4);
+}
+
+.dark .card-subtle .bg-amber-100 {
+  background-color: rgba(120, 53, 15, 0.45);
+}
+
+.dark .card-subtle .text-amber-700 {
+  color: #fbbf24;
+}
+
+.dark .card-subtle .bg-blue-50 {
+  background-color: rgba(30, 58, 138, 0.35);
+  border-color: rgba(30, 64, 175, 0.4);
+}
+
+.dark .card-subtle .bg-blue-100 {
+  background-color: rgba(30, 58, 138, 0.45);
+}
+
+.dark .card-subtle .text-blue-700 {
+  color: #60a5fa;
 }
 
 .glass-header {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass-header {
+  background: rgba(9, 10, 12, 0.88);
+}
+
+/* Smooth theme transition */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition: none !important;
+  }
 }
 
 /* Prevent category filter pills from overflowing on small screens */
