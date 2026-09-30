@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import {
   PenTool,
@@ -26,27 +26,31 @@ import {
 } from 'lucide-react';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { ScrollReveal } from '../components/common/ScrollReveal';
-import { addStoredBlogPost } from '../data/blogData';
+import { addStoredBlogPost, getBlogPostBySlug } from '../data/blogData';
 import { BlogPost, BlogAudience, BlogContributorType, ContentSection } from '../types/blog';
 
-function createBlogPostFromForm(data: {
-  fullName: string;
-  email: string;
-  role: string;
-  expertise: string;
-  articleTitle: string;
-  targetSegment: string;
-  primarySubject: string;
-  shortDescription: string;
-  portfolioUrl: string;
-  articleDraft: string;
-  customImage?: string;
-}): BlogPost {
+function createBlogPostFromForm(
+  data: {
+    fullName: string;
+    email: string;
+    role: string;
+    expertise: string;
+    articleTitle: string;
+    targetSegment: string;
+    primarySubject: string;
+    shortDescription: string;
+    portfolioUrl: string;
+    articleDraft: string;
+    customImage?: string;
+  },
+  existingId?: string,
+  existingSlug?: string
+): BlogPost {
   const slugBase = data.articleTitle
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)+/g, '');
-  const slug = `${slugBase || 'article'}-${Date.now().toString().slice(-5)}`;
+  const slug = existingSlug || `${slugBase || 'article'}-${Date.now().toString().slice(-5)}`;
   const authorId = data.fullName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
   // Map segment
@@ -166,6 +170,11 @@ function createBlogPostFromForm(data: {
 }
 
 export const BlogContributePage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const editSlug = searchParams.get('edit');
+  const [editingPostId, setEditingPostId] = useState<string | null>(null);
+  const [editingPostSlug, setEditingPostSlug] = useState<string | null>(null);
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imagePreview, setImagePreview] = useState<string>('');
@@ -184,6 +193,38 @@ export const BlogContributePage: React.FC = () => {
     articleDraft: '',
     customImage: '',
   });
+
+  useEffect(() => {
+    if (editSlug) {
+      const existing = getBlogPostBySlug(editSlug);
+      if (existing) {
+        setEditingPostId(existing.id);
+        setEditingPostSlug(existing.slug);
+        const reconstructedDraft = existing.contentSections
+          ?.map((s) => `## ${s.heading}\n\n${s.body.join('\n\n')}`)
+          .join('\n\n') || '';
+        setFormData({
+          fullName: existing.author.name || '',
+          email: '',
+          role: existing.author.role ? existing.author.role.split(' in ')[0] : 'Student',
+          expertise: existing.author.expertise?.join(', ') || '',
+          articleTitle: existing.title || '',
+          targetSegment: existing.audience === 'students' ? 'For Students' : 'Subjects & Core Interests',
+          primarySubject: existing.subject || existing.category || 'Computer Science',
+          shortDescription: existing.excerpt || '',
+          portfolioUrl: existing.author.socials?.website || '',
+          articleDraft: reconstructedDraft,
+          customImage: existing.image || '',
+        });
+        if (existing.image) {
+          setImagePreview(existing.image);
+          if (!existing.image.startsWith('data:')) {
+            setImageTab('url');
+          }
+        }
+      }
+    }
+  }, [editSlug]);
 
   const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -223,7 +264,7 @@ export const BlogContributePage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const newPost = createBlogPostFromForm(formData);
+      const newPost = createBlogPostFromForm(formData, editingPostId || undefined, editingPostSlug || undefined);
       addStoredBlogPost(newPost);
       setSubmittedPost(newPost);
       setFormSubmitted(true);
@@ -772,7 +813,9 @@ export const BlogContributePage: React.FC = () => {
                   {/* Submit Button */}
                   <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <p className="text-[11px] text-slate-500 dark:text-[#7F8795]">
-                      All published articles become live immediately across the TechnoEdu network.
+                      {editingPostId
+                        ? 'Changes are saved immediately and reflect across the website.'
+                        : 'All published articles become live immediately across the TechnoEdu network.'}
                     </p>
 
                     <button
@@ -781,11 +824,11 @@ export const BlogContributePage: React.FC = () => {
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-red text-white text-sm font-bold shadow-red-glow hover:bg-brand-darkred transition-all disabled:opacity-50"
                     >
                       {isSubmitting ? (
-                        <span>Publishing Article...</span>
+                        <span>{editingPostId ? 'Saving Changes...' : 'Publishing Article...'}</span>
                       ) : (
                         <>
                           <Send className="w-4 h-4" />
-                          <span>Publish Article Instantly</span>
+                          <span>{editingPostId ? 'Save & Update Article' : 'Publish Article Instantly'}</span>
                         </>
                       )}
                     </button>
