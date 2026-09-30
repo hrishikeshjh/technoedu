@@ -1,0 +1,52 @@
+[
+  {
+    "id": "post-sample-sync",
+    "slug": "understanding-distributed-systems",
+    "title": "Understanding Distributed Systems Architecture",
+    "excerpt": "A deep dive into consensus protocols, replication, and fault tolerance across modern clusters.",
+    "category": "Computer Science",
+    "subject": "Computer Science",
+    "audience": "students",
+    "author": {
+      "id": "rishi",
+      "name": "Rishi",
+      "role": "Student in Distributed Systems",
+      "contributorType": "student",
+      "avatar": "https://ui-avatars.com/api/?name=Rishi&background=e11d48&color=fff&bold=true",
+      "bio": "Student specializing in Distributed Systems. Contributor to TechnoEdu Knowledge Hub.",
+      "expertise": [
+        "Distributed Systems",
+        "Cloud"
+      ]
+    },
+    "authorRole": "Student • Distributed Systems",
+    "authorAvatar": "https://ui-avatars.com/api/?name=Rishi&background=e11d48&color=fff&bold=true",
+    "date": "Oct 1, 2026",
+    "readingTime": "5 min read",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+    "tags": [
+      "Distributed Systems",
+      "Computer Science"
+    ],
+    "featured": true,
+    "difficulty": "Intermediate",
+    "status": "approved",
+    "tableOfContents": [
+      {
+        "id": "overview",
+        "text": "Overview",
+        "level": 2
+      }
+    ],
+    "contentSections": [
+      {
+        "id": "overview",
+        "heading": "Overview",
+        "body": [
+          "Distributed systems form the foundation of internet-scale services."
+        ]
+      }
+    ],
+    "submittedAt": "2026-09-30T17:58:06.594Z"
+  }
+]

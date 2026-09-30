@@ -264,8 +264,90 @@ export const getStoredBlogPosts = (): BlogPost[] => {
 };
 
 /**
+ * Synchronizes articles from the server and Cloudflare R2 CDN.
+ * Ensures articles persist even in incognito mode or across different devices.
+ */
+export const syncBlogPostsWithRemote = async (): Promise<BlogPost[]> => {
+  if (typeof window === 'undefined') return [];
+
+  let remotePosts: BlogPost[] | null = null;
+
+  // 1. Try local /api/blogs endpoint (handled by server/Vite middleware)
+  try {
+    const res = await fetch('/api/blogs');
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        remotePosts = data;
+      }
+    }
+  } catch (err) {
+    // Non-blocking
+  }
+
+  // 2. Try static /blogs/posts.json
+  if (!remotePosts) {
+    try {
+      const res = await fetch('/blogs/posts.json');
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          remotePosts = data;
+        }
+      }
+    } catch (err) {
+      // Non-blocking
+    }
+  }
+
+  // 3. Try Cloudflare R2 Public CDN
+  if (!remotePosts && R2_BLOG_CDN_URL) {
+    try {
+      const res = await fetch(`${R2_BLOG_CDN_URL}/blogs/posts.json`);
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          remotePosts = data;
+        }
+      }
+    } catch (err) {
+      // Non-blocking
+    }
+  }
+
+  if (remotePosts) {
+    const local = getStoredBlogPosts();
+    const mergedMap = new Map<string, BlogPost>();
+    // Add remote first
+    remotePosts.forEach((p) => mergedMap.set(p.id, p));
+    // Merge any locally pending posts
+    local.forEach((p) => {
+      if (!mergedMap.has(p.id)) {
+        mergedMap.set(p.id, p);
+        // Attempt to upload locally pending post to remote
+        fetch('/api/blogs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(p),
+        }).catch(() => {});
+      }
+    });
+
+    const merged = Array.from(mergedMap.values());
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    } catch (e) {}
+    blogPosts = merged;
+    window.dispatchEvent(new CustomEvent('technoedu_blogs_updated', { detail: merged }));
+    return merged;
+  }
+
+  return getStoredBlogPosts();
+};
+
+/**
  * Saves a new contributed blog post into persistent storage with immediate publication.
- * Immediately dispatches an update event so all open views re-render in real time.
+ * Syncs to both localStorage and the backend/R2 endpoint.
  */
 export const addStoredBlogPost = (newPost: BlogPost): void => {
   if (typeof window === 'undefined') return;
@@ -280,13 +362,22 @@ export const addStoredBlogPost = (newPost: BlogPost): void => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     blogPosts = updated;
     window.dispatchEvent(new CustomEvent('technoedu_blogs_updated', { detail: postWithStatus }));
+
+    // Sync to server and Cloudflare R2
+    fetch('/api/blogs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(postWithStatus),
+    }).catch((err) => {
+      console.warn('Background sync to server failed:', err);
+    });
   } catch (err) {
     console.error('Failed to save blog post to localStorage:', err);
   }
 };
 
 /**
- * Deletes a stored blog post by ID
+ * Deletes a stored blog post by ID from both localStorage and server/R2.
  */
 export const deleteStoredBlogPost = (id: string): void => {
   if (typeof window === 'undefined') return;
@@ -296,6 +387,13 @@ export const deleteStoredBlogPost = (id: string): void => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     blogPosts = updated;
     window.dispatchEvent(new CustomEvent('technoedu_blogs_updated', { detail: { id } }));
+
+    // Delete from server and Cloudflare R2
+    fetch(`/api/blogs?id=${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+    }).catch((err) => {
+      console.warn('Background delete on server failed:', err);
+    });
   } catch (err) {
     console.error('Failed to delete blog post from localStorage:', err);
   }
@@ -311,7 +409,7 @@ export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
 
 /**
  * Custom React Hook to subscribe to blog changes across any component.
- * Immediately updates whenever a new article is contributed.
+ * Syncs from remote on mount so incognito and new windows always receive all posts.
  */
 export const useBlogPosts = (): BlogPost[] => {
   const [posts, setPosts] = useState<BlogPost[]>(() => getStoredBlogPosts());
@@ -322,6 +420,14 @@ export const useBlogPosts = (): BlogPost[] => {
     };
     window.addEventListener('technoedu_blogs_updated', handleUpdate);
     window.addEventListener('storage', handleUpdate);
+
+    // Initial remote fetch (crucial for incognito windows and multi-device sync)
+    syncBlogPostsWithRemote().then((synced) => {
+      if (synced && synced.length > 0) {
+        setPosts(synced);
+      }
+    });
+
     return () => {
       window.removeEventListener('technoedu_blogs_updated', handleUpdate);
       window.removeEventListener('storage', handleUpdate);
