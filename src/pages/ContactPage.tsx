@@ -76,10 +76,6 @@ export const ContactPage: React.FC = () => {
         {/* Hero Section */}
         <ScrollReveal animation="fade-up" delay={50}>
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-bold uppercase tracking-wider mb-4">
-              <MessageSquare className="w-3.5 h-3.5 text-brand-red" />
-              <span>Contact &amp; Academic Support</span>
-            </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
               Get in Touch with Us
             </h1>

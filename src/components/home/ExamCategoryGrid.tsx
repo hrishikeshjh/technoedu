@@ -49,9 +49,6 @@ export const ExamCategoryGrid: React.FC = () => {
         {/* Section Header */}
         <ScrollReveal animation="fade-up" delay={50}>
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400 text-xs font-bold uppercase tracking-wider no-min-touch">
-              <span>Examination Directory</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-dark-900 dark:text-[#F8FAFC] tracking-tight">
               Select Your Target Examination
             </h2>

@@ -29,10 +29,6 @@ export const CookiesPage: React.FC = () => {
 
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brand-red dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-medium mb-4">
-            <Cookie className="w-3.5 h-3.5" />
-            <span>Cookie Policy</span>
-          </div>
           <h1 className="text-2xl sm:text-5xl font-bold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
             How We Use Cookies
           </h1>

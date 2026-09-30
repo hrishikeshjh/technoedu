@@ -297,10 +297,6 @@ export const BlogContributePage: React.FC = () => {
         {/* Hero Section */}
         <ScrollReveal animation="fade-up" delay={50}>
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 border border-red-100 dark:border-red-900/30 text-xs font-bold uppercase tracking-wider mb-4">
-              <PenTool className="w-3.5 h-3.5" />
-              <span>Contribute to Techno Wallah Knowledge Hub</span>
-            </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight leading-tight">
               Share Your Knowledge With{' '}
               <span className="text-brand-red">Curious Minds.</span>

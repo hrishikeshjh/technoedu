@@ -11,7 +11,6 @@ import {
   Briefcase,
   PenTool,
   Clock,
-  Sparkles,
   Users,
   Tag,
   ChevronDown,
@@ -212,11 +211,6 @@ export const BlogsPage: React.FC = () => {
         {/* 1. HERO SECTION */}
         <section className="text-center max-w-4xl mx-auto pt-2 pb-10 sm:pb-14">
           <ScrollReveal animation="fade-up" delay={50}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 border border-red-100 dark:border-red-900/30 text-xs font-bold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>BLOGS &amp; KNOWLEDGE HUB</span>
-            </div>
-
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight leading-tight sm:leading-tight">
               Learn from people who learn, teach, build, and explore.
             </h1>

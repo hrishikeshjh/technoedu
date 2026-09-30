@@ -10,7 +10,6 @@ import {
   FileText,
   Layers,
   HelpCircle,
-  Sparkles,
   PenTool
 } from 'lucide-react';
 import { Navbar } from '../components/layout/Navbar';
@@ -45,9 +44,6 @@ export const LandingPage: React.FC = () => {
           <ScrollReveal animation="fade-up" delay={50}>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-bold uppercase tracking-wider">
-                  <span>Open Textbooks & Handbooks</span>
-                </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-dark-900 dark:text-[#F8FAFC] tracking-tight">
                   Curated Open Knowledge Library
                 </h2>
@@ -128,10 +124,6 @@ export const LandingPage: React.FC = () => {
           <ScrollReveal animation="fade-up" delay={50}>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-bold uppercase tracking-wider">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>KNOWLEDGE HUB &amp; PERSPECTIVES</span>
-                </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
                   Knowledge Worth Sharing
                 </h2>

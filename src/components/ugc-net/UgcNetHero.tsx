@@ -22,12 +22,6 @@ export const UgcNetHero: React.FC<UgcNetHeroProps> = ({
           
           {/* Left Column: Heading & CTAs */}
           <div className="max-w-3xl">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-brand-darkred dark:text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
-              <span className="w-2 h-2 rounded-full bg-brand-red animate-pulse" />
-              <span>UGC-NET / JRF</span>
-            </div>
-
             {/* Main Heading */}
             <div className="flex items-start gap-4 mb-4">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-900 dark:bg-[#15171C] border-2 border-amber-500/30 flex items-center justify-center shrink-0 shadow-sm">
