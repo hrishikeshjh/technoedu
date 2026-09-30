@@ -9,7 +9,9 @@ import {
   CheckCircle, 
   FileText,
   Layers,
-  HelpCircle
+  HelpCircle,
+  Sparkles,
+  PenTool
 } from 'lucide-react';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -17,10 +19,13 @@ import { HeroSection } from '../components/home/HeroSection';
 import { ExamCategoryGrid } from '../components/home/ExamCategoryGrid';
 import { OpenPlatformsSection } from '../components/home/OpenPlatformsSection';
 import { studyMaterialData } from '../data/studyMaterialData';
+import { blogPosts } from '../data/blogData';
+import { BlogCard } from '../components/blog/BlogCard';
 import { ScrollReveal } from '../components/common/ScrollReveal';
 
 export const LandingPage: React.FC = () => {
   const spotlightMaterials = studyMaterialData.slice(0, 6);
+  const featuredBlogs = blogPosts.slice(0, 3);
 
   return (
     <div className="w-full">
@@ -112,6 +117,72 @@ export const LandingPage: React.FC = () => {
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Blogs & Knowledge Hub: Knowledge Worth Sharing */}
+      <section className="py-12 sm:py-18 bg-white dark:bg-[#08090B] border-t border-slate-200 dark:border-[#252932] transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal animation="fade-up" delay={50}>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 dark:border dark:border-red-900/30 text-xs font-bold uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>KNOWLEDGE HUB &amp; PERSPECTIVES</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
+                  Knowledge Worth Sharing
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-[#A7AFBD] max-w-xl leading-relaxed">
+                  Explore ideas, experiences, and practical knowledge from students, mentors, educators, and professionals across disciplines.
+                </p>
+              </div>
+
+              <Link
+                to="/blogs"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:text-brand-darkred self-start md:self-auto group"
+              >
+                <span>Explore All Blogs</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredBlogs.map((post, idx) => (
+              <ScrollReveal
+                key={post.id}
+                animation="fade-up"
+                delay={idx * 80}
+                className="h-full flex flex-col"
+              >
+                <BlogCard post={post} variant="compact" />
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-100 dark:border-[#252932] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-slate-500 dark:text-[#7F8795]">
+              Written by students, university faculty, engineers, and independent builders. Free and open access.
+            </p>
+            <div className="flex items-center gap-3">
+              <Link
+                to="/blogs/contribute"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-[#A7AFBD] hover:text-brand-red dark:hover:text-white transition-colors"
+              >
+                <PenTool className="w-3.5 h-3.5" />
+                <span>Become a Contributor</span>
+              </Link>
+              <span className="text-slate-300 dark:text-[#252932]">•</span>
+              <Link
+                to="/blogs"
+                className="inline-flex items-center gap-1 text-xs font-bold text-brand-red hover:underline"
+              >
+                <span>Browse All Articles</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

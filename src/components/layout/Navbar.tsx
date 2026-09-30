@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { examsData } from '../../data/examsData';
 import { platformsData } from '../../data/platformsData';
+import { blogPosts } from '../../data/blogData';
 import { ThemeToggle } from '../common/ThemeToggle';
 
 export const Navbar: React.FC = () => {
@@ -87,10 +88,23 @@ export const Navbar: React.FC = () => {
     p.organization.toLowerCase().includes(searchQuery.toLowerCase())
   ).slice(0, 3);
 
+  const filteredBlogs = searchQuery.trim() === '' ? [] : blogPosts.filter(b =>
+    b.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    b.author.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    b.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    b.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()))
+  ).slice(0, 3);
+
   const handleSelectExam = (examId: string) => {
     setSearchQuery('');
     setShowSearchDropdown(false);
     navigate(`/exams/${examId}`);
+  };
+
+  const handleSelectBlog = (slug: string) => {
+    setSearchQuery('');
+    setShowSearchDropdown(false);
+    navigate(`/blogs/${slug}`);
   };
 
   const navLinks = [
@@ -99,6 +113,7 @@ export const Navbar: React.FC = () => {
     { name: 'Directory', path: '/directory' },
     { name: 'Library', path: '/library' },
     { name: 'Platforms', path: '/platforms' },
+    { name: 'Blogs', path: '/blogs' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' }
   ];
@@ -178,7 +193,7 @@ export const Navbar: React.FC = () => {
               </div>
 
               {/* Search Dropdown */}
-              {showSearchDropdown && (filteredExams.length > 0 || filteredPlatforms.length > 0) && (
+              {showSearchDropdown && (filteredExams.length > 0 || filteredPlatforms.length > 0 || filteredBlogs.length > 0) && (
                 <div
                   className="absolute top-full right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-[#111318] rounded-2xl shadow-xl border border-slate-200/90 dark:border-[#252932] overflow-hidden z-50 animate-fade-in-smooth"
                   onMouseLeave={() => setShowSearchDropdown(false)}
@@ -200,6 +215,29 @@ export const Navbar: React.FC = () => {
                           </div>
                           <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400">
                             {exam.shortCode}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {filteredBlogs.length > 0 && (
+                    <div>
+                      <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 dark:text-[#7F8795] uppercase tracking-wider bg-slate-50 dark:bg-[#15171C] border-b border-slate-100 dark:border-[#252932]">
+                        Knowledge Hub &amp; Blogs
+                      </div>
+                      {filteredBlogs.map((blog) => (
+                        <button
+                          key={blog.id}
+                          onClick={() => handleSelectBlog(blog.slug)}
+                          className="w-full text-left px-3.5 py-2.5 hover:bg-slate-50 dark:hover:bg-[#15171C] flex items-center justify-between border-b border-slate-100 dark:border-[#252932] last:border-0 transition-colors"
+                        >
+                          <div>
+                            <div className="text-xs font-bold text-slate-900 dark:text-[#F8FAFC] line-clamp-1">{blog.title}</div>
+                            <div className="text-[11px] text-slate-500 dark:text-[#A7AFBD]">{blog.author.name} • {blog.category}</div>
+                          </div>
+                          <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 whitespace-nowrap ml-2">
+                            {blog.readingTime}
                           </span>
                         </button>
                       ))}
@@ -301,7 +339,7 @@ export const Navbar: React.FC = () => {
             )}
 
             {/* Live Search Results inside Mobile Drawer */}
-            {searchQuery.trim() !== '' && (filteredExams.length > 0 || filteredPlatforms.length > 0) && (
+            {searchQuery.trim() !== '' && (filteredExams.length > 0 || filteredPlatforms.length > 0 || filteredBlogs.length > 0) && (
               <div className="mt-2 bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-2xl overflow-hidden divide-y divide-slate-100 dark:divide-[#252932]">
                 {filteredExams.map((exam) => (
                   <button
@@ -318,6 +356,24 @@ export const Navbar: React.FC = () => {
                     </div>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
                       {exam.shortCode}
+                    </span>
+                  </button>
+                ))}
+                {filteredBlogs.map((blog) => (
+                  <button
+                    key={blog.id}
+                    onClick={() => {
+                      handleSelectBlog(blog.slug);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left p-3 hover:bg-white dark:hover:bg-[#15171C] flex items-center justify-between transition-colors"
+                  >
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 dark:text-[#F8FAFC] line-clamp-1">{blog.title}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-[#A7AFBD]">{blog.author.name} • {blog.category}</div>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-brand-darkred dark:text-red-400 whitespace-nowrap ml-2">
+                      {blog.readingTime}
                     </span>
                   </button>
                 ))}

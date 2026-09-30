@@ -157,6 +157,42 @@ export const BankingEmblem: React.FC<{ size?: number }> = ({ size = 40 }) => (
   </svg>
 );
 
+// ── UGC-NET / JRF Emblem (University Grants Commission) ──────────────────────
+// Gyan-Vigyan Vimuktaye with Navy Blue and Gold accents
+export const UgcNetEmblem: React.FC<{ size?: number }> = ({ size = 40 }) => (
+  <svg width={size} height={size} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Outer circle with gold border */}
+    <circle cx="40" cy="40" r="36" fill="#0F172A" stroke="#D97706" strokeWidth="2.5" />
+    <circle cx="40" cy="40" r="32" stroke="#F59E0B" strokeWidth="0.8" strokeDasharray="2 1.5" />
+
+    {/* Radiant Knowledge Sun / Lotus petal arc */}
+    <path d="M26 28 C30 20 50 20 54 28" stroke="#FBBF24" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+    <circle cx="40" cy="22" r="3" fill="#F59E0B" />
+    <line x1="40" y1="15" x2="40" y2="18" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+    <line x1="33" y1="18" x2="35" y2="20" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+    <line x1="47" y1="18" x2="45" y2="20" stroke="#FBBF24" strokeWidth="1.5" strokeLinecap="round" />
+
+    {/* Open Book of Gyan (Wisdom) */}
+    <path d="M40 36 C34 32 25 32 22 34 L22 52 C26 50 34 50 40 54 C46 50 54 50 58 52 L58 34 C55 32 46 32 40 36 Z" fill="#1E293B" stroke="#F59E0B" strokeWidth="1.8" strokeLinejoin="round" />
+    <line x1="40" y1="36" x2="40" y2="54" stroke="#F59E0B" strokeWidth="1.8" strokeLinecap="round" />
+
+    {/* Book Pages horizontal lines */}
+    <line x1="26" y1="39" x2="36" y2="40" stroke="#94A3B8" strokeWidth="0.8" />
+    <line x1="26" y1="43" x2="36" y2="44" stroke="#94A3B8" strokeWidth="0.8" />
+    <line x1="26" y1="47" x2="35" y2="48" stroke="#94A3B8" strokeWidth="0.8" />
+    <line x1="44" y1="40" x2="54" y2="39" stroke="#94A3B8" strokeWidth="0.8" />
+    <line x1="44" y1="44" x2="54" y2="43" stroke="#94A3B8" strokeWidth="0.8" />
+    <line x1="45" y1="48" x2="54" y2="47" stroke="#94A3B8" strokeWidth="0.8" />
+
+    {/* University Grants Commission acronym ribbon */}
+    <rect x="23" y="57" width="34" height="7.5" rx="3.5" fill="#B45309" stroke="#FDE68A" strokeWidth="0.8" />
+    <text x="40" y="63" textAnchor="middle" fontSize="5" fontFamily="sans-serif" fill="#FEF3C7" fontWeight="bold" letterSpacing="0.8">UGC • NET</text>
+
+    {/* Sanskrit Motto: Gyan-Vigyan Vimuktaye */}
+    <text x="40" y="72" textAnchor="middle" fontSize="3.8" fontFamily="serif" fill="#FDE68A" fontWeight="600" letterSpacing="0.2">ज्ञान-विज्ञान विमुक्तये</text>
+  </svg>
+);
+
 // ── Dispatcher: returns the right emblem component for a given exam ─────────
 export function getExamEmblem(
   shortCode: string,
@@ -164,6 +200,15 @@ export function getExamEmblem(
   size = 36
 ): React.ReactNode {
   const code = shortCode.toUpperCase();
+
+  // UGC-NET / JRF & Teaching Exams
+  if (
+    code.includes('UGC') ||
+    code.includes('NET') ||
+    code.includes('JRF')
+  ) {
+    return <UgcNetEmblem size={size} />;
+  }
 
   // Indian government exams → State Emblem
   if (

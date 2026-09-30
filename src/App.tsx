@@ -7,10 +7,14 @@ import { InitialLoadingScreen } from './components/common/InitialLoadingScreen';
 import { LandingPage } from './pages/LandingPage';
 import { ExamExplorerPage } from './pages/ExamExplorerPage';
 import { ExamDetailPage } from './pages/ExamDetailPage';
+import { UgcNetHubPage } from './pages/UgcNetHubPage';
 import { StudyMaterialPage } from './pages/StudyMaterialPage';
 import { PlatformsDirectoryPage } from './pages/PlatformsDirectoryPage';
 import { CompleteDirectoryPage } from './pages/CompleteDirectoryPage';
 import { AboutPage } from './pages/AboutPage';
+import { BlogsPage } from './pages/BlogsPage';
+import { BlogDetailPage } from './pages/BlogDetailPage';
+import { BlogContributePage } from './pages/BlogContributePage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { CookiesPage } from './pages/CookiesPage';
@@ -49,11 +53,18 @@ export const App: React.FC = () => {
           {/* Core Open Aggregator Routes */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/exams" element={<ExamExplorerPage />} />
+          <Route path="/exams/ugc-net" element={<UgcNetHubPage />} />
+          <Route path="/exams/ugc-net-jrf" element={<Navigate to="/exams/ugc-net" replace />} />
           <Route path="/exams/:id" element={<ExamDetailPage />} />
           <Route path="/library" element={<StudyMaterialPage />} />
           <Route path="/platforms" element={<PlatformsDirectoryPage />} />
           <Route path="/directory" element={<CompleteDirectoryPage />} />
           <Route path="/about" element={<AboutPage />} />
+
+          {/* Blogs & Knowledge Hub Routes */}
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blogs/contribute" element={<BlogContributePage />} />
+          <Route path="/blogs/:slug" element={<BlogDetailPage />} />
 
           {/* Legal & Policy Pages */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

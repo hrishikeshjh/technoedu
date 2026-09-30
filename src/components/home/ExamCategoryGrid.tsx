@@ -168,9 +168,13 @@ export const ExamCategoryGrid: React.FC = () => {
                   <div className="flex items-center justify-between gap-2">
                     <Link
                       to={`/exams/${exam.id}`}
-                      className="flex-1 px-4 py-2.5 rounded-2xl bg-slate-900 hover:bg-brand-red dark:bg-[#15171C] dark:hover:bg-brand-red dark:border dark:border-[#252932] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5"
+                      className={`flex-1 px-4 py-2.5 rounded-2xl text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm ${
+                        exam.id === 'ugc-net'
+                          ? 'bg-brand-red hover:bg-brand-darkred shadow-red-500/20'
+                          : 'bg-slate-900 hover:bg-brand-red dark:bg-[#15171C] dark:hover:bg-brand-red dark:border dark:border-[#252932]'
+                      }`}
                     >
-                      <span>View Syllabus &amp; Open Material</span>
+                      <span>{exam.id === 'ugc-net' ? 'UGC-NET / JRF Complete Hub & Roadmap' : 'View Syllabus & Open Material'}</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>

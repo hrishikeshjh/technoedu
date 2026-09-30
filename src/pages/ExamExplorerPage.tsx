@@ -273,9 +273,13 @@ export const ExamExplorerPage: React.FC = () => {
 
                 <Link
                   to={`/exams/${exam.id}`}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-900 hover:bg-brand-red dark:bg-[#15171C] dark:hover:bg-brand-red dark:border dark:border-[#252932] text-white text-xs font-semibold transition-all"
+                  className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-white text-xs font-semibold transition-all ${
+                    exam.id === 'ugc-net'
+                      ? 'bg-brand-red hover:bg-brand-darkred shadow-sm'
+                      : 'bg-slate-900 hover:bg-brand-red dark:bg-[#15171C] dark:hover:bg-brand-red dark:border dark:border-[#252932]'
+                  }`}
                 >
-                  <span>Explore Roadmap</span>
+                  <span>{exam.id === 'ugc-net' ? 'Dedicated Preparation Hub' : 'Explore Roadmap'}</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

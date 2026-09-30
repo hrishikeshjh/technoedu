@@ -13,6 +13,8 @@ import {
   ShieldCheck,
   GraduationCap,
   Database,
+  Compass,
+  ArrowRight,
 } from 'lucide-react';
 import { completeExamDirectory, directoryRegions } from '../data/completeExamDirectory';
 import { DirectoryExam, DirectoryRegion } from '../types';
@@ -231,6 +233,18 @@ export const CompleteDirectoryPage: React.FC = () => {
 
               {/* Action links */}
               <div className="space-y-2 mb-4">
+                {exam.id === 'ugc-net' && (
+                  <Link
+                    to="/exams/ugc-net"
+                    className="w-full inline-flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-lg bg-red-50 hover:bg-red-100 text-brand-darkred dark:bg-red-950/50 dark:hover:bg-red-900/60 dark:text-red-300 border border-red-200 dark:border-red-900/50 text-xs font-bold transition-all shadow-sm"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Compass className="w-3.5 h-3.5 text-brand-red" />
+                      Dedicated Preparation Hub &amp; Roadmap
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                )}
                 <a
                   href={exam.officialPortalUrl}
                   target="_blank"

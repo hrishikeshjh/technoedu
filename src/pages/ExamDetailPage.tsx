@@ -18,11 +18,17 @@ import { ExamInfo, OpenSourcePlatform, ExamTopicResource, RecommendedBook } from
 import { getExamEmblem } from '../components/common/ExamEmblems';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { resolvePdfUrl } from '../utils/pdfResolver';
+import { UgcNetHubPage } from './UgcNetHubPage';
 
 const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif' };
 
 export const ExamDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+
+  if (id?.toLowerCase() === 'ugc-net' || id?.toLowerCase() === 'ugc-net-jrf') {
+    return <UgcNetHubPage />;
+  }
+
   const exam = examsData.find((e: ExamInfo) => e.id === id || e.shortCode.toLowerCase() === id?.toLowerCase());
 
   if (!exam) {

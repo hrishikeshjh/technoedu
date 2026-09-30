@@ -789,6 +789,39 @@ Suggested folder structure:
       IGNOU_LLB_Constitutional_Law_Block1.pdf
 
 ════════════════════════════════════════════════════════════════════════════════
+SECTION 8: UGC-NET / JRF (NATIONAL ELIGIBILITY TEST) — OER DIRECT REFERENCES
+════════════════════════════════════════════════════════════════════════════════
+Primary Source of Truth: planfornet.md
+
+OFFICIAL PORTALS:
+- NTA UGC-NET Official Portal: https://ugcnet.nta.ac.in
+- UGC NET Official Subject Syllabi: https://ugcnetonline.in/syllabus-new.php
+- NTA Official Mock Test CBT Engine: https://nta.ac.in/quiz
+
+PAPER 1 CORE STUDY MATERIALS & OER:
+- e-PG Pathshala (Higher Education & Pedagogy): https://epgp.inflibnet.ac.in
+- IGNOU B.Ed/M.A. Education (MES-016, MES-101, BEGA-001): https://egyankosh.ac.in/handle/123456789/46210
+- Shodhganga Theses Repository: https://shodhganga.inflibnet.ac.in
+- CEC UGC Video Lectures: https://cec.nic.in
+- SWAYAM Portal & MOOCs: https://swayam.gov.in
+- SWAYAM PRABHA DTH Channels: https://swayamprabha.gov.in
+- National Education Policy (NEP) 2020: https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf
+- NCERT Statistics for Economics (Class 11): https://ncert.nic.in/textbook/pdf/kest1.pdf
+- NCERT Biology Ecology (Class 12): https://ncert.nic.in/textbook/pdf/lebo1.pdf
+- OpenStax Introductory Statistics: https://openstax.org/details/books/introductory-statistics
+- Stanford Encyclopedia of Philosophy (Indian Logic & Nyaya): https://plato.stanford.edu/entries/logic-indic/
+
+PAPER 2 DISCIPLINARY OER:
+- Subject 87 (Computer Science): NPTEL CS (https://nptel.ac.in), MIT OCW EECS (https://ocw.mit.edu), e-PG Pathshala CS, IGNOU MCA SLM
+- Subject 08 & 17 (Commerce & Management): OpenStax Principles of Accounting, OpenStax Finance, e-PG Pathshala Commerce, IGNOU M.Com/MBA
+- Subject 01 (Economics): OpenStax Principles of Economics, MIT OCW Economics, e-PG Pathshala Economics
+- Subject 30 (English): e-PG Pathshala English, IGNOU MEG, Project Gutenberg (https://www.gutenberg.org)
+- Subject 09 (Education): e-PG Pathshala Education, IGNOU M.Ed
+- Subject 02 & 20 (Political Science & History): e-PG Pathshala, IGNOU MPS/MAH, NCERT History/Polity
+- Subject 05 (Sociology): OpenStax Sociology 3e, e-PG Pathshala Sociology, IGNOU MSO
+- Subject 58 (Law): e-PG Pathshala Law, IGNOU LL.M., Indian Kanoon (https://indiankanoon.org)
+
+════════════════════════════════════════════════════════════════════════════════
 END OF REFERENCE FILE
 ════════════════════════════════════════════════════════════════════════════════
 

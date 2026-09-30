@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, BookOpen, Library, Globe2 } from 'lucide-react';
+import { Home, BookOpen, Library, Globe2, BookMarked } from 'lucide-react';
 
 export const MobileNav: React.FC = () => {
   const items = [
     { label: 'Home', path: '/', icon: Home },
     { label: 'Exams', path: '/exams', icon: BookOpen },
     { label: 'Library', path: '/library', icon: Library },
+    { label: 'Blogs', path: '/blogs', icon: BookMarked },
     { label: 'Platforms', path: '/platforms', icon: Globe2 },
   ];
 

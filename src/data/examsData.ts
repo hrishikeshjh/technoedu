@@ -1531,6 +1531,117 @@ export const examsData: ExamInfo[] = [
       { title: 'Official LSAT Prep', author: 'LSAC / Khan Academy', platform: 'Khan Academy', url: 'https://www.khanacademy.org' },
       { title: 'Classic English Texts', author: 'Public Domain', platform: 'Project Gutenberg', url: 'https://www.gutenberg.org' }
     ]
+  },
+  {
+    id: 'ugc-net',
+    name: 'UGC-NET & JRF (University Grants Commission)',
+    shortCode: 'UGC-NET',
+    category: 'Government',
+    description: 'National Eligibility Test determining eligibility for Assistant Professorship, Junior Research Fellowship (JRF), and Ph.D. Admissions across 83 disciplines.',
+    tag: 'National Eligibility & Research Fellowship',
+    officialPortalUrl: 'https://ugcnet.nta.ac.in',
+    officialPortalName: 'NTA UGC-NET Portal',
+    officialPYQUrl: 'https://ugcnet.nta.ac.in',
+    syllabusHighlights: [
+      'Paper 1: Teaching & Research Aptitude, Logical Reasoning, ICT, Higher Education',
+      'Paper 2: Post-Graduate Specialized Subject Domain (83 Subjects)',
+      'Classical Square of Opposition, Indian Logic (Pramanas & Hetvabhasa)',
+      'NEP 2020 Reforms, SDGs & Millennium Development Goals, Environmental Protocols'
+    ],
+    popularTopics: [
+      'UGC',
+      'NET',
+      'JRF',
+      'Paper 1',
+      'Paper 2',
+      'Teaching Aptitude',
+      'Research Aptitude',
+      'Logical Reasoning',
+      'Indian Logic & Pramanas',
+      'ICT & Digital Initiatives',
+      'Higher Education System & NEP 2020',
+      'Computer Science & Applications',
+      'Data Interpretation & Mathematics',
+      'Evaluation Systems & CBCS'
+    ],
+    openSourcePlatforms: [
+      {
+        id: 'epg-pathshala-ugc',
+        name: 'UGC e-PG Pathshala (INFLIBNET)',
+        provider: 'UGC & Ministry of Education',
+        type: 'Textbooks & Notes',
+        url: 'https://epgp.inflibnet.ac.in',
+        description: 'Curriculum-based e-content across 70+ PG subjects with downloadable modules and e-tutorials.',
+        badge: 'Official UGC'
+      },
+      {
+        id: 'egyankosh-ignou',
+        name: 'IGNOU eGyanKosh Academic Repository',
+        provider: 'IGNOU',
+        type: 'Courseware',
+        url: 'https://egyankosh.ac.in',
+        description: 'Comprehensive Self-Learning Materials (SLM) for Master\'s courses (MA, MCom, MCA, MEd).',
+        badge: 'Open University'
+      },
+      {
+        id: 'swayam-ugc',
+        name: 'SWAYAM & SWAYAM PRABHA',
+        provider: 'Ministry of Education',
+        type: 'Video Lectures',
+        url: 'https://swayam.gov.in',
+        description: 'National MOOCs portal and 24/7 DTH education channels covering Paper 1 and domain subjects.',
+        badge: 'National Portal'
+      },
+      {
+        id: 'nta-cbt-mock',
+        name: 'NTA Official CBT Practice Engine',
+        provider: 'National Testing Agency',
+        type: 'Practice Engine',
+        url: 'https://nta.ac.in/quiz',
+        description: 'Official test simulation portal with past UGC-NET papers in exact CBT layout.',
+        badge: 'Official NTA'
+      }
+    ],
+    topicResources: [
+      {
+        topicName: 'UGC-NET Paper 1: General Paper on Teaching and Research Aptitude',
+        description: 'Complete 10-unit coverage including Teaching Aptitude, Research Aptitude, Indian Logic, ICT, and Higher Education.',
+        platformName: 'e-PG Pathshala & CEC UGC',
+        platformType: 'Open Courseware',
+        resourceTitle: 'UGC Paper 1 Foundation Modules & e-Content',
+        resourceUrl: 'https://epgp.inflibnet.ac.in',
+        isFreeOpenSource: true
+      },
+      {
+        topicName: 'Indian Logic (Pramanas, Anumana & Hetvabhasa)',
+        description: 'Exhaustive notes on Nyaya logic, Square of Opposition, and Fallacies of Inference.',
+        platformName: 'IGNOU eGyanKosh & Stanford Encyclopedia',
+        platformType: 'Open Textbooks',
+        resourceTitle: 'Indian Epistemology and Logic Study Material',
+        resourceUrl: 'https://egyankosh.ac.in',
+        isFreeOpenSource: true
+      }
+    ],
+    recommendedTextbooks: [
+      {
+        title: 'UGC e-PG Pathshala Post-Graduate Modules (All Subjects)',
+        author: 'UGC / INFLIBNET Subject Experts',
+        platform: 'e-PG Pathshala',
+        url: 'https://epgp.inflibnet.ac.in'
+      },
+      {
+        title: 'National Education Policy (NEP) 2020 Official Document',
+        author: 'Ministry of Education, Govt. of India',
+        platform: 'MoE Portal',
+        url: 'https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf'
+      },
+      {
+        title: 'NCERT Indian Constitution at Work & Statistics (Direct PDFs)',
+        author: 'NCERT Board',
+        platform: 'NCERT Official',
+        url: 'https://ncert.nic.in/textbook/pdf/keps2.pdf'
+      }
+    ]
   }
 ];
 

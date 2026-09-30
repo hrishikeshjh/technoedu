@@ -29,10 +29,19 @@ export const HeroSection: React.FC = () => {
 
             {/* CTAs */}
             <ScrollReveal animation="fade-up" delay={400}>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-1">
+                <Link
+                  to="/exams/ugc-net"
+                  className="px-6 py-3.5 bg-brand-red hover:bg-brand-darkred text-white text-sm font-bold rounded-2xl shadow-red-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5 group ring-2 ring-red-500/20"
+                >
+                  <GraduationCap className="w-4 h-4 text-white" />
+                  <span>UGC-NET / JRF Hub</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+
                 <Link
                   to="/exams"
-                  className="px-6 py-3.5 bg-brand-red hover:bg-brand-darkred text-white text-sm font-semibold rounded-2xl shadow-red-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] dark:border dark:border-[#252932] text-white text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
                   <span>Explore Exam Directory</span>
                   <ArrowRight className="w-4 h-4" />
@@ -40,9 +49,9 @@ export const HeroSection: React.FC = () => {
 
                 <Link
                   to="/library"
-                  className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] dark:border dark:border-[#252932] text-white text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] border border-slate-200 dark:border-[#252932] text-slate-800 dark:text-slate-200 text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
-                  <Library className="w-4 h-4" />
+                  <Library className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   <span>Open Textbooks &amp; PYQs</span>
                 </Link>
               </div>
