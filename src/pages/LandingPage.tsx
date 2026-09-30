@@ -19,12 +19,13 @@ import { HeroSection } from '../components/home/HeroSection';
 import { ExamCategoryGrid } from '../components/home/ExamCategoryGrid';
 import { OpenPlatformsSection } from '../components/home/OpenPlatformsSection';
 import { studyMaterialData } from '../data/studyMaterialData';
-import { blogPosts } from '../data/blogData';
+import { useBlogPosts } from '../data/blogData';
 import { BlogCard } from '../components/blog/BlogCard';
 import { ScrollReveal } from '../components/common/ScrollReveal';
 
 export const LandingPage: React.FC = () => {
   const spotlightMaterials = studyMaterialData.slice(0, 6);
+  const blogPosts = useBlogPosts();
   const featuredBlogs = blogPosts.slice(0, 3);
 
   return (
@@ -149,18 +150,37 @@ export const LandingPage: React.FC = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredBlogs.map((post, idx) => (
-              <ScrollReveal
-                key={post.id}
-                animation="fade-up"
-                delay={idx * 80}
-                className="h-full flex flex-col"
+          {featuredBlogs.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredBlogs.map((post, idx) => (
+                <ScrollReveal
+                  key={post.id}
+                  animation="fade-up"
+                  delay={idx * 80}
+                  className="h-full flex flex-col"
+                >
+                  <BlogCard post={post} variant="compact" />
+                </ScrollReveal>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-3xl p-8 sm:p-10 text-center max-w-xl mx-auto">
+              <PenTool className="w-10 h-10 text-brand-red mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-[#F8FAFC] mb-1">
+                Open Academic Knowledge Hub
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-[#A7AFBD] mb-5 leading-relaxed">
+                Contribute educational guides, research workflows, or technical deep dives. Newly published articles reflect immediately upon submission.
+              </p>
+              <Link
+                to="/blogs/contribute"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-red hover:bg-brand-darkred text-white text-xs font-bold transition-all shadow-red-glow"
               >
-                <BlogCard post={post} variant="compact" />
-              </ScrollReveal>
-            ))}
-          </div>
+                <PenTool className="w-3.5 h-3.5" />
+                <span>Write an Article</span>
+              </Link>
+            </div>
+          )}
 
           <div className="mt-8 pt-6 border-t border-slate-100 dark:border-[#252932] flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-slate-500 dark:text-[#7F8795]">

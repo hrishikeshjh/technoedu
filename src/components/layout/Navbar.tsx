@@ -16,10 +16,11 @@ import {
 } from 'lucide-react';
 import { examsData } from '../../data/examsData';
 import { platformsData } from '../../data/platformsData';
-import { blogPosts } from '../../data/blogData';
+import { useBlogPosts } from '../../data/blogData';
 import { ThemeToggle } from '../common/ThemeToggle';
 
 export const Navbar: React.FC = () => {
+  const blogPosts = useBlogPosts();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');

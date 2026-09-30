@@ -14,6 +14,7 @@ export type BlogContributorType =
   | 'professional';
 
 export type BlogDifficulty = 'Beginner' | 'Intermediate' | 'Advanced';
+export type BlogReviewStatus = 'approved' | 'queued_for_checking' | 'in_review';
 
 export interface BlogAuthor {
   id: string;
@@ -65,6 +66,9 @@ export interface BlogPost {
   tags: string[];
   featured?: boolean;
   difficulty?: BlogDifficulty;
+  status?: BlogReviewStatus;
+  reviewNotes?: string;
+  submittedAt?: string;
   tableOfContents?: { id: string; text: string; level: number }[];
   contentSections: ContentSection[];
 }

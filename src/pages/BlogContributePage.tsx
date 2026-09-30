@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import confetti from 'canvas-confetti';
 import {
   PenTool,
   CheckCircle,
@@ -15,14 +16,154 @@ import {
   Lightbulb,
   ArrowRight,
   ShieldCheck,
-  Check
+  Check,
+  Clock,
+  ExternalLink
 } from 'lucide-react';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { ScrollReveal } from '../components/common/ScrollReveal';
+import { addStoredBlogPost } from '../data/blogData';
+import { BlogPost, BlogAudience, BlogContributorType, ContentSection } from '../types/blog';
+
+function createBlogPostFromForm(data: {
+  fullName: string;
+  email: string;
+  role: string;
+  expertise: string;
+  articleTitle: string;
+  targetSegment: string;
+  primarySubject: string;
+  shortDescription: string;
+  portfolioUrl: string;
+  articleDraft: string;
+}): BlogPost {
+  const slugBase = data.articleTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+  const slug = `${slugBase || 'article'}-${Date.now().toString().slice(-5)}`;
+  const authorId = data.fullName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+  // Map segment
+  let audience: BlogAudience = 'students';
+  if (data.targetSegment.includes('Subjects')) audience = 'subjects';
+  else if (data.targetSegment.includes('Mentors')) audience = 'mentors';
+  else if (data.targetSegment.includes('Professionals')) audience = 'professionals';
+
+  // Map contributor type
+  const roleLower = data.role.toLowerCase();
+  let contributorType: BlogContributorType = 'student';
+  if (roleLower.includes('teacher')) contributorType = 'teacher';
+  else if (roleLower.includes('mentor')) contributorType = 'mentor';
+  else if (roleLower.includes('researcher')) contributorType = 'researcher';
+  else if (roleLower.includes('engineer')) contributorType = 'engineer';
+  else if (roleLower.includes('founder')) contributorType = 'founder';
+  else if (roleLower.includes('educationist')) contributorType = 'educationist';
+  else if (roleLower.includes('professional')) contributorType = 'professional';
+
+  // Parse draft into sections
+  const draft = data.articleDraft.trim();
+  const contentSections: ContentSection[] = [];
+  const tableOfContents: { id: string; text: string; level: number }[] = [];
+
+  if (draft) {
+    const headerParts = draft.split(/^##\s+/m);
+    if (headerParts.length > 1) {
+      headerParts.forEach((part, idx) => {
+        if (!part.trim()) return;
+        const firstLineEnd = part.indexOf('\n');
+        const heading = firstLineEnd !== -1 ? part.substring(0, firstLineEnd).trim() : `Section ${idx + 1}`;
+        const bodyText = firstLineEnd !== -1 ? part.substring(firstLineEnd).trim() : part.trim();
+        const secId = `section-${idx + 1}`;
+        tableOfContents.push({ id: secId, text: heading, level: 2 });
+        contentSections.push({
+          id: secId,
+          heading,
+          body: bodyText.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean),
+        });
+      });
+    } else {
+      const paragraphs = draft.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+      contentSections.push({
+        id: 'overview',
+        heading: 'Overview & Context',
+        body: paragraphs.slice(0, 2),
+      });
+      if (paragraphs.length > 2) {
+        contentSections.push({
+          id: 'deep-dive',
+          heading: 'Core Insights & Methodology',
+          body: paragraphs.slice(2),
+        });
+        tableOfContents.push({ id: 'overview', text: 'Overview & Context', level: 2 });
+        tableOfContents.push({ id: 'deep-dive', text: 'Core Insights & Methodology', level: 2 });
+      }
+    }
+  }
+
+  if (contentSections.length === 0) {
+    contentSections.push({
+      id: 'abstract',
+      heading: 'Abstract & Key Insights',
+      body: [data.shortDescription],
+      keyTakeaway: 'This paper has been published to the Open Knowledge Hub and queued for peer verification.',
+    });
+    tableOfContents.push({ id: 'abstract', text: 'Abstract & Key Insights', level: 2 });
+  }
+
+  const wordCount = (data.shortDescription + ' ' + data.articleDraft).split(/\s+/).length;
+  const readingTime = `${Math.max(2, Math.ceil(wordCount / 160))} min read`;
+  const avatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.fullName)}&background=e11d48&color=fff&bold=true`;
+
+  const subjectImages: Record<string, string> = {
+    'Computer Science': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
+    'AI & Machine Learning': 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80',
+    'Robotics & Control': 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80',
+    'Mathematics': 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80',
+    'Electronics': 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    'Software Engineering': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80',
+    'Cybersecurity': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+    'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80',
+  };
+  const image = subjectImages[data.primarySubject] || 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1200&q=80';
+
+  return {
+    id: `post-${Date.now()}`,
+    slug,
+    title: data.articleTitle,
+    excerpt: data.shortDescription,
+    category: data.primarySubject,
+    subject: data.primarySubject,
+    audience,
+    author: {
+      id: authorId,
+      name: data.fullName,
+      role: `${data.role} in ${data.expertise}`,
+      contributorType,
+      avatar,
+      bio: `${data.role} specializing in ${data.expertise}. Contributor to TechnoEdu Knowledge Hub.`,
+      expertise: data.expertise.split(',').map(s => s.trim()).filter(Boolean),
+      socials: data.portfolioUrl ? { website: data.portfolioUrl } : undefined,
+    },
+    authorRole: `${data.role} • ${data.expertise}`,
+    authorAvatar: avatar,
+    date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+    readingTime,
+    image,
+    tags: [data.primarySubject, data.role, ...data.expertise.split(',').map(s => s.trim()).slice(0, 3)].filter(Boolean),
+    featured: false,
+    difficulty: 'Intermediate',
+    status: 'queued_for_checking',
+    submittedAt: new Date().toISOString(),
+    tableOfContents,
+    contentSections,
+  };
+}
 
 export const BlogContributePage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedPost, setSubmittedPost] = useState<BlogPost | null>(null);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -45,11 +186,23 @@ export const BlogContributePage: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate clean local validation and processing
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const newPost = createBlogPostFromForm(formData);
+      addStoredBlogPost(newPost);
+      setSubmittedPost(newPost);
       setFormSubmitted(true);
-    }, 600);
+      try {
+        confetti({
+          particleCount: 75,
+          spread: 60,
+          origin: { y: 0.6 }
+        });
+      } catch (err) {}
+    } catch (err) {
+      console.error('Failed to publish article:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -189,22 +342,61 @@ export const BlogContributePage: React.FC = () => {
         {/* Contributor Submission Form */}
         <ScrollReveal animation="fade-up" delay={200}>
           <div className="bg-white dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-2xl p-6 sm:p-10 shadow-card">
-            {formSubmitted ? (
-              <div className="py-12 text-center space-y-4 max-w-lg mx-auto">
+            {formSubmitted && submittedPost ? (
+              <div className="py-8 text-center space-y-5 max-w-xl mx-auto">
                 <div className="w-16 h-16 rounded-full bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-800/40 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-[#F8FAFC]">
-                  Submission Received!
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border border-amber-200 dark:border-amber-900/40">
+                  <Clock className="w-3.5 h-3.5 animate-pulse" />
+                  <span>Status: Queued for Checking</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-[#F8FAFC]">
+                  Article Published &amp; Live!
                 </h3>
+
                 <p className="text-sm text-slate-600 dark:text-[#A7AFBD] leading-relaxed">
-                  Thank you, <strong className="text-slate-900 dark:text-white">{formData.fullName}</strong>. Your proposal for <em className="text-brand-red">"{formData.articleTitle}"</em> has been recorded locally. Our editorial coordinators review submissions on a weekly cadence.
+                  Thank you, <strong className="text-slate-900 dark:text-white">{submittedPost.author.name}</strong>. Your article has been published immediately to the Knowledge Hub and placed in the peer verification queue for fact-checking.
                 </p>
-                <div className="pt-4 flex justify-center gap-3">
+
+                {/* Article Snapshot Card */}
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-left">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-red block mb-1">
+                    {submittedPost.category} • {submittedPost.readingTime}
+                  </span>
+                  <h4 className="text-base font-bold text-slate-900 dark:text-white leading-snug mb-1">
+                    {submittedPost.title}
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-[#A7AFBD] line-clamp-2">
+                    {submittedPost.excerpt}
+                  </p>
+                </div>
+
+                {/* Direct Actions */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Link
+                    to={`/blogs/${submittedPost.slug}`}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-red text-white text-xs sm:text-sm font-bold hover:bg-brand-darkred transition-all shadow-red-glow"
+                  >
+                    <span>Read Your Live Article</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    to="/blogs"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 dark:bg-[#1A1D23] border border-slate-200 dark:border-[#252932] text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-bold hover:bg-slate-200 dark:hover:bg-[#252932] transition-colors"
+                  >
+                    <span>Explore Knowledge Hub</span>
+                  </Link>
+                </div>
+
+                <div className="pt-2">
                   <button
                     type="button"
                     onClick={() => {
                       setFormSubmitted(false);
+                      setSubmittedPost(null);
                       setFormData({
                         fullName: '',
                         email: '',
@@ -218,16 +410,10 @@ export const BlogContributePage: React.FC = () => {
                         articleDraft: '',
                       });
                     }}
-                    className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-[#252932] text-xs font-bold text-slate-700 dark:text-[#F8FAFC] hover:bg-slate-50 dark:hover:bg-[#15171C] transition-colors"
+                    className="text-xs text-slate-500 dark:text-slate-400 hover:text-brand-red dark:hover:text-red-400 underline"
                   >
-                    Submit Another Idea
+                    Write and submit another article
                   </button>
-                  <Link
-                    to="/blogs"
-                    className="px-5 py-2.5 rounded-xl bg-brand-red text-white text-xs font-bold hover:bg-brand-darkred transition-colors shadow-red-glow"
-                  >
-                    Back to Knowledge Hub
-                  </Link>
                 </div>
               </div>
             ) : (

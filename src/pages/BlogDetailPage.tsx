@@ -16,9 +16,10 @@ import {
   List,
   Sparkles,
   ExternalLink,
+  AlertCircle,
   Tag as TagIcon
 } from 'lucide-react';
-import { blogPosts, blogSegments } from '../data/blogData';
+import { useBlogPosts, blogSegments } from '../data/blogData';
 import { BlogPost, BlogAudience } from '../types/blog';
 import { BlogCard } from '../components/blog/BlogCard';
 import { AuthorCard } from '../components/blog/AuthorCard';
@@ -32,8 +33,9 @@ export const BlogDetailPage: React.FC = () => {
   const [copiedCodeIndex, setCopiedCodeIndex] = useState<number | null>(null);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
 
-  // Find post
-  const post = blogPosts.find((p) => p.slug === slug);
+  // Dynamically subscribe to blog posts
+  const allPosts = useBlogPosts();
+  const post = allPosts.find((p) => p.slug === slug);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,17 +62,17 @@ export const BlogDetailPage: React.FC = () => {
   }
 
   // Related articles: same audience or subject, excluding current
-  const relatedArticles = blogPosts
+  const relatedArticles = allPosts
     .filter((p) => p.id !== post.id && (p.audience === post.audience || p.subject === post.subject))
     .slice(0, 3);
 
   // Author other articles
-  const authorOtherArticles = blogPosts.filter((p) => p.author.id === post.author.id && p.id !== post.id);
+  const authorOtherArticles = allPosts.filter((p) => p.author.id === post.author.id && p.id !== post.id);
 
   // Previous & Next posts
-  const currentIndex = blogPosts.findIndex((p) => p.id === post.id);
-  const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
-  const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
+  const currentIndex = allPosts.findIndex((p) => p.id === post.id);
+  const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 
   const segmentMeta = blogSegments.find((s) => s.id === post.audience);
 
@@ -99,7 +101,25 @@ export const BlogDetailPage: React.FC = () => {
           ]}
         />
 
-        {/* 2. Article Header Header */}
+        {/* Review Status Banner */}
+        {(!post.status || post.status === 'queued_for_checking') && (
+          <div className="max-w-4xl mx-auto mb-6 p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 text-amber-900 dark:text-amber-200 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5 animate-pulse" />
+            <div className="text-xs sm:text-sm">
+              <div className="font-bold flex items-center gap-2">
+                <span>Article Status: Queued for Checking</span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-200/80 dark:bg-amber-900/60 font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-200">
+                  Community Preprint
+                </span>
+              </div>
+              <p className="mt-1 text-amber-800 dark:text-amber-300 leading-relaxed">
+                This article was contributed and published immediately for open access. It is currently placed in the peer verification queue for fact-checking and editorial review.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* 2. Article Header */}
         <header className="max-w-4xl mx-auto pt-2 pb-8 sm:pb-10 border-b border-slate-200 dark:border-[#252932]">
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <Link

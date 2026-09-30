@@ -19,7 +19,7 @@ import {
   ArrowUpRight,
   Check
 } from 'lucide-react';
-import { blogPosts, blogSegments, blogSubjects, contributorRoles } from '../data/blogData';
+import { useBlogPosts, blogSegments, blogSubjects, contributorRoles } from '../data/blogData';
 import { BlogPost, BlogAudience, BlogContributorType, BlogDifficulty } from '../types/blog';
 import { BlogCard } from '../components/blog/BlogCard';
 import { Breadcrumb } from '../components/common/Breadcrumb';
@@ -36,6 +36,9 @@ export const BlogsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const articlesSectionRef = useRef<HTMLDivElement>(null);
+
+  // Subscribe to dynamic blog posts in real-time
+  const blogPosts = useBlogPosts();
 
   // Read initial params
   const paramAudience = searchParams.get('audience') as BlogAudience | null;
@@ -68,14 +71,16 @@ export const BlogsPage: React.FC = () => {
     articlesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Featured articles
+  // Featured articles (safely handle empty or few posts)
   const featuredLarge = useMemo(() => {
-    return blogPosts.find((p) => p.featured && p.id === 'post-1') || blogPosts[0];
-  }, []);
+    if (blogPosts.length === 0) return null;
+    return blogPosts.find((p) => p.featured) || blogPosts[0];
+  }, [blogPosts]);
 
   const featuredCompact = useMemo(() => {
-    return blogPosts.filter((p) => p.featured && p.id !== featuredLarge.id).slice(0, 3);
-  }, [featuredLarge]);
+    if (!featuredLarge) return [];
+    return blogPosts.filter((p) => p.id !== featuredLarge.id).slice(0, 3);
+  }, [blogPosts, featuredLarge]);
 
   // Segment counts
   const segmentCounts = useMemo(() => {
@@ -89,7 +94,7 @@ export const BlogsPage: React.FC = () => {
       counts[p.audience] = (counts[p.audience] || 0) + 1;
     });
     return counts;
-  }, []);
+  }, [blogPosts]);
 
   // Filtered articles
   const filteredPosts = useMemo(() => {
@@ -301,52 +306,56 @@ export const BlogsPage: React.FC = () => {
         </section>
 
         {/* 3. FEATURED ARTICLES SECTION */}
-        <section className="mb-16 sm:mb-20">
-          <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200 dark:border-[#252932]">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-darkred dark:text-red-400 mb-1">
-                <span>Editorial Spotlight</span>
+        {featuredLarge && (
+          <section className="mb-16 sm:mb-20">
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200 dark:border-[#252932]">
+              <div>
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-darkred dark:text-red-400 mb-1">
+                  <span>Editorial Spotlight</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#F8FAFC]">
+                  Featured Articles &amp; Insights
+                </h2>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#F8FAFC]">
-                Featured Articles &amp; Insights
-              </h2>
-            </div>
-            <span className="text-xs text-slate-500 dark:text-[#7F8795] hidden sm:block">
-              Curated by campus leads &amp; mentors
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {/* 1 Large Card (8 columns) */}
-            <div className="lg:col-span-8 flex flex-col">
-              <BlogCard
-                post={featuredLarge}
-                variant="featured-large"
-                className="h-full"
-                onTagClick={handleTagFilter}
-                onAudienceClick={(aud) => {
-                  setSelectedAudience(aud);
-                  scrollToArticles();
-                }}
-              />
+              <span className="text-xs text-slate-500 dark:text-[#7F8795] hidden sm:block">
+                Curated by campus leads &amp; mentors
+              </span>
             </div>
 
-            {/* 2-3 Smaller Alongside Cards (4 columns) */}
-            <div className="lg:col-span-4 flex flex-col gap-4 justify-between">
-              {featuredCompact.map((cPost) => (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              {/* 1 Large Card (8 columns) */}
+              <div className="lg:col-span-8 flex flex-col">
                 <BlogCard
-                  key={cPost.id}
-                  post={cPost}
-                  variant="featured-compact"
+                  post={featuredLarge}
+                  variant="featured-large"
+                  className="h-full"
+                  onTagClick={handleTagFilter}
                   onAudienceClick={(aud) => {
                     setSelectedAudience(aud);
                     scrollToArticles();
                   }}
                 />
-              ))}
+              </div>
+
+              {/* 2-3 Smaller Alongside Cards (4 columns) */}
+              {featuredCompact.length > 0 && (
+                <div className="lg:col-span-4 flex flex-col gap-4 justify-between">
+                  {featuredCompact.map((cPost) => (
+                    <BlogCard
+                      key={cPost.id}
+                      post={cPost}
+                      variant="featured-compact"
+                      onAudienceClick={(aud) => {
+                        setSelectedAudience(aud);
+                        scrollToArticles();
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* 4. DISCOVER BY SUBJECT */}
         <section className="mb-14 sm:mb-18 bg-slate-50/70 dark:bg-[#0B0C0F] border border-slate-200 dark:border-[#252932] rounded-3xl p-6 sm:p-8">
@@ -560,7 +569,26 @@ export const BlogsPage: React.FC = () => {
             </Link>
           </div>
 
-          {filteredPosts.length === 0 ? (
+          {blogPosts.length === 0 ? (
+            <div className="py-16 text-center bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-3xl p-8 max-w-xl mx-auto">
+              <div className="w-14 h-14 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/30 text-brand-red flex items-center justify-center mx-auto mb-4">
+                <PenTool className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-[#F8FAFC] mb-2">
+                Be the First to Publish an Article!
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-[#A7AFBD] mb-6 leading-relaxed">
+                All hardcoded articles have been cleared. Anyone can now contribute an article—your contribution will reflect immediately on this page and enter the peer verification queue.
+              </p>
+              <Link
+                to="/blogs/contribute"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-red text-white text-xs sm:text-sm font-bold shadow-red-glow hover:bg-brand-darkred transition-all"
+              >
+                <PenTool className="w-4 h-4" />
+                <span>Submit the First Article</span>
+              </Link>
+            </div>
+          ) : filteredPosts.length === 0 ? (
             <div className="py-16 text-center bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932] rounded-3xl p-8">
               <BookOpen className="w-10 h-10 text-slate-400 mx-auto mb-3" />
               <h3 className="text-lg font-bold text-slate-900 dark:text-[#F8FAFC] mb-1">
