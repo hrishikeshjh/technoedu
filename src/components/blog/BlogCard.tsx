@@ -30,6 +30,8 @@ const audienceLabelMap: Record<BlogAudience, { label: string; icon: React.ReactN
   },
 };
 
+const DEFAULT_FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
+
 export const BlogCard: React.FC<BlogCardProps> = ({
   post,
   variant = 'standard',
@@ -48,10 +50,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         {/* Image Column */}
         <div className="lg:w-1/2 relative overflow-hidden bg-slate-100 dark:bg-[#15171C] aspect-[16/10] lg:aspect-auto">
           <img
-            src={post.image}
+            src={post.image || DEFAULT_FALLBACK_IMAGE}
             alt={post.title}
             className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = DEFAULT_FALLBACK_IMAGE;
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
           <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-2 z-10">
@@ -62,12 +68,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-red text-white shadow-sm">
               {post.category}
             </span>
-            {(!post.status || post.status === 'queued_for_checking') && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-white shadow-sm animate-pulse">
-                <Clock className="w-3.5 h-3.5" />
-                <span>Queued for Checking</span>
-              </span>
-            )}
           </div>
         </div>
 
@@ -162,18 +162,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       >
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 border border-red-100 dark:border-red-900/30">
-                {audienceInfo.icon}
-                <span>{post.category}</span>
-              </span>
-              {(!post.status || post.status === 'queued_for_checking') && (
-                <span className="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border border-amber-200 dark:border-amber-900/40">
-                  <Clock className="w-2.5 h-2.5" />
-                  <span>Queued</span>
-                </span>
-              )}
-            </div>
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-brand-darkred dark:bg-red-950/40 dark:text-red-400 border border-red-100 dark:border-red-900/30">
+              {audienceInfo.icon}
+              <span>{post.category}</span>
+            </span>
             <span className="text-[11px] text-slate-400 dark:text-[#7F8795] flex items-center gap-1">
               <Clock className="w-3 h-3" />
               {post.readingTime}
@@ -222,21 +214,19 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       >
         <div className="relative aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-[#15171C]">
           <img
-            src={post.image}
+            src={post.image || DEFAULT_FALLBACK_IMAGE}
             alt={post.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = DEFAULT_FALLBACK_IMAGE;
+            }}
           />
-          <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 flex-wrap">
+          <div className="absolute top-2.5 left-2.5">
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/95 dark:bg-[#08090B]/90 backdrop-blur text-brand-darkred dark:text-red-400 shadow-xs border border-slate-200/50 dark:border-white/10">
               {post.category}
             </span>
-            {(!post.status || post.status === 'queued_for_checking') && (
-              <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-500 text-white shadow-xs flex items-center gap-1">
-                <Clock className="w-2.5 h-2.5" />
-                <span>Queued</span>
-              </span>
-            )}
           </div>
         </div>
 
@@ -291,10 +281,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       {/* Cover Image */}
       <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-[#15171C]">
         <img
-          src={post.image}
+          src={post.image || DEFAULT_FALLBACK_IMAGE}
           alt={post.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = DEFAULT_FALLBACK_IMAGE;
+          }}
         />
         <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10 flex-wrap">
           <button
@@ -308,12 +302,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-red text-white shadow-xs">
             {post.category}
           </span>
-          {(!post.status || post.status === 'queued_for_checking') && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500 text-white shadow-xs animate-pulse">
-              <Clock className="w-3 h-3" />
-              <span>Queued for Checking</span>
-            </span>
-          )}
         </div>
 
         {post.difficulty && (

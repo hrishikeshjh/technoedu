@@ -18,7 +18,11 @@ import {
   ShieldCheck,
   Check,
   Clock,
-  ExternalLink
+  ExternalLink,
+  Image as ImageIcon,
+  UploadCloud,
+  Trash2,
+  Link2
 } from 'lucide-react';
 import { Breadcrumb } from '../components/common/Breadcrumb';
 import { ScrollReveal } from '../components/common/ScrollReveal';
@@ -36,6 +40,7 @@ function createBlogPostFromForm(data: {
   shortDescription: string;
   portfolioUrl: string;
   articleDraft: string;
+  customImage?: string;
 }): BlogPost {
   const slugBase = data.articleTitle
     .toLowerCase()
@@ -106,7 +111,7 @@ function createBlogPostFromForm(data: {
       id: 'abstract',
       heading: 'Abstract & Key Insights',
       body: [data.shortDescription],
-      keyTakeaway: 'This paper has been published to the Open Knowledge Hub and queued for peer verification.',
+      keyTakeaway: 'This article is published and open to the entire TechnoEdu learning community.',
     });
     tableOfContents.push({ id: 'abstract', text: 'Abstract & Key Insights', level: 2 });
   }
@@ -125,7 +130,7 @@ function createBlogPostFromForm(data: {
     'Cybersecurity': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
     'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80',
   };
-  const image = subjectImages[data.primarySubject] || 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1200&q=80';
+  const image = data.customImage?.trim() || subjectImages[data.primarySubject] || 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
 
   return {
     id: `post-${Date.now()}`,
@@ -153,7 +158,7 @@ function createBlogPostFromForm(data: {
     tags: [data.primarySubject, data.role, ...data.expertise.split(',').map(s => s.trim()).slice(0, 3)].filter(Boolean),
     featured: false,
     difficulty: 'Intermediate',
-    status: 'queued_for_checking',
+    status: 'approved',
     submittedAt: new Date().toISOString(),
     tableOfContents,
     contentSections,
@@ -163,6 +168,8 @@ function createBlogPostFromForm(data: {
 export const BlogContributePage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string>('');
+  const [imageTab, setImageTab] = useState<'upload' | 'url'>('upload');
   const [submittedPost, setSubmittedPost] = useState<BlogPost | null>(null);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -175,7 +182,36 @@ export const BlogContributePage: React.FC = () => {
     shortDescription: '',
     portfolioUrl: '',
     articleDraft: '',
+    customImage: '',
   });
+
+  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 8 * 1024 * 1024) {
+      alert('File size exceeds 8MB. Please choose a smaller image.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setImagePreview(reader.result);
+        setFormData((prev) => ({ ...prev, customImage: reader.result as string }));
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const url = e.target.value;
+    setImagePreview(url);
+    setFormData((prev) => ({ ...prev, customImage: url }));
+  };
+
+  const handleClearImage = () => {
+    setImagePreview('');
+    setFormData((prev) => ({ ...prev, customImage: '' }));
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -348,30 +384,41 @@ export const BlogContributePage: React.FC = () => {
                   <CheckCircle className="w-8 h-8" />
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border border-amber-200 dark:border-amber-900/40">
-                  <Clock className="w-3.5 h-3.5 animate-pulse" />
-                  <span>Status: Queued for Checking</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-green-50 text-green-700 dark:bg-green-950/50 dark:text-green-400 border border-green-200 dark:border-green-800/40">
+                  <Check className="w-3.5 h-3.5 text-green-500" />
+                  <span>Published &amp; Live Instantly</span>
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-[#F8FAFC]">
-                  Article Published &amp; Live!
+                  Article Published!
                 </h3>
 
                 <p className="text-sm text-slate-600 dark:text-[#A7AFBD] leading-relaxed">
-                  Thank you, <strong className="text-slate-900 dark:text-white">{submittedPost.author.name}</strong>. Your article has been published immediately to the Knowledge Hub and placed in the peer verification queue for fact-checking.
+                  Thank you, <strong className="text-slate-900 dark:text-white">{submittedPost.author.name}</strong>. Your article and cover picture are now live and published on the Knowledge Hub.
                 </p>
 
-                {/* Article Snapshot Card */}
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-left">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-brand-red block mb-1">
-                    {submittedPost.category} • {submittedPost.readingTime}
-                  </span>
-                  <h4 className="text-base font-bold text-slate-900 dark:text-white leading-snug mb-1">
-                    {submittedPost.title}
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-[#A7AFBD] line-clamp-2">
-                    {submittedPost.excerpt}
-                  </p>
+                {/* Article Snapshot Card with Image */}
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-left flex gap-4 items-center">
+                  <img
+                    src={submittedPost.image}
+                    alt={submittedPost.title}
+                    className="w-20 h-16 sm:w-24 sm:h-20 object-cover rounded-xl border border-slate-200 dark:border-[#252932] flex-shrink-0"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
+                    }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-red block mb-1">
+                      {submittedPost.category} • {submittedPost.readingTime}
+                    </span>
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug mb-1 truncate">
+                      {submittedPost.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-[#A7AFBD] line-clamp-1">
+                      {submittedPost.excerpt}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Direct Actions */}
@@ -397,6 +444,7 @@ export const BlogContributePage: React.FC = () => {
                     onClick={() => {
                       setFormSubmitted(false);
                       setSubmittedPost(null);
+                      setImagePreview('');
                       setFormData({
                         fullName: '',
                         email: '',
@@ -408,6 +456,7 @@ export const BlogContributePage: React.FC = () => {
                         shortDescription: '',
                         portfolioUrl: '',
                         articleDraft: '',
+                        customImage: '',
                       });
                     }}
                     className="text-xs text-slate-500 dark:text-slate-400 hover:text-brand-red dark:hover:text-red-400 underline"
@@ -575,6 +624,116 @@ export const BlogContributePage: React.FC = () => {
                     />
                   </div>
 
+                  {/* Article Cover Picture Upload / URL */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                        Article Cover Picture (Upload or Paste URL)
+                      </label>
+                      <div className="flex items-center gap-1 p-0.5 bg-slate-100 dark:bg-[#1a1d24] rounded-lg border border-slate-200 dark:border-[#252932] text-xs">
+                        <button
+                          type="button"
+                          onClick={() => setImageTab('upload')}
+                          className={`px-2.5 py-1 rounded-md font-semibold transition-all ${
+                            imageTab === 'upload'
+                              ? 'bg-white dark:bg-[#111318] text-brand-red shadow-xs'
+                              : 'text-slate-600 dark:text-[#A7AFBD] hover:text-slate-900 dark:hover:text-white'
+                          }`}
+                        >
+                          Upload File
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setImageTab('url')}
+                          className={`px-2.5 py-1 rounded-md font-semibold transition-all ${
+                            imageTab === 'url'
+                              ? 'bg-white dark:bg-[#111318] text-brand-red shadow-xs'
+                              : 'text-slate-600 dark:text-[#A7AFBD] hover:text-slate-900 dark:hover:text-white'
+                          }`}
+                        >
+                          Image / R2 URL
+                        </button>
+                      </div>
+                    </div>
+
+                    {imageTab === 'upload' ? (
+                      <div className="relative border-2 border-dashed border-slate-300 dark:border-[#2E333D] hover:border-brand-red/60 rounded-2xl p-6 text-center transition-all bg-slate-50/50 dark:bg-[#0E1015]/60">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageFileChange}
+                          id="article-image-upload"
+                          className="sr-only"
+                        />
+                        <label
+                          htmlFor="article-image-upload"
+                          className="cursor-pointer flex flex-col items-center justify-center gap-2"
+                        >
+                          <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/30 flex items-center justify-center text-brand-red">
+                            <UploadCloud className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <span className="text-sm font-bold text-brand-red hover:underline">
+                              Click to choose an image
+                            </span>
+                            <span className="text-xs text-slate-500 dark:text-slate-400">
+                              {' '}or drag & drop
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-[#7F8795]">
+                            PNG, JPG, WEBP, or SVG up to 8MB. Appears as your article's main banner.
+                          </p>
+                        </label>
+                      </div>
+                    ) : (
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                          <Link2 className="w-4 h-4" />
+                        </div>
+                        <input
+                          type="url"
+                          value={formData.customImage.startsWith('data:') ? '' : formData.customImage}
+                          onChange={handleImageUrlChange}
+                          placeholder="https://pub-3f62a1750c20425f95e67ab76e9d98ea.r2.dev/your-image.png or any web URL"
+                          className="w-full h-11 pl-10 pr-3.5 rounded-xl bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] text-sm text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red transition-all"
+                        />
+                      </div>
+                    )}
+
+                    {/* Preview Area */}
+                    {imagePreview && (
+                      <div className="flex items-center gap-4 p-3 bg-white dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] rounded-xl">
+                        <div className="w-20 h-14 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 shrink-0 border border-slate-200/80 dark:border-[#2E333D]">
+                          <img
+                            src={imagePreview}
+                            alt="Cover Preview"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80';
+                            }}
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-semibold text-slate-900 dark:text-white truncate">
+                            Cover Image Attached
+                          </p>
+                          <p className="text-[11px] text-slate-500 dark:text-[#A7AFBD] truncate">
+                            Will be displayed on your live article card and header
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={handleClearImage}
+                          className="px-2.5 py-1.5 rounded-lg border border-red-200 dark:border-red-900/40 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Remove</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
                   {/* Portfolio or Profile Link */}
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
@@ -590,11 +749,11 @@ export const BlogContributePage: React.FC = () => {
                     />
                   </div>
 
-                  {/* Draft / Content Submission (Optional if pitch only) */}
+                  {/* Draft / Content Submission */}
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                        Article Content / Draft (Optional if pitching an idea)
+                        Article Content / Draft
                       </label>
                       <span className="text-[11px] text-slate-400 dark:text-[#7F8795]">
                         Markdown supported
@@ -613,7 +772,7 @@ export const BlogContributePage: React.FC = () => {
                   {/* Submit Button */}
                   <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <p className="text-[11px] text-slate-500 dark:text-[#7F8795]">
-                      All submissions are evaluated under Open Educational Resource (OER) principles. No paywalls.
+                      All published articles become live immediately across the TechnoEdu network.
                     </p>
 
                     <button
@@ -622,11 +781,11 @@ export const BlogContributePage: React.FC = () => {
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-red text-white text-sm font-bold shadow-red-glow hover:bg-brand-darkred transition-all disabled:opacity-50"
                     >
                       {isSubmitting ? (
-                        <span>Processing Pitch...</span>
+                        <span>Publishing Article...</span>
                       ) : (
                         <>
                           <Send className="w-4 h-4" />
-                          <span>Submit Pitch for Review</span>
+                          <span>Publish Article Instantly</span>
                         </>
                       )}
                     </button>

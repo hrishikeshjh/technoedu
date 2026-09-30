@@ -53,6 +53,10 @@ export const AuthorCard: React.FC<AuthorCardProps> = ({ author, articleCount, cl
             src={author.avatar}
             alt={author.name}
             className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover ring-2 ring-slate-200 dark:ring-[#252932] shadow-sm"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(author.name)}&background=e11d48&color=fff&bold=true`;
+            }}
           />
           <div className="absolute -bottom-1.5 -right-1.5 bg-brand-red text-white p-1 rounded-full shadow-xs">
             <CheckCircle className="w-3.5 h-3.5" />

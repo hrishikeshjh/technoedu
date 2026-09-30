@@ -252,7 +252,11 @@ export const getStoredBlogPosts = (): BlogPost[] => {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map((p) => ({
+      ...p,
+      status: p.status === 'queued_for_checking' ? 'approved' : (p.status || 'approved'),
+    }));
   } catch (err) {
     console.error('Failed to parse stored blog posts:', err);
     return [];
@@ -260,7 +264,7 @@ export const getStoredBlogPosts = (): BlogPost[] => {
 };
 
 /**
- * Saves a new contributed blog post into persistent storage with status 'queued_for_checking'.
+ * Saves a new contributed blog post into persistent storage with immediate publication.
  * Immediately dispatches an update event so all open views re-render in real time.
  */
 export const addStoredBlogPost = (newPost: BlogPost): void => {
@@ -269,7 +273,7 @@ export const addStoredBlogPost = (newPost: BlogPost): void => {
     const current = getStoredBlogPosts();
     const postWithStatus: BlogPost = {
       ...newPost,
-      status: newPost.status || 'queued_for_checking',
+      status: 'approved',
       submittedAt: newPost.submittedAt || new Date().toISOString(),
     };
     const updated = [postWithStatus, ...current.filter((p) => p.id !== postWithStatus.id)];

@@ -101,24 +101,6 @@ export const BlogDetailPage: React.FC = () => {
           ]}
         />
 
-        {/* Review Status Banner */}
-        {(!post.status || post.status === 'queued_for_checking') && (
-          <div className="max-w-4xl mx-auto mb-6 p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 text-amber-900 dark:text-amber-200 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5 animate-pulse" />
-            <div className="text-xs sm:text-sm">
-              <div className="font-bold flex items-center gap-2">
-                <span>Article Status: Queued for Checking</span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-200/80 dark:bg-amber-900/60 font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-200">
-                  Community Preprint
-                </span>
-              </div>
-              <p className="mt-1 text-amber-800 dark:text-amber-300 leading-relaxed">
-                This article was contributed and published immediately for open access. It is currently placed in the peer verification queue for fact-checking and editorial review.
-              </p>
-            </div>
-          </div>
-        )}
-
         {/* 2. Article Header */}
         <header className="max-w-4xl mx-auto pt-2 pb-8 sm:pb-10 border-b border-slate-200 dark:border-[#252932]">
           <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -155,6 +137,10 @@ export const BlogDetailPage: React.FC = () => {
                 src={post.authorAvatar || post.author.avatar}
                 alt={post.author.name}
                 className="w-11 h-11 rounded-full object-cover ring-2 ring-slate-200 dark:ring-[#252932]"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author.name)}&background=e11d48&color=fff&bold=true`;
+                }}
               />
               <div>
                 <div className="text-sm font-bold text-slate-900 dark:text-[#F8FAFC]">
@@ -203,9 +189,13 @@ export const BlogDetailPage: React.FC = () => {
         <div className="max-w-4xl mx-auto my-8">
           <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border border-slate-200 dark:border-[#252932] shadow-sm bg-slate-100 dark:bg-[#111318]">
             <img
-              src={post.image}
+              src={post.image || 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80'}
               alt={post.title}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
+              }}
             />
           </div>
         </div>
