@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Calendar, ArrowRight, BookOpen, GraduationCap, Compass, Briefcase, Trash2 } from 'lucide-react';
+import { Clock, Calendar, ArrowRight, BookOpen, GraduationCap, Compass, Briefcase } from 'lucide-react';
 import { BlogPost, BlogAudience } from '../../types/blog';
-import { deleteStoredBlogPost } from '../../data/blogData';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -141,21 +140,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
                 </span>
                 <span>{post.date}</span>
               </div>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  if (window.confirm(`Permanently delete article "${post.title}"?`)) {
-                    deleteStoredBlogPost(post.id);
-                  }
-                }}
-                className="w-9 h-9 rounded-xl bg-red-50 dark:bg-red-950/30 hover:bg-brand-red text-red-600 dark:text-red-400 hover:text-white flex items-center justify-center transition-colors shadow-xs"
-                title="Delete article"
-                aria-label={`Delete article ${post.title}`}
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
               <Link
                 to={`/blogs/${post.slug}`}
                 aria-label={`Read article: ${post.title}`}
@@ -211,21 +195,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             </span>
           </div>
           <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (window.confirm(`Permanently delete article "${post.title}"?`)) {
-                  deleteStoredBlogPost(post.id);
-                }
-              }}
-              className="p-1 rounded-md text-slate-400 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-              title="Delete article"
-              aria-label={`Delete article ${post.title}`}
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-            </button>
             <Link
               to={`/blogs/${post.slug}`}
               className="text-xs font-semibold text-brand-red hover:underline flex items-center gap-0.5"
@@ -294,21 +263,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
               </span>
             </div>
             <div className="flex items-center gap-1.5 flex-shrink-0">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  if (window.confirm(`Permanently delete article "${post.title}"?`)) {
-                    deleteStoredBlogPost(post.id);
-                  }
-                }}
-                className="p-1 rounded-md text-slate-400 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-                title="Delete article"
-                aria-label={`Delete article ${post.title}`}
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-              </button>
               <Link
                 to={`/blogs/${post.slug}`}
                 className="text-brand-red font-bold hover:underline flex items-center gap-1"
@@ -420,21 +374,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           </div>
 
           <div className="flex items-center gap-1.5 flex-shrink-0">
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (window.confirm(`Permanently delete article "${post.title}"?`)) {
-                  deleteStoredBlogPost(post.id);
-                }
-              }}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-              title="Delete article"
-              aria-label={`Delete article ${post.title}`}
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-            </button>
             <Link
               to={`/blogs/${post.slug}`}
               className="inline-flex items-center gap-1 text-xs font-bold text-brand-red hover:text-brand-darkred dark:text-red-400 transition-colors"

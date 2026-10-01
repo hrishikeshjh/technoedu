@@ -771,7 +771,7 @@ function compressImageFile(file: File, maxWidth = 1200, quality = 0.82): Promise
                           type="url"
                           value={formData.customImage.startsWith('data:') ? '' : formData.customImage}
                           onChange={handleImageUrlChange}
-                          placeholder="https://pub-3f62a1750c20425f95e67ab76e9d98ea.r2.dev/your-image.png or any web URL"
+                          placeholder="https://..."
                           className="w-full h-11 pl-10 pr-3.5 rounded-xl bg-slate-50 dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] text-sm text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red transition-all"
                         />
                       </div>

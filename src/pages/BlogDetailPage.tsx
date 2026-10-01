@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import {
   Clock,
   Calendar,
@@ -18,10 +18,9 @@ import {
   ExternalLink,
   AlertCircle,
   Tag as TagIcon,
-  Trash2,
   Pencil,
 } from 'lucide-react';
-import { useBlogPosts, blogSegments, deleteStoredBlogPost } from '../data/blogData';
+import { useBlogPosts, blogSegments } from '../data/blogData';
 import { BlogPost, BlogAudience } from '../types/blog';
 import { BlogCard } from '../components/blog/BlogCard';
 import { AuthorCard } from '../components/blog/AuthorCard';
@@ -30,11 +29,9 @@ import { ScrollReveal } from '../components/common/ScrollReveal';
 
 export const BlogDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedCodeIndex, setCopiedCodeIndex] = useState<number | null>(null);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
 
   // Dynamically subscribe to blog posts
   const allPosts = useBlogPosts();
@@ -217,40 +214,6 @@ export const BlogDetailPage: React.FC = () => {
                 <Pencil className="w-3.5 h-3.5 text-slate-500 dark:text-[#A7AFBD]" />
                 <span>Edit Article</span>
               </Link>
-
-              {/* Delete Article Action */}
-              {confirmDelete ? (
-                <div className="flex items-center gap-1.5 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/40 px-2 py-1 rounded-xl">
-                  <span className="text-xs text-red-600 dark:text-red-400 font-semibold">Delete?</span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      deleteStoredBlogPost(post.id);
-                      navigate('/blogs');
-                    }}
-                    className="px-2 py-0.5 text-xs font-bold bg-brand-red hover:bg-red-700 text-white rounded-lg transition-colors shadow-xs"
-                  >
-                    Confirm
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setConfirmDelete(false)}
-                    className="px-2 py-0.5 text-xs font-semibold bg-slate-200 dark:bg-[#252932] text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-300 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setConfirmDelete(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50/80 dark:bg-red-950/30 text-red-600 dark:text-red-400 hover:bg-brand-red hover:text-white dark:hover:bg-brand-red transition-all no-min-touch border border-red-200/50 dark:border-red-900/30 text-xs font-semibold"
-                  title="Delete this article"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                  <span>Delete Article</span>
-                </button>
-              )}
             </div>
           </div>
         </header>

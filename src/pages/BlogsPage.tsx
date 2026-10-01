@@ -240,7 +240,59 @@ export const BlogsPage: React.FC = () => {
           </ScrollReveal>
         </section>
 
-        {/* 2. FOUR PRIMARY SEGMENT CARDS */}
+        {/* 2. FEATURED ARTICLES SECTION (EDITORIAL SPOTLIGHT) */}
+        {featuredLarge && (
+          <section className="mb-14 sm:mb-18">
+            <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200 dark:border-[#252932]">
+              <div>
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-darkred dark:text-red-400 mb-1">
+                  <span>Editorial Spotlight</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#F8FAFC]">
+                  Featured Articles &amp; Insights
+                </h2>
+              </div>
+              <span className="text-xs text-slate-500 dark:text-[#7F8795] hidden sm:block">
+                Curated by campus leads &amp; mentors
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              {/* 1 Large Card (8 columns) */}
+              <div className="lg:col-span-8 flex flex-col">
+                <BlogCard
+                  post={featuredLarge}
+                  variant="featured-large"
+                  className="h-full"
+                  onTagClick={handleTagFilter}
+                  onAudienceClick={(aud) => {
+                    setSelectedAudience(aud);
+                    scrollToArticles();
+                  }}
+                />
+              </div>
+
+              {/* 2-3 Smaller Alongside Cards (4 columns) */}
+              {featuredCompact.length > 0 && (
+                <div className="lg:col-span-4 flex flex-col gap-4 justify-between">
+                  {featuredCompact.map((cPost) => (
+                    <BlogCard
+                      key={cPost.id}
+                      post={cPost}
+                      variant="featured-compact"
+                      onAudienceClick={(aud) => {
+                        setSelectedAudience(aud);
+                        scrollToArticles();
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* 3. FOUR PRIMARY SEGMENT CARDS */}
         <section className="mb-14 sm:mb-18">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {blogSegments.map((segment, idx) => {
@@ -298,58 +350,6 @@ export const BlogsPage: React.FC = () => {
             })}
           </div>
         </section>
-
-        {/* 3. FEATURED ARTICLES SECTION */}
-        {featuredLarge && (
-          <section className="mb-16 sm:mb-20">
-            <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200 dark:border-[#252932]">
-              <div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-darkred dark:text-red-400 mb-1">
-                  <span>Editorial Spotlight</span>
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#F8FAFC]">
-                  Featured Articles &amp; Insights
-                </h2>
-              </div>
-              <span className="text-xs text-slate-500 dark:text-[#7F8795] hidden sm:block">
-                Curated by campus leads &amp; mentors
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-              {/* 1 Large Card (8 columns) */}
-              <div className="lg:col-span-8 flex flex-col">
-                <BlogCard
-                  post={featuredLarge}
-                  variant="featured-large"
-                  className="h-full"
-                  onTagClick={handleTagFilter}
-                  onAudienceClick={(aud) => {
-                    setSelectedAudience(aud);
-                    scrollToArticles();
-                  }}
-                />
-              </div>
-
-              {/* 2-3 Smaller Alongside Cards (4 columns) */}
-              {featuredCompact.length > 0 && (
-                <div className="lg:col-span-4 flex flex-col gap-4 justify-between">
-                  {featuredCompact.map((cPost) => (
-                    <BlogCard
-                      key={cPost.id}
-                      post={cPost}
-                      variant="featured-compact"
-                      onAudienceClick={(aud) => {
-                        setSelectedAudience(aud);
-                        scrollToArticles();
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-        )}
 
         {/* 4. DISCOVER BY SUBJECT */}
         <section className="mb-14 sm:mb-18 bg-slate-50/70 dark:bg-[#0B0C0F] border border-slate-200 dark:border-[#252932] rounded-3xl p-6 sm:p-8">
