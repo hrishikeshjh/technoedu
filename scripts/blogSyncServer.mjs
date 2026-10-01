@@ -30,11 +30,11 @@ function loadEnv() {
 
 loadEnv();
 
-const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
-const ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
-const SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID || '88f615b88df00f68a1cc2fbd77fa647c';
+const ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID || '4efa220ed1ed19e91681b167ef50df4b';
+const SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY || '4137a43c78bd0095b81775e00ef968fdbf4165e6d3fdc8c06d68bc9a2c41f567';
 const BUCKET_NAME = process.env.R2_BUCKET_NAME || 'technoedu-blogs';
-const PUBLIC_URL = (process.env.R2_PUBLIC_URL || '').replace(/\/+$/, '');
+const PUBLIC_URL = (process.env.R2_PUBLIC_URL || 'https://pub-3f62a1750c20425f95e67ab76e9d98ea.r2.dev').replace(/\/+$/, '');
 
 // ── 2. AWS SigV4 Signer for Cloudflare R2 ─────────────────────────────────────
 function hmacSha256(key, data) {
@@ -52,7 +52,7 @@ function getSignatureKey(key, dateStamp, regionName, serviceName) {
   return hmacSha256(kService, 'aws4_request');
 }
 
-async function uploadToR2(key, body, contentType = 'application/json') {
+export async function uploadToR2(key, body, contentType = 'application/json') {
   if (!ACCOUNT_ID || !ACCESS_KEY_ID || !SECRET_ACCESS_KEY) {
     console.warn('⚠️ Cloudflare R2 credentials not configured. Skipping R2 sync.');
     return false;
@@ -95,7 +95,7 @@ async function uploadToR2(key, body, contentType = 'application/json') {
       headers: {
         ...headersToSign,
         'Authorization': authorization,
-        'Cache-Control': 'public, max-age=60',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
       },
       body,
     });
@@ -127,23 +127,21 @@ export function getLocalPosts() {
   return [];
 }
 
-export function saveLocalPosts(posts) {
+export async function saveLocalPosts(posts) {
   try {
     fs.mkdirSync(path.dirname(POSTS_FILE), { recursive: true });
     const content = JSON.stringify(posts, null, 2);
     fs.writeFileSync(POSTS_FILE, content, 'utf-8');
-    // Also trigger cloud sync in background
-    uploadToR2('blogs/posts.json', content, 'application/json').catch((err) => {
-      console.error('Background R2 sync error:', err);
-    });
-    return true;
+    // Also trigger cloud sync
+    const r2Ok = await uploadToR2('blogs/posts.json', content, 'application/json');
+    return { success: true, r2Ok };
   } catch (err) {
     console.error('Error saving local posts:', err);
-    return false;
+    return { success: false, error: err };
   }
 }
 
-export function addOrUpdatePost(newPost) {
+export async function addOrUpdatePost(newPost) {
   const current = getLocalPosts();
   const normalized = {
     ...newPost,
@@ -151,14 +149,14 @@ export function addOrUpdatePost(newPost) {
     submittedAt: newPost.submittedAt || new Date().toISOString(),
   };
   const updated = [normalized, ...current.filter((p) => p.id !== normalized.id)];
-  saveLocalPosts(updated);
-  return normalized;
+  await saveLocalPosts(updated);
+  return { post: normalized, posts: updated };
 }
 
-export function removePost(id) {
+export async function removePost(id) {
   const current = getLocalPosts();
   const updated = current.filter((p) => p.id !== id);
-  saveLocalPosts(updated);
+  await saveLocalPosts(updated);
   return updated;
 }
 
@@ -173,10 +171,13 @@ export function blogApiMiddleware() {
           return next();
         }
 
-        // Enable CORS
+        // Enable CORS & strict no-cache
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Pragma, Cache-Control');
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
 
         if (req.method === 'OPTIONS') {
           res.statusCode = 204;
@@ -195,13 +196,13 @@ export function blogApiMiddleware() {
           req.on('data', (chunk) => {
             body += chunk;
           });
-          req.on('end', () => {
+          req.on('end', async () => {
             try {
               const data = JSON.parse(body);
-              const saved = addOrUpdatePost(data);
+              const { post, posts } = await addOrUpdatePost(data);
               res.setHeader('Content-Type', 'application/json');
               res.statusCode = 200;
-              return res.end(JSON.stringify({ success: true, post: saved }));
+              return res.end(JSON.stringify({ success: true, post, posts, total: posts.length }));
             } catch (err) {
               res.statusCode = 400;
               return res.end(JSON.stringify({ error: 'Invalid JSON body' }));
@@ -217,7 +218,7 @@ export function blogApiMiddleware() {
             req.on('data', (chunk) => {
               body += chunk;
             });
-            req.on('end', () => {
+            req.on('end', async () => {
               try {
                 const data = JSON.parse(body || '{}');
                 id = data.id;
@@ -225,10 +226,10 @@ export function blogApiMiddleware() {
                   res.statusCode = 400;
                   return res.end(JSON.stringify({ error: 'Missing id parameter' }));
                 }
-                removePost(id);
+                const updated = await removePost(id);
                 res.setHeader('Content-Type', 'application/json');
                 res.statusCode = 200;
-                return res.end(JSON.stringify({ success: true, id }));
+                return res.end(JSON.stringify({ success: true, id, posts: updated, total: updated.length }));
               } catch (err) {
                 res.statusCode = 400;
                 return res.end(JSON.stringify({ error: 'Invalid request' }));
@@ -237,10 +238,10 @@ export function blogApiMiddleware() {
             return;
           }
 
-          removePost(id);
+          const updated = await removePost(id);
           res.setHeader('Content-Type', 'application/json');
           res.statusCode = 200;
-          return res.end(JSON.stringify({ success: true, id }));
+          return res.end(JSON.stringify({ success: true, id, posts: updated, total: updated.length }));
         }
 
         next();

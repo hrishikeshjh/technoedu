@@ -226,21 +226,61 @@ export const BlogContributePage: React.FC = () => {
     }
   }, [editSlug]);
 
-  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (file.size > 8 * 1024 * 1024) {
-      alert('File size exceeds 8MB. Please choose a smaller image.');
+function compressImageFile(file: File, maxWidth = 1200, quality = 0.82): Promise<string> {
+  return new Promise((resolve) => {
+    if (file.type === 'image/svg+xml' || file.size < 50 * 1024) {
+      const reader = new FileReader();
+      reader.onload = () => resolve(typeof reader.result === 'string' ? reader.result : '');
+      reader.onerror = () => resolve('');
+      reader.readAsDataURL(file);
       return;
     }
+
     const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        setImagePreview(reader.result);
-        setFormData((prev) => ({ ...prev, customImage: reader.result as string }));
-      }
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(typeof e.target?.result === 'string' ? e.target.result : '');
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        const format = file.type === 'image/png' ? 'image/jpeg' : (file.type || 'image/jpeg');
+        const compressed = canvas.toDataURL(format, quality);
+        resolve(compressed);
+      };
+      img.onerror = () => {
+        resolve(typeof e.target?.result === 'string' ? e.target.result : '');
+      };
+      img.src = typeof e.target?.result === 'string' ? e.target.result : '';
     };
+    reader.onerror = () => resolve('');
     reader.readAsDataURL(file);
+  });
+}
+
+  const handleImageFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 15 * 1024 * 1024) {
+      alert('File size exceeds 15MB. Please choose a smaller image.');
+      return;
+    }
+    const compressed = await compressImageFile(file);
+    if (compressed) {
+      setImagePreview(compressed);
+      setFormData((prev) => ({ ...prev, customImage: compressed }));
+    }
   };
 
   const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -259,13 +299,13 @@ export const BlogContributePage: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
       const newPost = createBlogPostFromForm(formData, editingPostId || undefined, editingPostSlug || undefined);
-      addStoredBlogPost(newPost);
+      await addStoredBlogPost(newPost);
       setSubmittedPost(newPost);
       setFormSubmitted(true);
       try {

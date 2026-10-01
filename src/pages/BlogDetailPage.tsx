@@ -39,12 +39,35 @@ export const BlogDetailPage: React.FC = () => {
   // Dynamically subscribe to blog posts
   const allPosts = useBlogPosts();
   const post = allPosts.find((p) => p.slug === slug);
+  const [isInitialSyncing, setIsInitialSyncing] = useState(allPosts.length === 0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  useEffect(() => {
+    if (allPosts.length > 0) {
+      setIsInitialSyncing(false);
+    } else {
+      const timer = setTimeout(() => {
+        setIsInitialSyncing(false);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [allPosts]);
+
   if (!post) {
+    if (isInitialSyncing) {
+      return (
+        <div className="max-w-4xl mx-auto px-4 py-32 text-center">
+          <div className="w-10 h-10 rounded-full border-2 border-brand-red border-t-transparent animate-spin mx-auto mb-4" />
+          <p className="text-slate-500 dark:text-[#A7AFBD] text-xs font-semibold">
+            Loading article from Knowledge Hub...
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-[#F8FAFC] mb-4">

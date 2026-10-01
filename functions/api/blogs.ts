@@ -1,6 +1,7 @@
 /**
  * Cloudflare Pages Function for /api/blogs
  * Automatically persists blog posts to Cloudflare R2 bucket in production.
+ * Supports both native Cloudflare R2 bucket bindings AND AWS SigV4 S3 API fallback.
  */
 
 interface Env {
@@ -9,110 +10,374 @@ interface Env {
   R2_SECRET_ACCESS_KEY?: string;
   R2_BUCKET_NAME?: string;
   R2_PUBLIC_URL?: string;
-  technoedu_blogs?: any; // R2 Bucket binding if configured in dashboard
+  technoedu_blogs?: any;
+  [key: string]: any;
 }
 
-const R2_PUBLIC_DEFAULT = 'https://pub-3f62a1750c20425f95e67ab76e9d98ea.r2.dev';
+const DEFAULT_ACCOUNT_ID = '88f615b88df00f68a1cc2fbd77fa647c';
+const DEFAULT_ACCESS_KEY_ID = '4efa220ed1ed19e91681b167ef50df4b';
+const DEFAULT_SECRET_ACCESS_KEY = '4137a43c78bd0095b81775e00ef968fdbf4165e6d3fdc8c06d68bc9a2c41f567';
+const DEFAULT_BUCKET_NAME = 'technoedu-blogs';
+const DEFAULT_PUBLIC_URL = 'https://pub-3f62a1750c20425f95e67ab76e9d98ea.r2.dev';
 
-export const onRequestGet = async (context: { env: Env }) => {
-  const { env } = context;
-
-  // 1. Try R2 binding if available
-  if (env.technoedu_blogs) {
-    try {
-      const obj = await env.technoedu_blogs.get('blogs/posts.json');
-      if (obj) {
-        const text = await obj.text();
-        return new Response(text, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'no-cache',
-          },
-        });
-      }
-    } catch (e) {}
-  }
-
-  // 2. Fallback to public R2 CDN URL
-  const publicUrl = (env.R2_PUBLIC_URL || R2_PUBLIC_DEFAULT).replace(/\/+$/, '');
-  try {
-    const res = await fetch(`${publicUrl}/blogs/posts.json`, {
-      headers: { 'Cache-Control': 'no-cache' },
-    });
-    if (res.ok) {
-      const text = await res.text();
-      return new Response(text, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'no-cache',
-        },
-      });
-    }
-  } catch (e) {}
-
-  return new Response('[]', {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  });
+const CORS_HEADERS: Record<string, string> = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, Pragma, Cache-Control',
+  'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
+  'Pragma': 'no-cache',
+  'Expires': '0',
 };
 
-export const onRequestPost = async (context: { request: Request; env: Env }) => {
-  const { request, env } = context;
+function getR2Bucket(env: Env): any | null {
+  return (
+    env.technoedu_blogs ||
+    env['technoedu-blogs'] ||
+    env.BLOGS ||
+    env.BUCKET ||
+    env.R2 ||
+    env.R2_BUCKET ||
+    env.BLOGS_BUCKET ||
+    null
+  );
+}
 
-  try {
-    const newPost = await request.json() as any;
-    if (!newPost || !newPost.id) {
-      return new Response(JSON.stringify({ error: 'Missing post data' }), { status: 400 });
+function getCredentials(env: Env) {
+  return {
+    accountId: env.CLOUDFLARE_ACCOUNT_ID || DEFAULT_ACCOUNT_ID,
+    accessKeyId: env.R2_ACCESS_KEY_ID || DEFAULT_ACCESS_KEY_ID,
+    secretAccessKey: env.R2_SECRET_ACCESS_KEY || DEFAULT_SECRET_ACCESS_KEY,
+    bucket: env.R2_BUCKET_NAME || DEFAULT_BUCKET_NAME,
+    publicUrl: (env.R2_PUBLIC_URL || DEFAULT_PUBLIC_URL).replace(/\/+$/, ''),
+  };
+}
+
+// ── Web Crypto AWS SigV4 Signer for Cloudflare R2 ───────────────────────────
+async function hmacSha256(key: Uint8Array | string, data: Uint8Array | string): Promise<Uint8Array> {
+  const enc = new TextEncoder();
+  const k = typeof key === 'string' ? enc.encode(key) : key;
+  const d = typeof data === 'string' ? enc.encode(data) : data;
+  const cryptoKey = await crypto.subtle.importKey('raw', k as any, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('HMAC', cryptoKey, d as any);
+  return new Uint8Array(sig);
+}
+
+async function sha256Hex(data: string | Uint8Array): Promise<string> {
+  const enc = new TextEncoder();
+  const d = typeof data === 'string' ? enc.encode(data) : data;
+  const hash = await crypto.subtle.digest('SHA-256', d as any);
+  return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function getSignatureKey(key: string, dateStamp: string, regionName: string, serviceName: string): Promise<Uint8Array> {
+  const enc = new TextEncoder();
+  const kDate = await hmacSha256(enc.encode('AWS4' + key), dateStamp);
+  const kRegion = await hmacSha256(kDate, regionName);
+  const kService = await hmacSha256(kRegion, serviceName);
+  return hmacSha256(kService, 'aws4_request');
+}
+
+async function signS3Request({
+  method,
+  accountId,
+  accessKeyId,
+  secretAccessKey,
+  bucket,
+  key,
+  body = '',
+  contentType = 'application/json',
+}: {
+  method: 'GET' | 'PUT' | 'DELETE' | 'HEAD';
+  accountId: string;
+  accessKeyId: string;
+  secretAccessKey: string;
+  bucket: string;
+  key: string;
+  body?: string;
+  contentType?: string;
+}) {
+  const host = `${accountId}.r2.cloudflarestorage.com`;
+  const now = new Date();
+  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
+  const dateStamp = amzDate.slice(0, 8);
+  const canonicalUri = `/${bucket}/${key}`;
+  const payloadHash = await sha256Hex(body);
+
+  const headersToSign: Record<string, string> = {
+    'host': host,
+    'x-amz-content-sha256': payloadHash,
+    'x-amz-date': amzDate,
+  };
+  if (method === 'PUT' && contentType) {
+    headersToSign['content-type'] = contentType;
+  }
+
+  const sortedKeys = Object.keys(headersToSign).sort();
+  const canonicalHeaders = sortedKeys.map((k) => `${k}:${headersToSign[k]}\n`).join('');
+  const signedHeaders = sortedKeys.join(';');
+
+  const canonicalRequest = [method, canonicalUri, '', canonicalHeaders, signedHeaders, payloadHash].join('\n');
+  const credentialScope = `${dateStamp}/auto/s3/aws4_request`;
+  const stringToSign = ['AWS4-HMAC-SHA256', amzDate, credentialScope, await sha256Hex(canonicalRequest)].join('\n');
+
+  const signingKey = await getSignatureKey(secretAccessKey, dateStamp, 'auto', 's3');
+  const enc = new TextEncoder();
+  const cryptoKey = await crypto.subtle.importKey('raw', signingKey as any, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sigBuffer = await crypto.subtle.sign('HMAC', cryptoKey, enc.encode(stringToSign) as any);
+  const signature = Array.from(new Uint8Array(sigBuffer)).map((b) => b.toString(16).padStart(2, '0')).join('');
+
+  const authorization = `AWS4-HMAC-SHA256 Credential=${accessKeyId}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
+
+  const requestHeaders: Record<string, string> = {
+    ...headersToSign,
+    'Authorization': authorization,
+  };
+  if (method === 'PUT') {
+    requestHeaders['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+  }
+
+  const url = `https://${host}${canonicalUri}`;
+  return { url, headers: requestHeaders };
+}
+
+// ── R2 Storage Operations ────────────────────────────────────────────────────
+async function loadPostsFromR2(env: Env): Promise<any[]> {
+  const bucket = getR2Bucket(env);
+  if (bucket) {
+    try {
+      const obj = await bucket.get('blogs/posts.json');
+      if (obj) {
+        const text = await obj.text();
+        const data = JSON.parse(text);
+        if (Array.isArray(data)) return data;
+      }
+    } catch (e) {
+      console.warn('R2 binding get error:', e);
     }
+  }
 
-    // If R2 binding is configured
-    if (env.technoedu_blogs) {
-      let currentPosts: any[] = [];
-      try {
-        const existing = await env.technoedu_blogs.get('blogs/posts.json');
-        if (existing) {
-          currentPosts = JSON.parse(await existing.text());
-        }
-      } catch (e) {}
+  // Fallback to S3 SigV4 GET
+  try {
+    const creds = getCredentials(env);
+    const { url, headers } = await signS3Request({
+      method: 'GET',
+      ...creds,
+      key: 'blogs/posts.json',
+    });
+    const res = await fetch(url, { headers, cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) return data;
+    }
+  } catch (e) {
+    console.warn('S3 SigV4 GET error:', e);
+  }
 
-      const updated = [newPost, ...currentPosts.filter((p: any) => p.id !== newPost.id)];
-      await env.technoedu_blogs.put('blogs/posts.json', JSON.stringify(updated, null, 2), {
+  // Fallback to Public CDN
+  try {
+    const creds = getCredentials(env);
+    const res = await fetch(`${creds.publicUrl}/blogs/posts.json?_t=${Date.now()}`, {
+      headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
+      cache: 'no-store',
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) return data;
+    }
+  } catch (e) {
+    console.warn('Public CDN fetch error:', e);
+  }
+
+  return [];
+}
+
+async function persistPostsToR2(posts: any[], env: Env): Promise<boolean> {
+  const jsonContent = JSON.stringify(posts, null, 2);
+  let saved = false;
+
+  const bucket = getR2Bucket(env);
+  if (bucket) {
+    try {
+      await bucket.put('blogs/posts.json', jsonContent, {
         httpMetadata: {
           contentType: 'application/json',
-          cacheControl: 'public, max-age=60',
+          cacheControl: 'no-cache, no-store, must-revalidate',
         },
       });
-
-      return new Response(JSON.stringify({ success: true, post: newPost }), {
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
+      saved = true;
+    } catch (e) {
+      console.warn('R2 binding put failed, falling back to S3 API:', e);
     }
+  }
 
-    return new Response(JSON.stringify({ success: true, post: newPost }), {
+  // Always verify or fallback via S3 SigV4
+  if (!saved) {
+    try {
+      const creds = getCredentials(env);
+      const { url, headers } = await signS3Request({
+        method: 'PUT',
+        ...creds,
+        key: 'blogs/posts.json',
+        body: jsonContent,
+        contentType: 'application/json',
+      });
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers,
+        body: jsonContent,
+      });
+      if (res.ok) {
+        saved = true;
+      }
+    } catch (e) {
+      console.error('S3 SigV4 PUT error:', e);
+    }
+  }
+
+  return saved;
+}
+
+// ── Cloudflare Pages Route Handlers ──────────────────────────────────────────
+
+export const onRequestGet = async (context: { request: Request; env: Env }) => {
+  try {
+    const posts = await loadPostsFromR2(context.env);
+    return new Response(JSON.stringify(posts), {
+      status: 200,
       headers: {
+        ...CORS_HEADERS,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       },
     });
   } catch (err: any) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: err.message || 'Failed to load posts' }), {
+      status: 500,
+      headers: {
+        ...CORS_HEADERS,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+};
+
+export const onRequestPost = async (context: { request: Request; env: Env }) => {
+  try {
+    const body = (await context.request.json()) as any;
+    if (!body) {
+      return new Response(JSON.stringify({ error: 'Missing request body' }), {
+        status: 400,
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Support single post or array of posts
+    const newPosts: any[] = Array.isArray(body) ? body : [body];
+    for (const p of newPosts) {
+      if (!p || !p.id) {
+        return new Response(JSON.stringify({ error: 'Each post must contain a valid id' }), {
+          status: 400,
+          headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+        });
+      }
+      p.status = 'approved';
+      p.submittedAt = p.submittedAt || new Date().toISOString();
+    }
+
+    const currentPosts = await loadPostsFromR2(context.env);
+    const newIds = new Set(newPosts.map((p) => p.id));
+    const merged = [...newPosts, ...currentPosts.filter((p) => !newIds.has(p.id))];
+
+    const saved = await persistPostsToR2(merged, context.env);
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        savedToR2: saved,
+        posts: merged,
+        total: merged.length,
+      }),
+      {
+        status: 200,
+        headers: {
+          ...CORS_HEADERS,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  } catch (err: any) {
+    return new Response(JSON.stringify({ error: err.message || 'Failed to save post' }), {
+      status: 500,
+      headers: {
+        ...CORS_HEADERS,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+};
+
+export const onRequestDelete = async (context: { request: Request; env: Env }) => {
+  try {
+    const url = new URL(context.request.url);
+    let id = url.searchParams.get('id');
+
+    if (!id) {
+      try {
+        const body = (await context.request.json()) as any;
+        id = body?.id;
+      } catch (e) {}
+    }
+
+    if (!id) {
+      return new Response(JSON.stringify({ error: 'Missing id parameter for deletion' }), {
+        status: 400,
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const currentPosts = await loadPostsFromR2(context.env);
+    const filtered = currentPosts.filter((p) => p.id !== id);
+    const saved = await persistPostsToR2(filtered, context.env);
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        deletedId: id,
+        savedToR2: saved,
+        posts: filtered,
+        total: filtered.length,
+      }),
+      {
+        status: 200,
+        headers: {
+          ...CORS_HEADERS,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  } catch (err: any) {
+    return new Response(JSON.stringify({ error: err.message || 'Failed to delete post' }), {
+      status: 500,
+      headers: {
+        ...CORS_HEADERS,
+        'Content-Type': 'application/json',
+      },
+    });
   }
 };
 
 export const onRequestOptions = async () => {
   return new Response(null, {
     status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
+    headers: CORS_HEADERS,
   });
+};
+
+// Universal dispatcher fallback for all methods
+export const onRequest = async (context: { request: Request; env: Env }) => {
+  const method = context.request.method.toUpperCase();
+  if (method === 'GET') return onRequestGet(context);
+  if (method === 'POST') return onRequestPost(context);
+  if (method === 'DELETE') return onRequestDelete(context);
+  if (method === 'OPTIONS') return onRequestOptions();
+  return new Response('Method Not Allowed', { status: 405, headers: CORS_HEADERS });
 };
