@@ -28,3 +28,9 @@ __MACOSX/
 .env
 .env.*
 !.env.example
+
+# Local SQLite databases
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+!data/.gitkeep

@@ -62,11 +62,20 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     const triggerAnimation = () => {
       // If initial loading screen is active, wait until it finishes
       if ((window as any).__technoEduLoadingActive) {
+        let isTriggered = false;
         const handleReady = () => {
+          if (isTriggered) return;
+          isTriggered = true;
           window.removeEventListener('technoedu:ready', handleReady);
-          delayTimeout = setTimeout(runCountAnimation, delay + 100);
+          delayTimeout = setTimeout(runCountAnimation, delay + 50);
         };
         window.addEventListener('technoedu:ready', handleReady);
+        // Fallback safety timeout so stats never remain stuck at 0
+        setTimeout(() => {
+          if (!isTriggered) {
+            handleReady();
+          }
+        }, 1000);
         return;
       }
 

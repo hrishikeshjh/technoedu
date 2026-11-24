@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Library, CheckCircle, GraduationCap, ShieldCheck, BookOpen, Globe2 } from 'lucide-react';
+import { ArrowRight, Library, CheckCircle, GraduationCap, ShieldCheck, BookOpen, Globe2, Sparkles, LayoutDashboard } from 'lucide-react';
 import { AnimatedCounter } from '../common/AnimatedCounter';
 import { ScrollReveal } from '../common/ScrollReveal';
+import { useAuth } from '../../context/AuthContext';
 
 export const HeroSection: React.FC = () => {
+  const { isAuthenticated, user, activeCourseId } = useAuth();
   return (
     <section className="relative overflow-hidden bg-white dark:bg-[#08090B]">
 
@@ -14,6 +16,21 @@ export const HeroSection: React.FC = () => {
 
           {/* Left: Text content */}
           <div className="lg:col-span-6 xl:col-span-7 space-y-5 sm:space-y-6">
+
+            <ScrollReveal animation="fade-up" delay={150}>
+              <Link
+                to={isAuthenticated ? '/dashboard' : '/signup'}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200/80 dark:border-red-900/50 text-brand-red dark:text-red-400 text-xs font-bold shadow-xs hover:scale-[1.02] transition-transform"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>
+                  {isAuthenticated
+                    ? `Active Session: ${user?.fullName?.split(' ')[0] || 'Student'} • Open Dashboard`
+                    : 'Personalized Learning: Study Only What Matters For Your Goal'}
+                </span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={200}>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight leading-[1.08]">
@@ -30,18 +47,37 @@ export const HeroSection: React.FC = () => {
             {/* CTAs */}
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-1">
+                {isAuthenticated ? (
+                  <Link
+                    to="/dashboard"
+                    className="px-6 py-3.5 bg-brand-red hover:bg-brand-darkred text-white text-sm font-bold rounded-2xl shadow-red-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5 group ring-2 ring-red-500/20"
+                  >
+                    <LayoutDashboard className="w-4 h-4 text-white" />
+                    <span>My Learning Dashboard</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                ) : (
+                  <Link
+                    to="/signup"
+                    className="px-6 py-3.5 bg-brand-red hover:bg-brand-darkred text-white text-sm font-bold rounded-2xl shadow-red-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5 group ring-2 ring-red-500/20"
+                  >
+                    <Sparkles className="w-4 h-4 text-white" />
+                    <span>Get Started Free</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                )}
+
                 <Link
                   to="/exams/ugc-net"
-                  className="px-6 py-3.5 bg-brand-red hover:bg-brand-darkred text-white text-sm font-bold rounded-2xl shadow-red-glow hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5 group ring-2 ring-red-500/20"
+                  className="px-5 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] dark:border dark:border-[#252932] text-white text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
                   <GraduationCap className="w-4 h-4 text-white" />
                   <span>UGC-NET / JRF Hub</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
 
                 <Link
                   to="/exams"
-                  className="px-5 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] dark:border dark:border-[#252932] text-white text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-[#15171C] dark:hover:bg-[#1A1D23] dark:border dark:border-[#252932] text-slate-800 dark:text-slate-200 text-sm font-semibold rounded-2xl shadow-soft hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
                   <span>Explore Exam Directory</span>
                   <ArrowRight className="w-4 h-4" />

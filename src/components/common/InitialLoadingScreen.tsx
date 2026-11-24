@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { RoseThreeAnimation } from './RoseThreeAnimation';
 
 interface InitialLoadingScreenProps {
@@ -8,47 +8,76 @@ interface InitialLoadingScreenProps {
 
 export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
   onComplete,
-  durationMs = 3000,
+  durationMs = 900,
 }) => {
   const [progress, setProgress] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isMounted, setIsMounted] = useState(true);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+  const isFinishedRef = useRef(false);
 
   useEffect(() => {
     (window as any).__technoEduLoadingActive = true;
     const startTime = performance.now();
     let animFrame: number;
+    let unmountTimeout: ReturnType<typeof setTimeout> | null = null;
+    let safetyTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const finishLoading = () => {
+      if (isFinishedRef.current) return;
+      isFinishedRef.current = true;
+      setProgress(100);
+      setIsFadingOut(true);
+      (window as any).__technoEduLoadingActive = false;
+      try {
+        sessionStorage.setItem('technoedu_initial_loaded', '1');
+      } catch {}
+      window.dispatchEvent(new CustomEvent('technoedu:ready'));
+
+      unmountTimeout = setTimeout(() => {
+        setIsMounted(false);
+        if (onCompleteRef.current) onCompleteRef.current();
+      }, 300);
+    };
 
     const updateProgress = (now: number) => {
+      if (isFinishedRef.current) return;
       const elapsed = now - startTime;
       const rawProgress = Math.min(elapsed / durationMs, 1);
       
-      // Smooth easing for number animation
       const easedProgress = Math.floor(rawProgress * 100);
       setProgress(easedProgress);
 
       if (rawProgress < 1) {
         animFrame = requestAnimationFrame(updateProgress);
       } else {
-        setProgress(100);
-        // Begin fade out exactly at 3 seconds
-        setIsFadingOut(true);
-        (window as any).__technoEduLoadingActive = false;
-        window.dispatchEvent(new CustomEvent('technoedu:ready'));
-        setTimeout(() => {
-          setIsMounted(false);
-          if (onComplete) onComplete();
-        }, 550);
+        finishLoading();
       }
     };
 
     animFrame = requestAnimationFrame(updateProgress);
 
+    // Fallback timer in case requestAnimationFrame is throttled in inactive/background tab
+    safetyTimeout = setTimeout(() => {
+      finishLoading();
+    }, durationMs + 200);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        finishLoading();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       cancelAnimationFrame(animFrame);
+      if (unmountTimeout) clearTimeout(unmountTimeout);
+      if (safetyTimeout) clearTimeout(safetyTimeout);
+      window.removeEventListener('keydown', handleKeyDown);
       (window as any).__technoEduLoadingActive = false;
     };
-  }, [durationMs, onComplete]);
+  }, [durationMs]);
 
   if (!isMounted) return null;
 
@@ -56,8 +85,8 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
     <div
       role="status"
       aria-label="Loading Learn Better"
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white/85 dark:bg-[#08090B]/90 backdrop-blur-2xl text-slate-900 dark:text-[#F8FAFC] select-none transition-all duration-500 ease-out overflow-hidden px-4 ${
-        isFadingOut ? 'opacity-0 pointer-events-none scale-105 filter blur-xs' : 'opacity-100'
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white/95 dark:bg-[#08090B]/95 backdrop-blur-md text-slate-900 dark:text-[#F8FAFC] select-none transition-opacity duration-300 ease-out overflow-hidden px-4 ${
+        isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
         fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -106,14 +135,19 @@ export const InitialLoadingScreen: React.FC<InitialLoadingScreenProps> = ({
 
       </div>
 
-      {/* Subtle skip link at bottom corner for power users */}
+      {/* Skip button for instant dismissal */}
       <button
         onClick={() => {
           setIsFadingOut(true);
+          (window as any).__technoEduLoadingActive = false;
+          try {
+            sessionStorage.setItem('technoedu_initial_loaded', '1');
+          } catch {}
+          window.dispatchEvent(new CustomEvent('technoedu:ready'));
           setTimeout(() => {
             setIsMounted(false);
-            if (onComplete) onComplete();
-          }, 250);
+            if (onCompleteRef.current) onCompleteRef.current();
+          }, 150);
         }}
         className="absolute bottom-6 text-[11px] text-slate-400 dark:text-[#7F8795] hover:text-slate-700 dark:hover:text-[#F8FAFC] font-mono tracking-wider transition-colors uppercase px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#1A1D23]"
       >

@@ -20,6 +20,8 @@ import {
   Check,
 } from 'lucide-react';
 import { ThemeToggle } from '../components/common/ThemeToggle';
+import { useAuth } from '../context/AuthContext';
+import { GoogleAuthModal } from '../components/common/GoogleAuthModal';
 
 interface AuthFormData {
   name?: string;
@@ -36,6 +38,8 @@ interface Ripple {
 
 export const SignInPage: React.FC = () => {
   const navigate = useNavigate();
+  const { login, signup, loginWithGoogle } = useAuth();
+  const [authError, setAuthError] = useState<string | null>(null);
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState<AuthFormData>({ name: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +49,8 @@ export const SignInPage: React.FC = () => {
   const [shakeFields, setShakeFields] = useState<{ [key: string]: boolean }>({});
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [oauthLoading, setOauthLoading] = useState<'google' | 'github' | null>(null);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [isGoogleModalOpen, setIsGoogleModalOpen] = useState(false);
   const [ripples, setRipples] = useState<{ [buttonId: string]: Ripple[] }>({});
   const [socialSkeleton, setSocialSkeleton] = useState(true);
 
@@ -172,24 +177,50 @@ export const SignInPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateAll()) return;
+    setAuthError(null);
 
     setIsLoading(true);
-    // Simulate authentication
-    await new Promise((resolve) => setTimeout(resolve, 1400));
-    setIsLoading(false);
-    navigate('/', { replace: true });
+    try {
+      if (isSignUp) {
+        const res = await signup(formData.name || '', formData.email, formData.password);
+        navigate('/onboarding', { replace: true });
+      } else {
+        const res = await login(formData.email, formData.password);
+        if (res.needsOnboarding) {
+          navigate('/onboarding', { replace: true });
+        } else {
+          navigate('/dashboard', { replace: true });
+        }
+      }
+    } catch (err: any) {
+      setAuthError(err.message || 'Authentication failed. Please verify your credentials.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSocialAuth = async (
-    e: React.MouseEvent<HTMLElement>,
-    provider: 'google' | 'github'
-  ) => {
-    createRipple(e, `social-${provider}`);
-    setOauthLoading(provider);
-    // Simulate OAuth handshake
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setOauthLoading(null);
-    navigate('/', { replace: true });
+  const handleGoogleClick = (e: React.MouseEvent<HTMLElement>) => {
+    createRipple(e, 'social-google');
+    setAuthError(null);
+    setIsGoogleModalOpen(true);
+  };
+
+  const handleSelectGoogleAccount = async (account: { name: string; email: string }) => {
+    setIsGoogleLoading(true);
+    setAuthError(null);
+    try {
+      const res = await loginWithGoogle(account);
+      setIsGoogleModalOpen(false);
+      if (res.needsOnboarding) {
+        navigate('/onboarding', { replace: true });
+      } else {
+        navigate('/dashboard', { replace: true });
+      }
+    } catch (err: any) {
+      setAuthError(err.message || 'Google authentication failed. Please try again.');
+    } finally {
+      setIsGoogleLoading(false);
+    }
   };
 
   const handleModeSwitch = (toSignUp: boolean) => {
@@ -446,27 +477,23 @@ export const SignInPage: React.FC = () => {
               </div>
 
               {/* =================================================================
-                  5. SOCIAL AUTH BUTTONS: Loading Skeletons & OAuth UX
+                  5. GOOGLE AUTHENTICATION ONLY (Single social auth provider)
                  ================================================================= */}
               <div
                 className="animate-field-enter mb-6"
                 style={{ animationDelay: '120ms' }}
               >
                 {socialSkeleton ? (
-                  /* Loading Skeletons for Social Buttons */
-                  <div className="grid grid-cols-2 gap-3" aria-label="Loading authentication options">
-                    <div className="h-11 rounded-xl bg-slate-200/70 dark:bg-[#1E222A] skeleton-shimmer" />
-                    <div className="h-11 rounded-xl bg-slate-200/70 dark:bg-[#1E222A] skeleton-shimmer" />
-                  </div>
+                  /* Loading Skeleton for Google Button */
+                  <div className="w-full h-11 rounded-xl bg-slate-200/70 dark:bg-[#1E222A] skeleton-shimmer" />
                 ) : (
-                  <div className="grid grid-cols-2 gap-3">
-                    
+                  <div className="w-full">
                     {/* Google OAuth Button */}
                     <button
                       type="button"
-                      onClick={(e) => handleSocialAuth(e, 'google')}
-                      disabled={isLoading || oauthLoading !== null}
-                      className="relative overflow-hidden flex items-center justify-center gap-2 h-11 px-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] active:scale-[0.985] text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all duration-150 shadow-xs hover:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#111318]"
+                      onClick={handleGoogleClick}
+                      disabled={isLoading || isGoogleLoading}
+                      className="relative overflow-hidden w-full flex items-center justify-center gap-3 h-11 px-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] active:scale-[0.985] text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all duration-150 shadow-xs hover:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#111318]"
                       aria-label="Continue with Google"
                     >
                       {/* Ripple micro-interaction */}
@@ -478,14 +505,14 @@ export const SignInPage: React.FC = () => {
                         />
                       ))}
 
-                      {oauthLoading === 'google' ? (
+                      {isGoogleLoading ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin text-brand-red" aria-hidden="true" />
-                          <span className="text-xs font-bold text-brand-red">Connecting...</span>
+                          <span className="text-xs font-bold text-brand-red">Signing in with Google...</span>
                         </>
                       ) : (
                         <>
-                          <svg className="w-4.5 h-4.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                          <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                               fill="#4285F4"
                               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -503,53 +530,10 @@ export const SignInPage: React.FC = () => {
                               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                             />
                           </svg>
-                          <span>Google</span>
+                          <span>Continue with Google</span>
                         </>
                       )}
                     </button>
-
-                    {/* GitHub OAuth Button */}
-                    <button
-                      type="button"
-                      onClick={(e) => handleSocialAuth(e, 'github')}
-                      disabled={isLoading || oauthLoading !== null}
-                      className="relative overflow-hidden flex items-center justify-center gap-2 h-11 px-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] active:scale-[0.985] text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all duration-150 shadow-xs hover:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#111318]"
-                      aria-label="Continue with GitHub"
-                    >
-                      {/* Ripple micro-interaction */}
-                      {(ripples['social-github'] || []).map((r) => (
-                        <span
-                          key={r.id}
-                          className="absolute rounded-full bg-slate-400/20 dark:bg-white/20 animate-ripple pointer-events-none"
-                          style={{ left: r.x, top: r.y, width: r.size, height: r.size }}
-                        />
-                      ))}
-
-                      {oauthLoading === 'github' ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin text-brand-red" aria-hidden="true" />
-                          <span className="text-xs font-bold text-brand-red">Connecting...</span>
-                        </>
-                      ) : (
-                        <>
-                          <svg className="w-4.5 h-4.5 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                          </svg>
-                          <span>GitHub</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                )}
-
-                {/* OAuth status indicator message */}
-                {oauthLoading && (
-                  <div
-                    className="mt-2.5 text-center text-xs text-brand-red dark:text-rose-400 font-medium animate-fade-in"
-                    role="status"
-                    aria-live="polite"
-                  >
-                    Authorizing with {oauthLoading === 'google' ? 'Google Identity' : 'GitHub'}...
                   </div>
                 )}
               </div>
@@ -568,6 +552,13 @@ export const SignInPage: React.FC = () => {
                   </span>
                 </div>
               </div>
+
+              {authError && (
+                <div className="mb-4 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 flex items-center gap-2.5 text-xs text-rose-700 dark:text-rose-300">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>{authError}</span>
+                </div>
+              )}
 
               {/* =================================================================
                   4. FORM VALIDATION UX: Inline checkmarks, error shake, inputs
@@ -590,7 +581,7 @@ export const SignInPage: React.FC = () => {
                     </label>
                     <div className="relative">
                       <User
-                        className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 pointer-events-none transition-colors duration-200 ${
+                        className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none transition-colors duration-200 ${
                           focusedField === 'name'
                             ? 'text-brand-red dark:text-rose-400'
                             : 'text-slate-400 dark:text-slate-500'
@@ -606,7 +597,7 @@ export const SignInPage: React.FC = () => {
                         onBlur={() => handleFieldBlur('name')}
                         onFocus={() => setFocusedField('name')}
                         placeholder="e.g. Alex Morgan"
-                        disabled={isLoading || oauthLoading !== null}
+                        disabled={isLoading || isGoogleLoading}
                         className={`w-full h-11 pl-10 pr-10 bg-white dark:bg-[#0E1014] border rounded-xl text-sm text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 dark:placeholder-[#737B89] transition-all duration-200 shadow-xs hover:border-slate-300 dark:hover:border-[#374151] focus:outline-none focus:ring-2 focus-visible:ring-2 ${
                           errors.name
                             ? 'border-brand-red focus:border-brand-red focus:ring-brand-red/20'
@@ -659,7 +650,7 @@ export const SignInPage: React.FC = () => {
                   </label>
                   <div className="relative">
                     <Mail
-                      className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 pointer-events-none transition-colors duration-200 ${
+                      className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none transition-colors duration-200 ${
                         focusedField === 'email'
                           ? 'text-brand-red dark:text-rose-400'
                           : 'text-slate-400 dark:text-slate-500'
@@ -675,7 +666,7 @@ export const SignInPage: React.FC = () => {
                       onBlur={() => handleFieldBlur('email')}
                       onFocus={() => setFocusedField('email')}
                       placeholder="you@university.edu"
-                      disabled={isLoading || oauthLoading !== null}
+                      disabled={isLoading || isGoogleLoading}
                       className={`w-full h-11 pl-10 pr-10 bg-white dark:bg-[#0E1014] border rounded-xl text-sm text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 dark:placeholder-[#737B89] transition-all duration-200 shadow-xs hover:border-slate-300 dark:hover:border-[#374151] focus:outline-none focus:ring-2 focus-visible:ring-2 ${
                         errors.email
                           ? 'border-brand-red focus:border-brand-red focus:ring-brand-red/20'
@@ -740,7 +731,7 @@ export const SignInPage: React.FC = () => {
 
                   <div className="relative">
                     <Lock
-                      className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 pointer-events-none transition-colors duration-200 ${
+                      className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none transition-colors duration-200 ${
                         focusedField === 'password'
                           ? 'text-brand-red dark:text-rose-400'
                           : 'text-slate-400 dark:text-slate-500'
@@ -756,7 +747,7 @@ export const SignInPage: React.FC = () => {
                       onBlur={() => handleFieldBlur('password')}
                       onFocus={() => setFocusedField('password')}
                       placeholder="••••••••"
-                      disabled={isLoading || oauthLoading !== null}
+                      disabled={isLoading || isGoogleLoading}
                       className={`w-full h-11 pl-10 pr-11 bg-white dark:bg-[#0E1014] border rounded-xl text-sm text-slate-900 dark:text-[#F8FAFC] placeholder:text-slate-400 dark:placeholder-[#737B89] transition-all duration-200 shadow-xs hover:border-slate-300 dark:hover:border-[#374151] focus:outline-none focus:ring-2 focus-visible:ring-2 ${
                         errors.password
                           ? 'border-brand-red focus:border-brand-red focus:ring-brand-red/20'
@@ -777,9 +768,9 @@ export const SignInPage: React.FC = () => {
                       aria-pressed={showPassword}
                     >
                       {showPassword ? (
-                        <EyeOff className="w-4.5 h-4.5" aria-hidden="true" />
+                        <EyeOff className="w-4 h-4" aria-hidden="true" />
                       ) : (
-                        <Eye className="w-4.5 h-4.5" aria-hidden="true" />
+                        <Eye className="w-4 h-4" aria-hidden="true" />
                       )}
                     </button>
                   </div>
@@ -843,7 +834,7 @@ export const SignInPage: React.FC = () => {
                         aria-label="Remember me on this browser"
                       />
                       <div
-                        className={`w-4.5 h-4.5 rounded-md border flex items-center justify-center transition-all duration-200 ${
+                        className={`w-4 h-4 rounded-md border flex items-center justify-center transition-all duration-200 ${
                           rememberMe
                             ? 'bg-brand-red border-brand-red text-white'
                             : 'border-slate-300 dark:border-[#252932] bg-white dark:bg-[#0E1014] group-hover:border-slate-400 dark:group-hover:border-[#374151]'
@@ -868,7 +859,7 @@ export const SignInPage: React.FC = () => {
                   <button
                     type="submit"
                     onClick={(e) => createRipple(e, 'submit-btn')}
-                    disabled={isLoading || oauthLoading !== null}
+                    disabled={isLoading || isGoogleLoading}
                     className="relative overflow-hidden w-full h-11 rounded-xl bg-gradient-to-r from-brand-red via-brand-darkred to-brand-red bg-[length:200%_100%] hover:bg-[right_center] text-white text-sm font-bold transition-all duration-200 shadow-red-glow hover:shadow-[0_12px_28px_-6px_rgba(220,38,38,0.35)] active:scale-[0.985] active:brightness-95 disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#111318]"
                   >
                     {/* Dynamic ripple elements */}
@@ -951,6 +942,13 @@ export const SignInPage: React.FC = () => {
         <p>© {new Date().getFullYear()} TechnoEdu. Empowering students with open-source higher education materials.</p>
       </footer>
 
+      {/* Google Authentication Dialog */}
+      <GoogleAuthModal
+        isOpen={isGoogleModalOpen}
+        onClose={() => setIsGoogleModalOpen(false)}
+        onSelectGoogleAccount={handleSelectGoogleAccount}
+        isLoading={isGoogleLoading}
+      />
     </div>
   );
 };
