@@ -288,6 +288,14 @@ export const Navbar: React.FC = () => {
               <span>Browse Library</span>
             </Link>
 
+            {/* Sign In Button */}
+            <Link
+              to="/signin"
+              className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] text-xs font-bold text-slate-700 dark:text-slate-300 transition-all shadow-xs hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-red/20"
+            >
+              <span>Sign In</span>
+            </Link>
+
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={toggleMobileMenu}
@@ -435,6 +443,15 @@ export const Navbar: React.FC = () => {
             >
               <Library className="w-4 h-4" />
               <span>Explore Open Study Material</span>
+            </Link>
+
+            {/* Mobile Sign In */}
+            <Link
+              to="/signin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3 text-center border border-slate-200 dark:border-[#252932] rounded-2xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-[#1A1D23] transition-colors"
+            >
+              <span>Sign In</span>
             </Link>
           </div>
         </div>

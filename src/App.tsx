@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { MobileNav } from './components/layout/MobileNav';
 import { InitialLoadingScreen } from './components/common/InitialLoadingScreen';
 import { LandingPage } from './pages/LandingPage';
+import { SignInPage } from './pages/SignInPage';
 import { ExamExplorerPage } from './pages/ExamExplorerPage';
 import { ExamDetailPage } from './pages/ExamDetailPage';
 import { UgcNetHubPage } from './pages/UgcNetHubPage';
@@ -60,6 +61,7 @@ export const App: React.FC = () => {
           <Route path="/platforms" element={<PlatformsDirectoryPage />} />
           <Route path="/directory" element={<CompleteDirectoryPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/signin" element={<SignInPage />} />
 
           {/* Blogs & Knowledge Hub Routes */}
           <Route path="/blogs" element={<BlogsPage />} />

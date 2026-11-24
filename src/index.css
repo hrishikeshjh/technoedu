@@ -444,4 +444,191 @@ html.theme-transition *::after {
   animation: statBarFill 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ==========================================================================
+   Sign In & Auth Polish Animations & Keyframes
+   ========================================================================== */
+
+@keyframes orbFloat1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(35px, -45px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 25px) scale(0.94);
+  }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 35px) scale(1.06);
+  }
+  66% {
+    transform: translate(30px, -40px) scale(0.92);
+  }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, 40px) scale(1.1);
+  }
+}
+
+@keyframes inputShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  15%, 45%, 75% {
+    transform: translateX(-6px);
+  }
+  30%, 60%, 90% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes fieldEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes badgeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes buttonRipple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.animate-orb-1 {
+  animation: orbFloat1 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-2 {
+  animation: orbFloat2 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-3 {
+  animation: orbFloat3 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-input-shake {
+  animation: inputShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.animate-field-enter {
+  animation: fieldEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-badge-float {
+  animation: badgeFloat 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-badge-float-delayed {
+  animation: badgeFloat 4.5s ease-in-out infinite;
+  animation-delay: 2.25s;
+  will-change: transform;
+}
+
+.animate-ripple {
+  animation: buttonRipple 0.65s ease-out forwards;
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  animation: skeletonPulse 1.8s ease-in-out infinite;
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  animation: shimmerMove 1.8s infinite;
+}
+
+.dark .skeleton-shimmer::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes shimmerMove {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Accessibility: Strict prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb-1,
+  .animate-orb-2,
+  .animate-orb-3,
+  .animate-input-shake,
+  .animate-field-enter,
+  .animate-badge-float,
+  .animate-badge-float-delayed,
+  .animate-ripple,
+  .skeleton-shimmer,
+  .skeleton-shimmer::after,
+  .animate-rose-breath,
+  .animate-stat-fill {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-field-enter {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
 
