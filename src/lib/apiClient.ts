@@ -6,10 +6,14 @@ const API_BASE_URL = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBas
  * falling back to same-origin relative paths (e.g. /api/...).
  */
 export function getApiUrl(path: string): string {
-  if (!path.startsWith('/')) {
-    return `${API_BASE_URL}/${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  if (!API_BASE_URL || API_BASE_URL === '/api') {
+    return normalizedPath;
   }
-  return `${API_BASE_URL}${path}`;
+  if (API_BASE_URL.endsWith('/api') && normalizedPath.startsWith('/api/')) {
+    return `${API_BASE_URL}${normalizedPath.slice(4)}`;
+  }
+  return `${API_BASE_URL}${normalizedPath}`;
 }
 
 /**
