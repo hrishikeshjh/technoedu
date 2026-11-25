@@ -23,7 +23,7 @@ import {
 import { ThemeToggle } from '../components/common/ThemeToggle';
 import { useAuth } from '../context/AuthContext';
 import { GoogleAuthModal } from '../components/common/GoogleAuthModal';
-import { isGoogleOAuthConfigured, requestGoogleAccessToken } from '../lib/googleAuth';
+import { resolveGoogleClientId, requestGoogleAccessToken } from '../lib/googleAuth';
 import { getApiUrl, parseJsonResponse } from '../lib/apiClient';
 
 interface AuthFormData {
@@ -210,19 +210,21 @@ export const SignInPage: React.FC = () => {
   const handleGoogleClick = async (e: React.MouseEvent<HTMLElement>) => {
     createRipple(e, 'social-google');
     setAuthError(null);
-
-    if (!isGoogleOAuthConfigured()) {
-      if (import.meta.env.DEV) {
-        setIsGoogleModalOpen(true);
-      } else {
-        setAuthError('Google Sign-In is not configured yet. Please sign in with your email and password.');
-      }
-      return;
-    }
-
     setIsGoogleLoading(true);
+
     try {
-      const accessToken = await requestGoogleAccessToken();
+      const clientId = await resolveGoogleClientId();
+      if (!clientId) {
+        setIsGoogleLoading(false);
+        if (import.meta.env.DEV) {
+          setIsGoogleModalOpen(true);
+        } else {
+          setAuthError('Google Sign-In is not configured yet. Please sign in with your email and password.');
+        }
+        return;
+      }
+
+      const accessToken = await requestGoogleAccessToken(clientId);
       const res = await loginWithGoogle({ accessToken });
       if (res.needsOnboarding) {
         navigate('/onboarding', { replace: true });

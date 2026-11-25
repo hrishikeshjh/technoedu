@@ -6,7 +6,9 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
-const DB_PATH = path.resolve(ROOT_DIR, 'data/technoedu.db');
+const DB_PATH = process.env.VERCEL
+  ? '/tmp/technoedu.db'
+  : path.resolve(ROOT_DIR, 'data/technoedu.db');
 
 // Ensure data directory exists
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });

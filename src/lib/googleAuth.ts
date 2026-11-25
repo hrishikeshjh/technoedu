@@ -1,3 +1,5 @@
+import { getApiUrl, parseJsonResponse } from './apiClient';
+
 declare global {
   interface Window {
     google?: {
@@ -26,6 +28,29 @@ export function getGoogleClientId(): string {
 export function isGoogleOAuthConfigured(): boolean {
   const clientId = getGoogleClientId();
   return Boolean(clientId && !clientId.startsWith(PLACEHOLDER_PREFIX) && clientId.includes('.apps.googleusercontent.com'));
+}
+
+let cachedServerClientId: string | null | undefined = undefined;
+
+export async function resolveGoogleClientId(): Promise<string | null> {
+  if (isGoogleOAuthConfigured()) {
+    return getGoogleClientId();
+  }
+  if (cachedServerClientId !== undefined) {
+    return cachedServerClientId;
+  }
+  try {
+    const res = await fetch(getApiUrl('/api/auth/config'));
+    if (res.ok) {
+      const data = await parseJsonResponse<{ googleClientId?: string | null }>(res);
+      cachedServerClientId = data.googleClientId || null;
+      return cachedServerClientId;
+    }
+  } catch {
+    // Ignore network error and fall back to null
+  }
+  cachedServerClientId = null;
+  return null;
 }
 
 let gsiScriptPromise: Promise<void> | null = null;
@@ -67,9 +92,9 @@ function loadGoogleIdentityScript(): Promise<void> {
 /**
  * Opens Google's OAuth 2.0 popup via Google Identity Services and resolves with an access token.
  */
-export async function requestGoogleAccessToken(): Promise<string> {
-  const clientId = getGoogleClientId();
-  if (!isGoogleOAuthConfigured()) {
+export async function requestGoogleAccessToken(overrideClientId?: string): Promise<string> {
+  const clientId = (overrideClientId || '').trim() || (await resolveGoogleClientId());
+  if (!clientId || clientId.startsWith(PLACEHOLDER_PREFIX)) {
     throw new Error('Google OAuth Client ID is not configured.');
   }
 

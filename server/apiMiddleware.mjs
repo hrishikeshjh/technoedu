@@ -21,6 +21,16 @@ function sendJson(res, statusCode, data) {
 }
 
 function parseJsonBody(req) {
+  if (req.body !== undefined) {
+    if (typeof req.body === 'string') {
+      try {
+        return Promise.resolve(req.body ? JSON.parse(req.body) : {});
+      } catch {
+        return Promise.reject(new Error('Invalid JSON'));
+      }
+    }
+    return Promise.resolve(req.body || {});
+  }
   return new Promise((resolve, reject) => {
     let body = '';
     req.on('data', (chunk) => {
@@ -97,6 +107,13 @@ export function createApiRequestHandler() {
           // ───────────────────────────────────────────────────────────────────
           // 2. Authentication: /api/auth/* (Google Auth & Email Sign-in Only)
           // ───────────────────────────────────────────────────────────────────
+
+          // GET /api/auth/config
+          if (pathname === '/api/auth/config' && req.method === 'GET') {
+            return sendJson(res, 200, {
+              googleClientId: getConfiguredGoogleClientId(),
+            });
+          }
 
           // POST /api/auth/google
           if (pathname === '/api/auth/google' && req.method === 'POST') {
