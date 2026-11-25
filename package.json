@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "start": "node server/prodServer.mjs",
     "harvest:generate": "node scripts/harvester.mjs --generate",
     "harvest:verify": "node scripts/harvester.mjs --verify",
     "harvest:download": "node scripts/harvester.mjs --download",

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Library, CheckCircle, GraduationCap, ShieldCheck, BookOpen, Globe2, Sparkles, LayoutDashboard } from 'lucide-react';
-import { AnimatedCounter } from '../common/AnimatedCounter';
+import { ArrowRight, Library, CheckCircle, GraduationCap, Sparkles, LayoutDashboard } from 'lucide-react';
 import { ScrollReveal } from '../common/ScrollReveal';
 import { useAuth } from '../../context/AuthContext';
 
@@ -141,109 +140,6 @@ export const HeroSection: React.FC = () => {
               </div>
             </ScrollReveal>
           </div>
-
-        </div>
-      </div>
-
-      {/* Stats Section with Container & Rich Animated Cards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-          {/* Stat 1 */}
-          <ScrollReveal animation="fade-up" delay={100} className="h-full">
-            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <GraduationCap className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
-                    Programs
-                  </span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
-                  <AnimatedCounter end={15} suffix="+" duration={1800} delay={100} />
-                </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Target Examinations</div>
-                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">Civil Services, Abroad, Law &amp; Govt</p>
-              </div>
-              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
-                <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '150ms' }} />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Stat 2 */}
-          <ScrollReveal animation="fade-up" delay={200} className="h-full">
-            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
-                    Verified
-                  </span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
-                  <AnimatedCounter end={100} suffix="%" duration={2000} delay={250} />
-                </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Free &amp; Open Source</div>
-                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">No paywalls or subscriptions</p>
-              </div>
-              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
-                <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '300ms' }} />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Stat 3 */}
-          <ScrollReveal animation="fade-up" delay={300} className="h-full">
-            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
-                    Compendiums
-                  </span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
-                  <AnimatedCounter end={500} suffix="+" duration={2200} delay={400} />
-                </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Curated Textbooks</div>
-                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">Direct links to verified repositories</p>
-              </div>
-              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
-                <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '450ms' }} />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Stat 4 */}
-          <ScrollReveal animation="fade-up" delay={400} className="h-full">
-            <div className="bg-white dark:bg-[#111318] rounded-2xl p-5 border border-slate-200 dark:border-[#252932] shadow-soft hover:shadow-md hover:border-brand-red/40 dark:hover:border-brand-red/60 transition-all duration-300 group flex flex-col justify-between h-full">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 text-brand-red dark:text-red-400 border border-red-100/80 dark:border-red-900/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Globe2 className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-brand-darkred dark:text-red-400">
-                    OER Network
-                  </span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
-                  <AnimatedCounter end={9} suffix="+" duration={1600} delay={550} />
-                </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800 dark:text-[#F8FAFC] mt-1">Global Open Platforms</div>
-                <p className="text-[11px] text-slate-500 dark:text-[#7F8795] mt-0.5">NPTEL, MIT OCW, NCERT, OpenStax</p>
-              </div>
-              <div className="w-full h-1 bg-slate-100 dark:bg-[#252932] rounded-full overflow-hidden mt-4">
-                <div className="h-full bg-gradient-to-r from-red-600 to-rose-500 rounded-full animate-stat-fill" style={{ animationDelay: '600ms' }} />
-              </div>
-            </div>
-          </ScrollReveal>
 
         </div>
       </div>

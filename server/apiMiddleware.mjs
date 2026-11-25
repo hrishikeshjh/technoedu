@@ -38,13 +38,18 @@ function parseJsonBody(req) {
   });
 }
 
-export function apiMiddleware() {
+const GOOGLE_CLIENT_ID_PLACEHOLDER = 'your_google_oauth_client_id';
+
+function getConfiguredGoogleClientId() {
+  const id = (process.env.GOOGLE_CLIENT_ID || process.env.VITE_GOOGLE_CLIENT_ID || '').trim();
+  if (!id || id.startsWith(GOOGLE_CLIENT_ID_PLACEHOLDER)) return null;
+  return id;
+}
+
+export function createApiRequestHandler() {
   const db = getDb();
 
-  return {
-    name: 'technoedu-api-middleware',
-    configureServer(server) {
-      server.middlewares.use(async (req, res, next) => {
+  return async (req, res, next) => {
         const urlObj = new URL(req.url, 'http://localhost');
         const pathname = urlObj.pathname;
 
@@ -96,26 +101,58 @@ export function apiMiddleware() {
           // POST /api/auth/google
           if (pathname === '/api/auth/google' && req.method === 'POST') {
             const body = await parseJsonBody(req);
-            const { email, name, avatarUrl, credential } = body;
+            const { email, name, avatarUrl, credential, accessToken } = body;
 
-            let userEmail = email;
-            let userName = name;
-            let userAvatar = avatarUrl;
+            let userEmail = '';
+            let userName = '';
+            let userAvatar = avatarUrl || '';
+            const configuredClientId = getConfiguredGoogleClientId();
 
-            // If a Google JWT credential was passed (e.g. from Google Identity Services GIS)
-            if (credential && typeof credential === 'string') {
-              try {
-                const parts = credential.split('.');
-                if (parts.length === 3) {
-                  const payloadStr = Buffer.from(parts[1], 'base64').toString('utf-8');
-                  const payload = JSON.parse(payloadStr);
-                  if (payload.email) userEmail = payload.email;
-                  if (payload.name) userName = payload.name;
-                  if (payload.picture) userAvatar = payload.picture;
-                }
-              } catch (e) {
-                console.warn('Could not parse Google credential JWT:', e);
+            // 1. Verify Google OAuth2 access token via Google userinfo endpoint
+            if (accessToken && typeof accessToken === 'string') {
+              const userInfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                headers: { Authorization: `Bearer ${accessToken}` },
+              });
+              if (!userInfoRes.ok) {
+                return sendJson(res, 401, { error: 'Invalid or expired Google access token.' });
               }
+              const profile = await userInfoRes.json();
+              if (!profile.email || profile.email_verified === false) {
+                return sendJson(res, 401, { error: 'Google account email is not verified.' });
+              }
+              userEmail = profile.email;
+              userName = profile.name || '';
+              userAvatar = profile.picture || userAvatar;
+            }
+            // 2. Verify Google Identity Services ID token (JWT) via Google tokeninfo endpoint
+            else if (credential && typeof credential === 'string') {
+              const tokenInfoRes = await fetch(
+                `https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(credential)}`
+              );
+              if (!tokenInfoRes.ok) {
+                return sendJson(res, 401, { error: 'Invalid or expired Google ID token.' });
+              }
+              const payload = await tokenInfoRes.json();
+              if (configuredClientId && payload.aud !== configuredClientId) {
+                return sendJson(res, 401, { error: 'Google token audience mismatch.' });
+              }
+              if (!payload.email || payload.email_verified !== 'true') {
+                return sendJson(res, 401, { error: 'Google account email is not verified.' });
+              }
+              userEmail = payload.email;
+              userName = payload.name || '';
+              userAvatar = payload.picture || userAvatar;
+            }
+            // 3. Development-only fallback when Google OAuth is not configured
+            else if (process.env.NODE_ENV !== 'production' && !configuredClientId && email) {
+              userEmail = email;
+              userName = name || '';
+            } else {
+              return sendJson(res, 401, {
+                error: configuredClientId
+                  ? 'A verified Google token is required.'
+                  : 'Google Sign-In is not configured on this server.',
+              });
             }
 
             if (!userEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
@@ -210,7 +247,7 @@ export function apiMiddleware() {
           // POST /api/auth/login
           if (pathname === '/api/auth/login' && req.method === 'POST') {
             const body = await parseJsonBody(req);
-            const { email, password } = body;
+            const { email, password, rememberMe = true } = body;
 
             if (!email || !password) {
               return sendJson(res, 400, { error: 'Email and password are required.' });
@@ -227,7 +264,7 @@ export function apiMiddleware() {
               return sendJson(res, 401, { error: 'Invalid email or password.' });
             }
 
-            const { token, expiresAt } = createSession(userRow.id);
+            const { token, expiresAt } = createSession(userRow.id, rememberMe ? 30 : 1);
             const user = getUserFromToken(token);
             const needsOnboarding = !user.learningProfile?.onboardingCompleted;
 
@@ -1240,7 +1277,19 @@ export function apiMiddleware() {
           console.error('API Server Error:', error);
           return sendJson(res, 500, { error: 'Internal server error', details: error.message });
         }
-      });
+  };
+}
+
+export function apiMiddleware() {
+  const handler = createApiRequestHandler();
+
+  return {
+    name: 'technoedu-api-middleware',
+    configureServer(server) {
+      server.middlewares.use(handler);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(handler);
     },
   };
 }

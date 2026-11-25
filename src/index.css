@@ -47,6 +47,25 @@
   .dark body {
     color: #f8fafc;
   }
+  /* Keep browser-autofilled inputs consistent with light/dark theme */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #0f172a;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #0e1014 inset !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    caret-color: #f8fafc;
+    transition: background-color 5000s ease-in-out 0s;
+  }
   /* Minimum touch target size for accessibility on buttons and interactive roles (WCAG 2.5.5) */
   button:not(.no-min-touch),
   [role="button"]:not(.no-min-touch) {

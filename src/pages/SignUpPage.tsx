@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ThemeToggle } from '../components/common/ThemeToggle';
 import { GoogleAuthModal } from '../components/common/GoogleAuthModal';
+import { isGoogleOAuthConfigured, requestGoogleAccessToken } from '../lib/googleAuth';
 import {
   GraduationCap,
   Mail,
@@ -70,6 +71,33 @@ export const SignUpPage: React.FC = () => {
       setError(err.message || 'Failed to create account. Please try again.');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleGoogleClick = async () => {
+    setError(null);
+    if (!isGoogleOAuthConfigured()) {
+      if (import.meta.env.DEV) {
+        setIsGoogleModalOpen(true);
+      } else {
+        setError('Google Sign-In is not configured yet. Please sign up with your email and password.');
+      }
+      return;
+    }
+
+    setIsGoogleLoading(true);
+    try {
+      const accessToken = await requestGoogleAccessToken();
+      const res = await loginWithGoogle({ accessToken });
+      if (res.needsOnboarding) {
+        navigate('/onboarding', { replace: true });
+      } else {
+        navigate('/dashboard', { replace: true });
+      }
+    } catch (err: any) {
+      setError(err.message || 'Google authentication failed. Please try again.');
+    } finally {
+      setIsGoogleLoading(false);
     }
   };
 
@@ -204,10 +232,7 @@ export const SignUpPage: React.FC = () => {
             <div className="mb-5">
               <button
                 type="button"
-                onClick={() => {
-                  setError(null);
-                  setIsGoogleModalOpen(true);
-                }}
+                onClick={handleGoogleClick}
                 disabled={isLoading || isGoogleLoading}
                 className="w-full h-11 px-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] active:scale-[0.985] text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 flex items-center justify-center gap-3 transition-all shadow-xs hover:shadow-sm disabled:opacity-50"
               >

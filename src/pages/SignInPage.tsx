@@ -18,10 +18,13 @@ import {
   GraduationCap,
   FileCheck2,
   Check,
+  X,
 } from 'lucide-react';
 import { ThemeToggle } from '../components/common/ThemeToggle';
 import { useAuth } from '../context/AuthContext';
 import { GoogleAuthModal } from '../components/common/GoogleAuthModal';
+import { isGoogleOAuthConfigured, requestGoogleAccessToken } from '../lib/googleAuth';
+import { getApiUrl, parseJsonResponse } from '../lib/apiClient';
 
 interface AuthFormData {
   name?: string;
@@ -51,6 +54,11 @@ export const SignInPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isGoogleModalOpen, setIsGoogleModalOpen] = useState(false);
+  const [isForgotModalOpen, setIsForgotModalOpen] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotLoading, setForgotLoading] = useState(false);
+  const [forgotMessage, setForgotMessage] = useState<string | null>(null);
+  const [forgotError, setForgotError] = useState<string | null>(null);
   const [ripples, setRipples] = useState<{ [buttonId: string]: Ripple[] }>({});
   const [socialSkeleton, setSocialSkeleton] = useState(true);
 
@@ -182,10 +190,10 @@ export const SignInPage: React.FC = () => {
     setIsLoading(true);
     try {
       if (isSignUp) {
-        const res = await signup(formData.name || '', formData.email, formData.password);
+        await signup(formData.name || '', formData.email, formData.password);
         navigate('/onboarding', { replace: true });
       } else {
-        const res = await login(formData.email, formData.password);
+        const res = await login(formData.email, formData.password, rememberMe);
         if (res.needsOnboarding) {
           navigate('/onboarding', { replace: true });
         } else {
@@ -199,10 +207,62 @@ export const SignInPage: React.FC = () => {
     }
   };
 
-  const handleGoogleClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleGoogleClick = async (e: React.MouseEvent<HTMLElement>) => {
     createRipple(e, 'social-google');
     setAuthError(null);
-    setIsGoogleModalOpen(true);
+
+    if (!isGoogleOAuthConfigured()) {
+      if (import.meta.env.DEV) {
+        setIsGoogleModalOpen(true);
+      } else {
+        setAuthError('Google Sign-In is not configured yet. Please sign in with your email and password.');
+      }
+      return;
+    }
+
+    setIsGoogleLoading(true);
+    try {
+      const accessToken = await requestGoogleAccessToken();
+      const res = await loginWithGoogle({ accessToken });
+      if (res.needsOnboarding) {
+        navigate('/onboarding', { replace: true });
+      } else {
+        navigate('/dashboard', { replace: true });
+      }
+    } catch (err: any) {
+      setAuthError(err.message || 'Google authentication failed. Please try again.');
+    } finally {
+      setIsGoogleLoading(false);
+    }
+  };
+
+  const handleForgotPasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setForgotError(null);
+    setForgotMessage(null);
+
+    if (!forgotEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotEmail.trim())) {
+      setForgotError('Please enter a valid email address.');
+      return;
+    }
+
+    setForgotLoading(true);
+    try {
+      const res = await fetch(getApiUrl('/api/auth/forgot-password'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim() }),
+      });
+      const data = await parseJsonResponse(res);
+      if (!res.ok) {
+        throw new Error(data.error || 'Could not process recovery request.');
+      }
+      setForgotMessage(data.message || 'If an account exists with this email, recovery instructions have been sent.');
+    } catch (err: any) {
+      setForgotError(err.message || 'Could not process recovery request.');
+    } finally {
+      setForgotLoading(false);
+    }
   };
 
   const handleSelectGoogleAccount = async (account: { name: string; email: string }) => {
@@ -225,6 +285,7 @@ export const SignInPage: React.FC = () => {
 
   const handleModeSwitch = (toSignUp: boolean) => {
     setIsSignUp(toSignUp);
+    setAuthError(null);
     setErrors({});
     setTouched({});
     setShakeFields({});
@@ -720,12 +781,18 @@ export const SignInPage: React.FC = () => {
                       Password
                     </label>
                     {!isSignUp && (
-                      <Link
-                        to="/forgot-password"
-                        className="text-xs font-semibold text-brand-red hover:text-brand-darkred dark:hover:text-rose-400 transition-colors focus-visible:outline-none focus-visible:underline rounded"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setForgotEmail(formData.email || '');
+                          setForgotError(null);
+                          setForgotMessage(null);
+                          setIsForgotModalOpen(true);
+                        }}
+                        className="no-min-touch text-xs font-semibold text-brand-red hover:text-brand-darkred dark:hover:text-rose-400 transition-colors focus-visible:outline-none focus-visible:underline rounded"
                       >
                         Forgot password?
-                      </Link>
+                      </button>
                     )}
                   </div>
 
@@ -942,13 +1009,101 @@ export const SignInPage: React.FC = () => {
         <p>© {new Date().getFullYear()} TechnoEdu. Empowering students with open-source higher education materials.</p>
       </footer>
 
-      {/* Google Authentication Dialog */}
+      {/* Google Authentication Dialog (Dev fallback when VITE_GOOGLE_CLIENT_ID is unset) */}
       <GoogleAuthModal
         isOpen={isGoogleModalOpen}
         onClose={() => setIsGoogleModalOpen(false)}
         onSelectGoogleAccount={handleSelectGoogleAccount}
         isLoading={isGoogleLoading}
       />
+
+      {/* Forgot Password Modal */}
+      {isForgotModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="forgot-password-title"
+        >
+          <div className="w-full max-w-md bg-white dark:bg-[#121419] border border-slate-200 dark:border-[#272B35] rounded-3xl shadow-2xl overflow-hidden p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 id="forgot-password-title" className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">
+                  Reset your password
+                </h2>
+                <p className="text-xs text-slate-500 dark:text-[#8E97A6] mt-0.5">
+                  Enter your account email to receive recovery instructions.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsForgotModalOpen(false)}
+                className="no-min-touch p-1.5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#1E222A] transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {forgotError && (
+              <div className="mb-3 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 text-xs text-rose-700 dark:text-rose-300 flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{forgotError}</span>
+              </div>
+            )}
+
+            {forgotMessage ? (
+              <div className="space-y-4">
+                <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 text-xs text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <span>{forgotMessage}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsForgotModalOpen(false)}
+                  className="w-full h-10 rounded-xl bg-brand-red hover:bg-brand-darkred text-white text-xs font-bold transition-colors"
+                >
+                  Back to Sign In
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleForgotPasswordSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="forgot-email" className="block text-xs font-semibold text-slate-700 dark:text-[#A7AFBD] mb-1.5">
+                    Email address
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <input
+                      id="forgot-email"
+                      type="email"
+                      value={forgotEmail}
+                      onChange={(e) => setForgotEmail(e.target.value)}
+                      placeholder="you@university.edu"
+                      required
+                      className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#0E1014] text-sm text-slate-900 dark:text-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  disabled={forgotLoading}
+                  className="w-full h-11 rounded-xl bg-brand-red hover:bg-brand-darkred text-white text-sm font-bold flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
+                >
+                  {forgotLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending instructions...</span>
+                    </>
+                  ) : (
+                    <span>Send recovery link</span>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

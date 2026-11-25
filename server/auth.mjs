@@ -12,12 +12,13 @@ export function verifyPassword(password, storedHash, salt) {
   return hash === storedHash;
 }
 
-export function createSession(userId) {
+export function createSession(userId, ttlDays = 30) {
   const db = getDb();
   const token = crypto.randomBytes(32).toString('hex');
   const id = 'sess_' + crypto.randomUUID();
   const now = new Date();
-  const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString(); // 30 days
+  const safeDays = Math.max(1, Math.min(365, Number(ttlDays) || 30));
+  const expiresAt = new Date(now.getTime() + safeDays * 24 * 60 * 60 * 1000).toISOString();
 
   db.prepare(`
     INSERT INTO sessions (id, token, user_id, expires_at, created_at)

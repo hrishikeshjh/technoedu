@@ -9,6 +9,7 @@ import {
   unenrollCourseApi,
   updateLearningPreferencesApi,
 } from '../lib/personalization/userLearningProfile';
+import { getApiUrl, parseJsonResponse } from '../lib/apiClient';
 
 interface EnrichedUser extends User {
   learningProfile?: UserLearningProfile | null;
@@ -23,9 +24,9 @@ interface AuthContextType {
   activeCourseId: string | null;
   primaryCourseId: string | null;
   enrollments: CourseEnrollment[];
-  login: (email: string, pass: string) => Promise<{ needsOnboarding: boolean }>;
+  login: (email: string, pass: string, rememberMe?: boolean) => Promise<{ needsOnboarding: boolean }>;
   signup: (name: string, email: string, pass: string) => Promise<{ needsOnboarding: boolean }>;
-  loginWithGoogle: (googleData?: { name?: string; email?: string; avatarUrl?: string; credential?: string }) => Promise<{ needsOnboarding: boolean }>;
+  loginWithGoogle: (googleData?: { name?: string; email?: string; avatarUrl?: string; credential?: string; accessToken?: string }) => Promise<{ needsOnboarding: boolean }>;
   logout: () => Promise<void>;
   submitOnboarding: (onboardingData: any) => Promise<void>;
   switchActiveCourse: (courseId: string) => Promise<void>;
@@ -40,25 +41,44 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const TOKEN_KEY = 'technoedu_token';
 
+function getStoredToken(): string | null {
+  return localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY);
+}
+
+function persistToken(token: string, rememberMe = true) {
+  if (rememberMe) {
+    sessionStorage.removeItem(TOKEN_KEY);
+    localStorage.setItem(TOKEN_KEY, token);
+  } else {
+    localStorage.removeItem(TOKEN_KEY);
+    sessionStorage.setItem(TOKEN_KEY, token);
+  }
+}
+
+function clearStoredToken() {
+  localStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(TOKEN_KEY);
+}
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem(TOKEN_KEY));
+  const [token, setToken] = useState<string | null>(() => getStoredToken());
   const [user, setUser] = useState<EnrichedUser | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchCurrentUser = useCallback(async (authToken: string) => {
     try {
-      const res = await fetch('/api/auth/me', {
+      const res = await fetch(getApiUrl('/api/auth/me'), {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
         },
       });
       if (res.ok) {
-        const data = await res.json();
+        const data = await parseJsonResponse(res);
         setUser(data.user);
       } else {
         // Token invalid or expired
-        localStorage.removeItem(TOKEN_KEY);
+        clearStoredToken();
         setToken(null);
         setUser(null);
       }
@@ -77,19 +97,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [token, fetchCurrentUser]);
 
-  const login = async (email: string, pass: string) => {
+  const login = async (email: string, pass: string, rememberMe = true) => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(getApiUrl('/api/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password: pass }),
+        body: JSON.stringify({ email, password: pass, rememberMe }),
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) {
         throw new Error(data.error || 'Login failed');
       }
-      localStorage.setItem(TOKEN_KEY, data.token);
+      persistToken(data.token, rememberMe);
       setToken(data.token);
       setUser(data.user);
       return { needsOnboarding: Boolean(data.needsOnboarding) };
@@ -101,37 +121,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signup = async (name: string, email: string, pass: string) => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch(getApiUrl('/api/auth/signup'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password: pass }),
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) {
         throw new Error(data.error || 'Signup failed');
       }
-      localStorage.setItem(TOKEN_KEY, data.token);
+      persistToken(data.token, true);
       setToken(data.token);
       setUser(data.user);
-      return { needsOnboarding: true };
+      return { needsOnboarding: Boolean(data.needsOnboarding ?? true) };
     } finally {
       setIsLoading(false);
     }
   };
 
-  const loginWithGoogle = async (googleData?: { name?: string; email?: string; avatarUrl?: string; credential?: string }) => {
+  const loginWithGoogle = async (googleData?: { name?: string; email?: string; avatarUrl?: string; credential?: string; accessToken?: string }) => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/auth/google', {
+      const res = await fetch(getApiUrl('/api/auth/google'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(googleData || {}),
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) {
         throw new Error(data.error || 'Google authentication failed');
       }
-      localStorage.setItem(TOKEN_KEY, data.token);
+      persistToken(data.token, true);
       setToken(data.token);
       setUser(data.user);
       return { needsOnboarding: Boolean(data.needsOnboarding) };
@@ -143,7 +163,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = async () => {
     try {
       if (token) {
-        await fetch('/api/auth/logout', {
+        await fetch(getApiUrl('/api/auth/logout'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -152,7 +172,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }).catch(() => {});
       }
     } finally {
-      localStorage.removeItem(TOKEN_KEY);
+      clearStoredToken();
       setToken(null);
       setUser(null);
     }
@@ -160,7 +180,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const submitOnboarding = async (onboardingData: any) => {
     if (!token) throw new Error('Authentication required');
-    const res = await fetch('/api/onboarding', {
+    const res = await fetch(getApiUrl('/api/onboarding'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -168,7 +188,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       },
       body: JSON.stringify(onboardingData),
     });
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to submit onboarding');
     }
