@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Mail,
   Lock,
@@ -9,22 +9,18 @@ import {
   CheckCircle2,
   AlertCircle,
   ArrowLeft,
-  Sparkles,
   BookOpen,
   Award,
-  Users,
   ShieldCheck,
   User,
-  GraduationCap,
   FileCheck2,
   Check,
   X,
 } from 'lucide-react';
-import { ThemeToggle } from '../components/common/ThemeToggle';
-import { useAuth } from '../context/AuthContext';
-import { GoogleAuthModal } from '../components/common/GoogleAuthModal';
+import { useAuth, EmailNotVerifiedError } from '../context/AuthContext';
 import { resolveGoogleClientId, requestGoogleAccessToken } from '../lib/googleAuth';
 import { getApiUrl, parseJsonResponse } from '../lib/apiClient';
+import { getSafeRedirectPath } from '../lib/authRedirect';
 
 interface AuthFormData {
   name?: string;
@@ -41,8 +37,12 @@ interface Ripple {
 
 export const SignInPage: React.FC = () => {
   const navigate = useNavigate();
-  const { login, signup, loginWithGoogle } = useAuth();
+  const [searchParams] = useSearchParams();
+  const redirectTarget = getSafeRedirectPath(searchParams.get('redirect'), '/dashboard');
+  const sessionReason = searchParams.get('reason');
+  const { login, signup, loginWithGoogle, isAuthenticated, isLoading: authLoading, user } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
+  const [unverifiedEmail, setUnverifiedEmail] = useState<string | null>(null);
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState<AuthFormData>({ name: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -53,22 +53,25 @@ export const SignInPage: React.FC = () => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-  const [isGoogleModalOpen, setIsGoogleModalOpen] = useState(false);
+  const [googleClientId, setGoogleClientId] = useState<string | null>(null);
   const [isForgotModalOpen, setIsForgotModalOpen] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotLoading, setForgotLoading] = useState(false);
   const [forgotMessage, setForgotMessage] = useState<string | null>(null);
   const [forgotError, setForgotError] = useState<string | null>(null);
   const [ripples, setRipples] = useState<{ [buttonId: string]: Ripple[] }>({});
-  const [socialSkeleton, setSocialSkeleton] = useState(true);
 
-  // Briefly show social skeleton on initial mount for polish, then resolve
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setSocialSkeleton(false);
-    }, 350);
-    return () => clearTimeout(timer);
+    resolveGoogleClientId().then(setGoogleClientId);
   }, []);
+
+  // Redirect automatically when already authenticated
+  useEffect(() => {
+    if (!authLoading && isAuthenticated) {
+      const needsOnboarding = !user?.learningProfile?.onboardingCompleted;
+      navigate(needsOnboarding ? '/onboarding' : redirectTarget, { replace: true });
+    }
+  }, [authLoading, isAuthenticated, user, navigate, redirectTarget]);
 
   // Ripple effect handler for micro-interaction
   const createRipple = (e: React.MouseEvent<HTMLElement>, buttonId: string) => {
@@ -184,23 +187,32 @@ export const SignInPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading || isGoogleLoading) return;
     if (!validateAll()) return;
     setAuthError(null);
+    setUnverifiedEmail(null);
 
     setIsLoading(true);
     try {
       if (isSignUp) {
-        await signup(formData.name || '', formData.email, formData.password);
+        const res = await signup(formData.name || '', formData.email, formData.password);
+        if (res.requiresEmailVerification) {
+          navigate(`/verify-email?email=${encodeURIComponent(res.email || formData.email)}`, { replace: true });
+          return;
+        }
         navigate('/onboarding', { replace: true });
       } else {
         const res = await login(formData.email, formData.password, rememberMe);
         if (res.needsOnboarding) {
           navigate('/onboarding', { replace: true });
         } else {
-          navigate('/dashboard', { replace: true });
+          navigate(redirectTarget, { replace: true });
         }
       }
     } catch (err: any) {
+      if (err instanceof EmailNotVerifiedError) {
+        setUnverifiedEmail(err.email);
+      }
       setAuthError(err.message || 'Authentication failed. Please verify your credentials.');
     } finally {
       setIsLoading(false);
@@ -208,19 +220,16 @@ export const SignInPage: React.FC = () => {
   };
 
   const handleGoogleClick = async (e: React.MouseEvent<HTMLElement>) => {
+    if (isLoading || isGoogleLoading) return;
     createRipple(e, 'social-google');
     setAuthError(null);
+    setUnverifiedEmail(null);
     setIsGoogleLoading(true);
 
     try {
-      const clientId = await resolveGoogleClientId();
+      const clientId = googleClientId || (await resolveGoogleClientId());
       if (!clientId) {
-        setIsGoogleLoading(false);
-        if (import.meta.env.DEV) {
-          setIsGoogleModalOpen(true);
-        } else {
-          setAuthError('Google Sign-In is not configured yet. Please sign in with your email and password.');
-        }
+        setAuthError('Google Sign-In is not configured on this server. Please sign in with your email and password.');
         return;
       }
 
@@ -229,7 +238,7 @@ export const SignInPage: React.FC = () => {
       if (res.needsOnboarding) {
         navigate('/onboarding', { replace: true });
       } else {
-        navigate('/dashboard', { replace: true });
+        navigate(redirectTarget, { replace: true });
       }
     } catch (err: any) {
       setAuthError(err.message || 'Google authentication failed. Please try again.');
@@ -267,27 +276,10 @@ export const SignInPage: React.FC = () => {
     }
   };
 
-  const handleSelectGoogleAccount = async (account: { name: string; email: string }) => {
-    setIsGoogleLoading(true);
-    setAuthError(null);
-    try {
-      const res = await loginWithGoogle(account);
-      setIsGoogleModalOpen(false);
-      if (res.needsOnboarding) {
-        navigate('/onboarding', { replace: true });
-      } else {
-        navigate('/dashboard', { replace: true });
-      }
-    } catch (err: any) {
-      setAuthError(err.message || 'Google authentication failed. Please try again.');
-    } finally {
-      setIsGoogleLoading(false);
-    }
-  };
-
   const handleModeSwitch = (toSignUp: boolean) => {
     setIsSignUp(toSignUp);
     setAuthError(null);
+    setUnverifiedEmail(null);
     setErrors({});
     setTouched({});
     setShakeFields({});
@@ -334,7 +326,7 @@ export const SignInPage: React.FC = () => {
       {/* =========================================================================
           TOP NAVIGATION BAR: Back Link, Center Logo (Mobile), Theme Toggle
          ========================================================================= */}
-      <header className="relative z-20 w-full px-4 sm:px-8 py-5 flex items-center justify-between max-w-7xl mx-auto">
+      <header className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between max-w-7xl mx-auto">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-[#A7AFBD] hover:text-brand-red dark:hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#08090B] rounded-lg px-2.5 py-1.5 -ml-2.5 group"
@@ -349,14 +341,6 @@ export const SignInPage: React.FC = () => {
           <img src="/logo.png" alt="TechnoEdu" className="h-7 w-auto block dark:hidden" />
           <img src="/logowhite.png" alt="TechnoEdu" className="h-7 w-auto hidden dark:block" />
         </Link>
-
-        {/* Theme Toggle Component */}
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-block text-xs text-slate-500 dark:text-[#7F8795]">
-            Theme
-          </span>
-          <ThemeToggle />
-        </div>
       </header>
 
       {/* =========================================================================
@@ -370,12 +354,6 @@ export const SignInPage: React.FC = () => {
              ===================================================================== */}
           <div className="hidden lg:flex lg:col-span-6 xl:col-span-7 flex-col justify-center space-y-8 pr-2 xl:pr-6">
             
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 dark:bg-brand-red/10 border border-brand-red/20 text-brand-red dark:text-rose-400 text-xs font-bold tracking-wide shadow-xs w-fit">
-              <GraduationCap className="w-4 h-4" aria-hidden="true" />
-              <span>100% Free & Open Academic Hub</span>
-            </div>
-
             {/* Impact Heading */}
             <div className="space-y-3">
               <h1 className="text-3xl xl:text-5xl font-black text-slate-900 dark:text-[#F8FAFC] tracking-tight leading-[1.18]">
@@ -399,10 +377,10 @@ export const SignInPage: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-slate-900 dark:text-[#F8FAFC]">
-                    50,000+ Curated Study Materials
+                    Curated Study Materials
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-[#A7AFBD] mt-0.5">
-                    Semester notes, syllabi, and official question papers for engineering & sciences.
+                    Structured notes, syllabi, and open educational resources aligned to your goal.
                   </p>
                 </div>
               </div>
@@ -414,10 +392,10 @@ export const SignInPage: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-slate-900 dark:text-[#F8FAFC]">
-                    Competitive & University Exam Hubs
+                    Course-Isolated Workspaces
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-[#A7AFBD] mt-0.5">
-                    GATE, UGC NET, WBJEE, MAKAUT, and state university syllabi continuously updated.
+                    Focused study tracks tailored to your selected examination or subject.
                   </p>
                 </div>
               </div>
@@ -429,32 +407,21 @@ export const SignInPage: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-slate-900 dark:text-[#F8FAFC]">
-                    Verified Previous Year Questions (PYQs)
+                    Practice &amp; Progress Tracking
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-[#A7AFBD] mt-0.5">
-                    Step-by-step solved question papers vetted by university toppers & educators.
+                    Organize your daily preparation with previous year questions and study planners.
                   </p>
                 </div>
               </div>
 
             </div>
 
-            {/* Social Proof & Trust Metric Strip */}
+            {/* Trust Strip */}
             <div className="pt-2 flex flex-wrap items-center gap-6 text-xs text-slate-600 dark:text-[#A7AFBD] border-t border-slate-200/60 dark:border-[#252932]/70">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                </span>
-                <span className="font-semibold text-slate-800 dark:text-slate-200">1,400+ online now</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-brand-red dark:text-rose-400" aria-hidden="true" />
-                <span>15,000+ enrolled students</span>
-              </div>
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                <span>Zero paywalls, ever</span>
+                <span>Personalized &amp; distraction-free learning</span>
               </div>
             </div>
 
@@ -539,19 +506,10 @@ export const SignInPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* =================================================================
-                  5. GOOGLE AUTHENTICATION ONLY (Single social auth provider)
-                 ================================================================= */}
-              <div
-                className="animate-field-enter mb-6"
-                style={{ animationDelay: '120ms' }}
-              >
-                {socialSkeleton ? (
-                  /* Loading Skeleton for Google Button */
-                  <div className="w-full h-11 rounded-xl bg-slate-200/70 dark:bg-[#1E222A] skeleton-shimmer" />
-                ) : (
-                  <div className="w-full">
-                    {/* Google OAuth Button */}
+              {/* Google OAuth Button (shown only when configured) */}
+              {googleClientId && (
+                <>
+                  <div className="animate-field-enter mb-6" style={{ animationDelay: '120ms' }}>
                     <button
                       type="button"
                       onClick={handleGoogleClick}
@@ -559,7 +517,6 @@ export const SignInPage: React.FC = () => {
                       className="relative overflow-hidden w-full flex items-center justify-center gap-3 h-11 px-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] active:scale-[0.985] text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all duration-150 shadow-xs hover:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#111318]"
                       aria-label="Continue with Google"
                     >
-                      {/* Ripple micro-interaction */}
                       {(ripples['social-google'] || []).map((r) => (
                         <span
                           key={r.id}
@@ -576,50 +533,51 @@ export const SignInPage: React.FC = () => {
                       ) : (
                         <>
                           <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                              fill="#4285F4"
-                              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                            />
-                            <path
-                              fill="#34A853"
-                              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                            />
-                            <path
-                              fill="#FBBC05"
-                              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                            />
-                            <path
-                              fill="#EA4335"
-                              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                            />
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                           </svg>
                           <span>Continue with Google</span>
                         </>
                       )}
                     </button>
                   </div>
-                )}
-              </div>
 
-              {/* Section Divider */}
-              <div
-                className="relative my-6 animate-field-enter"
-                style={{ animationDelay: '180ms' }}
-              >
-                <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                  <div className="w-full border-t border-slate-200 dark:border-[#252932]" />
+                  <div className="relative my-6 animate-field-enter" style={{ animationDelay: '180ms' }}>
+                    <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                      <div className="w-full border-t border-slate-200 dark:border-[#252932]" />
+                    </div>
+                    <div className="relative flex justify-center text-xs">
+                      <span className="px-3 bg-white/95 dark:bg-[#111318] text-slate-400 dark:text-[#7F8795] font-medium rounded-full">
+                        or continue with email
+                      </span>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {sessionReason === 'expired' && !authError && (
+                <div className="mb-4 p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 flex items-center gap-2.5 text-xs text-amber-800 dark:text-amber-300">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>Your session has expired. Please sign in again to continue.</span>
                 </div>
-                <div className="relative flex justify-center text-xs">
-                  <span className="px-3 bg-white/95 dark:bg-[#111318] text-slate-400 dark:text-[#7F8795] font-medium rounded-full">
-                    or continue with email
-                  </span>
-                </div>
-              </div>
+              )}
 
               {authError && (
-                <div className="mb-4 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 flex items-center gap-2.5 text-xs text-rose-700 dark:text-rose-300">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
-                  <span>{authError}</span>
+                <div className="mb-4 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 space-y-2 text-xs text-rose-700 dark:text-rose-300">
+                  <div className="flex items-center gap-2.5">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{authError}</span>
+                  </div>
+                  {unverifiedEmail && (
+                    <Link
+                      to={`/verify-email?email=${encodeURIComponent(unverifiedEmail)}`}
+                      className="inline-block font-bold underline hover:text-rose-900 dark:hover:text-rose-200"
+                    >
+                      Verify email address now →
+                    </Link>
+                  )}
                 </div>
               )}
 
@@ -1010,14 +968,6 @@ export const SignInPage: React.FC = () => {
       <footer className="relative z-10 py-4 px-4 text-center text-xs text-slate-400 dark:text-[#7F8795]">
         <p>© {new Date().getFullYear()} TechnoEdu. Empowering students with open-source higher education materials.</p>
       </footer>
-
-      {/* Google Authentication Dialog (Dev fallback when VITE_GOOGLE_CLIENT_ID is unset) */}
-      <GoogleAuthModal
-        isOpen={isGoogleModalOpen}
-        onClose={() => setIsGoogleModalOpen(false)}
-        onSelectGoogleAccount={handleSelectGoogleAccount}
-        isLoading={isGoogleLoading}
-      />
 
       {/* Forgot Password Modal */}
       {isForgotModalOpen && (

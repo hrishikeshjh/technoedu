@@ -625,6 +625,54 @@ html.theme-transition *::after {
   }
 }
 
+@keyframes stepSlideForward {
+  0% {
+    opacity: 0;
+    transform: translateX(22px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes stepSlideBackward {
+  0% {
+    opacity: 0;
+    transform: translateX(-22px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes checkPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  65% {
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-step-forward {
+  animation: stepSlideForward 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-step-backward {
+  animation: stepSlideBackward 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-check-pop {
+  animation: checkPop 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 /* Accessibility: Strict prefers-reduced-motion support */
 @media (prefers-reduced-motion: reduce) {
   .animate-orb-1,
@@ -638,7 +686,10 @@ html.theme-transition *::after {
   .skeleton-shimmer,
   .skeleton-shimmer::after,
   .animate-rose-breath,
-  .animate-stat-fill {
+  .animate-stat-fill,
+  .animate-step-forward,
+  .animate-step-backward,
+  .animate-check-pop {
     animation: none !important;
     transform: none !important;
     transition: none !important;

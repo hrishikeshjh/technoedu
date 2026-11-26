@@ -93,9 +93,6 @@ export const CourseSwitcher: React.FC<{ compact?: boolean }> = ({ compact = fals
             <p className="text-[11px] font-bold text-slate-400 dark:text-[#7F8795] uppercase tracking-wider">
               Enrolled Examinations
             </p>
-            <p className="text-xs text-slate-500 dark:text-[#A7AFBD] mt-0.5">
-              Select an examination to isolate your study space
-            </p>
           </div>
 
           <div className="py-1 max-h-64 overflow-y-auto">

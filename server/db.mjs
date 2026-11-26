@@ -244,6 +244,35 @@ export function initDatabase(db) {
     CREATE INDEX IF NOT EXISTS idx_mocks_user_course ON user_mock_attempts(user_id, course_id);
   `);
 
+  // 13. Email Verifications (OTP codes)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS email_verifications (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      email TEXT NOT NULL,
+      code_hash TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      attempts INTEGER DEFAULT 0,
+      created_at TEXT NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+    CREATE INDEX IF NOT EXISTS idx_ev_email ON email_verifications(email);
+  `);
+
+  // 14. Password Resets
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS password_resets (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      token_hash TEXT UNIQUE NOT NULL,
+      expires_at TEXT NOT NULL,
+      used_at TEXT,
+      created_at TEXT NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+    CREATE INDEX IF NOT EXISTS idx_pr_token ON password_resets(token_hash);
+  `);
+
   seedInitialData(db);
 }
 

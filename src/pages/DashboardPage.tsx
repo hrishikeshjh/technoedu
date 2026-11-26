@@ -16,7 +16,6 @@ import {
   Layers,
   PlayCircle,
   Plus,
-  Sparkles,
   TrendingUp,
   Award,
   ArrowRight,
@@ -195,11 +194,6 @@ export const DashboardPage: React.FC = () => {
 
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/20 border border-brand-red/30 text-rose-300 text-xs font-bold mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-brand-red" />
-                <span>{data.activeCourse.name} Focused Learning Space</span>
-              </div>
-
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">
                 {greeting}, {studentFirstName}!
               </h1>
@@ -223,8 +217,16 @@ export const DashboardPage: React.FC = () => {
 
             <div className="shrink-0 flex flex-wrap sm:flex-col gap-2.5">
               <Link
-                to={`/courses/${data.activeCourse.slug}/subjects`}
+                to={`/courses/${data.activeCourse.slug}/lectures`}
                 className="px-4 py-2.5 rounded-xl bg-brand-red hover:bg-brand-darkred text-white text-xs font-bold flex items-center justify-center gap-2 shadow-red-glow hover:-translate-y-0.5 transition-all"
+              >
+                <PlayCircle className="w-4 h-4" />
+                <span>Lecture Ladder</span>
+              </Link>
+
+              <Link
+                to={`/courses/${data.activeCourse.slug}/subjects`}
+                className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all border border-white/10"
               >
                 <BookOpen className="w-4 h-4" />
                 <span>View Full Syllabus</span>
@@ -502,7 +504,7 @@ export const DashboardPage: React.FC = () => {
             4. RECOMMENDED FOR YOU (Strictly Isolated to Active Course)
            ===================================================================== */}
         <div>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
             <div>
               <h2 className="text-lg font-bold text-slate-900 dark:text-[#F8FAFC]">
                 Recommended For Your {data.activeCourse.name} Preparation
@@ -596,7 +598,7 @@ export const DashboardPage: React.FC = () => {
               <Link
                 key={sub.id}
                 to={`/courses/${data.activeCourse.slug}/subjects/${sub.slug}`}
-                className="p-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-slate-50/50 dark:bg-[#15171C]/50 hover:bg-slate-50 dark:hover:bg-[#1A1D23] transition-all group"
+                className="h-full flex flex-col justify-between p-4 rounded-xl border border-slate-200 dark:border-[#252932] bg-slate-50/50 dark:bg-[#15171C]/50 hover:bg-slate-50 dark:hover:bg-[#1A1D23] transition-all group"
               >
                 <div className="font-bold text-xs text-slate-900 dark:text-[#F8FAFC] group-hover:text-brand-red transition-colors mb-1 truncate">
                   {sub.name}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import {
   Search,
@@ -27,6 +27,16 @@ import { AnimatedCounter } from '../components/common/AnimatedCounter';
 import subjectPdfDirectory from '../data/subjectPdfDirectory.json';
 import { ScrollReveal } from '../components/common/ScrollReveal';
 import { Breadcrumb } from '../components/common/Breadcrumb';
+import { useAuth } from '../context/AuthContext';
+import { COURSE_CONFIGS } from '../lib/personalization/courseConfig';
+
+const COURSE_EXAM_MATCHERS: Record<string, string[]> = {
+  'ugc-net': ['ugc-net', 'ugc net', 'nta net', 'jrf'],
+  'upsc-cse': ['upsc'],
+  'neet-ug': ['neet'],
+  'jee-main': ['jee'],
+  'gate': ['gate'],
+};
 
 const platformIconMap: Record<string, React.ReactNode> = {
   'NPTEL':         <GraduationCap className="w-3.5 h-3.5 text-brand-red" />,
@@ -51,6 +61,7 @@ function getPlatformIcon(platform: string): React.ReactNode {
 }
 
 export const StudyMaterialPage: React.FC = () => {
+  const { isAuthenticated, activeCourseId } = useAuth();
   const [searchParams] = useSearchParams();
   const categoryParam = searchParams.get('category') || 'All';
   const examParam = searchParams.get('exam') || 'All';
@@ -62,10 +73,41 @@ export const StudyMaterialPage: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<StudyMaterialItem | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const filteredMaterials = useMemo(() => {
+  // Strictly isolate study materials to the user's active enrolled exam when signed in
+  const activeCourseConfig = isAuthenticated && activeCourseId ? COURSE_CONFIGS[activeCourseId] : null;
+
+  const scopedMaterials = useMemo(() => {
+    if (!isAuthenticated || !activeCourseId) {
+      return studyMaterials;
+    }
+    const keywords = COURSE_EXAM_MATCHERS[activeCourseId] || [activeCourseId.toLowerCase()];
     return studyMaterials.filter((item: StudyMaterialItem) => {
+      const target = `${item.examName} ${item.title}`.toLowerCase();
+      return keywords.some((kw) => target.includes(kw));
+    });
+  }, [isAuthenticated, activeCourseId]);
+
+  const scopedCategories = useMemo(() => {
+    if (!isAuthenticated || !activeCourseId) {
+      return materialCategories;
+    }
+    const present = new Set<string>(scopedMaterials.map((m) => m.category));
+    return materialCategories.filter((cat) => cat === 'All' || present.has(cat));
+  }, [isAuthenticated, activeCourseId, scopedMaterials]);
+
+  useEffect(() => {
+    if (!scopedCategories.includes(selectedCategory)) {
+      setSelectedCategory('All');
+    }
+  }, [scopedCategories, selectedCategory]);
+
+  const filteredMaterials = useMemo(() => {
+    return scopedMaterials.filter((item: StudyMaterialItem) => {
       const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
-      const matchesExam = selectedExam === 'All' || item.examName.toLowerCase().includes(selectedExam.toLowerCase());
+      const matchesExam =
+        isAuthenticated && activeCourseId
+          ? true
+          : selectedExam === 'All' || item.examName.toLowerCase().includes(selectedExam.toLowerCase());
       const matchesSearch = searchQuery === '' ||
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.previewSummary.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -75,7 +117,7 @@ export const StudyMaterialPage: React.FC = () => {
 
       return matchesCategory && matchesExam && matchesSearch;
     });
-  }, [selectedCategory, selectedExam, searchQuery]);
+  }, [scopedMaterials, selectedCategory, selectedExam, searchQuery, isAuthenticated, activeCourseId]);
 
   const handleShare = (item: StudyMaterialItem) => {
     navigator.clipboard.writeText(window.location.origin + '/library?search=' + encodeURIComponent(item.title));
@@ -98,26 +140,30 @@ export const StudyMaterialPage: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <h1 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-[#F8FAFC] tracking-tight">
-                Open Study Material Library
+                {activeCourseConfig ? `${activeCourseConfig.shortCode} Study Materials` : 'Open Study Material Library'}
               </h1>
               <p className="mt-2 text-slate-500 dark:text-[#A7AFBD] max-w-3xl text-xs sm:text-base leading-relaxed">
-                Free textbooks, lecture notes, and official PYQs — zero paywalls.
+                {activeCourseConfig
+                  ? `Curated textbooks, lecture notes, and official PYQs exclusively for ${activeCourseConfig.name}.`
+                  : 'Free textbooks, lecture notes, and official PYQs — zero paywalls.'}
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-red/10 dark:bg-brand-red/20 border border-brand-red/30 text-brand-red text-xs font-semibold">
-                <CheckCircle className="w-4 h-4 text-brand-red" />
-                <span><strong>{subjectPdfDirectory.metadata.totalChapters}</strong> Verified Direct PDFs on GitHub</span>
-              </span>
-              <Link
-                to="/platforms"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-slate-700 dark:text-[#F8FAFC] text-xs sm:text-sm font-medium hover:border-brand-red/40 hover:text-brand-red transition-all"
-              >
-                <Building2 className="w-4 h-4 text-brand-red" />
-                <span>Browse All Platforms</span>
-              </Link>
-            </div>
+            {!activeCourseConfig && (
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-red/10 dark:bg-brand-red/20 border border-brand-red/30 text-brand-red text-xs font-semibold">
+                  <CheckCircle className="w-4 h-4 text-brand-red" />
+                  <span><strong>{subjectPdfDirectory.metadata.totalChapters}</strong> Verified Direct PDFs on GitHub</span>
+                </span>
+                <Link
+                  to="/platforms"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] text-slate-700 dark:text-[#F8FAFC] text-xs sm:text-sm font-medium hover:border-brand-red/40 hover:text-brand-red transition-all"
+                >
+                  <Building2 className="w-4 h-4 text-brand-red" />
+                  <span>Browse All Platforms</span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
@@ -145,18 +191,25 @@ export const StudyMaterialPage: React.FC = () => {
               )}
             </div>
 
-            {/* Exam selector */}
+            {/* Exam selector (locked to active exam when signed in) */}
             <div className="md:col-span-3">
-              <select
-                value={selectedExam}
-                onChange={(e) => setSelectedExam(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] rounded-xl text-xs sm:text-sm text-slate-700 dark:text-[#F8FAFC] focus:outline-none focus:border-brand-red transition-all"
-              >
-                <option value="All" className="dark:bg-[#111318] dark:text-[#F8FAFC]">All Targeted Exams</option>
-                {examsData.map((e: ExamInfo) => (
-                  <option key={e.id} value={e.shortCode} className="dark:bg-[#111318] dark:text-[#F8FAFC]">{e.shortCode} — {e.name}</option>
-                ))}
-              </select>
+              {activeCourseConfig ? (
+                <div className="w-full px-3.5 py-2.5 bg-red-50/70 dark:bg-brand-red/10 border border-brand-red/30 rounded-xl text-xs sm:text-sm font-semibold text-brand-red flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                  <span className="truncate">{activeCourseConfig.shortCode} Only</span>
+                </div>
+              ) : (
+                <select
+                  value={selectedExam}
+                  onChange={(e) => setSelectedExam(e.target.value)}
+                  className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] rounded-xl text-xs sm:text-sm text-slate-700 dark:text-[#F8FAFC] focus:outline-none focus:border-brand-red transition-all"
+                >
+                  <option value="All" className="dark:bg-[#111318] dark:text-[#F8FAFC]">All Targeted Exams</option>
+                  {examsData.map((e: ExamInfo) => (
+                    <option key={e.id} value={e.shortCode} className="dark:bg-[#111318] dark:text-[#F8FAFC]">{e.shortCode} — {e.name}</option>
+                  ))}
+                </select>
+              )}
             </div>
 
             {/* Category selector */}
@@ -166,7 +219,7 @@ export const StudyMaterialPage: React.FC = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full px-3.5 py-2.5 bg-white dark:bg-[#0E1015] border border-slate-200 dark:border-[#252932] rounded-xl text-xs sm:text-sm text-slate-700 dark:text-[#F8FAFC] focus:outline-none focus:border-brand-red transition-all"
               >
-                {materialCategories.map((cat: string) => (
+                {scopedCategories.map((cat: string) => (
                   <option key={cat} value={cat} className="dark:bg-[#111318] dark:text-[#F8FAFC]">{cat === 'All' ? 'All Resource Categories' : cat}</option>
                 ))}
               </select>
@@ -180,7 +233,7 @@ export const StudyMaterialPage: React.FC = () => {
               <Filter className="w-3.5 h-3.5" />
               Categories:
             </span>
-            {materialCategories.map((cat: string) => (
+            {scopedCategories.map((cat: string) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}

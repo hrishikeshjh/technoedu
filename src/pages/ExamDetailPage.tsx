@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import {
   ExternalLink,
   BookOpen,
@@ -24,6 +25,11 @@ const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text"
 
 export const ExamDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { isAuthenticated, activeCourseId } = useAuth();
+
+  if (isAuthenticated && activeCourseId === 'ugc-net' && id?.toLowerCase() !== 'ugc-net' && id?.toLowerCase() !== 'ugc-net-jrf') {
+    return <Navigate to="/exams/ugc-net" replace />;
+  }
 
   if (id?.toLowerCase() === 'ugc-net' || id?.toLowerCase() === 'ugc-net-jrf') {
     return <UgcNetHubPage />;

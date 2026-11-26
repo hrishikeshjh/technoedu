@@ -200,6 +200,13 @@ export const CourseHubPage: React.FC = () => {
 
   const isEnrolledInThisCourse = enrollments.some((e) => e.courseId === activeSlug);
 
+  // Enforce strict course isolation: redirect to active course if user tries to access an unenrolled course
+  useEffect(() => {
+    if (isAuthenticated && activeCourseId && slug && slug !== activeCourseId && !isEnrolledInThisCourse) {
+      navigate(`/courses/${activeCourseId}`, { replace: true });
+    }
+  }, [isAuthenticated, activeCourseId, slug, isEnrolledInThisCourse, navigate]);
+
   useEffect(() => {
     const fetchCourseAndResources = async () => {
       setIsLoading(true);
@@ -428,6 +435,14 @@ export const CourseHubPage: React.FC = () => {
               }`}
             >
               CBT Mock Tests
+            </Link>
+
+            <Link
+              to={`/courses/${activeSlug}/lectures`}
+              className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-brand-red bg-red-50/70 dark:bg-brand-red/10 hover:bg-red-100/70 transition-colors flex items-center gap-1.5"
+            >
+              <PlayCircle className="w-3.5 h-3.5" />
+              <span>Lectures &amp; Ladder</span>
             </Link>
           </div>
         </div>

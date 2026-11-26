@@ -19,25 +19,9 @@ const getSystemTheme = (): ResolvedTheme => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
-const getStoredTheme = (): ThemeMode => {
-  if (typeof window === 'undefined') return 'system';
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'light' || stored === 'dark' || stored === 'system') {
-      return stored;
-    }
-  } catch {
-    // Ignore localStorage access issues
-  }
-  return 'system';
-};
-
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<ThemeMode>(() => getStoredTheme());
-  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(() => {
-    const initial = getStoredTheme();
-    return initial === 'system' ? getSystemTheme() : initial;
-  });
+  const theme: ThemeMode = 'system';
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(() => getSystemTheme());
 
   // Apply theme to DOM with a temporary transition class
   const applyThemeToDOM = useCallback((targetTheme: ResolvedTheme, withTransition = false) => {
@@ -59,36 +43,28 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, []);
 
-  const setTheme = useCallback((newTheme: ThemeMode) => {
-    setThemeState(newTheme);
-    try {
-      localStorage.setItem(STORAGE_KEY, newTheme);
-    } catch {
-      // Ignore
-    }
-
-    const resolved = newTheme === 'system' ? getSystemTheme() : newTheme;
-    setResolvedTheme(resolved);
-    applyThemeToDOM(resolved, true);
-  }, [applyThemeToDOM]);
+  const setTheme = useCallback((_newTheme: ThemeMode) => {
+    // Theme strictly follows device settings
+  }, []);
 
   const toggleTheme = useCallback(() => {
-    // Quick toggle between light and dark
-    const nextTheme: ThemeMode = resolvedTheme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-  }, [resolvedTheme, setTheme]);
+    // Theme strictly follows device settings
+  }, []);
 
-  // Initial synchronization
+  // Initial synchronization with device preference
   useEffect(() => {
-    const currentResolved = theme === 'system' ? getSystemTheme() : theme;
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Ignore localStorage access issues
+    }
+    const currentResolved = getSystemTheme();
     setResolvedTheme(currentResolved);
     applyThemeToDOM(currentResolved, false);
-  }, [theme, applyThemeToDOM]);
+  }, [applyThemeToDOM]);
 
-  // Listen to OS scheme changes if in system mode
+  // Listen to OS/device scheme changes
   useEffect(() => {
-    if (theme !== 'system') return;
-
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => {
       const newResolved = e.matches ? 'dark' : 'light';
@@ -98,7 +74,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme, applyThemeToDOM]);
+  }, [applyThemeToDOM]);
 
   return (
     <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme, toggleTheme }}>

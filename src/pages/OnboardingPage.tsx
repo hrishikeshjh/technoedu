@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import confetti from 'canvas-confetti';
 import { useAuth } from '../context/AuthContext';
 import { COURSE_CONFIGS } from '../lib/personalization/courseConfig';
-import { ThemeToggle } from '../components/common/ThemeToggle';
 import {
   ArrowLeft,
   ArrowRight,
@@ -205,6 +205,7 @@ export const OnboardingPage: React.FC = () => {
   const { user, submitOnboarding } = useAuth();
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [stepDirection, setStepDirection] = useState<'forward' | 'backward'>('forward');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -286,13 +287,36 @@ export const OnboardingPage: React.FC = () => {
         return;
       }
     }
-    setCurrentStep((prev) => Math.min(prev + 1, 5));
+    setStepDirection('forward');
+    const nextStep = Math.min(currentStep + 1, 5);
+    setCurrentStep(nextStep);
+    if (nextStep === 5) {
+      try {
+        confetti({
+          particleCount: 55,
+          spread: 65,
+          origin: { y: 0.7 },
+          colors: ['#dc2626', '#f43f5e', '#fbbf24', '#ffffff'],
+        });
+      } catch {
+        // Ignore confetti errors in headless/restricted environments
+      }
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBack = () => {
     setError(null);
+    setStepDirection('backward');
     setCurrentStep((prev) => Math.max(prev - 1, 1));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleJumpToStep = (stepNumber: number) => {
+    if (stepNumber >= currentStep) return;
+    setError(null);
+    setStepDirection('backward');
+    setCurrentStep(stepNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -338,48 +362,96 @@ export const OnboardingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#08090B] text-slate-900 dark:text-[#F8FAFC] flex flex-col justify-between transition-colors">
       {/* Top Header */}
-      <header className="w-full px-4 sm:px-8 py-4 flex items-center justify-between border-b border-slate-200/80 dark:border-[#1E222B] bg-white/80 dark:bg-[#0D0F14]/80 backdrop-blur-md sticky top-0 z-30">
-        <div className="flex items-center gap-3">
-          <img
-            src="/logo.png"
-            alt="TechnoEdu"
-            className="h-8 w-auto object-contain block dark:hidden"
-          />
-          <img
-            src="/logowhite.png"
-            alt="TechnoEdu"
-            className="h-8 w-auto object-contain hidden dark:block"
-          />
-          <div className="hidden sm:block h-4 w-px bg-slate-200 dark:bg-slate-700" />
-          <span className="hidden sm:inline-block text-xs font-semibold text-slate-500 dark:text-[#A7AFBD]">
-            Personalized Learning Setup
-          </span>
-        </div>
+      <header className="w-full border-b border-slate-200/80 dark:border-[#1E222B] bg-white/80 dark:bg-[#0D0F14]/80 backdrop-blur-md sticky top-0 z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="TechnoEdu"
+              className="h-8 w-auto object-contain block dark:hidden"
+            />
+            <img
+              src="/logowhite.png"
+              alt="TechnoEdu"
+              className="h-8 w-auto object-contain hidden dark:block"
+            />
+            <div className="hidden sm:block h-4 w-px bg-slate-200 dark:bg-slate-700" />
+            <span className="hidden sm:inline-block text-xs font-semibold text-slate-500 dark:text-[#A7AFBD]">
+              Personalized Learning Setup
+            </span>
+          </div>
 
-        <div className="flex items-center gap-4">
-          <span className="text-xs font-bold text-slate-500 dark:text-[#737B89]">
-            Step {currentStep} of 5
-          </span>
-          <ThemeToggle />
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-bold text-slate-500 dark:text-[#737B89]">
+              Step {currentStep} of 5
+            </span>
+          </div>
         </div>
       </header>
 
-      {/* Progress Bar */}
-      <div className="w-full bg-slate-200/60 dark:bg-[#181B22] h-1.5">
+      {/* Interactive Progress Bar & Stepper */}
+      <div className="w-full bg-slate-200/60 dark:bg-[#181B22] h-1.5 overflow-hidden">
         <div
-          className="bg-brand-red h-full transition-all duration-300 ease-out"
+          className="bg-gradient-to-r from-brand-red to-rose-500 h-full transition-all duration-500 ease-out"
           style={{ width: `${(currentStep / 5) * 100}%` }}
         />
       </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex flex-col justify-center">
+      <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col justify-center">
+        {/* Interactive Step Nodes */}
+        <div className="mb-6 flex items-center justify-between gap-2 px-1" aria-label="Onboarding progress">
+          {[
+            { num: 1, label: 'Profile' },
+            { num: 2, label: 'Goal' },
+            { num: 3, label: 'Focus' },
+            { num: 4, label: 'Pace' },
+            { num: 5, label: 'Review' },
+          ].map((s) => {
+            const isCompleted = currentStep > s.num;
+            const isActive = currentStep === s.num;
+            return (
+              <button
+                key={s.num}
+                type="button"
+                onClick={() => handleJumpToStep(s.num)}
+                disabled={!isCompleted}
+                className={`group flex items-center gap-2 text-xs font-bold transition-all duration-200 ${
+                  isCompleted
+                    ? 'cursor-pointer text-slate-700 dark:text-slate-200 hover:text-brand-red'
+                    : isActive
+                    ? 'cursor-default text-brand-red'
+                    : 'cursor-default text-slate-400 dark:text-[#646C7A]'
+                }`}
+              >
+                <span
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-extrabold transition-all duration-300 ${
+                    isCompleted
+                      ? 'bg-emerald-500 text-white shadow-sm group-hover:scale-110'
+                      : isActive
+                      ? 'bg-brand-red text-white ring-4 ring-brand-red/20 scale-105'
+                      : 'bg-slate-200/80 dark:bg-[#1A1D23] text-slate-500 dark:text-[#7F8795]'
+                  }`}
+                >
+                  {isCompleted ? <Check className="w-3.5 h-3.5 animate-check-pop" /> : s.num}
+                </span>
+                <span className="hidden sm:inline">{s.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
         {error && (
-          <div className="mb-6 p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 flex items-center gap-3 text-xs sm:text-sm text-rose-700 dark:text-rose-300 animate-fade-in-smooth">
+          <div className="mb-6 p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 flex items-center gap-3 text-xs sm:text-sm text-rose-700 dark:text-rose-300 animate-input-shake">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{error}</span>
           </div>
         )}
+
+        <div
+          key={currentStep}
+          className={stepDirection === 'forward' ? 'animate-step-forward' : 'animate-step-backward'}
+        >
 
         {/* ─────────────────────────────────────────────────────────────────
             STEP 1: Student Profile
@@ -543,7 +615,7 @@ export const OnboardingPage: React.FC = () => {
                   className="w-full h-10 pl-10 pr-4 bg-slate-50 dark:bg-[#15171C] border border-slate-200 dark:border-[#252932] rounded-xl text-xs text-slate-900 dark:text-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-brand-red/20 focus:border-brand-red transition-all"
                 />
               </div>
-              <div className="flex gap-1.5 shrink-0">
+              <div className="flex flex-wrap gap-1.5 shrink-0">
                 {(['All', 'Competitive examinations', 'Academic learning'] as const).map((cat) => (
                   <button
                     key={cat}
@@ -836,7 +908,7 @@ export const OnboardingPage: React.FC = () => {
               Your Learning Space Is Ready!
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-[#A7AFBD] mb-8 leading-relaxed">
-              We have configured your personalized dashboard and isolated your study environment exclusively for {selectedCourseMeta.name}.
+              We have configured your personalized dashboard and tailored your study environment for {selectedCourseMeta.name}.
             </p>
 
             {/* Summary Details Card */}
@@ -891,15 +963,10 @@ export const OnboardingPage: React.FC = () => {
                 <span>Language: <strong>{preferredLanguage}</strong></span>
               </div>
             </div>
-
-            <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 text-xs text-amber-800 dark:text-amber-300 flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>
-                <strong>Course Content Isolation Active:</strong> You will only see study materials, roadmaps, and mock tests for <strong>{selectedCourseMeta.name}</strong>. You can enroll in additional courses later anytime from Settings.
-              </span>
-            </div>
           </div>
         )}
+
+        </div>
 
         {/* Step Navigation Actions */}
         <div className="mt-8 flex items-center justify-between gap-4">

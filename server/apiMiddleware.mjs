@@ -3,17 +3,28 @@ import { getDb } from './db.mjs';
 import {
   hashPassword,
   verifyPassword,
+  hashToken,
   createSession,
+  refreshSession,
   deleteSession,
+  deleteAllUserSessions,
+  setSessionCookie,
+  clearSessionCookie,
   getUserFromToken,
   requireAuth,
   extractToken,
 } from './auth.mjs';
+import {
+  validateStartupEnv,
+  getConfiguredGoogleClientId,
+  isEmailProviderConfigured,
+} from './env.mjs';
 import { getLocalPosts, addOrUpdatePost, removePost } from '../scripts/blogSyncServer.mjs';
 
 function sendJson(res, statusCode, data) {
   res.statusCode = statusCode;
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Auth-Token');
@@ -48,15 +59,29 @@ function parseJsonBody(req) {
   });
 }
 
-const GOOGLE_CLIENT_ID_PLACEHOLDER = 'your_google_oauth_client_id';
-
-function getConfiguredGoogleClientId() {
-  const id = (process.env.GOOGLE_CLIENT_ID || process.env.VITE_GOOGLE_CLIENT_ID || '').trim();
-  if (!id || id.startsWith(GOOGLE_CLIENT_ID_PLACEHOLDER)) return null;
-  return id;
+async function sendTransactionalEmail({ to, subject, html, text }) {
+  if (!isEmailProviderConfigured()) {
+    return false;
+  }
+  const apiKey = process.env.EMAIL_PROVIDER_API_KEY.trim();
+  const from = process.env.EMAIL_FROM.trim();
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ from, to, subject, html, text }),
+  });
+  if (!response.ok) {
+    const errText = await response.text().catch(() => '');
+    throw new Error(`Email delivery failed (${response.status}): ${errText}`);
+  }
+  return true;
 }
 
 export function createApiRequestHandler() {
+  validateStartupEnv();
   const db = getDb();
 
   return async (req, res, next) => {
@@ -80,9 +105,11 @@ export function createApiRequestHandler() {
 
         try {
           // ───────────────────────────────────────────────────────────────────
-          // 1. /api/blogs (Preserved functionality)
+          // 1. /api/blogs (Protected behind authentication)
           // ───────────────────────────────────────────────────────────────────
           if (pathname === '/api/blogs') {
+            const user = requireAuth(req, res);
+            if (!user) return;
             if (req.method === 'GET') {
               const posts = getLocalPosts();
               return sendJson(res, 200, posts);
@@ -105,13 +132,14 @@ export function createApiRequestHandler() {
           }
 
           // ───────────────────────────────────────────────────────────────────
-          // 2. Authentication: /api/auth/* (Google Auth & Email Sign-in Only)
+          // 2. Authentication: /api/auth/*
           // ───────────────────────────────────────────────────────────────────
 
           // GET /api/auth/config
           if (pathname === '/api/auth/config' && req.method === 'GET') {
             return sendJson(res, 200, {
               googleClientId: getConfiguredGoogleClientId(),
+              emailVerificationRequired: isEmailProviderConfigured(),
             });
           }
 
@@ -160,15 +188,12 @@ export function createApiRequestHandler() {
               userName = payload.name || '';
               userAvatar = payload.picture || userAvatar;
             }
-            // 3. Development-only fallback when Google OAuth is not configured
-            else if (process.env.NODE_ENV !== 'production' && !configuredClientId && email) {
-              userEmail = email;
-              userName = name || '';
-            } else {
-              return sendJson(res, 401, {
+            // 3. No unverified fallback allowed
+            else {
+              return sendJson(res, configuredClientId ? 401 : 503, {
                 error: configuredClientId
                   ? 'A verified Google token is required.'
-                  : 'Google Sign-In is not configured on this server.',
+                  : 'Google Sign-In is not configured on this server. Please sign in with your email and password.',
               });
             }
 
@@ -201,7 +226,8 @@ export function createApiRequestHandler() {
             }
 
             // Create persistent 30-day session
-            const { token, expiresAt } = createSession(userRow.id);
+            const { token, expiresAt, maxAgeSeconds } = createSession(userRow.id, 30);
+            setSessionCookie(res, token, maxAgeSeconds, req);
             const user = getUserFromToken(token);
             const needsOnboarding = !user?.learningProfile?.onboardingCompleted;
 
@@ -222,14 +248,17 @@ export function createApiRequestHandler() {
             const body = await parseJsonBody(req);
             const { name, email, password } = body;
 
-            if (!name || name.trim().length < 2) {
-              return sendJson(res, 400, { error: 'Name must be at least 2 characters.' });
+            if (!name || typeof name !== 'string' || name.trim().length < 2) {
+              return sendJson(res, 400, { error: 'Full name must be at least 2 characters.' });
             }
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
               return sendJson(res, 400, { error: 'A valid email address is required.' });
             }
-            if (!password || password.length < 6) {
+            if (!password || typeof password !== 'string' || password.length < 6) {
               return sendJson(res, 400, { error: 'Password must be at least 6 characters.' });
+            }
+            if (password.length > 128) {
+              return sendJson(res, 400, { error: 'Password must be 128 characters or fewer.' });
             }
 
             const cleanEmail = email.trim().toLowerCase();
@@ -241,14 +270,41 @@ export function createApiRequestHandler() {
             const { hash, salt } = hashPassword(password);
             const userId = 'usr_' + crypto.randomUUID();
             const now = new Date().toISOString();
+            const requireEmailVerification = isEmailProviderConfigured();
 
             db.prepare(`
-              INSERT INTO users (id, full_name, email, password_hash, salt, created_at, updated_at)
-              VALUES (?, ?, ?, ?, ?, ?, ?)
-            `).run(userId, name.trim(), cleanEmail, hash, salt, now, now);
+              INSERT INTO users (id, full_name, email, password_hash, salt, is_verified, created_at, updated_at)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            `).run(userId, name.trim(), cleanEmail, hash, salt, requireEmailVerification ? 0 : 1, now, now);
 
-            // Create persistent session
-            const { token, expiresAt } = createSession(userId);
+            if (requireEmailVerification) {
+              const code = String(crypto.randomInt(100000, 999999));
+              const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+              db.prepare('DELETE FROM email_verifications WHERE email = ?').run(cleanEmail);
+              db.prepare(`
+                INSERT INTO email_verifications (id, user_id, email, code_hash, expires_at, attempts, created_at)
+                VALUES (?, ?, ?, ?, ?, 0, ?)
+              `).run('ev_' + crypto.randomUUID(), userId, cleanEmail, hashToken(code), expiresAt, now);
+
+              await sendTransactionalEmail({
+                to: cleanEmail,
+                subject: 'Verify your TechnoEdu email address',
+                text: `Your TechnoEdu verification code is: ${code}. It expires in 15 minutes.`,
+                html: `<p>Welcome to <strong>TechnoEdu</strong>!</p><p>Your verification code is: <strong style="font-size:20px;letter-spacing:2px;">${code}</strong></p><p>This code expires in 15 minutes.</p>`,
+              });
+
+              return sendJson(res, 201, {
+                success: true,
+                requiresEmailVerification: true,
+                email: cleanEmail,
+                needsOnboarding: true,
+                message: 'Account created! Please check your email for the 6-digit verification code.',
+              });
+            }
+
+            // Create persistent session when email verification provider is not configured
+            const { token, expiresAt, maxAgeSeconds } = createSession(userId, 30);
+            setSessionCookie(res, token, maxAgeSeconds, req);
             const user = getUserFromToken(token);
 
             return sendJson(res, 201, {
@@ -270,7 +326,7 @@ export function createApiRequestHandler() {
               return sendJson(res, 400, { error: 'Email and password are required.' });
             }
 
-            const cleanEmail = email.trim().toLowerCase();
+            const cleanEmail = String(email).trim().toLowerCase();
             const userRow = db.prepare('SELECT * FROM users WHERE email = ?').get(cleanEmail);
             if (!userRow) {
               return sendJson(res, 401, { error: 'Invalid email or password.' });
@@ -281,9 +337,18 @@ export function createApiRequestHandler() {
               return sendJson(res, 401, { error: 'Invalid email or password.' });
             }
 
-            const { token, expiresAt } = createSession(userRow.id, rememberMe ? 30 : 1);
+            if (!userRow.is_verified) {
+              return sendJson(res, 403, {
+                error: 'Please verify your email address before signing in.',
+                code: 'EMAIL_NOT_VERIFIED',
+                email: userRow.email,
+              });
+            }
+
+            const { token, expiresAt, maxAgeSeconds } = createSession(userRow.id, rememberMe ? 30 : 1);
+            setSessionCookie(res, token, maxAgeSeconds, req);
             const user = getUserFromToken(token);
-            const needsOnboarding = !user.learningProfile?.onboardingCompleted;
+            const needsOnboarding = !user?.learningProfile?.onboardingCompleted;
 
             return sendJson(res, 200, {
               success: true,
@@ -295,12 +360,34 @@ export function createApiRequestHandler() {
             });
           }
 
+          // POST /api/auth/refresh
+          if (pathname === '/api/auth/refresh' && req.method === 'POST') {
+            const currentToken = extractToken(req);
+            if (!currentToken) {
+              return sendJson(res, 401, { error: 'Authentication required.' });
+            }
+            const refreshed = refreshSession(currentToken, 30);
+            if (!refreshed) {
+              clearSessionCookie(res, req);
+              return sendJson(res, 401, { error: 'Session expired or invalid.', code: 'SESSION_EXPIRED' });
+            }
+            setSessionCookie(res, refreshed.token, refreshed.maxAgeSeconds, req);
+            const user = getUserFromToken(refreshed.token);
+            return sendJson(res, 200, {
+              success: true,
+              token: refreshed.token,
+              expiresAt: refreshed.expiresAt,
+              user,
+            });
+          }
+
           // POST /api/auth/logout
           if (pathname === '/api/auth/logout' && req.method === 'POST') {
             const token = extractToken(req);
             if (token) {
               deleteSession(token);
             }
+            clearSessionCookie(res, req);
             return sendJson(res, 200, { success: true, message: 'Signed out successfully.' });
           }
 
@@ -311,27 +398,181 @@ export function createApiRequestHandler() {
             return sendJson(res, 200, { success: true, user });
           }
 
-          // POST /api/auth/verify-otp (Email verification)
-          if (pathname === '/api/auth/verify-otp' && req.method === 'POST') {
+          // POST /api/auth/verify-email (and /api/auth/verify-otp alias)
+          if ((pathname === '/api/auth/verify-email' || pathname === '/api/auth/verify-otp') && req.method === 'POST') {
             const body = await parseJsonBody(req);
-            const { email, otp } = body;
-            if (!otp || otp.length < 4) {
+            const { email, otp, code } = body;
+            const submittedCode = String(code || otp || '').trim();
+            const cleanEmail = String(email || '').trim().toLowerCase();
+
+            if (!cleanEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+              return sendJson(res, 400, { error: 'A valid email address is required.' });
+            }
+            if (!submittedCode || submittedCode.length < 4) {
               return sendJson(res, 400, { error: 'Enter a valid verification code.' });
             }
-            if (email) {
-              db.prepare('UPDATE users SET is_verified = 1 WHERE email = ?').run(email.trim().toLowerCase());
+
+            const userRow = db.prepare('SELECT * FROM users WHERE email = ?').get(cleanEmail);
+            if (!userRow) {
+              return sendJson(res, 404, { error: 'Account not found for this email address.' });
             }
-            return sendJson(res, 200, { success: true, message: 'Email verified successfully.' });
+
+            if (userRow.is_verified) {
+              const { token, expiresAt, maxAgeSeconds } = createSession(userRow.id, 30);
+              setSessionCookie(res, token, maxAgeSeconds, req);
+              const user = getUserFromToken(token);
+              return sendJson(res, 200, {
+                success: true,
+                token,
+                expiresAt,
+                user,
+                needsOnboarding: !user?.learningProfile?.onboardingCompleted,
+                message: 'Email is already verified.',
+              });
+            }
+
+            const evRow = db.prepare(`
+              SELECT * FROM email_verifications WHERE email = ? ORDER BY created_at DESC LIMIT 1
+            `).get(cleanEmail);
+
+            if (!evRow) {
+              return sendJson(res, 400, { error: 'No active verification code found. Please request a new code.' });
+            }
+            if (evRow.expires_at <= new Date().toISOString()) {
+              return sendJson(res, 400, { error: 'Verification code has expired. Please request a new code.' });
+            }
+            if (evRow.attempts >= 5) {
+              return sendJson(res, 429, { error: 'Too many invalid attempts. Please request a new verification code.' });
+            }
+
+            if (hashToken(submittedCode) !== evRow.code_hash) {
+              db.prepare('UPDATE email_verifications SET attempts = attempts + 1 WHERE id = ?').run(evRow.id);
+              return sendJson(res, 400, { error: 'Invalid verification code. Please try again.' });
+            }
+
+            db.prepare('UPDATE users SET is_verified = 1, updated_at = ? WHERE id = ?').run(new Date().toISOString(), userRow.id);
+            db.prepare('DELETE FROM email_verifications WHERE email = ?').run(cleanEmail);
+
+            const { token, expiresAt, maxAgeSeconds } = createSession(userRow.id, 30);
+            setSessionCookie(res, token, maxAgeSeconds, req);
+            const user = getUserFromToken(token);
+
+            return sendJson(res, 200, {
+              success: true,
+              token,
+              expiresAt,
+              user,
+              needsOnboarding: !user?.learningProfile?.onboardingCompleted,
+              message: 'Email verified successfully.',
+            });
+          }
+
+          // POST /api/auth/resend-verification
+          if (pathname === '/api/auth/resend-verification' && req.method === 'POST') {
+            const body = await parseJsonBody(req);
+            const cleanEmail = String(body.email || '').trim().toLowerCase();
+            if (!cleanEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+              return sendJson(res, 400, { error: 'A valid email address is required.' });
+            }
+
+            const userRow = db.prepare('SELECT id, is_verified FROM users WHERE email = ?').get(cleanEmail);
+            if (userRow && !userRow.is_verified) {
+              const code = String(crypto.randomInt(100000, 999999));
+              const now = new Date().toISOString();
+              const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+              db.prepare('DELETE FROM email_verifications WHERE email = ?').run(cleanEmail);
+              db.prepare(`
+                INSERT INTO email_verifications (id, user_id, email, code_hash, expires_at, attempts, created_at)
+                VALUES (?, ?, ?, ?, ?, 0, ?)
+              `).run('ev_' + crypto.randomUUID(), userRow.id, cleanEmail, hashToken(code), expiresAt, now);
+
+              await sendTransactionalEmail({
+                to: cleanEmail,
+                subject: 'Your new TechnoEdu verification code',
+                text: `Your TechnoEdu verification code is: ${code}. It expires in 15 minutes.`,
+                html: `<p>Your new TechnoEdu verification code is: <strong style="font-size:20px;letter-spacing:2px;">${code}</strong></p><p>This code expires in 15 minutes.</p>`,
+              });
+            }
+
+            return sendJson(res, 200, {
+              success: true,
+              message: 'If an unverified account exists for this email, a new verification code has been sent.',
+            });
           }
 
           // POST /api/auth/forgot-password
           if (pathname === '/api/auth/forgot-password' && req.method === 'POST') {
             const body = await parseJsonBody(req);
-            const { email } = body;
-            if (!email) return sendJson(res, 400, { error: 'Email is required.' });
+            const cleanEmail = String(body.email || '').trim().toLowerCase();
+            if (!cleanEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+              return sendJson(res, 400, { error: 'A valid email address is required.' });
+            }
+
+            const userRow = db.prepare('SELECT id, email FROM users WHERE email = ?').get(cleanEmail);
+            if (userRow) {
+              const rawToken = crypto.randomBytes(32).toString('hex');
+              const now = new Date().toISOString();
+              const expiresAt = new Date(Date.now() + 60 * 60 * 1000).toISOString();
+
+              db.prepare('DELETE FROM password_resets WHERE user_id = ?').run(userRow.id);
+              db.prepare(`
+                INSERT INTO password_resets (id, user_id, token_hash, expires_at, created_at)
+                VALUES (?, ?, ?, ?, ?)
+              `).run('pr_' + crypto.randomUUID(), userRow.id, hashToken(rawToken), expiresAt, now);
+
+              const appUrl = (process.env.APP_URL || process.env.VITE_APP_URL || 'http://localhost:3000').replace(/\/$/, '');
+              const resetUrl = `${appUrl}/forgot-password?token=${rawToken}`;
+
+              if (isEmailProviderConfigured()) {
+                await sendTransactionalEmail({
+                  to: userRow.email,
+                  subject: 'Reset your TechnoEdu password',
+                  text: `Reset your TechnoEdu password using this link (valid for 1 hour): ${resetUrl}`,
+                  html: `<p>Click the link below to reset your TechnoEdu password (valid for 1 hour):</p><p><a href="${resetUrl}">${resetUrl}</a></p>`,
+                });
+              } else if (process.env.NODE_ENV !== 'production') {
+                console.info(`[TechnoEdu Dev] Password reset link for ${userRow.email}: ${resetUrl}`);
+              }
+            }
+
             return sendJson(res, 200, {
               success: true,
-              message: 'If an account exists with this email, recovery instructions have been sent.',
+              message: 'If an account exists with this email, password recovery instructions have been sent.',
+            });
+          }
+
+          // POST /api/auth/reset-password
+          if (pathname === '/api/auth/reset-password' && req.method === 'POST') {
+            const body = await parseJsonBody(req);
+            const { token: resetToken, password: newPassword } = body;
+
+            if (!resetToken || typeof resetToken !== 'string') {
+              return sendJson(res, 400, { error: 'A valid password reset token is required.' });
+            }
+            if (!newPassword || typeof newPassword !== 'string' || newPassword.length < 6) {
+              return sendJson(res, 400, { error: 'New password must be at least 6 characters.' });
+            }
+
+            const now = new Date().toISOString();
+            const resetRow = db.prepare(`
+              SELECT * FROM password_resets
+              WHERE token_hash = ? AND used_at IS NULL AND expires_at > ?
+            `).get(hashToken(resetToken.trim()), now);
+
+            if (!resetRow) {
+              return sendJson(res, 400, { error: 'This password reset link is invalid or has expired.' });
+            }
+
+            const { hash, salt } = hashPassword(newPassword);
+            db.prepare('UPDATE users SET password_hash = ?, salt = ?, updated_at = ? WHERE id = ?')
+              .run(hash, salt, now, resetRow.user_id);
+            db.prepare('UPDATE password_resets SET used_at = ? WHERE id = ?').run(now, resetRow.id);
+            // Invalidate all active sessions for security
+            deleteAllUserSessions(resetRow.user_id);
+
+            return sendJson(res, 200, {
+              success: true,
+              message: 'Your password has been reset. Please sign in with your new password.',
             });
           }
 
@@ -384,13 +625,13 @@ export function createApiRequestHandler() {
                   updated_at = ?
               WHERE id = ?
             `).run(
-              fullName?.trim() || user.full_name,
-              age ? parseInt(age, 10) : user.age,
-              educationLevel || user.education_level,
-              currentClassOrSemester || user.current_class_or_semester,
-              institution || user.institution,
-              country || user.country,
-              preferredLanguage || user.preferred_language,
+              fullName?.trim() || user.fullName || user.full_name,
+              age ? parseInt(age, 10) : (user.age ?? null),
+              educationLevel ?? user.educationLevel ?? null,
+              currentClassOrSemester ?? user.currentClassOrSemester ?? null,
+              institution ?? user.institution ?? null,
+              country ?? user.country ?? 'India',
+              preferredLanguage ?? user.preferredLanguage ?? 'English',
               now,
               user.id
             );
@@ -492,8 +733,10 @@ export function createApiRequestHandler() {
           // 4. Courses & Subjects: /api/courses/*
           // ───────────────────────────────────────────────────────────────────
 
-          // GET /api/courses
+          // GET /api/courses (Authenticated only)
           if (pathname === '/api/courses' && req.method === 'GET') {
+            const user = requireAuth(req, res);
+            if (!user) return;
             const category = urlObj.searchParams.get('category');
             let query = 'SELECT * FROM courses WHERE is_active = 1';
             const params = [];
@@ -506,9 +749,11 @@ export function createApiRequestHandler() {
             return sendJson(res, 200, { success: true, courses });
           }
 
-          // GET /api/courses/:slug
+          // GET /api/courses/:slug (Authenticated only)
           const courseMatch = pathname.match(/^\/api\/courses\/([a-zA-Z0-9_-]+)$/);
           if (courseMatch && req.method === 'GET') {
+            const user = requireAuth(req, res);
+            if (!user) return;
             const slugOrId = courseMatch[1];
             const course = db.prepare('SELECT * FROM courses WHERE slug = ? OR id = ?').get(slugOrId, slugOrId);
             if (!course) {
@@ -537,9 +782,11 @@ export function createApiRequestHandler() {
             });
           }
 
-          // GET /api/courses/:slug/subjects
+          // GET /api/courses/:slug/subjects (Authenticated only)
           const subjectsMatch = pathname.match(/^\/api\/courses\/([a-zA-Z0-9_-]+)\/subjects$/);
           if (subjectsMatch && req.method === 'GET') {
+            const user = requireAuth(req, res);
+            if (!user) return;
             const slugOrId = subjectsMatch[1];
             const course = db.prepare('SELECT id FROM courses WHERE slug = ? OR id = ?').get(slugOrId, slugOrId);
             if (!course) return sendJson(res, 404, { error: 'Course not found' });
@@ -564,7 +811,8 @@ export function createApiRequestHandler() {
           // 5. Course-Isolated Learning Resources: /api/resources
           // ───────────────────────────────────────────────────────────────────
           if (pathname === '/api/resources' && req.method === 'GET') {
-            const user = extractToken(req) ? getUserFromToken(extractToken(req)) : null;
+            const user = requireAuth(req, res);
+            if (!user) return;
             let requestedCourseId = urlObj.searchParams.get('courseId');
             const subjectId = urlObj.searchParams.get('subjectId');
             const resourceType = urlObj.searchParams.get('type');
@@ -654,9 +902,11 @@ export function createApiRequestHandler() {
             });
           }
 
-          // GET /api/resources/:id
+          // GET /api/resources/:id (Authenticated only)
           const resourceIdMatch = pathname.match(/^\/api\/resources\/([a-zA-Z0-9_-]+)$/);
           if (resourceIdMatch && req.method === 'GET') {
+            const user = requireAuth(req, res);
+            if (!user) return;
             const id = resourceIdMatch[1];
             const resource = db.prepare(`
               SELECT lr.*, c.name as course_name, c.slug as course_slug,
@@ -672,9 +922,8 @@ export function createApiRequestHandler() {
               return sendJson(res, 404, { error: 'Learning resource not found.' });
             }
 
-            // Enforce course-level access control if user is logged in
-            const user = extractToken(req) ? getUserFromToken(extractToken(req)) : null;
-            if (user && user.learningProfile && resource.visibility !== 'all_courses') {
+            // Enforce course-level access control
+            if (user.learningProfile && resource.visibility !== 'all_courses') {
               const enrolledCourseIds = (user.enrollments || []).map((e) => e.course_id);
               if (!enrolledCourseIds.includes(resource.course_id)) {
                 return sendJson(res, 403, {
@@ -700,11 +949,12 @@ export function createApiRequestHandler() {
           }
 
           // ───────────────────────────────────────────────────────────────────
-          // 6. Course-Aware Search: /api/search
+          // 6. Course-Aware Search: /api/search (Authenticated only)
           // ───────────────────────────────────────────────────────────────────
           if (pathname === '/api/search' && req.method === 'GET') {
+            const user = requireAuth(req, res);
+            if (!user) return;
             const query = urlObj.searchParams.get('q') || '';
-            const user = extractToken(req) ? getUserFromToken(extractToken(req)) : null;
 
             if (!query.trim()) {
               return sendJson(res, 200, { success: true, results: [] });
@@ -1112,6 +1362,27 @@ export function createApiRequestHandler() {
           // 9. Learning Progress & Mock Tests: /api/progress & /api/mock
           // ───────────────────────────────────────────────────────────────────
 
+          // GET /api/progress?courseId=...
+          if (pathname === '/api/progress' && req.method === 'GET') {
+            const user = requireAuth(req, res);
+            if (!user) return;
+
+            const courseId = url.searchParams.get('courseId') || '';
+            const rows = courseId
+              ? db.prepare(`
+                  SELECT resource_id, status, progress, last_accessed_at, completed_at
+                  FROM user_learning_progress
+                  WHERE user_id = ? AND course_id = ?
+                `).all(user.id, courseId)
+              : db.prepare(`
+                  SELECT course_id, resource_id, status, progress, last_accessed_at, completed_at
+                  FROM user_learning_progress
+                  WHERE user_id = ?
+                `).all(user.id);
+
+            return sendJson(res, 200, { success: true, progress: rows });
+          }
+
           // POST /api/progress
           if (pathname === '/api/progress' && req.method === 'POST') {
             const user = requireAuth(req, res);
@@ -1122,6 +1393,11 @@ export function createApiRequestHandler() {
 
             if (!courseId || !resourceId) {
               return sendJson(res, 400, { error: 'courseId and resourceId are required.' });
+            }
+
+            const enrolledIds = (user.enrollments || []).map((e) => e.course_id);
+            if (courseId !== 'general' && !enrolledIds.includes(courseId)) {
+              return sendJson(res, 403, { error: 'You are not enrolled in this course.' });
             }
 
             const now = new Date().toISOString();
@@ -1182,6 +1458,11 @@ export function createApiRequestHandler() {
 
             if (!courseId || !mockTitle || score === undefined || !totalMarks) {
               return sendJson(res, 400, { error: 'Missing mock attempt parameters.' });
+            }
+
+            const enrolledIds = (user.enrollments || []).map((e) => e.course_id);
+            if (courseId !== 'general' && !enrolledIds.includes(courseId)) {
+              return sendJson(res, 403, { error: 'You are not enrolled in this course.' });
             }
 
             const accuracy = parseFloat(((score / totalMarks) * 100).toFixed(1));

@@ -120,11 +120,18 @@ export interface DashboardData {
 const API_BASE = '/api';
 
 export function getAuthHeaders(token?: string | null): Record<string, string> {
-  const authToken = token || localStorage.getItem('technoedu_token');
+  let authToken = token || null;
+  if (!authToken) {
+    try {
+      authToken = localStorage.getItem('technoedu_token') || sessionStorage.getItem('technoedu_token');
+    } catch {
+      authToken = null;
+    }
+  }
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
   };
-  if (authToken) {
+  if (authToken && authToken !== 'cookie-session') {
     headers['Authorization'] = `Bearer ${authToken}`;
   }
   return headers;
@@ -132,6 +139,7 @@ export function getAuthHeaders(token?: string | null): Record<string, string> {
 
 export async function fetchDashboard(token?: string | null): Promise<DashboardData | { needsOnboarding: true }> {
   const res = await fetch(`${API_BASE}/dashboard`, {
+    credentials: 'include',
     headers: getAuthHeaders(token),
   });
   if (!res.ok) {

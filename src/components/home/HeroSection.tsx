@@ -16,21 +16,6 @@ export const HeroSection: React.FC = () => {
           {/* Left: Text content */}
           <div className="lg:col-span-6 xl:col-span-7 space-y-5 sm:space-y-6">
 
-            <ScrollReveal animation="fade-up" delay={150}>
-              <Link
-                to={isAuthenticated ? '/dashboard' : '/signup'}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200/80 dark:border-red-900/50 text-brand-red dark:text-red-400 text-xs font-bold shadow-xs hover:scale-[1.02] transition-transform"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>
-                  {isAuthenticated
-                    ? `Active Session: ${user?.fullName?.split(' ')[0] || 'Student'} • Open Dashboard`
-                    : 'Personalized Learning: Study Only What Matters For Your Goal'}
-                </span>
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </ScrollReveal>
-
             <ScrollReveal animation="fade-up" delay={200}>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-[#F8FAFC] tracking-tight leading-[1.08]">
                 Everything You Need<br /> to <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-rose-600">Learn Better.</span>

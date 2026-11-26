@@ -1,4 +1,4 @@
-import { COURSE_CONFIGS, CourseConfig } from './courseConfig';
+import { COURSE_CONFIGS } from './courseConfig';
 
 export interface NavLinkItem {
   name: string;
@@ -8,34 +8,38 @@ export interface NavLinkItem {
   isAction?: boolean;
 }
 
-export function getCourseNavigation(activeCourseId?: string | null): NavLinkItem[] {
-  if (!activeCourseId) {
-    // Unauthenticated or default navigation
+export function getCourseNavigation(activeCourseId?: string | null, isAuthenticated = false): NavLinkItem[] {
+  if (!isAuthenticated) {
+    // Minimal public navigation: no course categories, library, exams, or blogs
     return [
-      { name: 'Home', path: '/' },
-      { name: 'Exams', path: '/exams' },
-      { name: 'Directory', path: '/directory' },
-      { name: 'Library', path: '/library' },
-      { name: 'Platforms', path: '/platforms' },
-      { name: 'Blogs', path: '/blogs' },
       { name: 'About', path: '/about' },
       { name: 'Contact', path: '/contact' },
     ];
   }
 
-  const courseConfig = COURSE_CONFIGS[activeCourseId];
-  if (courseConfig) {
-    return courseConfig.navLinks;
+  if (activeCourseId) {
+    const courseConfig = COURSE_CONFIGS[activeCourseId];
+    if (courseConfig) {
+      // Ensure Blogs and Study Planner are accessible alongside course-specific links
+      const links = [...courseConfig.navLinks];
+      if (!links.some((l) => l.path === '/library')) {
+        links.push({ name: 'Library', path: '/library' });
+      }
+      if (!links.some((l) => l.path === '/blogs')) {
+        links.push({ name: 'Blogs', path: '/blogs' });
+      }
+      return links;
+    }
   }
 
-  // Fallback for any newly added custom course
+  // Authenticated fallback when no specific course config matches
   return [
     { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Lectures & Ladder', path: '/lectures' },
     { name: 'My Learning', path: '/my-learning' },
-    { name: 'Syllabus', path: `/courses/${activeCourseId}/subjects` },
-    { name: 'Study Materials', path: `/courses/${activeCourseId}/resources` },
-    { name: 'PYQs', path: `/courses/${activeCourseId}/pyq` },
-    { name: 'Mock Tests', path: `/courses/${activeCourseId}/mock-tests` },
+    { name: 'Study Materials', path: activeCourseId ? `/courses/${activeCourseId}/resources` : '/courses' },
     { name: 'Library', path: '/library' },
+    { name: 'Blogs', path: '/blogs' },
+    { name: 'Profile', path: '/profile' },
   ];
 }

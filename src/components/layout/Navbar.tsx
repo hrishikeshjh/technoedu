@@ -11,8 +11,6 @@ import {
   Globe,
   HelpCircle,
   ArrowRight,
-  Sun,
-  Moon,
   Sparkles,
   User,
   LogOut,
@@ -21,8 +19,7 @@ import {
 import { examsData } from '../../data/examsData';
 import { platformsData } from '../../data/platformsData';
 import { useBlogPosts } from '../../data/blogData';
-import { ThemeToggle } from '../common/ThemeToggle';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth, getStoredToken } from '../../context/AuthContext';
 import { getCourseNavigation } from '../../lib/personalization/navigationConfig';
 import { CourseSwitcher } from '../common/CourseSwitcher';
 import { UserMenu } from '../common/UserMenu';
@@ -43,7 +40,7 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
 
   const activeCourseConfig = activeCourseId ? COURSE_CONFIGS[activeCourseId] : null;
-  const navLinks = getCourseNavigation(isAuthenticated ? activeCourseId : null);
+  const navLinks = getCourseNavigation(isAuthenticated ? activeCourseId : null, isAuthenticated);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,30 +50,31 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Course-aware search effect
+  // Course-aware search effect (authenticated only)
   useEffect(() => {
-    if (!searchQuery.trim()) {
+    if (!isAuthenticated || !searchQuery.trim()) {
       setCourseSearchResults([]);
       return;
     }
 
     const timer = setTimeout(async () => {
       try {
-        const token = localStorage.getItem('technoedu_token');
+        const token = getStoredToken();
         const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery.trim())}`, {
-          headers: token ? { Authorization: `Bearer ${token}` } : {},
+          credentials: 'include',
+          headers: token && token !== 'cookie-session' ? { Authorization: `Bearer ${token}` } : {},
         });
         if (res.ok) {
           const data = await res.json();
           setCourseSearchResults(data.results || []);
         }
-      } catch (err) {
+      } catch {
         // Fallback silently
       }
     }, 200);
 
     return () => clearTimeout(timer);
-  }, [searchQuery, activeCourseId]);
+  }, [searchQuery, activeCourseId, isAuthenticated]);
 
   // Handle drawer animation
   useEffect(() => {
@@ -221,7 +219,8 @@ export const Navbar: React.FC = () => {
           {/* 3. Right: Universal Search, Course Switcher, User Menu & Theme Toggle */}
           <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
             
-            {/* Desktop Search Input (Course-Aware) */}
+            {/* Desktop Search Input (Authenticated Only) */}
+            {isAuthenticated && (
             <div className="hidden md:block relative w-44 lg:w-48 xl:w-56">
               <div className="relative w-full">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 dark:text-slate-500 pointer-events-none" />
@@ -334,6 +333,7 @@ export const Navbar: React.FC = () => {
                 </div>
               )}
             </div>
+            )}
 
             {/* Course Switcher (Desktop - Authenticated Only) */}
             {isAuthenticated && (
@@ -342,16 +342,13 @@ export const Navbar: React.FC = () => {
               </div>
             )}
 
-            {/* Theme Toggle (Desktop) */}
-            <ThemeToggle className="hidden sm:inline-block" />
-
             {/* User Menu or Auth CTAs */}
             {isAuthenticated ? (
               <UserMenu />
             ) : (
               <div className="hidden sm:flex items-center gap-2">
                 <Link
-                  to="/signin"
+                  to="/login"
                   className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-slate-200 dark:border-[#252932] bg-white dark:bg-[#111318] hover:bg-slate-50 dark:hover:bg-[#1A1D23] text-xs font-bold text-slate-700 dark:text-slate-300 transition-all shadow-xs"
                 >
                   <span>Sign In</span>
@@ -404,15 +401,6 @@ export const Navbar: React.FC = () => {
           )}
 
           {/* Theme Appearance Switcher Row in Mobile Menu */}
-          <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-[#111318] border border-slate-200 dark:border-[#252932]">
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <Sun className="w-4 h-4 text-amber-500 block dark:hidden" />
-              <Moon className="w-4 h-4 text-indigo-400 hidden dark:block" />
-              <span>Theme Appearance</span>
-            </div>
-            <ThemeToggle showDropdown={true} />
-          </div>
-
           {/* Dynamic Mobile Nav Links */}
           <div className="space-y-1">
             {navLinks.map((link, index) => {
@@ -472,11 +460,11 @@ export const Navbar: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full py-3 text-center bg-brand-red text-white rounded-2xl text-xs font-bold flex items-center justify-center gap-2 shadow-red-glow"
                 >
-                  <span>Create Account</span>
+                  <span>Get Started</span>
                 </Link>
 
                 <Link
-                  to="/signin"
+                  to="/login"
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full py-2.5 text-center border border-slate-200 dark:border-[#252932] rounded-2xl text-xs font-semibold text-slate-700 dark:text-slate-300"
                 >

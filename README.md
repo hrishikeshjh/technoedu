@@ -343,3 +343,22 @@ Contributions that expand exam mappings, verify question banks, fix links, or in
 Built for students, lifelong learners, and competitive exam aspirants everywhere.
 
 </div>
+
+
+## Environment Variables
+
+Copy `.env.example` to `.env` (or `.env.local`) and configure the required values. Never commit `.env` or `.env.local` to Git.
+
+| Variable | Visibility | Required | Description |
+| --- | --- | --- | --- |
+| `VITE_APP_URL` / `APP_URL` | Public / Server | Optional (default `http://localhost:3000`) | Base URL used for password reset and verification links |
+| `VITE_API_BASE_URL` | Public | Optional | Custom API origin (leave empty for same-origin `/api`) |
+| `NODE_ENV` | Server | Optional (`development` / `production`) | Runtime environment mode |
+| `PORT` | Server | Optional (default `3000`) | Server port for `npm start` and `vite` |
+| `AUTH_SESSION_SECRET` | Server-only | **Required in production** | 64-character random hex secret for session security |
+| `VITE_GOOGLE_CLIENT_ID` | Public | Optional | Google OAuth 2.0 Web Client ID for browser sign-in |
+| `GOOGLE_CLIENT_ID` | Server-only | Optional | Google OAuth 2.0 Client ID for server token verification |
+| `EMAIL_PROVIDER_API_KEY` | Server-only | Optional | Resend-compatible API key for email verification & password resets |
+| `EMAIL_FROM` | Server-only | Optional | Verified sender email address |
+| `CLOUDFLARE_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` | Server-only | Optional | Cloudflare R2 storage credentials |
+| `R2_BUCKET_NAME`, `R2_PUBLIC_URL`, `VITE_R2_PUBLIC_URL`, `VITE_R2_BLOGS_BASE_URL` | Server / Public | Optional | Cloudflare R2 bucket and public CDN URLs |

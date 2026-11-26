@@ -324,7 +324,7 @@ function compressImageFile(file: File, maxWidth = 1200, quality = 0.82): Promise
 
   return (
     <div className="w-full bg-white dark:bg-[#08090B] text-slate-900 dark:text-[#F8FAFC] pt-6 sm:pt-8 pb-20 transition-colors duration-200">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
         <Breadcrumb

@@ -19,7 +19,7 @@ const GIL_SANS = { fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text"
 export const AboutPage: React.FC = () => {
   return (
     <div className="w-full bg-white dark:bg-[#08090B] text-slate-900 dark:text-[#F8FAFC] pt-6 sm:pt-8 pb-16 transition-colors duration-200" style={GIL_SANS}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumb */}
         <Breadcrumb items={[{ label: 'About' }]} />

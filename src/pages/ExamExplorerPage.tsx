@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import {
   Search,
   Filter,
@@ -25,6 +26,7 @@ const categoryIcon: Record<string, React.ReactNode> = {
 };
 
 export const ExamExplorerPage: React.FC = () => {
+  const { isAuthenticated, activeCourseId } = useAuth();
   const [searchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || 'All';
   const initialSearch = searchParams.get('search') || '';
@@ -45,6 +47,10 @@ export const ExamExplorerPage: React.FC = () => {
       return matchesCat && matchesSearch;
     });
   }, [selectedCategory, searchQuery]);
+
+  if (isAuthenticated && activeCourseId === 'ugc-net') {
+    return <Navigate to="/exams/ugc-net" replace />;
+  }
 
   return (
     <div

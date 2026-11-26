@@ -59,6 +59,7 @@ export const COURSE_CONFIGS: Record<string, CourseConfig> = {
     ],
     navLinks: [
       { name: 'Dashboard', path: '/dashboard' },
+      { name: 'Lectures & Ladder', path: '/lectures' },
       { name: 'My Learning', path: '/my-learning' },
       { name: 'UGC-NET Hub', path: '/exams/ugc-net' },
       { name: 'Paper 1', path: '/courses/ugc-net/subjects/paper-1' },
@@ -98,6 +99,7 @@ export const COURSE_CONFIGS: Record<string, CourseConfig> = {
     ],
     navLinks: [
       { name: 'Dashboard', path: '/dashboard' },
+      { name: 'Lectures & Ladder', path: '/lectures' },
       { name: 'My Learning', path: '/my-learning' },
       { name: 'Biology', path: '/courses/neet-ug/subjects/biology' },
       { name: 'Physics', path: '/courses/neet-ug/subjects/physics' },
@@ -136,6 +138,7 @@ export const COURSE_CONFIGS: Record<string, CourseConfig> = {
     ],
     navLinks: [
       { name: 'Dashboard', path: '/dashboard' },
+      { name: 'Lectures & Ladder', path: '/lectures' },
       { name: 'My Learning', path: '/my-learning' },
       { name: 'Mathematics', path: '/courses/jee-main/subjects/mathematics' },
       { name: 'Physics', path: '/courses/jee-main/subjects/physics' },
@@ -173,6 +176,7 @@ export const COURSE_CONFIGS: Record<string, CourseConfig> = {
     ],
     navLinks: [
       { name: 'Dashboard', path: '/dashboard' },
+      { name: 'Lectures & Ladder', path: '/lectures' },
       { name: 'My Learning', path: '/my-learning' },
       { name: 'CS & IT', path: '/courses/gate/subjects/cs-it' },
       { name: 'Engineering Math', path: '/courses/gate/subjects/eng-math' },
@@ -210,6 +214,7 @@ export const COURSE_CONFIGS: Record<string, CourseConfig> = {
     ],
     navLinks: [
       { name: 'Dashboard', path: '/dashboard' },
+      { name: 'Lectures & Ladder', path: '/lectures' },
       { name: 'My Learning', path: '/my-learning' },
       { name: 'Indian Polity', path: '/courses/upsc-cse/subjects/polity' },
       { name: 'History', path: '/courses/upsc-cse/subjects/history' },
